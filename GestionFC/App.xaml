@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GestionFC.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            
+        <!--Fuentes Poppins-->
+        
+            <OnPlatform x:Key="Poppins-Black" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-Black.otf#Poppins-Black"/>
+                <On Platform="iOS" Value="Poppins-Black"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Poppins-BlackItalic" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-BlackItalic.otf#Poppins-BlackItalic"/>
+                <On Platform="iOS" Value="Poppins-BlackItalic"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Poppins-Bold" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-Bold.otf#Poppins-Bold"/>
+                <On Platform="iOS" Value="Poppins-Bold"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Poppins-BoldItalic" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-BoldItalic.otf#Poppins-BoldItalic"/>
+                <On Platform="iOS" Value="Poppins-BoldItalic"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Poppins-ExtraBold" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-ExtraBold.otf#Poppins-ExtraBold"/>
+                <On Platform="iOS" Value="Poppins-ExtraBold"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Poppins-ExtraBoldItalic" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-ExtraBoldItalic.otf#Poppins-ExtraBoldItalic"/>
+                <On Platform="iOS" Value="Poppins-ExtraBoldItalic"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Poppins-ExtraLightItalic" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-ExtraLightItalic.otf#Poppins-ExtraLightItalic"/>
+                <On Platform="iOS" Value="Poppins-ExtraLightItalic"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Poppins-Italic" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-Italic.otf#Poppins-Italic"/>
+                <On Platform="iOS" Value="Poppins-Italic"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Poppins-Light" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-Light.otf#Poppins-Light"/>
+                <On Platform="iOS" Value="Poppins-Light"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Poppins-LightItalic" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-LightItalic.otf#Poppins-LightItalic"/>
+                <On Platform="iOS" Value="Poppins-LightItalic"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Poppins-Medium" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-Medium.otf#Poppins-Medium"/>
+                <On Platform="iOS" Value="Poppins-Medium"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Poppins-MediumItalic" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-MediumItalic.otf#Poppins-MediumItalic"/>
+                <On Platform="iOS" Value="Poppins-MediumItalic"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Poppins-Regular" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-Regular.otf#Poppins-Regular"/>
+                <On Platform="iOS" Value="Poppins-Regular"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Poppins-SemiBold" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-SemiBold.otf#Poppins-SemiBold"/>
+                <On Platform="iOS" Value="Poppins-SemiBold"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Poppins-SemiBoldItalic" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-SemiBoldItalic.otf#Poppins-SemiBoldItalic"/>
+                <On Platform="iOS" Value="Poppins-SemiBoldItalic"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Poppins-Thin" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-Thin.otf#Poppins-Thin"/>
+                <On Platform="iOS" Value="Poppins-Thin"/>
+            </OnPlatform>
+
+            <OnPlatform x:Key="Poppins-ThinItalic" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Poppins-ThinItalic.otf#Poppins-ThinItalic"/>
+                <On Platform="iOS" Value="Poppins-ThinItalic"/>
+            </OnPlatform>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:GestionFC.Views"
+             xmlns:renderers="clr-namespace:GestionFC.Renderers"
+             mc:Ignorable="d"
+             x:Class="GestionFC.LoginPage"
+             BackgroundImageSource="fondo_login.png">
+
+    <ContentPage.Content>
+        <StackLayout 
+            Margin="0" 
+            Padding="0" 
+            Spacing="0"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+
+            <Grid
+                Margin="0"
+                RowSpacing="0"
+                ColumnSpacing="0"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.60*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.10*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.60*"></RowDefinition>
+                    <RowDefinition Height="0.30*"></RowDefinition>
+                    <RowDefinition Height="0.15"></RowDefinition>
+                    <RowDefinition Height="0.15*"></RowDefinition>
+                    <RowDefinition Height="0.10*"></RowDefinition>
+                    <RowDefinition Height="0.20*"></RowDefinition>
+                    <RowDefinition Height="0.20*"></RowDefinition>
+                    <RowDefinition Height="0.10*"></RowDefinition>
+                    <RowDefinition Height="0.05*"></RowDefinition>
+                    <RowDefinition Height="0.15*"></RowDefinition>
+                    <RowDefinition Height="0.30*"></RowDefinition>
+                    <RowDefinition Height="0.80*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Frame 
+                    CornerRadius="30"
+                    BackgroundColor="#7EB732"
+                    Margin="0, -40, 0, 0"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="6"
+                    Grid.Row="0"
+                    Grid.RowSpan="11">
+                </Frame>
+
+
+                <Label Text="Bienvenido a Gestión FC"
+                       FontFamily="{StaticResource Poppins-SemiBold}"
+                       Grid.Column="2"
+                       Grid.ColumnSpan="2"
+                       Grid.Row="1"
+                       FontSize="40"
+                       TextColor="#FFFFFF">
+                </Label>
+
+                <Label Text="Ingresa tu usuario y contraseña para acceder a la aplicación"
+                       Grid.Column="2"
+                       Grid.ColumnSpan="3"
+                       Grid.Row="3"
+                       FontSize="18"
+                       FontFamily="{StaticResource Poppins-Regular}"
+                       TextColor="#FFFFFF">
+                </Label>
+
+                <Frame
+                    Padding="0"
+                    CornerRadius="30"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="4"
+                    Grid.Row="5"
+                    Margin="0,10,0,10">
+                    <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
+                        <Image Source="user.png" 
+                               WidthRequest="28"
+                               HeightRequest="35"
+                               Margin="20,0,20,0">
+                        </Image>
+                        <renderers:EntryIcon
+                            x:Name="UserName"
+                            Text="{Binding LoginDTO.Nomina, Mode=TwoWay}"
+                            Keyboard="Numeric"
+                            MaxLength="8"
+                            CornerRadius="30"
+                            Placeholder="Ingresa tu usuario"
+                            FontFamily="{StaticResource Poppins-Regular}"
+                            PlaceholderColor="#C4C4C4"
+                            TextColor="#275D38"
+                            BackgroundColor="#FFFFFF">
+                        </renderers:EntryIcon>
+                    </StackLayout>
+                </Frame>
+
+                <Frame
+                    Padding="0"
+                    CornerRadius="30"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="4"
+                    Grid.Row="6"
+                    Margin="0,10,0,10">
+                    <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
+                        <Image Source="candado.png" 
+                               WidthRequest="28"
+                               HeightRequest="35"
+                               Margin="20,0,20,0">
+                        </Image>
+                        <renderers:EntryIcon
+                            x:Name="PassworUser"
+                            CornerRadius="30"
+                            MaxLength="20"
+                            Placeholder="Ingresa tu contraseña"
+                            IsPassword="True"
+                            PlaceholderColor="#C4C4C4"
+                            TextColor="#275D38"
+                            BackgroundColor="#FFFFFF"
+                            HorizontalOptions="FillAndExpand">
+                        </renderers:EntryIcon>
+
+                        <Image 
+                            x:Name="ImgHidePassw"
+                            Source="view.png" 
+                            WidthRequest="28"
+                            HeightRequest="35"
+                            Margin="20,0,20,0"
+                            HorizontalOptions="End">
+                        </Image>
+
+                    </StackLayout>
+                </Frame>
+
+                <Label Text="Recordar usuario"
+                       Grid.Column="3"
+                       Grid.Row="7"
+                       FontSize="18"
+                       FontFamily="{StaticResource Poppins-Regular}"
+                       TextColor="#FFFFFF"
+                       VerticalTextAlignment="Center">
+                </Label>
+
+                <CheckBox 
+                    x:Name="chkRemember"
+                    IsChecked="{Binding LoginDTO.RememberUser, Mode=TwoWay}"
+                    Grid.Column="4"
+                    Grid.Row="7"
+                    HorizontalOptions="StartAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    HeightRequest="50"
+                    Color="#FFFFFF">
+                </CheckBox>
+
+                <Frame
+                    Grid.Column="3"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="9"
+                    Margin="0"
+                    Padding="0"
+                    CornerRadius="30">
+
+                    <Button x:Name="btnIniciarSesion"
+                        Clicked="btnIniciarSesion_Clicked"
+                        Text="Iniciar Sesión"
+                        BackgroundColor="#FFFFFF"
+                        TextColor="#275D38"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        CornerRadius="30">
+                    </Button>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
