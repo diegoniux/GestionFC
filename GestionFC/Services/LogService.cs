@@ -52,7 +52,11 @@ namespace GestionFC.Services
 
         }
 
+<<<<<<< HEAD
         public async Task<LogErrorResponseModel> LogError(LogErrorModel log)
+=======
+        public async Task<LogErrorResponseModel> LogError(LogErrorModel log, string accessToken)
+>>>>>>> Branch_PlantillaPage
         {
             var logResponse = new LogErrorResponseModel();
             try
@@ -62,6 +66,10 @@ namespace GestionFC.Services
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = null;
+<<<<<<< HEAD
+=======
+                _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
+>>>>>>> Branch_PlantillaPage
                 response = await _client.PostAsync(uri, content);
 
                 response.EnsureSuccessStatusCode();
