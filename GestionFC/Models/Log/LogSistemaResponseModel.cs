@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using GestionFC.Models.Share;
 
-namespace GestionFC.Models.Login
+namespace GestionFC.Models.Log
 {
-    class LogSistemaResponseModel
+    public class LogSistemaResponseModel
     {
         public ResultadoEjecucion ResultadoEjecucion { get; set; }
     }

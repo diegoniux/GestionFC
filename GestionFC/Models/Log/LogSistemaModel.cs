@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GestionFC.Models.Login
+namespace GestionFC.Models.Log
 {
     public class LogSistemaModel
     {

@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using GestionFC.Models.DTO;
 using GestionFC.Models.Login;
+using GestionFC.Models.Log;
 using GestionFC.Services;
 using GestionFC.SqLite.DBModel;
 using GestionFC.ViewModels.Login;
@@ -12,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace GestionFC
 {
@@ -98,6 +100,7 @@ namespace GestionFC
 
                     // Llamamos el servicio para el login
                     LoginService loginService = new LoginService();
+                    LogService logService = new LogService();
                     using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                     {
                         await loginService.Login(loginModel).ContinueWith(x =>
@@ -130,6 +133,8 @@ namespace GestionFC
                             App.Database.SaveGestionFCItemAsync(gestionFC);
 
                             //Guardamos genramos la inserción en bitácora (inicio de sesión)
+                            var logModel = new LogSistemaModel() { IdPantalla = 1, IdAccion = 1, Usuario = int.Parse(UserName.Text), Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name };
+                            logService.LogSistema(logModel,gestionFC.TokenSesion);
 
 
                             // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación

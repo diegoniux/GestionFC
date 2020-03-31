@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -11,6 +11,11 @@
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Login\LogSistemaModel.cs" />
+    <Compile Remove="Models\Login\LogSistemaResponseModel.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.442" />
