@@ -133,8 +133,21 @@ namespace GestionFC
                             App.Database.SaveGestionFCItemAsync(gestionFC);
 
                             //Guardamos genramos la inserción en bitácora (inicio de sesión)
+<<<<<<< Updated upstream
                             var logModel = new LogSistemaModel() { IdPantalla = 1, IdAccion = 1, Usuario = int.Parse(UserName.Text), Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name };
                             logService.LogSistema(logModel,gestionFC.TokenSesion);
+=======
+<<<<<<< Updated upstream
+=======
+                            var logModel = new LogSistemaModel() { 
+                                IdPantalla = 1, 
+                                IdAccion = 1, 
+                                Usuario = int.Parse(UserName.Text), 
+                                Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name 
+                            };
+                            await logService.LogSistema(logModel, gestionFC.TokenSesion);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 
                             // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
