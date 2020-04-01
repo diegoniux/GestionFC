@@ -139,7 +139,15 @@ namespace GestionFC
                                 Usuario = int.Parse(UserName.Text), 
                                 Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name 
                             };
-                            await logService.LogSistema(logModel, gestionFC.TokenSesion);
+                            await logService.LogSistema(logModel, gestionFC.TokenSesion).ContinueWith( logRes =>
+                            {
+                                if (logRes.IsFaulted)
+                                {
+                                    throw logRes.Exception;
+                                }
+
+
+                            });
 
                             // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
                             Device.BeginInvokeOnMainThread(() =>
@@ -147,8 +155,6 @@ namespace GestionFC
                                 var plantillaPage = new PlantillaPage();
                                 Navigation.PushAsync(plantillaPage);
                             });
-
-
 
                         });
                     }
