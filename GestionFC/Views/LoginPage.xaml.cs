@@ -103,7 +103,7 @@ namespace GestionFC
                     LogService logService = new LogService();
                     using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                     {
-                        await loginService.Login(loginModel).ContinueWith(x =>
+                        await loginService.Login(loginModel).ContinueWith(async x =>
                         { 
                             if (x.IsFaulted)
                             {
@@ -130,15 +130,9 @@ namespace GestionFC
                                 TokenSesion = x.Result.Token
                             };
 
-                            App.Database.SaveGestionFCItemAsync(gestionFC);
+                            await App.Database.SaveGestionFCItemAsync(gestionFC);
 
                             //Guardamos genramos la inserción en bitácora (inicio de sesión)
-<<<<<<< Updated upstream
-                            var logModel = new LogSistemaModel() { IdPantalla = 1, IdAccion = 1, Usuario = int.Parse(UserName.Text), Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name };
-                            logService.LogSistema(logModel,gestionFC.TokenSesion);
-=======
-<<<<<<< Updated upstream
-=======
                             var logModel = new LogSistemaModel() { 
                                 IdPantalla = 1, 
                                 IdAccion = 1, 
@@ -146,9 +140,6 @@ namespace GestionFC
                                 Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name 
                             };
                             await logService.LogSistema(logModel, gestionFC.TokenSesion);
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-
 
                             // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
                             Device.BeginInvokeOnMainThread(() =>
