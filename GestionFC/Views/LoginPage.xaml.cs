@@ -104,21 +104,21 @@ namespace GestionFC
                     using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                     {
                         await loginService.Login(loginModel).ContinueWith(x =>
-                        { 
+                        {
                             if (x.IsFaulted)
-                            {
                                 throw new Exception("Ocurrió un error");
-                            }
 
                             if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                            {
                                 throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                            }
 
                             if (!x.Result.UsuarioAutorizado)
-                            {
                                 throw new Exception("Usuario no autorizado.");
-                            }
+
+                            if (!x.Result.Activo)
+                                throw new Exception("Usuario inactivo.");
+
+                            if (!x.Result.EsGerente)
+                                throw new Exception("Usuario no cuenta con el perfil de gerente.");
 
 
                             //Guardamos la información en la base de datos SQL Lite
@@ -133,9 +133,20 @@ namespace GestionFC
                             App.Database.SaveGestionFCItemAsync(gestionFC);
 
                             //Guardamos genramos la inserción en bitácora (inicio de sesión)
-                            var logModel = new LogSistemaModel() { IdPantalla = 1, IdAccion = 1, Usuario = int.Parse(UserName.Text), Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name };
-                            logService.LogSistema(logModel,gestionFC.TokenSesion);
-
+                            var logModel = new LogSistemaModel()
+                            {
+                                IdPantalla = 1,
+                                IdAccion = 1,
+                                Usuario = int.Parse(UserName.Text),
+                                Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+                            };
+                            logService.LogSistema(logModel, gestionFC.TokenSesion).ContinueWith(logRes =>
+                            {
+                                if (logRes.IsFaulted)
+                                {
+                                    throw logRes.Exception;
+                                }
+                            });
 
                             // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
                             Device.BeginInvokeOnMainThread(() =>
@@ -143,16 +154,15 @@ namespace GestionFC
                                 var plantillaPage = new PlantillaPage();
                                 Navigation.PushAsync(plantillaPage);
                             });
-
-
-
                         });
                     }
                 }
             }
             catch (Exception ex)
             {
+               
                 await DisplayAlert("Error", ex.Message, "Ok");
+                
             }
             finally
             {
