@@ -96,15 +96,20 @@ namespace GestionFC
                     LoginViewModel.IsRunning = true;
 
                     // construmos el objeto login que se validará
-                    var loginModel = new LoginModel() { Nomina = int.Parse(UserName.Text), Password = PassworUser.Text };
+                    var loginModel = new LoginModel() 
+                    { 
+                        Nomina = int.Parse(UserName.Text), 
+                        Password = PassworUser.Text 
+                    };
 
                     // Llamamos el servicio para el login
                     LoginService loginService = new LoginService();
                     LogService logService = new LogService();
                     using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                     {
+                        
                         await loginService.Login(loginModel).ContinueWith(x =>
-                        { 
+                        {
                             if (x.IsFaulted)
                             {
                                 throw new Exception("Ocurrió un error");
@@ -133,9 +138,19 @@ namespace GestionFC
                             App.Database.SaveGestionFCItemAsync(gestionFC);
 
                             //Guardamos genramos la inserción en bitácora (inicio de sesión)
-                            var logModel = new LogSistemaModel() { IdPantalla = 1, IdAccion = 1, Usuario = int.Parse(UserName.Text), Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name };
-                            logService.LogSistema(logModel,gestionFC.TokenSesion);
-
+                            var logModel = new LogSistemaModel() { 
+                                IdPantalla = 1, 
+                                IdAccion = 1, 
+                                Usuario = int.Parse(UserName.Text), 
+                                Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name 
+                            };
+                            logService.LogSistema(logModel, gestionFC.TokenSesion).ContinueWith( logRes =>
+                            {
+                                if (logRes.IsFaulted)
+                                {
+                                    throw logRes.Exception;
+                                }
+                            });
 
                             // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
                             Device.BeginInvokeOnMainThread(() =>
@@ -143,8 +158,6 @@ namespace GestionFC
                                 var plantillaPage = new PlantillaPage();
                                 Navigation.PushAsync(plantillaPage);
                             });
-
-
 
                         });
                     }
