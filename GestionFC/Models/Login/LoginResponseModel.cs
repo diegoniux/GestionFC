@@ -7,7 +7,6 @@ namespace GestionFC.Models.Login
 {
     public class LoginResponseModel
     {
-        public UsuarioModel Usuario { get; set; }
         public ResultadoEjecucion ResultadoEjecucion { get; set; }
         public string Token { get; set; }
         public bool UsuarioAutorizado { get; set; }

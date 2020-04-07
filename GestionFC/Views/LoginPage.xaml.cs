@@ -87,9 +87,7 @@ namespace GestionFC
             try
             {
                 if (LoginViewModel.IsRunning)
-                {
                     return;
-                }
 
                 if (await validarFormulario())
                 {
@@ -125,7 +123,6 @@ namespace GestionFC
                             var gestionFC = new GestionFCModel()
                             {
                                 UserSaved = chkRemember.IsChecked ? int.Parse(UserName.Text) : 0,
-                                NombreUsuario = x.Result.Usuario.NombreCompleto,
                                 Nomina = int.Parse(UserName.Text),
                                 TokenSesion = x.Result.Token
                             };
@@ -143,9 +140,7 @@ namespace GestionFC
                             logService.LogSistema(logModel, gestionFC.TokenSesion).ContinueWith(logRes =>
                             {
                                 if (logRes.IsFaulted)
-                                {
                                     throw logRes.Exception;
-                                }
                             });
 
                             // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
