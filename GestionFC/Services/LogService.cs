@@ -24,7 +24,7 @@ namespace GestionFC.Services
             var logResponse = new LogSistemaResponseModel();
             try
             {
-                var uri = new Uri(App.BaseUrlApi + "api/SetLogSistema");
+                var uri = new Uri(App.BaseUrlApi + "api/Log/SetLogSistema");
                 var json = JsonConvert.SerializeObject(log);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -57,7 +57,7 @@ namespace GestionFC.Services
             var logResponse = new LogErrorResponseModel();
             try
             {
-                var uri = new Uri(App.BaseUrlApi + "api/SetLogError");
+                var uri = new Uri(App.BaseUrlApi + "api/Log/SetLogError");
                 var json = JsonConvert.SerializeObject(log);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
