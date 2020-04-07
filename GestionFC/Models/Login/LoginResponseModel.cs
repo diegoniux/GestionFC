@@ -11,5 +11,7 @@ namespace GestionFC.Models.Login
         public ResultadoEjecucion ResultadoEjecucion { get; set; }
         public string Token { get; set; }
         public bool UsuarioAutorizado { get; set; }
+        public bool Activo { get; set; }
+        public bool EsGerente { get; set; }
     }
 }
