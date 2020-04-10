@@ -18,7 +18,7 @@ namespace GestionFC.Views
         public PlantillaPage()
         {
             InitializeComponent();
-            //loadPage();
+            loadPage();
             //ViewModel.Agentes = new List<Model.AgenteDTO>
             //{
             //    new Model.AgenteDTO()
@@ -36,29 +36,31 @@ namespace GestionFC.Views
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        //private void loadPage()
-        //{
-        //    Service.HeaderService headerService = new Service.HeaderService();
-        //    Service.GridPromotoresService gridPromotoresService = new Service.GridPromotoresService();
-        //    int nomina = 0;
-        //    try
-        //    {
-        //        using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
-        //        {
-        //            headerService.GetHeader(nomina).ContinueWith(x => {
-                        
-        //            });
+        private void loadPage()
+        {
+            Service.HeaderService headerService = new Service.HeaderService();
+            Service.GridPromotoresService gridPromotoresService = new Service.GridPromotoresService();
+            int nomina = 0;
+            try
+            {
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                {
+                    headerService.GetHeader(nomina).ContinueWith(x =>
+                    {
 
-        //            gridPromotoresService.GetGridPromotores(nomina).ContinueWith(x => {
-        //                this.BindingContext = x.Result.Promotores;
-        //            });
+                    });
 
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        DisplayAlert("Error", ex.Message, "Ok");
-        //    }
-        //}
+                    gridPromotoresService.GetGridPromotores(nomina).ContinueWith(x =>
+                    {
+                        this.BindingContext = x.Result.Promotores;
+                    });
+
+                }
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Error", ex.Message, "Ok");
+            }
+        }
     }
 }
