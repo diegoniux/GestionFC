@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -16,16 +17,17 @@ namespace GestionFC.Services
             this._client = new HttpClient();
         }
 
-        public async Task<Models.PlantillaPage.GridPromotoresResponseModel> GetGridPromotores(int nomina)
+        public async Task<Models.PlantillaPage.GridPromotoresResponseModel> GetGridPromotores(int nomina, string token)
         {
             var gridPromotoresResponse = new Models.PlantillaPage.GridPromotoresResponseModel();
             try
             {
-                var uri = new Uri(App.BaseUrlApi + "api/GetGridPromotores/" + nomina.ToString());
+                var uri = new Uri(App.BaseUrlApi + "api/GridPromotores/GetGridPromotores/" + nomina.ToString());
                 var content = new StringContent("", Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = null;
-                response = await _client.PostAsync(uri, content);
+                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                response = await _client.GetAsync(uri);
 
                 response.EnsureSuccessStatusCode();
 

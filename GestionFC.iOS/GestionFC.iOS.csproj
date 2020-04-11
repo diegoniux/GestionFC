@@ -92,6 +92,7 @@
     <BundleResource Include="Resources\Fonts\Poppins-SemiBoldItalic.otf" />
     <BundleResource Include="Resources\Fonts\Poppins-Thin.otf" />
     <BundleResource Include="Resources\Fonts\Poppins-ThinItalic.otf" />
+    <Compile Include="Renderers\CustomProgressBarRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\calendar_blanco.imageset\calendar_blanco.png">

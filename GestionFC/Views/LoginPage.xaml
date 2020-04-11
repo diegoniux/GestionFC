@@ -83,7 +83,7 @@
 
                 <Frame
                     Padding="0"
-                    CornerRadius="30"
+                    CornerRadius="26"
                     Grid.Column="2"
                     Grid.ColumnSpan="4"
                     Grid.Row="5"
@@ -111,7 +111,7 @@
 
                 <Frame
                     Padding="0"
-                    CornerRadius="30"
+                    CornerRadius="26"
                     Grid.Column="2"
                     Grid.ColumnSpan="4"
                     Grid.Row="6"
