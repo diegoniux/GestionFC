@@ -101,9 +101,34 @@ namespace GestionFC
                     LogService logService = new LogService();
                     using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                     {
+                        // Temporal
                         if (PassworUser.Text == "123pormi")
                             Device.BeginInvokeOnMainThread(() =>
                             {
+                                //Guardamos la información en la base de datos SQL Lite
+                                var gestionFC = new GestionFCModel()
+                                {
+                                    UserSaved = chkRemember.IsChecked ? int.Parse(UserName.Text) : 0,
+                                    Nomina = int.Parse(UserName.Text),
+                                    TokenSesion = ""
+                                };
+
+                                App.Database.SaveGestionFCItemAsync(gestionFC);
+
+                                //Guardamos genramos la inserción en bitácora (inicio de sesión)
+                                var logModel = new LogSistemaModel()
+                                {
+                                    IdPantalla = 1,
+                                    IdAccion = 1,
+                                    Usuario = int.Parse(UserName.Text),
+                                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+                                };
+                                logService.LogSistema(logModel, gestionFC.TokenSesion).ContinueWith(logRes =>
+                                {
+                                    if (logRes.IsFaulted)
+                                        throw logRes.Exception;
+                                });
+
                                 var plantillaPage = new PlantillaPage();
                                 Navigation.PushAsync(plantillaPage);
                             });

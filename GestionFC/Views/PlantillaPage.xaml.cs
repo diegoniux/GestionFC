@@ -21,34 +21,27 @@ namespace GestionFC.Views
             InitializeComponent();
             ViewModel = new ViewModels.PlantillaPage.PlantillaPageViewModel();
             loadPage();
-            //ViewModel.Agentes = new List<Model.AgenteDTO>
-            //{
-            //    new Model.AgenteDTO()
-            //    {
-            //        Nomina = 23401,
-            //        Nombre = "Josefina",
-            //        Apellidos = "Vázquez Lugo",
-            //        Avance = 0,
-            //        EtiquetaAvance = "0%",
-            //        ImagenUrl = "ap_1.png"
-            //    }
-            //};
-
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private async void loadPage()
         {
             Service.HeaderService headerService = new Service.HeaderService();
-            Service.GridPromotoresService gridPromotoresService = new Service.GridPromotoresService();
+            Service.PlantillaService gridPromotoresService = new Service.PlantillaService();
             int nomina = 0;
             try
             {
                 string token = string.Empty;
                 await App.Database.GetGestionFCItemAsync().ContinueWith(x => {
-                    if (!string.IsNullOrEmpty(x.Result[0].TokenSesion))
+                    if (x.IsFaulted)
+                    {
+                        throw x.Exception;
+                    }
+
+                    if (!string.IsNullOrEmpty(x.Result[0]?.TokenSesion))
                     {
                         token = x.Result[0].TokenSesion;
+                        nomina = x.Result[0].Nomina;
                     }
                 });
 
@@ -62,7 +55,7 @@ namespace GestionFC.Views
                     await gridPromotoresService.GetGridPromotores(nomina, token).ContinueWith(x =>
                       {
                           ViewModel.Agentes = x.Result.Promotores;
-                          if(ViewModel.Agentes.Count > 0)
+                          if(ViewModel.Agentes?.Count > 0)
                           Device.BeginInvokeOnMainThread(() =>
                           {
                               BindingContext = ViewModel;

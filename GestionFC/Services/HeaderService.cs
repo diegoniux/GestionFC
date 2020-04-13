@@ -20,11 +20,10 @@ namespace GestionFC.Services
             var headerResponse = new Models.PlantillaPage.HeaderResponseModel();
             try
             {
-                var uri = new Uri(App.BaseUrlApi + "api/GetHeader/" + nomina.ToString());
-                var content = new StringContent("", Encoding.UTF8, "application/json");
+                var uri = new Uri($"{App.BaseUrlApi}api/Header/{nomina}");
 
                 HttpResponseMessage response = null;
-                response = await _client.PostAsync(uri, content);
+                response = await _client.GetAsync(uri);
 
                 response.EnsureSuccessStatusCode();
 

@@ -34,7 +34,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\PlantillaPage\" />
     <Folder Include="ViewModels\PlantillaPage\" />
   </ItemGroup>
 </Project>
