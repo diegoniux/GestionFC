@@ -7,7 +7,7 @@
              xmlns:renderers="clr-namespace:GestionFC.Renderers"
              mc:Ignorable="d"
              x:Class="GestionFC.Views.PlantillaPage"
-             BackgroundImageSource="fondo_app.png">
+             BackgroundColor="#0000000D">
 
     <StackLayout Margin="0" Padding="0" Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="0">
 
@@ -17,7 +17,7 @@
               RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"></RowDefinition>
-                <RowDefinition Height="250"></RowDefinition>
+                <RowDefinition Height="25*"></RowDefinition>
                 <RowDefinition Height="50"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -41,8 +41,8 @@
             <Image Source="rect_horizontal.png"
                 Grid.Column="1"
                 Grid.ColumnSpan="1"
-                Grid.Row="1"
-                Grid.RowSpan="2"
+                Grid.Row="0"
+                Grid.RowSpan="3"
                 Margin="0"
                 Aspect="Fill"
                 VerticalOptions="Fill">
@@ -76,7 +76,7 @@
                 </Image>
 
                 <!-- FOTO GERENTE -->
-                <Image Source="capi.png"
+                <Image Source="foto_capi.png"
                     Scale=".75"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
@@ -87,7 +87,7 @@
                 </Image>
 
                 <Label Text="¡Bienvenida!"
-                    FontSize="26"
+                    FontSize="22"
                     FontAttributes="Bold"
                     TextColor="#FFFFFF"
                     HorizontalTextAlignment="Center"
@@ -98,12 +98,12 @@
                 </Label>
 
                 <Label Text="Victoria Pérez Jiménez"
-                    FontSize="15"
-                    TextColor="#FFFFFF"
+                    FontSize="12"
+                    TextColor="#FFFFFF8A"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Grid.Row="3"
-                    VerticalOptions="StartAndExpand">
+                    HorizontalTextAlignment="Center">
                 </Label>
             </Grid>
             <Grid Margin="30,0,30,0"
@@ -113,12 +113,12 @@
                   Grid.Column="1"
                   Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.2*"></RowDefinition>
-                    <RowDefinition Height="0.2*"></RowDefinition>
-                    <RowDefinition Height="0.15*"></RowDefinition>
-                    <RowDefinition Height="0.15*"></RowDefinition>
-                    <RowDefinition Height="0.15*"></RowDefinition>
-                    <RowDefinition Height="0.15*"></RowDefinition>
+                    <RowDefinition Height="0.40*"></RowDefinition>
+                    <RowDefinition Height="0.40*"></RowDefinition>
+                    <RowDefinition Height="0.30*"></RowDefinition>
+                    <RowDefinition Height="0.30*"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="0.10*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.50*"></ColumnDefinition>
@@ -195,56 +195,64 @@
                     VerticalTextAlignment="Start">
                 </Label>
 
-                <Grid Margin="30,0,30,0"
-                  Padding="0"
-                  ColumnSpacing="0"
-                  RowSpacing="0"
-                  Grid.Column="0"
-                  Grid.ColumnSpan="2"
-                  Grid.Row="4">
-                    <Grid.ColumnDefinitions Width="0.8*">
-                        <ColumnDefinition Width="0.75*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                <Grid Margin="20,0,0,0"
+                      Padding="0"
+                      ColumnSpacing="0"
+                      RowSpacing="0"
+                      Grid.Column="0"
+                      Grid.ColumnSpan="2"
+                      Grid.Row="4"
+                      VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.25*"></RowDefinition>
+                        <RowDefinition Height="0.60*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15"></ColumnDefinition>
+                        <ColumnDefinition Width="0.85*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.15*"></ColumnDefinition>
+                        <ColumnDefinition Width="30"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <!-- BARRA DE PROGRESO-->
-                    <ProgressBar
-                        Progress="100"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="1"
-                        ProgressColor="#FFA400"
+
+                    <Frame
+                        Grid.Column="1"
                         Grid.Row="0"
-                        Margin="10,20,0,0">
-                    </ProgressBar>
+                        BorderColor="#ffffff"
+                        HasShadow="False"
+                        BackgroundColor="Transparent"
+                        CornerRadius="10">
+                    </Frame>
 
                     <!-- PORCENTAJE DE PROGRESO-->
                     <Label Text="100%"
-                        FontSize="18"
+                           FontSize="12"
+                           TextColor="#FFFFFF"
+                           Grid.Row="0"
+                           Grid.Column="2"
+                           HorizontalTextAlignment="Center"
+                           HorizontalOptions="StartAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Margin="5,0,0,0"
+                           VerticalTextAlignment="Center">
+                    </Label>
+
+                    <!-- MSG -->
+                    <Label 
+                        Text="Este es el desempeño de tu plantilla"
+                        FontSize="10"
                         FontAttributes="Bold"
                         TextColor="#FFFFFF"
-                        Grid.Row="0"
+                        Grid.Row="1"
                         Grid.Column="1"
-                        HorizontalTextAlignment="Start"
-                        Margin="10,0,0,0"
-                        VerticalOptions="CenterAndExpand">
+                        Grid.ColumnSpan="2"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center">
                     </Label>
 
                 </Grid>
-                
-                <!-- MSG -->
-                <Label Text="Este es el desempeño de tu plantilla"
-                    FontSize="14"
-                    FontAttributes="Bold"
-                    TextColor="#FFFFFF"
-                    Grid.Row="5"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Start"
-                    Margin="0,-30,0,0"
-                    VerticalOptions="CenterAndExpand">
-                </Label>
             </Grid>
-            <Grid Margin="0,10,25,0"
+            <Grid Margin="0,10,20,0"
                   Padding="0"
                   ColumnSpacing="0"
                   RowSpacing="12"
@@ -272,7 +280,8 @@
                     HorizontalOptions="FillAndExpand"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Grid.Row="0">
+                    Grid.Row="0"
+                    HasShadow="False">
                 </Frame>
                 <Label Text="PLANTILLA"
                     FontSize="15"
@@ -312,7 +321,8 @@
                     HorizontalOptions="FillAndExpand"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Grid.Row="1">
+                    Grid.Row="1"
+                    HasShadow="False">
                 </Frame>
                 <Label Text="AGENTES META ALCANZADA"
                     FontSize="14"
@@ -352,7 +362,8 @@
                     HorizontalOptions="FillAndExpand"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Grid.Row="2">
+                    Grid.Row="2"
+                    HasShadow="False">
                 </Frame>
                 <Label Text="FCT INACTIVOS"
                     FontSize="15"
@@ -392,7 +403,8 @@
                     HorizontalOptions="FillAndExpand"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Grid.Row="3">
+                    Grid.Row="3"
+                    HasShadow="False">
                 </Frame>
                 <Label Text="TRÁMITES CERTIFICADOS"
                     FontSize="15"
@@ -430,7 +442,7 @@
                     Grid.ColumnSpan="1"
                     Grid.Row="2"
                     Margin="0,-19,30,25"
-                    Aspect="Fill">
+                    Aspect="AspectFit">
                 </Image>
         </Grid>
         
@@ -472,14 +484,7 @@
                 Margin="0,0,0,0"
                 Aspect="AspectFit">
             </Image>
-            <renderers:CustomProgressBar
-                x:Name="progressBar"
-                Margin="100, -50, 0, 0"
-                Progress="1"
-                Grid.Column="2"
-                Grid.ColumnSpan="3"
-                Grid.Row="0">
-            </renderers:CustomProgressBar>
+
             <CollectionView ItemsSource="{Binding  Agentes}" 
                             Grid.Row="1" 
                             Grid.Column="1"
@@ -531,7 +536,7 @@
                                 Progress="100"
                                 Grid.Row="3"
                                 ScaleY="4"
-                                ProgressColor="#45d2b9"
+                                ProgressColor="#1DD2B9"
                                 Margin="5,10,5,0">
                             </ProgressBar>
 

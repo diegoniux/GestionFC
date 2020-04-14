@@ -20,7 +20,7 @@ namespace GestionFC.Views
         {
             InitializeComponent();
             ViewModel = new ViewModels.PlantillaPage.PlantillaPageViewModel();
-            LoadPage();
+            //LoadPage();
             NavigationPage.SetHasNavigationBar(this, false);
         }
 

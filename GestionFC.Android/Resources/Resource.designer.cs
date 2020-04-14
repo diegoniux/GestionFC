@@ -10918,37 +10918,37 @@ namespace GestionFC.Droid
 			public const int candado = 2131165278;
 			
 			// aapt resource value: 0x7F07005F
-			public const int capi = 2131165279;
+			public const int design_bottom_navigation_item_background = 2131165279;
 			
 			// aapt resource value: 0x7F070060
-			public const int design_bottom_navigation_item_background = 2131165280;
+			public const int design_fab_background = 2131165280;
 			
 			// aapt resource value: 0x7F070061
-			public const int design_fab_background = 2131165281;
+			public const int design_ic_visibility = 2131165281;
 			
 			// aapt resource value: 0x7F070062
-			public const int design_ic_visibility = 2131165282;
+			public const int design_ic_visibility_off = 2131165282;
 			
 			// aapt resource value: 0x7F070063
-			public const int design_ic_visibility_off = 2131165283;
+			public const int design_password_eye = 2131165283;
 			
 			// aapt resource value: 0x7F070064
-			public const int design_password_eye = 2131165284;
+			public const int design_snackbar_background = 2131165284;
 			
 			// aapt resource value: 0x7F070065
-			public const int design_snackbar_background = 2131165285;
+			public const int elipse = 2131165285;
 			
 			// aapt resource value: 0x7F070066
-			public const int elipse = 2131165286;
+			public const int fondo_app = 2131165286;
 			
 			// aapt resource value: 0x7F070067
-			public const int fondo_app = 2131165287;
+			public const int fondo_login = 2131165287;
 			
 			// aapt resource value: 0x7F070068
-			public const int fondo_login = 2131165288;
+			public const int foto_capi = 2131165288;
 			
 			// aapt resource value: 0x7F070069
-			public const int hamburquesa = 2131165289;
+			public const int hamburguesa = 2131165289;
 			
 			// aapt resource value: 0x7F07006A
 			public const int ic_errorstatus = 2131165290;
@@ -12057,16 +12057,16 @@ namespace GestionFC.Droid
 			public const int candado = 2131492866;
 			
 			// aapt resource value: 0x7F0C0003
-			public const int capi = 2131492867;
+			public const int elipse = 2131492867;
 			
 			// aapt resource value: 0x7F0C0004
-			public const int elipse = 2131492868;
+			public const int fondo_app = 2131492868;
 			
 			// aapt resource value: 0x7F0C0005
-			public const int fondo_app = 2131492869;
+			public const int fondo_login = 2131492869;
 			
 			// aapt resource value: 0x7F0C0006
-			public const int fondo_login = 2131492870;
+			public const int foto_capi = 2131492870;
 			
 			// aapt resource value: 0x7F0C0007
 			public const int hamburguesa = 2131492871;

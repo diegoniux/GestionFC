@@ -26,24 +26,19 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="357.6384"
-     inkscape:cy="971.9912"
+     inkscape:zoom="1.979899"
+     inkscape:cx="450.10026"
+     inkscape:cy="1012.1315"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1366"
-     inkscape:window-height="705"
-     inkscape:window-x="-8"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1358"
      inkscape:window-y="-8"
      inkscape:window-maximized="1">
-    <sodipodi:guide
-       position="4.9136905,238.69197"
-       orientation="1,0"
-       id="guide3760"
-       inkscape:locked="false" />
     <sodipodi:guide
        position="40.624967,294.53103"
        orientation="0,1"
@@ -85,9 +80,19 @@
        id="guide3778"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="40.821428,244.17263"
+       position="212.98958,236.6131"
        orientation="0,1"
        id="guide3780"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="82.587796,224.13989"
+       orientation="0,1"
+       id="guide3782"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="16.236623,274.75308"
+       orientation="1,0"
+       id="guide3786"
        inkscape:locked="false" />
   </sodipodi:namedview>
   <metadata

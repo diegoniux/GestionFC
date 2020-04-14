@@ -112,7 +112,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\hamburguesa.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GestionFC\GestionFC.csproj">
       <Project>{DAC5456B-CA3A-48F3-8667-C91E723C5FE3}</Project>
@@ -127,9 +129,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-mdpi\candado.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-mdpi\capi.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-mdpi\elipse.png" />
@@ -201,9 +200,6 @@
     <AndroidResource Include="Resources\mipmap-hdpi\candado.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-hdpi\capi.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\elipse.png" />
   </ItemGroup>
   <ItemGroup>
@@ -273,9 +269,6 @@
     <AndroidResource Include="Resources\drawable\fondo_login.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\hamburquesa.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\iniciar_sesion.png" />
   </ItemGroup>
   <ItemGroup>
@@ -333,7 +326,13 @@
     <AndroidResource Include="Resources\drawable\candado.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\capi.png" />
+    <AndroidResource Include="Resources\drawable\foto_capi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-hdpi\foto_capi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-mdpi\foto_capi.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
