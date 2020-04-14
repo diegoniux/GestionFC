@@ -41,7 +41,7 @@
             <Image Source="rect_horizontal.png"
                 Grid.Column="1"
                 Grid.ColumnSpan="1"
-                Grid.Row="0"
+                Grid.Row="1"
                 Grid.RowSpan="3"
                 Margin="0"
                 Aspect="Fill"
@@ -220,6 +220,34 @@
                         <ColumnDefinition Width="30"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
+                    <!--PROGRESO SALDO CANTADO-->
+                    <renderers:GradientProgressBar
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        AlternativeTextColor="Transparent"
+                        BarBackgroundColor="Transparent"
+                        CornerRadius="6"
+                        FontSize="18"
+                        GradientEndColor="#DCD7D7"
+                        GradientStartColor="#DCD7D7"
+                        HeightRequest="20"
+                        Percentage="0.80"
+                        TextColor="Transparent"/>
+
+                    <!--PROGRESO SALDO VIRTUAL-->
+                    <renderers:GradientProgressBar
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        AlternativeTextColor="Transparent"
+                        BarBackgroundColor="Transparent"
+                        CornerRadius="6"
+                        FontSize="18"
+                        GradientEndColor="#1DD2B9"
+                        GradientStartColor="#1DD2B9"
+                        HeightRequest="20"
+                        Percentage="0.50"
+                        TextColor="Transparent"/>
+                    
                     <Frame
                         Grid.Column="1"
                         Grid.Row="0"
@@ -531,10 +559,10 @@
                             </Image>
                             <Label Text="{Binding Nombre}"
                                 FontFamily="{StaticResource Poppins-Regular}"
-                                    Grid.Row="1"
-                                    FontSize="12"
-                                    HorizontalTextAlignment="Center"
-                                    TextColor="#353535">
+                                Grid.Row="1"
+                                FontSize="12"
+                                HorizontalTextAlignment="Center"
+                                TextColor="#353535">
                             </Label>
                             <Label Text="{Binding Apellidos}"
                                     FontFamily="{StaticResource Poppins-Bold}"
@@ -545,7 +573,43 @@
                                     Margin="0,-5,0,0"
                                     TextColor="#353535">
                             </Label>
-                            
+
+
+                            <!--PROGRESO SALDO CANTADO-->
+                            <renderers:GradientProgressBar
+                                Grid.Row="3"
+                                AlternativeTextColor="Transparent"
+                                BarBackgroundColor="Transparent"
+                                CornerRadius="6"
+                                FontSize="18"
+                                GradientEndColor="#DCD7D7"
+                                GradientStartColor="#DCD7D7"
+                                HeightRequest="20"
+                                Percentage="0.80"
+                                TextColor="Transparent"/>
+
+                            <!--PROGRESO SALDO VIRTUAL-->
+                            <renderers:GradientProgressBar
+                                Grid.Row="3"
+                                AlternativeTextColor="Transparent"
+                                BarBackgroundColor="Transparent"
+                                CornerRadius="6"
+                                FontSize="18"
+                                GradientEndColor="#1DD2B9"
+                                GradientStartColor="#1DD2B9"
+                                HeightRequest="20"
+                                Percentage="0.50"
+                                TextColor="Transparent"/>
+
+                            <Frame
+                                Grid.Row="3"
+                                BorderColor="#DCD7D7"
+                                HasShadow="False"
+                                BackgroundColor="Transparent"
+                                CornerRadius="10"
+                                Margin="5,10,5,0">
+                            </Frame>
+
                             <ProgressBar
                                 Progress="100"
                                 Grid.Row="3"

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionFC.Android", "Gestio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionFC.iOS", "GestionFC.iOS\GestionFC.iOS.csproj", "{C92C55DE-076D-4EC5-9274-BA85DC6E8D7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionFC", "GestionFC\GestionFC.csproj", "{DAC5456B-CA3A-48F3-8667-C91E723C5FE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionFC", "GestionFC\GestionFC.csproj", "{DAC5456B-CA3A-48F3-8667-C91E723C5FE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
