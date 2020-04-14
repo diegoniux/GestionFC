@@ -493,7 +493,7 @@
               ColumnSpacing="0" 
               RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -529,22 +529,23 @@
             <CollectionView ItemsSource="{Binding  Agentes}" 
                             Grid.Row="1" 
                             Grid.Column="1"
-                            Grid.ColumnSpan="12">
+                            Grid.ColumnSpan="12" Margin="0">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" Span="5"></GridItemsLayout>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="10">
+                        <Grid 
+                            Padding="5">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="60"></RowDefinition>
+                                <RowDefinition Height="58"></RowDefinition>
                                 <RowDefinition Height="15"></RowDefinition>
-                                <RowDefinition Height="15"></RowDefinition>
-                                <RowDefinition Height="25"></RowDefinition>
+                                <RowDefinition Height="20"></RowDefinition>
+                                <RowDefinition Height="8"></RowDefinition>
                                 <RowDefinition Height="35"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="120"></ColumnDefinition>
+                                <ColumnDefinition Width="137"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Frame BackgroundColor="#FFFFFF"
                                     Grid.RowSpan="5"
@@ -580,43 +581,37 @@
                                 Grid.Row="3"
                                 AlternativeTextColor="Transparent"
                                 BarBackgroundColor="Transparent"
-                                CornerRadius="6"
+                                CornerRadius="10"
                                 FontSize="18"
                                 GradientEndColor="#DCD7D7"
                                 GradientStartColor="#DCD7D7"
-                                HeightRequest="20"
+                                HeightRequest="10"
                                 Percentage="0.80"
-                                TextColor="Transparent"/>
+                                TextColor="Transparent"
+                                Margin="20,0,20,0"/>
 
                             <!--PROGRESO SALDO VIRTUAL-->
                             <renderers:GradientProgressBar
                                 Grid.Row="3"
                                 AlternativeTextColor="Transparent"
                                 BarBackgroundColor="Transparent"
-                                CornerRadius="6"
+                                CornerRadius="10"
                                 FontSize="18"
                                 GradientEndColor="#1DD2B9"
                                 GradientStartColor="#1DD2B9"
-                                HeightRequest="20"
+                                HeightRequest="10"
                                 Percentage="0.50"
-                                TextColor="Transparent"/>
+                                TextColor="Transparent"
+                                Margin="20,0,20,0"/>
 
                             <Frame
                                 Grid.Row="3"
-                                BorderColor="#DCD7D7"
+                                BorderColor="#464646"
                                 HasShadow="False"
                                 BackgroundColor="Transparent"
-                                CornerRadius="10"
-                                Margin="5,10,5,0">
+                                CornerRadius="5"
+                                Margin="20,0,20,0">
                             </Frame>
-
-                            <ProgressBar
-                                Progress="100"
-                                Grid.Row="3"
-                                ScaleY="4"
-                                ProgressColor="#1DD2B9"
-                                Margin="5,10,5,0">
-                            </ProgressBar>
 
                             <Label Text="{Binding PorcentajeSaldoVirtual}"
                                    FontFamily="{StaticResource Poppins-Bold}"
