@@ -86,7 +86,6 @@
                     Aspect="AspectFit">
                 </Image>
 
-                <Label Text="¡Bienvenida!"
                 <Label Text="{Binding Mensaje}"
                     FontFamily="{StaticResource Poppins-Bold}"
                     FontSize="22"
