@@ -28,7 +28,7 @@ namespace GestionFC
 
             // Ocultamos la barra de navegación
             NavigationPage.SetHasNavigationBar(this, false);
-
+            
             //Obtenemos el valor del usuario recordado (ne caso de que exista) para mostrarlo en el entry
             int UserRemember = 0;
             App.Database.GetGestionFCItemAsync().ContinueWith(x => {
@@ -110,7 +110,7 @@ namespace GestionFC
                                 {
                                     UserSaved = chkRemember.IsChecked ? int.Parse(UserName.Text) : 0,
                                     Nomina = int.Parse(UserName.Text),
-                                    TokenSesion = ""
+                                    TokenSesion = "123pormi"
                                 };
 
                                 App.Database.SaveGestionFCItemAsync(gestionFC);

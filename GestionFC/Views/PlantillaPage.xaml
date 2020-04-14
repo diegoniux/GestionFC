@@ -87,8 +87,9 @@
                 </Image>
 
                 <Label Text="¡Bienvenida!"
+                <Label Text="{Binding Mensaje}"
+                    FontFamily="{StaticResource Poppins-Bold}"
                     FontSize="22"
-                    FontAttributes="Bold"
                     TextColor="#FFFFFF"
                     HorizontalTextAlignment="Center"
                     Grid.Column="1"
@@ -97,13 +98,15 @@
                     VerticalOptions="Center">
                 </Label>
 
-                <Label Text="Victoria Pérez Jiménez"
+                <Label Text="{Binding NombreGerente}"
+                    FontFamily="{StaticResource Poppins-Regular}"
                     FontSize="12"
-                    TextColor="#FFFFFF8A"
+                    TextColor="#FFFF8A"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Grid.Row="3"
-                    HorizontalTextAlignment="Center">
+                    VerticalTextAlignment="Center"
+                    VerticalOptions="StartAndExpand">
                 </Label>
             </Grid>
             <Grid Margin="30,0,30,0"
@@ -127,7 +130,8 @@
 
                 <!-- SALDO ACUMULADO -->
                 <Label Text="Saldo Acumulado"
-                    FontSize="20"
+                    FontFamily="{StaticResource Poppins-Regular}"
+                    FontSize="16"
                     TextColor="#ffffff"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
@@ -136,9 +140,9 @@
                     VerticalTextAlignment="End">
                 </Label>
 
-                <Label Text="$4,213,075.00"
+                <Label Text="{Binding Gerente.SaldoAcumulado}"
+                    FontFamily="{StaticResource Poppins-Bold}"
                     FontSize="35"
-                    FontAttributes="Bold"
                     TextColor="#ffffff"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
@@ -149,7 +153,8 @@
 
                 <!-- SALDO VIRTUAL -->
                 <Label Text="SALDO VIRTUAL"
-                    FontSize="14"
+                    FontFamily="{StaticResource Poppins-Regular}"
+                    FontSize="12"
                     TextColor="#ffffff"
                     Margin="0,0,0,0"
                     Grid.Column="0"
@@ -159,9 +164,9 @@
                     VerticalTextAlignment="End">
                 </Label>
 
-                <Label Text="$3,763,075.00"
-                    FontSize="14"
-                    FontAttributes="Bold"
+                <Label Text="{Binding Gerente.SaldoVirtual}"
+                    FontFamily="{StaticResource Poppins-Bold}"
+                    FontSize="12"
                     TextColor="#ffffff"
                     Margin="0,0,0,0"
                     Grid.Column="0"
@@ -173,7 +178,8 @@
 
                 <!-- SALDO SIMULADO -->
                 <Label Text="SALDO SIMULADO FCT"
-                    FontSize="14"
+                    FontFamily="{StaticResource Poppins-Regular}"
+                    FontSize="12"
                     TextColor="#ffffff"
                     Margin="0,0,0,0"
                     Grid.Column="1"
@@ -183,9 +189,9 @@
                     VerticalTextAlignment="End">
                 </Label>
 
-                <Label Text="$450,000.00"
-                    FontSize="14"
-                    FontAttributes="Bold"
+                <Label Text="{Binding Gerente.SaldoCantadoFCT}"
+                    FontFamily="{StaticResource Poppins-Bold}"
+                    FontSize="12"
                     TextColor="#ffffff"
                     Margin="0,0,0,0"
                     Grid.Column="1"
@@ -225,8 +231,9 @@
                     </Frame>
 
                     <!-- PORCENTAJE DE PROGRESO-->
-                    <Label Text="100%"
-                           FontSize="12"
+                    <Label Text="{Binding Gerente.PorcentajeSaldoAcumulado}"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontSize="12"
                            TextColor="#FFFFFF"
                            Grid.Row="0"
                            Grid.Column="2"
@@ -284,7 +291,8 @@
                     HasShadow="False">
                 </Frame>
                 <Label Text="PLANTILLA"
-                    FontSize="15"
+                    FontFamily="{StaticResource Poppins-Regular}"
+                    FontSize="14"
                     TextColor="#FFFFFF"
                     Grid.Row="0"
                     Grid.Column="0"
@@ -300,9 +308,10 @@
                     Margin="0,0,4,0"
                     Aspect="AspectFit">
                 </Image>
-                <Label Text="20"
-                    FontSize="15"
-                    TextColor="#000000"
+                <Label Text="{Binding Plantilla}"
+                    FontFamily="{StaticResource Poppins-Bold}"
+                    FontSize="14"
+                    TextColor="#707070"
                     Grid.Row="0"
                     Grid.Column="1"
                     Grid.ColumnSpan="1"
@@ -325,6 +334,7 @@
                     HasShadow="False">
                 </Frame>
                 <Label Text="AGENTES META ALCANZADA"
+                    FontFamily="{StaticResource Poppins-Regular}"
                     FontSize="14"
                     TextColor="#FFFFFF"
                     Grid.Row="1"
@@ -341,9 +351,10 @@
                     Margin="0,0,4,0"
                     Aspect="AspectFit">
                 </Image>
-                <Label Text="4"
-                    FontSize="15"
-                    TextColor="#000000"
+                <Label Text="{Binding APsMetaAlcanzada}"
+                    FontFamily="{StaticResource Poppins-Bold}"
+                    FontSize="14"
+                    TextColor="#707070"
                     Grid.Row="1"
                     Grid.Column="1"
                     Grid.ColumnSpan="1"
@@ -366,7 +377,8 @@
                     HasShadow="False">
                 </Frame>
                 <Label Text="FCT INACTIVOS"
-                    FontSize="15"
+                    FontFamily="{StaticResource Poppins-Regular}"
+                    FontSize="14"
                     TextColor="#FFFFFF"
                     Grid.Row="2"
                     Grid.Column="0"
@@ -382,9 +394,10 @@
                     Margin="0,0,4,0"
                     Aspect="AspectFit">
                 </Image>
-                <Label Text="3"
-                    FontSize="15"
-                    TextColor="#000000"
+                <Label Text="{Binding Gerente.FCTInactivos}"
+                    FontFamily="{StaticResource Poppins-Bold}"
+                    FontSize="14"
+                    TextColor="#707070"
                     Grid.Row="2"
                     Grid.Column="1"
                     Grid.ColumnSpan="1"
@@ -407,7 +420,8 @@
                     HasShadow="False">
                 </Frame>
                 <Label Text="TRÁMITES CERTIFICADOS"
-                    FontSize="15"
+                    FontFamily="{StaticResource Poppins-Regular}"
+                    FontSize="14"
                     TextColor="#FFFFFF"
                     Grid.Row="3"
                     Grid.Column="0"
@@ -423,9 +437,10 @@
                     Margin="0,0,4,0"
                     Aspect="AspectFit">
                 </Image>
-                <Label Text="48"
-                    FontSize="15"
-                    TextColor="#000000"
+                <Label Text="{Binding Gerente.TramitesCertificados}"
+                    FontFamily="{StaticResource Poppins-Bold}"
+                    FontSize="14"
+                    TextColor="#707070"
                     Grid.Row="3"
                     Grid.Column="1"
                     Grid.ColumnSpan="1"
@@ -484,7 +499,6 @@
                 Margin="0,0,0,0"
                 Aspect="AspectFit">
             </Image>
-
             <CollectionView ItemsSource="{Binding  Agentes}" 
                             Grid.Row="1" 
                             Grid.Column="1"
@@ -517,15 +531,16 @@
                                 Grid.Column="0">
                             </Image>
                             <Label Text="{Binding Nombre}"
+                                FontFamily="{StaticResource Poppins-Regular}"
                                     Grid.Row="1"
-                                    FontSize="10"
+                                    FontSize="12"
                                     HorizontalTextAlignment="Center"
                                     TextColor="#353535">
                             </Label>
                             <Label Text="{Binding Apellidos}"
+                                    FontFamily="{StaticResource Poppins-Bold}"
                                     Grid.Row="2"
-                                    FontSize="10"
-                                    FontAttributes="Bold"
+                                    FontSize="12"
                                     HorizontalTextAlignment="Center"
                                     VerticalTextAlignment="Start"
                                     Margin="0,-5,0,0"
@@ -541,9 +556,9 @@
                             </ProgressBar>
 
                             <Label Text="{Binding PorcentajeSaldoVirtual}"
+                                   FontFamily="{StaticResource Poppins-Bold}"
                                    Grid.Row="4"
-                                   FontSize="14"
-                                   FontAttributes="Bold"
+                                   FontSize="12"
                                    HorizontalTextAlignment="Center"
                                    VerticalTextAlignment="Start"
                                    TextColor="#353535">
