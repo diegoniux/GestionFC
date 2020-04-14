@@ -20,11 +20,11 @@ namespace GestionFC.Views
         {
             InitializeComponent();
             ViewModel = new ViewModels.PlantillaPage.PlantillaPageViewModel();
-            loadPage();
+            LoadPage();
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        private async void loadPage()
+        private async void LoadPage()
         {
             Service.HeaderService headerService = new Service.HeaderService();
             Service.PlantillaService gridPromotoresService = new Service.PlantillaService();
@@ -49,6 +49,7 @@ namespace GestionFC.Views
                 {
                     await headerService.GetHeader(nomina).ContinueWith(x =>
                     {
+                        //Cargar datros para el binding de información con el header
 
                     });
 
