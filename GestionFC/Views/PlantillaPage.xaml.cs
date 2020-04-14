@@ -50,7 +50,11 @@ namespace GestionFC.Views
                     await headerService.GetHeader(nomina).ContinueWith(x =>
                     {
                         //Cargar datros para el binding de información con el header
-
+                        ViewModel.NombreGerente = x.Result.Progreso.Nombre + " " + x.Result.Progreso.Apellidos;
+                        ViewModel.Mensaje = x.Result.Progreso.Genero == "H" ? "¡Bienvenido!" : "¡Bienvenida!";
+                        ViewModel.APsMetaAlcanzada = x.Result.APsMetaAlcanzada;
+                        ViewModel.Plantilla = x.Result.Plantilla;
+                        ViewModel.Gerente = x.Result.Progreso;
                     });
 
                     await gridPromotoresService.GetGridPromotores(nomina, token).ContinueWith(x =>
