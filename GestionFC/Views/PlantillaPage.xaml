@@ -259,7 +259,7 @@
                             GradientEndColor="#DCD7D7"
                             GradientStartColor="#DCD7D7"
                             HeightRequest="20"
-                            Percentage="{Binding PorcentajeSaldoAcumulado}"
+                            Percentage="{Binding Gerente.PorcentajeSaldoAcumulado}"
                             TextColor="Transparent"/>
 
                         <!--PROGRESO SALDO VIRTUAL-->
@@ -273,7 +273,7 @@
                             GradientEndColor="#1DD2B9"
                             GradientStartColor="#1DD2B9"
                             HeightRequest="20"
-                            Percentage="{Binding PorcentajeSaldoVirtual}"
+                            Percentage="{Binding Gerente.PorcentajeSaldoVirtual}"
                             TextColor="Transparent"/>
                     
                         <Frame
