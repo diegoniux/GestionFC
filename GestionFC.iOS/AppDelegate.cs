@@ -34,7 +34,7 @@ namespace GestionFC.iOS
             var mainPage = Xamarin.Forms.Application.Current.MainPage;
             if (mainPage.Navigation.NavigationStack.Last() is ProductividadPage)
             {
-                return UIInterfaceOrientationMask.Landscape;
+                return UIInterfaceOrientationMask.AllButUpsideDown;
             }
             return UIInterfaceOrientationMask.Portrait;
         }

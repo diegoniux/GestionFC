@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Acr.UserDialogs;
 using Xamarin.Forms;
+using GestionFC.Views;
 
 namespace GestionFC.Droid
 {
@@ -18,13 +19,13 @@ namespace GestionFC.Droid
         {
 
             //allowing the device to change the screen orientation based on the rotation 
-            MessagingCenter.Subscribe<LoginPage>(this, "allowLandScapePortrait", sender =>
+            MessagingCenter.Subscribe<ProductividadPage>(this, "allowLandScapePortrait", sender =>
             {
-                RequestedOrientation = ScreenOrientation.Portrait;
+                RequestedOrientation = ScreenOrientation.Unspecified;
             });
 
             //during page close setting back to portrait
-            MessagingCenter.Subscribe<LoginPage>(this, "preventLandScape", sender =>
+            MessagingCenter.Subscribe<ProductividadPage>(this, "preventLandScape", sender =>
             {
                 RequestedOrientation = ScreenOrientation.Portrait;
             });
