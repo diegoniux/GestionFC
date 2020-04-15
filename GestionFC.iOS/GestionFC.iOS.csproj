@@ -65,7 +65,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <CodesignKey>Apple Development: richi_garza@hotmail.com (9AQ48K9WFC)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignProvision>com.icap.GestionFC</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
