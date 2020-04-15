@@ -335,7 +335,7 @@
 
                     <!-- PLANTILLA -->
                     <Frame 
-                        CornerRadius="21"
+                        CornerRadius="18"
                         BackgroundColor="#83b93d"
                         Margin="0, 0, 0, 0"
                         VerticalOptions="FillAndExpand"
@@ -378,7 +378,7 @@
 
                     <!-- AGENTES META ALCANZADA -->
                     <Frame 
-                        CornerRadius="21"
+                        CornerRadius="18"
                         BackgroundColor="#83b93d"
                         Margin="0, 0, 0, 0"
                         VerticalOptions="FillAndExpand"
@@ -421,7 +421,7 @@
 
                     <!-- FCT INACTIVOS -->
                     <Frame 
-                        CornerRadius="21"
+                        CornerRadius="18"
                         BackgroundColor="#83b93d"
                         Margin="0, 0, 0, 0"
                         VerticalOptions="FillAndExpand"
@@ -464,7 +464,7 @@
 
                     <!-- TRÁMITES CERTIFICADOS -->
                     <Frame 
-                        CornerRadius="21"
+                        CornerRadius="18"
                         BackgroundColor="#83b93d"
                         Margin="0, 0, 0, 0"
                         VerticalOptions="FillAndExpand"
