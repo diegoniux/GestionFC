@@ -102,12 +102,12 @@
                     >
                     <Frame
                         Padding="3"
-                        BackgroundColor="Red"
-                        BorderColor="Red"
+                        BackgroundColor="{Binding Gerente.ColorIndicadorMeta}"
+                        BorderColor="{Binding Gerente.ColorIndicadorMeta}"
                         CornerRadius="52"
                         Margin="15, 2, -10, 0"
                         HasShadow="False">
-                        <Image Source="capi.png"
+                        <Image Source="{Binding Gerente.Foto}"
                             VerticalOptions="Center"
                             HorizontalOptions="Center">
                         </Image>
@@ -203,8 +203,8 @@
                         VerticalTextAlignment="Start">
                     </Label>
 
-                    <!-- SALDO SIMULADO -->
-                    <Label Text="SALDO SIMULADO FCT"
+                    <!-- SALDO CANTADO -->
+                    <Label Text="SALDO CANTADO FCT"
                         FontFamily="{StaticResource Poppins-Regular}"
                         FontSize="12"
                         TextColor="#ffffff"
@@ -248,7 +248,7 @@
                             <ColumnDefinition Width="30"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <!--PROGRESO SALDO CANTADO-->
+                        <!--PROGRESO SALDO ACUMULADO-->
                         <renderers:GradientProgressBar
                             Grid.Column="1"
                             Grid.Row="0"
@@ -259,7 +259,7 @@
                             GradientEndColor="#DCD7D7"
                             GradientStartColor="#DCD7D7"
                             HeightRequest="20"
-                            Percentage="0.80"
+                            Percentage="{Binding PorcentajeSaldoAcumulado}"
                             TextColor="Transparent"/>
 
                         <!--PROGRESO SALDO VIRTUAL-->
@@ -273,7 +273,7 @@
                             GradientEndColor="#1DD2B9"
                             GradientStartColor="#1DD2B9"
                             HeightRequest="20"
-                            Percentage="0.50"
+                            Percentage="{Binding PorcentajeSaldoVirtual}"
                             TextColor="Transparent"/>
                     
                         <Frame
@@ -286,7 +286,7 @@
                         </Frame>
 
                         <!-- PORCENTAJE DE PROGRESO-->
-                        <Label Text="{Binding Gerente.PorcentajeSaldoAcumulado}"
+                        <Label Text="{Binding Gerente.PorcentajeSaldoVirtualDesc}"
                             FontFamily="{StaticResource Poppins-Bold}"
                             FontSize="12"
                                TextColor="#FFFFFF"
@@ -593,8 +593,8 @@
                                         VerticalOptions="StartAndExpand"
                                         CornerRadius="70"
                                         Padding="3"
-                                        BackgroundColor="red"
-                                        BorderColor="red"
+                                        BackgroundColor="{Binding ColorIndicadorMeta}"
+                                        BorderColor="{Binding ColorIndicadorMeta}"
                                         HasShadow="False"
                                         >
                                         <Image Source="{Binding Foto}"
@@ -632,7 +632,7 @@
                                     GradientEndColor="#DCD7D7"
                                     GradientStartColor="#DCD7D7"
                                     HeightRequest="10"
-                                    Percentage="0.80"
+                                    Percentage="{Binding PorcentajeSaldoCantadoFCT}"
                                     TextColor="Transparent"
                                     Margin="20,0,20,0"/>
 
@@ -646,7 +646,7 @@
                                     GradientEndColor="#1DD2B9"
                                     GradientStartColor="#1DD2B9"
                                     HeightRequest="10"
-                                    Percentage="0.50"
+                                    Percentage="{Binding PorcentajeSaldoVirtual}"
                                     TextColor="Transparent"
                                     Margin="20,0,20,0"/>
 
@@ -659,7 +659,7 @@
                                     Margin="20,0,20,0">
                                 </Frame>
 
-                                <Label Text="{Binding PorcentajeSaldoVirtual}"
+                                <Label Text="{Binding PorcentajeSaldoVirtualDesc}"
                                        FontFamily="{StaticResource Poppins-Bold}"
                                        Grid.Row="4"
                                        FontSize="12"
