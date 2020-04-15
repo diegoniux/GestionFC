@@ -107,7 +107,7 @@
                         CornerRadius="52"
                         Margin="15, 2, -10, 0"
                         HasShadow="False">
-                        <Image Source="foto_capi.png"
+                        <Image Source="capi.png"
                             VerticalOptions="Center"
                             HorizontalOptions="Center">
                         </Image>

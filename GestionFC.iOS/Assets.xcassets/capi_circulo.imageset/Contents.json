@@ -2,21 +2,21 @@
   "images": [
     {
       "appearances": [],
-      "scale": "3x",
-      "idiom": "universal",
-      "filename": "capi2.png"
-    },
-    {
-      "appearances": [],
       "scale": "1x",
       "idiom": "universal",
-      "filename": "capi.png"
+      "filename": "capi_circulo3.png"
     },
     {
       "appearances": [],
       "scale": "2x",
       "idiom": "universal",
-      "filename": "capi1.png"
+      "filename": "capi_circulo4.png"
+    },
+    {
+      "appearances": [],
+      "scale": "3x",
+      "idiom": "universal",
+      "filename": "capi_circulo5.png"
     }
   ],
   "properties": {},
