@@ -109,7 +109,8 @@
                         HasShadow="False">
                         <Image Source="{Binding Gerente.Foto}"
                             VerticalOptions="Center"
-                            HorizontalOptions="Center">
+                            HorizontalOptions="Center"
+                            BackgroundColor="#ffffff">
                         </Image>
                     </Frame>
                 </StackLayout>
@@ -599,7 +600,8 @@
                                         >
                                         <Image Source="{Binding Foto}"
                                             VerticalOptions="Center"
-                                            HorizontalOptions="Center">
+                                            HorizontalOptions="Center"
+                                               BackgroundColor="#ffffff">
                                         </Image>
                                     </Frame>
                                 </StackLayout>

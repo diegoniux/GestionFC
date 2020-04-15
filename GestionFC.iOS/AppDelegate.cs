@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using GestionFC.Views;
 using UIKit;
 
 namespace GestionFC.iOS
@@ -26,6 +27,16 @@ namespace GestionFC.iOS
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations(UIApplication application, UIWindow forWindow)
+        {
+            var mainPage = Xamarin.Forms.Application.Current.MainPage;
+            if (mainPage.Navigation.NavigationStack.Last() is ProductividadPage)
+            {
+                return UIInterfaceOrientationMask.Landscape;
+            }
+            return UIInterfaceOrientationMask.Portrait;
         }
     }
 }

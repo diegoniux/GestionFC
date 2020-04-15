@@ -196,5 +196,19 @@ namespace GestionFC
                 LoginViewModel.IsRunning = false;
             }
         }
+
+        //Para detectar el giro de pantalla
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            MessagingCenter.Send(this, "allowLandScapePortrait");
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Send(this, "preventLandScape"); 
+        }
+
     }
 }
