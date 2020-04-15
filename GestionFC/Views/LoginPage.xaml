@@ -6,16 +6,22 @@
              xmlns:controls="clr-namespace:GestionFC.Views"
              xmlns:renderers="clr-namespace:GestionFC.Renderers"
              mc:Ignorable="d"
-             x:Class="GestionFC.LoginPage"
-             BackgroundImageSource="fondo_login.png">
-
-    <ContentPage.Content>
+             x:Class="GestionFC.LoginPage">
+    <RelativeLayout Padding="0">
+        <Image
+            Aspect="AspectFill"
+            Source="background_login.png"
+            RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+        </Image>
         <StackLayout 
             Margin="0" 
             Padding="0" 
             Spacing="0"
             VerticalOptions="FillAndExpand"
-            HorizontalOptions="FillAndExpand">
+            HorizontalOptions="FillAndExpand"
+            RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
 
             <Grid
                 Margin="0"
@@ -188,5 +194,5 @@
                 </Frame>
             </Grid>
         </StackLayout>
-    </ContentPage.Content>
+    </RelativeLayout>
 </ContentPage>
