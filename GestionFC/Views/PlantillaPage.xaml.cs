@@ -49,10 +49,6 @@ namespace GestionFC.Views
                 {
                     await headerService.GetHeader(nomina).ContinueWith(x =>
                     {
-                        if (x.IsFaulted)
-                        {
-                            throw x.Exception;
-                        }
                         //Cargar datros para el binding de información con el header
                         ViewModel.NombreGerente = x.Result.Progreso.Nombre + " " + x.Result.Progreso.Apellidos;
                         ViewModel.Mensaje = x.Result.Progreso.Genero == "H" ? "¡Bienvenido!" : "¡Bienvenida!";
