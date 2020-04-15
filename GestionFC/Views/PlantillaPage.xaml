@@ -7,7 +7,7 @@
              xmlns:renderers="clr-namespace:GestionFC.Renderers"
              mc:Ignorable="d"
              x:Class="GestionFC.Views.PlantillaPage"
-             BackgroundColor="#0000000D">
+             BackgroundColor="#F9F9F9">
 
     <StackLayout Margin="0" Padding="0" Orientation="Vertical" VerticalOptions="FillAndExpand" Spacing="0">
 
@@ -55,15 +55,16 @@
                   Grid.Column="0"
                   Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.3*"></RowDefinition>
+                    <RowDefinition Height="0.25*"></RowDefinition>
                     <RowDefinition Height="0.25*"></RowDefinition>
                     <RowDefinition Height="0.15*"></RowDefinition>
                     <RowDefinition Height="0.2*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
-                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.13*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.15*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.57*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.15*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
                 <!-- MENU DE HAMBURGUESA -->
@@ -76,15 +77,28 @@
                 </Image>
 
                 <!-- FOTO GERENTE -->
-                <Image Source="foto_capi.png"
-                    Scale=".75"
+                <StackLayout
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Grid.Row="0"
                     Grid.RowSpan="2"
-                    Margin="5,10,0,0"
-                    Aspect="AspectFit">
-                </Image>
+                    Padding="20"
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="EndAndExpand"
+                    >
+                    <Frame
+                        Padding="3"
+                        BackgroundColor="Red"
+                        BorderColor="Red"
+                        CornerRadius="52"
+                        Margin="15, 2, -10, 0"
+                        HasShadow="False">
+                        <Image Source="foto_capi.png"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center">
+                        </Image>
+                    </Frame>
+                </StackLayout>
 
                 <Label Text="{Binding Mensaje}"
                     FontFamily="{StaticResource Poppins-Bold}"
@@ -92,7 +106,7 @@
                     TextColor="#FFFFFF"
                     HorizontalTextAlignment="Center"
                     Grid.Column="1"
-                    Grid.ColumnSpan="2"
+                    Grid.ColumnSpan="3"
                     Grid.Row="2"
                     VerticalOptions="Center">
                 </Label>
@@ -102,10 +116,10 @@
                     FontSize="12"
                     TextColor="#FFFF8A"
                     Grid.Column="1"
-                    Grid.ColumnSpan="2"
+                    Grid.ColumnSpan="3"
                     Grid.Row="3"
-                    VerticalTextAlignment="Center"
-                    VerticalOptions="StartAndExpand">
+                    HorizontalTextAlignment="Center"
+                    VerticalOptions="Start">
                 </Label>
             </Grid>
             <Grid Margin="30,0,30,0"
@@ -307,7 +321,7 @@
 
                 <!-- PLANTILLA -->
                 <Frame 
-                    CornerRadius="21"
+                    CornerRadius="18"
                     BackgroundColor="#83b93d"
                     Margin="0, 0, 0, 0"
                     VerticalOptions="FillAndExpand"
@@ -350,7 +364,7 @@
 
                 <!-- AGENTES META ALCANZADA -->
                 <Frame 
-                    CornerRadius="21"
+                    CornerRadius="18"
                     BackgroundColor="#83b93d"
                     Margin="0, 0, 0, 0"
                     VerticalOptions="FillAndExpand"
@@ -393,7 +407,7 @@
 
                 <!-- FCT INACTIVOS -->
                 <Frame 
-                    CornerRadius="21"
+                    CornerRadius="18"
                     BackgroundColor="#83b93d"
                     Margin="0, 0, 0, 0"
                     VerticalOptions="FillAndExpand"
@@ -436,7 +450,7 @@
 
                 <!-- TRÁMITES CERTIFICADOS -->
                 <Frame 
-                    CornerRadius="21"
+                    CornerRadius="18"
                     BackgroundColor="#83b93d"
                     Margin="0, 0, 0, 0"
                     VerticalOptions="FillAndExpand"
@@ -552,11 +566,27 @@
                                     CornerRadius="20"
                                     HasShadow="True">
                             </Frame>
-                            <Image Source="{Binding Foto}"
-                                Aspect="AspectFit"
+                            <StackLayout
                                 Grid.Row="0"
-                                Grid.Column="0">
-                            </Image>
+                                Grid.Column="0"
+                                VerticalOptions="Start"
+                                Padding="2">
+                                <Frame
+                                    Scale=".5"
+                                    Margin="0,-35,0,0"
+                                    VerticalOptions="StartAndExpand"
+                                    CornerRadius="60"
+                                    Padding="3"
+                                    BackgroundColor="red"
+                                    BorderColor="red"
+                                    HasShadow="False"
+                                    >
+                                    <Image Source="{Binding Foto}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center">
+                                    </Image>
+                                </Frame>
+                            </StackLayout>
                             <Label Text="{Binding Nombre}"
                                 FontFamily="{StaticResource Poppins-Regular}"
                                 Grid.Row="1"
@@ -610,13 +640,13 @@
                                 Margin="5,10,5,0">
                             </Frame>
 
-                            <ProgressBar
+                            <!--<ProgressBar
                                 Progress="100"
                                 Grid.Row="3"
                                 ScaleY="4"
                                 ProgressColor="#1DD2B9"
                                 Margin="5,10,5,0">
-                            </ProgressBar>
+                            </ProgressBar>-->
 
                             <Label Text="{Binding PorcentajeSaldoVirtual}"
                                    FontFamily="{StaticResource Poppins-Bold}"
