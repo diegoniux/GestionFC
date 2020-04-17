@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
+using UIKit;
 
 namespace GestionFC
 {
@@ -28,7 +29,14 @@ namespace GestionFC
 
             // Ocultamos la barra de navegación
             NavigationPage.SetHasNavigationBar(this, false);
-            
+
+            // numeric keyboard
+
+            UserName.Keyboard =  Keyboard.Numeric;
+
+            //BecomeFirstResponder();
+
+
             //Obtenemos el valor del usuario recordado (ne caso de que exista) para mostrarlo en el entry
             int UserRemember = 0;
             App.Database.GetGestionFCItemAsync().ContinueWith(x => {

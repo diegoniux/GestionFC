@@ -113,6 +113,9 @@
                                 TextColor="#275D38"
                                 BackgroundColor="#FFFFFF" 
                                 HorizontalOptions="FillAndExpand">
+                                <renderers:EntryIcon.Behaviors>
+                                    <renderers:NumericValidationBehavior />
+                                </renderers:EntryIcon.Behaviors>
                             </renderers:EntryIcon>
                         </StackLayout>
                     </Frame>
