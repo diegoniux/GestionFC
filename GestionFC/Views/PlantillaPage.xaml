@@ -8,7 +8,13 @@
              mc:Ignorable="d"
              x:Class="GestionFC.Views.PlantillaPage">
     <RelativeLayout Padding="0">
-
+        <ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell><Label Text="prueba"></Label></ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <Image
             Aspect="AspectFill"
             Source="background_app.png"
@@ -514,6 +520,10 @@
                         Grid.Row="2"
                         Margin="0,-19,30,25"
                         Aspect="AspectFit">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapPizarronDigital_Tapped">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
                     </Image>
             </Grid>
         
