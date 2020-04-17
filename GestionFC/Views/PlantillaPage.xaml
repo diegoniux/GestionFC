@@ -104,8 +104,7 @@
                     Grid.RowSpan="2"
                     Padding="20"
                     VerticalOptions="EndAndExpand"
-                    HorizontalOptions="EndAndExpand"
-                    >
+                    HorizontalOptions="EndAndExpand">
                     <Frame
                         Padding="3"
                         BackgroundColor="{Binding Gerente.ColorIndicadorMeta}"
@@ -261,7 +260,7 @@
                             Grid.Row="0"
                             AlternativeTextColor="Transparent"
                             BarBackgroundColor="Transparent"
-                            CornerRadius="6"
+                            CornerRadius="10"
                             FontSize="18"
                             GradientEndColor="#DCD7D7"
                             GradientStartColor="#DCD7D7"
@@ -275,7 +274,7 @@
                             Grid.Row="0"
                             AlternativeTextColor="Transparent"
                             BarBackgroundColor="Transparent"
-                            CornerRadius="6"
+                            CornerRadius="10"
                             FontSize="18"
                             GradientEndColor="#1DD2B9"
                             GradientStartColor="#1DD2B9"
@@ -653,7 +652,7 @@
                                     Grid.Row="3"
                                     AlternativeTextColor="Transparent"
                                     BarBackgroundColor="Transparent"
-                                    CornerRadius="10"
+                                    CornerRadius="5"
                                     FontSize="18"
                                     GradientEndColor="#1DD2B9"
                                     GradientStartColor="#1DD2B9"
