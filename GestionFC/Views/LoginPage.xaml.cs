@@ -28,7 +28,7 @@ namespace GestionFC
 
             // Ocultamos la barra de navegación
             NavigationPage.SetHasNavigationBar(this, false);
-            
+
             //Obtenemos el valor del usuario recordado (ne caso de que exista) para mostrarlo en el entry
             int UserRemember = 0;
             App.Database.GetGestionFCItemAsync().ContinueWith(x => {

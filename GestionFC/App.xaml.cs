@@ -9,6 +9,7 @@ namespace GestionFC
     {
 
         static GestionFCDataBase database;
+        public static MasterDetailPage MasterDetail { get; set; }
 
         public static GestionFCDataBase Database
         {
