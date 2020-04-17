@@ -14,7 +14,11 @@ namespace GestionFC.Services
 
         public PlantillaService()
         {
-            this._client = new HttpClient();
+            var httpClientHandler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = (message, certificate2, arg3, arg4) => true
+            };
+            this._client = new HttpClient(httpClientHandler);
         }
 
         public async Task<Models.PlantillaPage.PromotoresResponseModel> GetGridPromotores(int nomina, string token)

@@ -77,5 +77,15 @@ namespace GestionFC.Views
                 await DisplayAlert("Error", ex.Message, "Ok");
             }
         }
+
+        void OnTapPizarronDigital_Tapped(System.Object sender, System.EventArgs e)
+        {
+            // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                var productividadPage = new ProductividadPage();
+                Navigation.PushAsync(productividadPage);
+            });
+        }
     }
 }

@@ -16,7 +16,11 @@ namespace GestionFC.Services
 
         public LogService()
         {
-            _client = new HttpClient();
+            var httpClientHandler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = (message, certificate2, arg3, arg4) => true
+            };
+            _client = new HttpClient(httpClientHandler);
         }
 
         public async Task<LogSistemaResponseModel> LogSistema(LogSistemaModel log, string accessToken)
