@@ -105,7 +105,7 @@
                                 x:Name="UserName"
                                 Text="{Binding LoginDTO.Nomina, Mode=TwoWay}"
                                 Keyboard="Numeric"
-                                MaxLength="8"
+                                MaxLength="5"
                                 CornerRadius="26"
                                 Placeholder="Ingresa tu usuario"
                                 FontFamily="{StaticResource Poppins-Regular}"
