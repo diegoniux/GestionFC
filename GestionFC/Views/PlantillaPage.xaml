@@ -8,7 +8,13 @@
              mc:Ignorable="d"
              x:Class="GestionFC.Views.PlantillaPage">
     <RelativeLayout Padding="0">
-
+        <ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell><Label Text="prueba"></Label></ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <Image
             Aspect="AspectFill"
             Source="background_app.png"
@@ -98,7 +104,8 @@
                     Grid.RowSpan="2"
                     Padding="20"
                     VerticalOptions="EndAndExpand"
-                    HorizontalOptions="EndAndExpand">
+                    HorizontalOptions="EndAndExpand"
+                    >
                     <Frame
                         Padding="3"
                         BackgroundColor="{Binding Gerente.ColorIndicadorMeta}"
@@ -254,7 +261,7 @@
                             Grid.Row="0"
                             AlternativeTextColor="Transparent"
                             BarBackgroundColor="Transparent"
-                            CornerRadius="10"
+                            CornerRadius="30"
                             FontSize="18"
                             GradientEndColor="#DCD7D7"
                             GradientStartColor="#DCD7D7"
@@ -268,7 +275,7 @@
                             Grid.Row="0"
                             AlternativeTextColor="Transparent"
                             BarBackgroundColor="Transparent"
-                            CornerRadius="10"
+                            CornerRadius="30"
                             FontSize="18"
                             GradientEndColor="#1DD2B9"
                             GradientStartColor="#1DD2B9"
@@ -513,6 +520,10 @@
                         Grid.Row="2"
                         Margin="0,-19,30,25"
                         Aspect="AspectFit">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapPizarronDigital_Tapped">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
                     </Image>
             </Grid>
         
@@ -628,7 +639,7 @@
                                     Grid.Row="3"
                                     AlternativeTextColor="Transparent"
                                     BarBackgroundColor="Transparent"
-                                    CornerRadius="10"
+                                    CornerRadius="5"
                                     FontSize="18"
                                     GradientEndColor="#DCD7D7"
                                     GradientStartColor="#DCD7D7"
