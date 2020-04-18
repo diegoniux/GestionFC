@@ -16,6 +16,7 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using UIKit;
 using Xamarin.Forms.PlatformConfiguration.WindowsSpecific;
+using FFImageLoading;
 
 namespace GestionFC
 {

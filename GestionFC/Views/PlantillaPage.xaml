@@ -4,6 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:GestionFC.Views"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fFImageLoadingTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:renderers="clr-namespace:GestionFC.Renderers"
              mc:Ignorable="d"
              x:Class="GestionFC.Views.PlantillaPage">
@@ -99,29 +101,24 @@
                 </Image>
 
                 <!-- FOTO GERENTE -->
-                <StackLayout
+                <ffimageloading:CachedImage
+                    x:Name = "Foto_Gerente"
+                    Source = "{Binding Gerente.Foto}"
+                    WidthRequest = "100"  
+                    HeightRequest = "100"
+                    CacheDuration = "90"
+                    RetryCount = "5"
+                    RetryDelay = "450"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Grid.Row="0"
-                    Grid.RowSpan="2"
-                    Padding="20"
-                    VerticalOptions="EndAndExpand"
-                    HorizontalOptions="EndAndExpand"
-                    >
-                    <Frame
-                        Padding="3"
-                        BackgroundColor="{Binding Gerente.ColorIndicadorMeta}"
-                        BorderColor="{Binding Gerente.ColorIndicadorMeta}"
-                        CornerRadius="52"
-                        Margin="15, 2, -10, 0"
-                        HasShadow="False">
-                        <Image Source="{Binding Gerente.Foto}"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Center"
-                            BackgroundColor="#ffffff">
-                        </Image>
-                    </Frame>
-                </StackLayout>
+                    Grid.RowSpan="2">
+                    <ffimageloading:CachedImage.Transformations>
+                        <fFImageLoadingTrans:CircleTransformation
+                            BorderSize="40"
+                            BorderHexColor="{Binding Gerente.ColorIndicadorMeta}"/>
+                    </ffimageloading:CachedImage.Transformations>
+                </ffimageloading:CachedImage>
 
                 <Label Text="{Binding Mensaje}"
                     FontFamily="{StaticResource Poppins-Bold}"
@@ -595,28 +592,24 @@
                                         HasShadow="True">
                                 </Frame>
 
-                                <StackLayout
+                                <ffimageloading:CachedImage
+                                    x:Name = "Foto_AgentePromotor"
+                                    Source = "{Binding Foto}"
+                                    WidthRequest = "50"  
+                                    HeightRequest = "50"
+                                    CacheDuration = "90"
+                                    RetryCount = "5"
+                                    RetryDelay = "450"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
                                     Grid.Row="0"
-                                    Grid.Column="0"
-                                    VerticalOptions="Start"
-                                    Padding="2">
-                                    <Frame
-                                        Scale=".4"
-                                        Margin="0,-40,0,0"
-                                        VerticalOptions="StartAndExpand"
-                                        CornerRadius="70"
-                                        Padding="3"
-                                        BackgroundColor="{Binding ColorIndicadorMeta}"
-                                        BorderColor="{Binding ColorIndicadorMeta}"
-                                        HasShadow="False"
-                                        >
-                                        <Image Source="{Binding Foto}"
-                                            VerticalOptions="Center"
-                                            HorizontalOptions="Center"
-                                               BackgroundColor="#ffffff">
-                                        </Image>
-                                    </Frame>
-                                </StackLayout>
+                                    Grid.RowSpan="2">
+                                    <ffimageloading:CachedImage.Transformations>
+                                        <fFImageLoadingTrans:CircleTransformation
+                                            BorderSize="30"
+                                            BorderHexColor="{Binding ColorIndicadorMeta}"/>
+                                    </ffimageloading:CachedImage.Transformations>
+                                </ffimageloading:CachedImage>
 
                                 <Label Text="{Binding Nombre}"
                                     FontFamily="{StaticResource Poppins-Regular}"
