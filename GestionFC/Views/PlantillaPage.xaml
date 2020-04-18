@@ -4,6 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:GestionFC.Views"
+             xmlns:fFImageLoading="clr-namespace:FFImageLoading.Form;assembly=FFImageLoading.Forms"
+             xmlns:fFImageLoadingTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:renderers="clr-namespace:GestionFC.Renderers"
              mc:Ignorable="d"
              x:Class="GestionFC.Views.PlantillaPage">
@@ -97,7 +99,7 @@
                 </Image>
 
                 <!-- FOTO GERENTE -->
-                <StackLayout
+                <!--<StackLayout
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Grid.Row="0"
@@ -119,7 +121,23 @@
                             BackgroundColor="#ffffff">
                         </Image>
                     </Frame>
-                </StackLayout>
+                </StackLayout>-->
+                <fFImageLoading:CachedImage
+                    x:Name = "Foto_Gerente"
+                    Source = "foto_capi.png"
+                    WidthRequest = "150"  
+                    HeightRequest = "150"
+                    CacheDuration = "90"
+                    RetryCount = "5"
+                    RetryDelay = "450"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="0"
+                    Grid.RowSpan="2">
+                    <fFImageLoading:CachedImage.Transformations>
+                        <fFImageLoadingTrans:CropTransformation />
+                    </fFImageLoading:CachedImage.Transformations>
+                </fFImageLoading:CachedImage>
 
                 <Label Text="{Binding Mensaje}"
                     FontFamily="{StaticResource Poppins-Bold}"

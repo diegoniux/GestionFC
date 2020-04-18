@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Foundation;
 using GestionFC.Views;
 using UIKit;
@@ -24,13 +23,14 @@ namespace GestionFC.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             LoadApplication(new App());
-
             return base.FinishedLaunching(app, options);
         }
 
         public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations(UIApplication application, UIWindow forWindow)
         {
+            
             var mainPage = Xamarin.Forms.Application.Current.MainPage;
             if (mainPage.Navigation.NavigationStack.Last() is ProductividadPage)
             {
