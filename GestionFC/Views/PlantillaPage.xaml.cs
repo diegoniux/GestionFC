@@ -22,6 +22,16 @@ namespace GestionFC.Views
             ViewModel = new ViewModels.PlantillaPage.PlantillaPageViewModel();
             LoadPage();
             NavigationPage.SetHasNavigationBar(this, false);
+
+            //Evento tap de la imagen hidepassword
+            var burguerTap = new TapGestureRecognizer();
+            burguerTap.Tapped += (object sender, EventArgs e) =>
+            {
+                App.MasterDetail.IsPresented = !App.MasterDetail.IsPresented;
+            };
+
+            btnHamburguesa.GestureRecognizers.Add(burguerTap);
+
         }
 
         private async void LoadPage()
@@ -83,8 +93,8 @@ namespace GestionFC.Views
             // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
             Device.BeginInvokeOnMainThread(() =>
             {
-                var productividadPage = new ProductividadPage();
-                Navigation.PushAsync(productividadPage);
+                App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(typeof(ProductividadPage)));
+                App.MasterDetail.IsPresented = false;
             });
         }
     }

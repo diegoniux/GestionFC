@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using GestionFC.Models.Plantilla;
 using Newtonsoft.Json;
 using Models = GestionFC.Models;
 
@@ -20,8 +21,8 @@ namespace GestionFC.Services
             this._client = new HttpClient(httpClientHandler);
         }
 
-        public async Task<Models.PlantillaPage.HeaderResponseModel> GetHeader(int nomina) {
-            var headerResponse = new Models.PlantillaPage.HeaderResponseModel();
+        public async Task<HeaderResponseModel> GetHeader(int nomina) {
+            var headerResponse = new HeaderResponseModel();
             try
             {
                 var uri = new Uri($"{App.BaseUrlApi}api/Header/{nomina}");
@@ -32,7 +33,7 @@ namespace GestionFC.Services
                 response.EnsureSuccessStatusCode();
 
                 string jsonResult = await response.Content.ReadAsStringAsync();
-                headerResponse = JsonConvert.DeserializeObject<Models.PlantillaPage.HeaderResponseModel>(jsonResult);
+                headerResponse = JsonConvert.DeserializeObject<HeaderResponseModel>(jsonResult);
             }
             catch (Exception ex)
             {

@@ -90,7 +90,9 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- MENU DE HAMBURGUESA -->
-                <Image Source="hamburguesa.png" 
+                <Image
+                    x:Name="btnHamburguesa"
+                    Source="hamburguesa.png" 
                     Grid.Column="0" 
                     Grid.Row="0" 
                     Grid.ColumnSpan="2"
@@ -114,8 +116,9 @@
                     <ffimageloading:CachedImage.Transformations>
                         <fFImageLoadingTrans:CircleTransformation
                             BorderSize="40"
-                            BorderHexColor="{Binding Gerente.ColorIndicadorMeta}"/>
-                    </ffimageloading:CachedImage.Transformations>
+                            BorderHexColor="#FF0000"/>
+                            <!--{Binding Gerente.ColorIndicadorMeta}-->
+                        </ffimageloading:CachedImage.Transformations>
                 </ffimageloading:CachedImage>
 
                 <Label Text="{Binding Mensaje}"
@@ -606,7 +609,8 @@
                                     <ffimageloading:CachedImage.Transformations>
                                         <fFImageLoadingTrans:CircleTransformation
                                             BorderSize="30"
-                                            BorderHexColor="#000000"/>
+                                            BorderHexColor="#FF0000"/> 
+                                        <!--{Binding ColorIndicadorMeta}-->
                                     </ffimageloading:CachedImage.Transformations>
                                 </ffimageloading:CachedImage>
 

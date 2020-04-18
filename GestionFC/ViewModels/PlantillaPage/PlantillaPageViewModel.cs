@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionFC.Models.Plantilla;
+using System;
 using System.Collections.Generic;
 
 namespace GestionFC.ViewModels.PlantillaPage
@@ -9,8 +10,8 @@ namespace GestionFC.ViewModels.PlantillaPage
         public string Mensaje { get; set; }
         public int Plantilla { get; set; }
         public int APsMetaAlcanzada { get; set; }
-        public Models.PlantillaPage.Progreso Gerente { get; set; }
-        public List<Models.PlantillaPage.Progreso> Agentes { get; set; }
+        public Progreso Gerente { get; set; }
+        public List<Progreso> Agentes { get; set; }
         public PlantillaPageViewModel()
         {
 

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace GestionFC.Models.PlantillaPage
+namespace GestionFC.Models.Plantilla
 {
     public class Progreso
     {

@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using GestionFC.Models.Plantilla;
 using Newtonsoft.Json;
 using Models = GestionFC.Models;
 
@@ -21,9 +22,9 @@ namespace GestionFC.Services
             this._client = new HttpClient(httpClientHandler);
         }
 
-        public async Task<Models.PlantillaPage.PromotoresResponseModel> GetGridPromotores(int nomina, string token)
+        public async Task<PromotoresResponseModel> GetGridPromotores(int nomina, string token)
         {
-            var promotoresResponse = new Models.PlantillaPage.PromotoresResponseModel();
+            var promotoresResponse = new PromotoresResponseModel();
             try
             {
                 var uri = new Uri($"{App.BaseUrlApi}api/Plantilla/{nomina}");
@@ -35,7 +36,7 @@ namespace GestionFC.Services
                 response.EnsureSuccessStatusCode();
 
                 string jsonResult = await response.Content.ReadAsStringAsync();
-                promotoresResponse = JsonConvert.DeserializeObject<Models.PlantillaPage.PromotoresResponseModel>(jsonResult);
+                promotoresResponse = JsonConvert.DeserializeObject<PromotoresResponseModel>(jsonResult);
             }
             catch (Exception ex)
             {
