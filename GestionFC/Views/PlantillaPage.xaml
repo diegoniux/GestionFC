@@ -116,8 +116,9 @@
                     <ffimageloading:CachedImage.Transformations>
                         <fFImageLoadingTrans:CircleTransformation
                             BorderSize="40"
-                            BorderHexColor="{Binding Gerente.ColorIndicadorMeta}"/>
-                    </ffimageloading:CachedImage.Transformations>
+                            BorderHexColor="#FF0000"/>
+                            <!--{Binding Gerente.ColorIndicadorMeta}-->
+                        </ffimageloading:CachedImage.Transformations>
                 </ffimageloading:CachedImage>
 
                 <Label Text="{Binding Mensaje}"
@@ -607,7 +608,8 @@
                                     <ffimageloading:CachedImage.Transformations>
                                         <fFImageLoadingTrans:CircleTransformation
                                             BorderSize="30"
-                                            BorderHexColor="{Binding ColorIndicadorMeta}"/>
+                                            BorderHexColor="#FF0000"/> 
+                                        <!--{Binding ColorIndicadorMeta}-->
                                     </ffimageloading:CachedImage.Transformations>
                                 </ffimageloading:CachedImage>
 
