@@ -150,7 +150,7 @@ namespace GestionFC
                                 throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
 
                             if (!x.Result.UsuarioAutorizado)
-                                throw new Exception("Usuario no autorizado.");
+                                throw new Exception("Usuario y/o contraseña no coincide.");
 
                             if (!x.Result.Activo)
                                 throw new Exception("Usuario inactivo.");
