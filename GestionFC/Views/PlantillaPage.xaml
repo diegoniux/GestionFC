@@ -88,7 +88,9 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- MENU DE HAMBURGUESA -->
-                <Image Source="hamburguesa.png" 
+                <Image
+                    x:Name="btnHamburguesa"
+                    Source="hamburguesa.png" 
                     Grid.Column="0" 
                     Grid.Row="0" 
                     Grid.ColumnSpan="2"

@@ -9,6 +9,5 @@ namespace GestionFC.Models.Share
         public string Title { get; set; }
         public string IconSource { get; set; }
         public Type TargetType { get; set; }
-        public bool IsClosed { get; set; }
     }
 }

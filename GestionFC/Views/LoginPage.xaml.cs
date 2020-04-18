@@ -15,6 +15,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using UIKit;
+using Xamarin.Forms.PlatformConfiguration.WindowsSpecific;
 
 namespace GestionFC
 {
@@ -32,14 +33,15 @@ namespace GestionFC
 
             // numeric keyboard
 
-            UserName.Keyboard =  Keyboard.Numeric;
+            UserName.Keyboard = Keyboard.Numeric;
 
             //BecomeFirstResponder();
 
 
             //Obtenemos el valor del usuario recordado (ne caso de que exista) para mostrarlo en el entry
             int UserRemember = 0;
-            App.Database.GetGestionFCItemAsync().ContinueWith(x => {
+            App.Database.GetGestionFCItemAsync().ContinueWith(x =>
+            {
                 if (x.Result[0].UserSaved != 0)
                 {
                     UserRemember = x.Result[0].UserSaved;
@@ -141,55 +143,55 @@ namespace GestionFC
                                 Navigation.PushAsync(plantillaPage);
                             });
                         else
-                        await loginService.Login(loginModel).ContinueWith(x =>
-                        {
-                            if (x.IsFaulted)
-                                throw new Exception("Ocurrió un error");
+                            await loginService.Login(loginModel).ContinueWith(x =>
+                            {
+                                if (x.IsFaulted)
+                                    throw new Exception("Ocurrió un error");
 
-                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
 
-                            if (!x.Result.UsuarioAutorizado)
-                                throw new Exception("Usuario y/o contraseña no coincide.");
+                                if (!x.Result.UsuarioAutorizado)
+                                    throw new Exception("Usuario y/o contraseña no coincide.");
 
-                            if (!x.Result.Activo)
-                                throw new Exception("Usuario inactivo.");
+                                if (!x.Result.Activo)
+                                    throw new Exception("Usuario inactivo.");
 
-                            if (!x.Result.EsGerente)
-                                throw new Exception("Usuario no cuenta con el perfil de gerente.");
+                                if (!x.Result.EsGerente)
+                                    throw new Exception("Usuario no cuenta con el perfil de gerente.");
 
 
                             //Guardamos la información en la base de datos SQL Lite
                             var gestionFC = new GestionFCModel()
-                            {
-                                UserSaved = chkRemember.IsChecked ? int.Parse(UserName.Text) : 0,
-                                Nomina = int.Parse(UserName.Text),
-                                TokenSesion = x.Result.Token
-                            };
+                                {
+                                    UserSaved = chkRemember.IsChecked ? int.Parse(UserName.Text) : 0,
+                                    Nomina = int.Parse(UserName.Text),
+                                    TokenSesion = x.Result.Token
+                                };
 
-                            App.Database.SaveGestionFCItemAsync(gestionFC);
+                                App.Database.SaveGestionFCItemAsync(gestionFC);
 
                             //Guardamos genramos la inserción en bitácora (inicio de sesión)
                             var logModel = new LogSistemaModel()
-                            {
-                                IdPantalla = 1,
-                                IdAccion = 1,
-                                Usuario = int.Parse(UserName.Text),
-                                Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
-                            };
-                            logService.LogSistema(logModel, gestionFC.TokenSesion).ContinueWith(logRes =>
-                            {
-                                if (logRes.IsFaulted)
-                                    throw logRes.Exception;
-                            });
+                                {
+                                    IdPantalla = 1,
+                                    IdAccion = 1,
+                                    Usuario = int.Parse(UserName.Text),
+                                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+                                };
+                                logService.LogSistema(logModel, gestionFC.TokenSesion).ContinueWith(logRes =>
+                                {
+                                    if (logRes.IsFaulted)
+                                        throw logRes.Exception;
+                                });
 
                             // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
                             Device.BeginInvokeOnMainThread(() =>
-                            {
-                                var plantillaPage = new PlantillaPage();
-                                Navigation.PushAsync(plantillaPage);
+                                {
+                                    var plantillaPage = new PlantillaPage();
+                                    Navigation.PushAsync(plantillaPage);
+                                });
                             });
-                        });
                     }
                 }
             }
@@ -205,5 +207,16 @@ namespace GestionFC
             }
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            App.MasterDetail.IsGestureEnabled = false;
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            App.MasterDetail.IsGestureEnabled = true;
+        }
     }
 }

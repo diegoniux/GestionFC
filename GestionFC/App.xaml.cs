@@ -1,4 +1,6 @@
-﻿using GestionFC.SqLite;
+﻿using GestionFC.Models.Share;
+using GestionFC.SqLite;
+using GestionFC.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -32,7 +34,7 @@ namespace GestionFC
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginPage());
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

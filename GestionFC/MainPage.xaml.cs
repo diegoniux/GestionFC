@@ -18,9 +18,12 @@ namespace GestionFC
         {
             InitializeComponent();
             Master = new Master();
-            Detail = new NavigationPage(new Detail());
+            Detail = new NavigationPage(new LoginPage());
 
             App.MasterDetail = this;
+
+            // La siguiente línea para que en tabletas o en modo landscape se oculte el menú hamburguesa
+            this.MasterBehavior = MasterBehavior.Popover;
         }
     }
 }
