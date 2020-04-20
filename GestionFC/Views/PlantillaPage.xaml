@@ -117,7 +117,6 @@
                         <fFImageLoadingTrans:CircleTransformation
                             BorderSize="40"
                             BorderHexColor="#FF0000"/>
-                            <!--{Binding Gerente.ColorIndicadorMeta}-->
                         </ffimageloading:CachedImage.Transformations>
                 </ffimageloading:CachedImage>
 
@@ -596,20 +595,19 @@
                                 <ffimageloading:CachedImage
                                     x:Name = "Foto_AgentePromotor"
                                     Source = "{Binding Foto}"
-                                    WidthRequest = "50"  
-                                    HeightRequest = "50"
+                                    WidthRequest = "30"  
+                                    HeightRequest = "30"
                                     CacheDuration = "90"
                                     RetryCount = "5"
                                     RetryDelay = "450"
-                                    Grid.Column="1"
-                                    Grid.ColumnSpan="2"
+                                    Margin="0, 0, 0, 25"
+                                    Grid.Column="0"
                                     Grid.Row="0"
                                     Grid.RowSpan="2">
                                     <ffimageloading:CachedImage.Transformations>
                                         <fFImageLoadingTrans:CircleTransformation
                                             BorderSize="30"
                                             BorderHexColor="#FF0000"/> 
-                                        <!--{Binding ColorIndicadorMeta}-->
                                     </ffimageloading:CachedImage.Transformations>
                                 </ffimageloading:CachedImage>
 
