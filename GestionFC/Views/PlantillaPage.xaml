@@ -109,6 +109,7 @@
                     CacheDuration = "90"
                     RetryCount = "5"
                     RetryDelay = "450"
+                    Margin="25, 15, 0, -5"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Grid.Row="0"
