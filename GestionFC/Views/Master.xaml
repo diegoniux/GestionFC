@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="GestionFC.Views.Master"
-             Title="Gestión FC">
+             Title="Gestión FC"
+             BackgroundColor="#275D38">
     <ContentPage.Content>
             <RelativeLayout Margin="0,20,0,0">
             <StackLayout
@@ -28,7 +29,7 @@
                     FontSize="41"
                     FontAttributes="Bold"
                     FontFamily="{StaticResource Poppins-Bold}"
-                    TextColor="#64A70B">
+                    TextColor="#FFFFFF">
                 </Label>
                 <BoxView
                     BackgroundColor="#B2B2B2"
@@ -39,10 +40,11 @@
                 <ListView x:Name="listView" 
                       SeparatorVisibility="None"
                       ItemSelected="listView_ItemSelected"
-                      SeparatorColor="#B2B2B2">
+                      SeparatorColor="#B2B2B2"
+                      BackgroundColor="#275D38">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ImageCell Text="{Binding Title}" ImageSource="{Binding IconSource}" />
+                            <ImageCell TextColor="#FFFFFF" Text="{Binding Title}" ImageSource="{Binding IconSource}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
