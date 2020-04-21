@@ -432,6 +432,9 @@
     <ImageAsset Include="Assets.xcassets\rect_horizontal.imageset\rect_horizontal-1.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\logo_arbol.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\logo_arbol.imageset\Trazado 51255.png" />
+    <ImageAsset Include="Assets.xcassets\logo_arbol.imageset\Trazado 51255%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -465,4 +468,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\logo_arbol.imageset\" />
+  </ItemGroup>
 </Project>

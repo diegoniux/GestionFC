@@ -10,13 +10,6 @@
              mc:Ignorable="d"
              x:Class="GestionFC.Views.PlantillaPage">
     <RelativeLayout Padding="0">
-        <ListView>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell><Label Text="prueba"></Label></ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
         <Image
             Aspect="AspectFill"
             Source="background_app.png"
@@ -59,7 +52,6 @@
                     Aspect="Fill">
                 </Image>
 
-                <!-- PANEL DE SALDO -->
                 <Image Source="rect_horizontal.png"
                     Grid.Column="1"
                     Grid.ColumnSpan="1"
@@ -70,6 +62,7 @@
                     VerticalOptions="Fill">
                 </Image>
 
+                <!-- PANEL DE SALDO -->
                 <Grid Margin="0"
                   Padding="0"
                   ColumnSpacing="0"
@@ -91,6 +84,7 @@
 
                 <!-- MENU DE HAMBURGUESA -->
                 <Image
+                    
                     x:Name="btnHamburguesa"
                     Source="hamburguesa.png" 
                     Grid.Column="0" 
@@ -98,33 +92,45 @@
                     Grid.ColumnSpan="2"
                     Margin="0"
                     Aspect="Fill">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTapMenuHamburguesa_Tapped"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
                 </Image>
 
                 <!-- FOTO GERENTE -->
-                <ffimageloading:CachedImage
-                    x:Name = "Foto_Gerente"
-                    Source = "{Binding Gerente.Foto}"
-                    WidthRequest = "100"  
-                    HeightRequest = "100"
-                    CacheDuration = "90"
-                    RetryCount = "5"
-                    RetryDelay = "450"
-                    Margin="25, 15, 0, -5"
+                <Frame
+                    CornerRadius="57"
+                    Margin="32, 11, -9, -10"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Grid.Row="0"
-                    Grid.RowSpan="2">
-                    <ffimageloading:CachedImage.Transformations>
-                        <fFImageLoadingTrans:CircleTransformation
-                            BorderSize="40"
-                            BorderHexColor="#FF0000"/>
-                        </ffimageloading:CachedImage.Transformations>
-                </ffimageloading:CachedImage>
+                    Grid.RowSpan="2"
+                    BackgroundColor="{Binding Gerente.ColorIndicadorMeta}"
+                    Padding="2"
+                    HasShadow="False">
+                    <ffimageloading:CachedImage
+                        x:Name = "Foto_Gerente"
+                        Source = "{Binding Gerente.Foto}"
+                        
+                        CacheDuration = "90"
+                        RetryCount = "5"
+                        RetryDelay = "450"
+                        LoadingPlaceholder="foto_capi.png"
+                        ErrorPlaceholder="foto_capi.png"
+                        >
+                        <ffimageloading:CachedImage.Transformations>
+                            <fFImageLoadingTrans:CircleTransformation
+                                BorderSize="5"
+                                BorderHexColor="#000000"/>
+                            </ffimageloading:CachedImage.Transformations>
+                    </ffimageloading:CachedImage>
+                </Frame>
 
                 <Label Text="{Binding Mensaje}"
                     FontFamily="{StaticResource Poppins-Bold}"
                     FontSize="22"
                     TextColor="#FFFFFF"
+                    Margin="0, 0, 0, 0"
                     HorizontalTextAlignment="Center"
                     Grid.Column="1"
                     Grid.ColumnSpan="3"
@@ -161,6 +167,15 @@
                         <ColumnDefinition Width="0.50*"></ColumnDefinition>
                         <ColumnDefinition Width="0.50*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
+
+                    <Image Source="logo_arbol.png"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        Grid.RowSpan="5"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Aspect="Fill"></Image>
 
                     <!-- SALDO ACUMULADO -->
                     <Label Text="Saldo Acumulado"
@@ -593,24 +608,42 @@
                                         HasShadow="True">
                                 </Frame>
 
-                                <ffimageloading:CachedImage
-                                    x:Name = "Foto_AgentePromotor"
-                                    Source = "{Binding Foto}"
-                                    WidthRequest = "30"  
-                                    HeightRequest = "30"
-                                    CacheDuration = "90"
-                                    RetryCount = "5"
-                                    RetryDelay = "450"
-                                    Margin="0, 0, 0, 25"
+                                <Grid
                                     Grid.Column="0"
+                                    Margin="0, 0, 0, 25"
                                     Grid.Row="0"
                                     Grid.RowSpan="2">
-                                    <ffimageloading:CachedImage.Transformations>
-                                        <fFImageLoadingTrans:CircleTransformation
-                                            BorderSize="30"
-                                            BorderHexColor="#FF0000"/> 
-                                    </ffimageloading:CachedImage.Transformations>
-                                </ffimageloading:CachedImage>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.28*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.44*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.28*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame
+                                        CornerRadius="27"
+                                        BackgroundColor="{Binding ColorIndicadorMeta}"
+                                        BorderColor="{Binding ColorIndicadorMeta}"
+                                        Padding="4"
+                                        Grid.Column="1"
+                                        Grid.ColumnSpan="1"
+
+                                        HasShadow="False">
+                                        <ffimageloading:CachedImage
+                                            x:Name = "Foto_AgentePromotor"
+                                            Source = "{Binding Foto}"
+                                            CacheDuration = "90"
+                                            RetryCount = "5"
+                                            RetryDelay = "450"
+                                            LoadingPlaceholder="foto_capi.png"
+                                            ErrorPlaceholder="foto_capi.png">
+                                            <ffimageloading:CachedImage.Transformations>
+                                                <fFImageLoadingTrans:CircleTransformation
+                                                    BorderSize="5"
+                                                    BorderHexColor="#000000"/> 
+                                            </ffimageloading:CachedImage.Transformations>
+                                        </ffimageloading:CachedImage>
+                                    </Frame>
+                                </Grid>
 
                                 <Label Text="{Binding Nombre}"
                                     FontFamily="{StaticResource Poppins-Regular}"

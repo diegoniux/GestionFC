@@ -97,5 +97,10 @@ namespace GestionFC.Views
                 App.MasterDetail.IsPresented = false;
             });
         }
+
+        void OnTapMenuHamburguesa_Tapped(System.Object sender, System.EventArgs e)
+        {
+            App.MasterDetail.IsPresented = !App.MasterDetail.IsPresented;
+        }
     }
 }
