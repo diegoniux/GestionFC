@@ -29,5 +29,10 @@ namespace GestionFC.Views
             base.OnDisappearing();
             MessagingCenter.Send(this, "preventLandScape");
         }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+
+        }
     }
 }
