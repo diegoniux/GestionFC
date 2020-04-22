@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Acr.UserDialogs;
+using Service = GestionFC.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
