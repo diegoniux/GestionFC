@@ -65,7 +65,7 @@
                         </ffimageloading:CachedImage>
                     </Frame>
 
-                    <Label Text="Camilo Grimaldo Arreguin"
+                    <Label Text="Nombre Gerente"
                         FontFamily="{StaticResource Poppins-Bold}"
                         FontSize="10"
                         TextColor="#FFFFFF"
@@ -86,7 +86,7 @@
                         VerticalOptions="Start">
                     </BoxView>
 
-                    <Label Text="Gerente ALV"
+                    <Label Text="Gerente Comercial"
                         FontFamily="{StaticResource Poppins-Bold}"
                         FontSize="10"
                         TextColor="#FFFFFF"
@@ -109,13 +109,16 @@
                     </Label>
 
                     <Image
-                    x:Name="btnHamburguesa2"
-                    Source="hamburguesa.png" 
-                    Grid.Column="3" 
-                    Grid.Row="0"
-                    Grid.RowSpan="2"
-                    Margin="0"
-                    Aspect="Fill">
+                        x:Name="btnHamburguesa2"
+                        Source="hamburguesa.png" 
+                        Grid.Column="3" 
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Margin="0"
+                        Aspect="Fill">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapMenuHamburguesaBar_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
                     </Image>
                 </Grid>
                 <BoxView

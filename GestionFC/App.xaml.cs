@@ -27,7 +27,7 @@ namespace GestionFC
 
         public static string BaseUrlApi
         {
-            get { return "http://192.168.15.11/"; }
+            get { return "https://desaiis01/Api_GestionFC/"; }
         } 
 
         public App()
