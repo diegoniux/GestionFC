@@ -6,6 +6,8 @@
              mc:Ignorable="d"
              x:Class="GestionFC.Views.ProductividadPage">
     <RelativeLayout>
+        
+        <!--FONDO DE LA PANTALLA-->
         <Image
             Aspect="AspectFill"
             Source="background_app.png"
@@ -22,6 +24,7 @@
             RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
 
+            <!--HEADER-->
             <Grid Margin="0" 
                   Padding="0" 
                   ColumnSpacing="0" 
@@ -29,6 +32,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20"></RowDefinition>
                     <RowDefinition Height="25*"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -532,11 +536,129 @@
                         Margin="0,-19,30,25"
                         Aspect="AspectFit">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped">
+                        <TapGestureRecognizer Tapped="OnTapImageProductividad_Tapped">
                         </TapGestureRecognizer>
                     </Image.GestureRecognizers>
                 </Image>
+                
+                <!--IMAGEN PIZARÓN DIGITAL-->
+                <Image
+                    Source="pizarron_blanco.png"
+                    Grid.Row="3"
+                    Margin="0"
+                    Aspect="AspectFit"
+                    HeightRequest="100"
+                    WidthRequest="150"
+                    HorizontalOptions="StartAndExpand">
+                </Image>
+
             </Grid>
+            <!--TERMINA HEADER-->
+            
+            <!--CONTENIDO DE LA PÁGINA-->
+            <Grid 
+                Margin="20,0,20,0"
+                ColumnSpacing="0"
+                RowSpacing="0"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="52"></RowDefinition>
+                    <RowDefinition Height="38"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <!--TABS Y CALENDARIO-->
+                <Grid
+                    Grid.Row="1"
+                    Margin="0"
+                    ColumnSpacing="5"
+                    RowSpacing="0"
+                    HorizontalOptions="StartAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="148"></ColumnDefinition>
+                        <ColumnDefinition Width="148"></ColumnDefinition>
+                        <ColumnDefinition Width="40"></ColumnDefinition>
+                        <ColumnDefinition Width="40"></ColumnDefinition>
+                        <ColumnDefinition Width="40"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <!--TAB PRODUCTIVIDAD DIARIA-->
+                    <Image
+                        x:Name="imgTabProdDiaria"
+                        Source="prod_diaria_verde.png"
+                        Aspect="AspectFill"
+                        Grid.Column="0">
+                    </Image>
+
+                    <!--TAB PRODUCTIVIDAD DIARIA-->
+                    <Image
+                        x:Name="imgTabProdSemanal"
+                        Source="prod_sem_blanco.png"
+                        Aspect="AspectFill"
+                        Grid.Column="1">
+                    </Image>
+
+                    <!--BOTON PREV-->
+                    <Image
+                        x:Name="imgPrev"
+                        Source="prev.png"
+                        Aspect="AspectFit"
+                        Grid.Column="2">
+                    </Image>
+
+                    <!--CALENDARIO-->
+                    <Image
+                        x:Name="imgCalendario"
+                        Source="calendar_negro.png"
+                        Aspect="AspectFit"
+                        Grid.Column="3">
+                    </Image>
+
+                    <!--BOTON NEXT-->
+                    <Image
+                        x:Name="imgNext"
+                        Source="next.png"
+                        Aspect="AspectFit"
+                        Grid.Column="4">
+                    </Image>
+
+                </Grid>
+                <!--TERMINA TABS Y CALENDARIO-->
+                
+                <!--PIZARRÓN DIARIA-->
+                <Grid
+                    x:Name="gridProdDiaria"
+                    IsVisible="True"
+                    Grid.Row="2"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0"
+                    ColumnSpacing="0"
+                    RowSpacing="0">
+                    
+                </Grid>
+                <!--TERMINA PIZARRÓN DIARIA-->
+                
+                <!--PIZARRÓN SEMANAL-->
+                <Grid
+                    x:Name="gridProdSemanal"
+                    IsVisible="False"
+                    Grid.Row="2"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0"
+                    ColumnSpacing="0"
+                    RowSpacing="0">
+
+                </Grid>
+                <!--TERMINA PIZARRÓN SEMANAL-->
+
+            </Grid>
+            <!--TERMINA CONTENIDO-->
+            
 
 
         </StackLayout>

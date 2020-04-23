@@ -4,7 +4,6 @@ using System.Text;
 using System.Threading.Tasks;
 using GestionFC.Models.Plantilla;
 using Newtonsoft.Json;
-using Models = GestionFC.Models;
 
 namespace GestionFC.Services
 {
