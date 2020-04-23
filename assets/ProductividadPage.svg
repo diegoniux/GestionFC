@@ -26,17 +26,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.5"
-     inkscape:cx="396.74235"
-     inkscape:cy="988.02859"
+     inkscape:zoom="2.1213203"
+     inkscape:cx="389.88182"
+     inkscape:cy="893.65506"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1366"
-     inkscape:window-height="705"
-     inkscape:window-x="-8"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1358"
      inkscape:window-y="-8"
      inkscape:window-maximized="1">
     <sodipodi:guide
@@ -48,6 +48,51 @@
        position="53.622221,264.40695"
        orientation="0,1"
        id="guide23"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="1.9402777,293.15834"
+       orientation="1,0"
+       id="guide25"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="5.8208332,283.80973"
+       orientation="1,0"
+       id="guide27"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="42.333332,294.92223"
+       orientation="1,0"
+       id="guide29"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="79.374998,302.85973"
+       orientation="1,0"
+       id="guide31"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="92.427776,292.98195"
+       orientation="1,0"
+       id="guide33"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="100.89444,289.27779"
+       orientation="1,0"
+       id="guide35"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="112.53611,289.45417"
+       orientation="1,0"
+       id="guide37"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="42.333331,254.70556"
+       orientation="0,1"
+       id="guide39"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="45.86111,164.04167"
+       orientation="0,1"
+       id="guide41"
        inkscape:locked="false" />
   </sodipodi:namedview>
   <metadata

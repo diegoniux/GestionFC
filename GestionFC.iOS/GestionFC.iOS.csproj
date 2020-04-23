@@ -478,4 +478,9 @@
     <Folder Include="Assets.xcassets\logo_arbol.imageset\" />
   </ItemGroup>
   <ItemGroup />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties XamarinHotReloadDebuggerTimeoutExceptionGestionFCiOSHideInfoBar="True" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

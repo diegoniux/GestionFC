@@ -559,7 +559,7 @@
             <Grid 
                 Margin="20,0,20,0"
                 ColumnSpacing="0"
-                RowSpacing="0"
+                RowSpacing="2"
                 VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
@@ -631,28 +631,575 @@
                 <!--PIZARRÓN DIARIA-->
                 <Grid
                     x:Name="gridProdDiaria"
-                    IsVisible="True"
+                    IsVisible="False"
                     Grid.Row="2"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Margin="0"
-                    ColumnSpacing="0"
+                    ColumnSpacing="1"
                     RowSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="8"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <!--Nombre-->
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <!--Lunes-->
+                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
+                        <!--Martes-->
+                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
+                        <!--Miercoles-->
+                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
+                        <!--Jueves-->
+                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
+                        <!--Viernes-->
+                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
+                        <!--Sabado-->
+                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
+                        <!--Domingo-->
+                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
+                        <!--Total-->
+                        <ColumnDefinition Width="0.35*"></ColumnDefinition>
+                        <!--Faltante-->
+                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                        <!--Meta-->
+                        <ColumnDefinition Width="0.35*"></ColumnDefinition>
+                        <!--FCT Inactivo-->
+                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                        <!--FCT Activo-->
+                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                        <!--Saldos Menores 30k-->
+                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                        <!--Total Folios Cert.-->
+                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Text="CONSULTA SEMANAL"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="0"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#275D38"
+                        TextColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontSize="10">
+                    </Label>
                     
+                    <!--Lunes-->
+                    <Label
+                        Text="LU"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontAttributes="Bold"
+                        FontSize="16">
+                    </Label>
+                    <Label
+                        Text="10/02/20"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontSize="8">
+                    </Label>
+                    <!--Martes-->
+                    <Label
+                        Text="MA"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontAttributes="Bold"
+                        FontSize="16">
+                    </Label>
+                    <Label
+                        Text="11/02/20"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontSize="8">
+                    </Label>
+                    <!--Miercoles-->
+                    <Label
+                        Text="MI"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontAttributes="Bold"
+                        FontSize="16">
+                    </Label>
+                    <Label
+                        Text="12/02/20"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontSize="8">
+                    </Label>
+                    <!--Jueves-->
+                    <Label
+                        Text="JU"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.Column="4"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontAttributes="Bold"
+                        FontSize="16">
+                    </Label>
+                    <Label
+                        Text="13/02/20"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontSize="8">
+                    </Label>
+                    <!--Viernes-->
+                    <Label
+                        Text="VI"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.Column="5"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontAttributes="Bold"
+                        FontSize="16">
+                    </Label>
+                    <Label
+                        Text="14/02/20"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="1"
+                        Grid.Column="5"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontSize="8">
+                    </Label>
+                    <!--Sabado-->
+                    <Label
+                        Text="SA"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.Column="6"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontAttributes="Bold"
+                        FontSize="16">
+                    </Label>
+                    <Label
+                        Text="15/02/20"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="1"
+                        Grid.Column="6"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontSize="8">
+                    </Label>
+                    <!--Domingo-->
+                    <Label
+                        Text="DO"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.Column="7"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontAttributes="Bold"
+                        FontSize="16">
+                    </Label>
+                    <Label
+                        Text="16/02/20"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="1"
+                        Grid.Column="7"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontSize="8">
+                    </Label>
+
+                    <Label
+                        Text="Total"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="8"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#DE9401"
+                        TextColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontSize="12">
+                    </Label>
+
+                    <Label
+                        Text="Faltante"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="9"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#DE9401"
+                        TextColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontSize="12">
+                    </Label>
+
+                    <Label
+                        Text="Meta"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="10"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#DE9401"
+                        TextColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontSize="12">
+                    </Label>
+
+                    <Label
+                        Text="FCT Inactivo"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="11"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#C78400"
+                        TextColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontSize="10">
+                    </Label>
+
+                    <Label
+                        Text="FCT Activo"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="12"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#C78400"
+                        TextColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontSize="10">
+                    </Label>
+
+                    <Label
+                        Text="Saldos menores 30 m."
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="13"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#C78400"
+                        TextColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontSize="10">
+                    </Label>
+
+                    <Label
+                        Text="Total Folios cert."
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="14"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#C78400"
+                        TextColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontSize="10">
+                    </Label>
+
+
                 </Grid>
                 <!--TERMINA PIZARRÓN DIARIA-->
                 
                 <!--PIZARRÓN SEMANAL-->
                 <Grid
                     x:Name="gridProdSemanal"
-                    IsVisible="False"
+                    IsVisible="true"
                     Grid.Row="2"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Margin="0"
-                    ColumnSpacing="0"
+                    ColumnSpacing="1"
                     RowSpacing="0">
 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="8"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <!--Icono Calendario-->
+                        <ColumnDefinition Width="0.15*"></ColumnDefinition>
+                        <!--Nombre-->
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <!--Semana 1-->
+                        <ColumnDefinition Width="0.70*"></ColumnDefinition>
+                        <!--Semana 2-->
+                        <ColumnDefinition Width="0.70*"></ColumnDefinition>
+                        <!--Semana 3-->
+                        <ColumnDefinition Width="0.70*"></ColumnDefinition>
+                        <!--Semana 4-->
+                        <ColumnDefinition Width="0.70*"></ColumnDefinition>
+                        <!--Total-->
+                        <ColumnDefinition Width="0.70*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#275D38"
+                        Orientation="Horizontal"
+                        Margin="0"
+                        Spacing="0">
+
+                        <Image
+                            Source="calendar_blanco.png"
+                            Aspect="AspectFit"
+                            Margin="30,5,0,5"
+                            HeightRequest="29"
+                            WidthRequest="34">
+                        </Image>
+                        <Label
+                            Text="CONSULTA SEMANAL"
+                            Margin="10,0,0,0"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Start"
+                            TextColor="#FFFFFF"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource Poppins-Bold}"
+                            FontSize="12">
+                        </Label>
+                    </StackLayout>
+
+
+                    <!--SEM 1-->
+                    <Label
+                        Text="SEM"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontAttributes="Bold"
+                        FontSize="16">
+                    </Label>
+                    <Label
+                        Text="3FEB-9FEB"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontSize="8">
+                    </Label>
+                    <!--SEM 2-->
+                    <Label
+                        Text="SEM"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontAttributes="Bold"
+                        FontSize="16">
+                    </Label>
+                    <Label
+                        Text="10FEB-16FEB"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontSize="8">
+                    </Label>
+                    <!--Sem 3-->
+                    <Label
+                        Text="SEM"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.Column="4"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontAttributes="Bold"
+                        FontSize="16">
+                    </Label>
+                    <Label
+                        Text="17FEB-23FEB"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontSize="8">
+                    </Label>
+                    <!--SEm 4-->
+                    <Label
+                        Text="SEM"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.Column="5"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontAttributes="Bold"
+                        FontSize="16">
+                    </Label>
+                    <Label
+                        Text="24FEB-01MAR"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="1"
+                        Grid.Column="5"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F3F3F3"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontSize="8">
+                    </Label>
+                    <Label
+                        Text="TOTAL"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="6"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#DE9401"
+                        TextColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontSize="12">
+                    </Label>
                 </Grid>
                 <!--TERMINA PIZARRÓN SEMANAL-->
 
