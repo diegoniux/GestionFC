@@ -18,9 +18,10 @@ namespace GestionFC
         {
             InitializeComponent();
             Master = new Master();
-            Detail = new NavigationPage(new LoginPage()) {
-                BarTextColor = Color.White
-            };
+            Detail = new NavigationPage(new LoginPage());
+            //{
+            //    BarTextColor = Color.White
+            //};
 
             App.MasterDetail = this;
 

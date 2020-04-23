@@ -37,24 +37,26 @@
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                         <ColumnDefinition Width="0.10*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Frame
-                        CornerRadius="57"
+                    <!--<Frame
+                        CornerRadius="30"
                         Margin="32, 11, -9, -10"
-                        Grid.Column="0"
-                        Grid.Row="0"
-                        Grid.RowSpan="4"
+                        
                         BackgroundColor="Transparent"
                         VerticalOptions="StartAndExpand"
                         Padding="2"
-                        HasShadow="False">
+                        HasShadow="False"> -->
                         <ffimageloading:CachedImage
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Grid.RowSpan="4"
+                            Margin="20, 10, 0, 0"
                             x:Name = "Foto_Gerente"
-                            Source = "foto_capi.png"
+                            Source = "capi_circulo.png"
                             CacheDuration = "90"
                             RetryCount = "5"
                             RetryDelay = "450"
-                            LoadingPlaceholder="foto_capi.png"
-                            ErrorPlaceholder="foto_capi.png"
+                            LoadingPlaceholder="capi_circulo.png"
+                            ErrorPlaceholder="capi_circulo.png"
                             >
                             <!--Source = "{Binding Gerente.Foto}"-->
                             <ffimageloading:CachedImage.Transformations>
@@ -63,7 +65,7 @@
                                     BorderHexColor="#000000"/>
                             </ffimageloading:CachedImage.Transformations>
                         </ffimageloading:CachedImage>
-                    </Frame>
+                    <!--</Frame>-->
 
                     <Label Text="Nombre Gerente"
                         FontFamily="{StaticResource Poppins-Bold}"
