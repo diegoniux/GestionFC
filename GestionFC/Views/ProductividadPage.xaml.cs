@@ -29,6 +29,37 @@ namespace GestionFC.Views
             };
 
             btnHamburguesa.GestureRecognizers.Add(burguerTap);
+
+            //Evento tap del TabProdDiaria
+            var ProdDiariaTap = new TapGestureRecognizer();
+            ProdDiariaTap.Tapped += (object sender, EventArgs e) =>
+            {
+                imgTabProdDiaria.Source = "prod_diaria_verde.png";
+                imgTabProdSemanal.Source = "prod_sem_blanco.png";
+                gridProdDiaria.IsVisible = true;
+                gridProdSemanal.IsVisible = false;
+                
+                //Llamar método para cargar la productividad Diaria
+
+
+            };
+
+            //Evento tap del TabProdSemanal
+            var ProdSemTap = new TapGestureRecognizer();
+            ProdSemTap.Tapped += (object sender, EventArgs e) =>
+            {
+                imgTabProdDiaria.Source = "prod_diaria_blanco.png";
+                imgTabProdSemanal.Source = "prod_sem_naranja.png";
+                gridProdDiaria.IsVisible = false;
+                gridProdSemanal.IsVisible = true;
+
+                //Llamar método para cargar la productividad Semanal
+
+
+            };
+
+            imgTabProdDiaria.GestureRecognizers.Add(ProdDiariaTap);
+            imgTabProdSemanal.GestureRecognizers.Add(ProdSemTap);
         }
 
         private async void LoadPage()
