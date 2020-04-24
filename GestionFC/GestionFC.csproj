@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\PlantillaPage\" />
+    <Folder Include="ViewModels\Master\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS">

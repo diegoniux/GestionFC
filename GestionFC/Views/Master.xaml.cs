@@ -15,12 +15,13 @@ namespace GestionFC.Views
     public partial class Master : ContentPage
 
     {
+        public ViewModels.Master.MasterViewModel ViewModel { get; set; }
 
         public Master()
         {
             InitializeComponent();
+            ViewModel = new ViewModels.Master.MasterViewModel();
             var masterPageItems = new List<MasterPageItem>();
-
             //masterPageItems.Add(new MasterPageItem
             //{
             //    Title = "Plantilla",
@@ -42,7 +43,42 @@ namespace GestionFC.Views
             });
 
             listView.ItemsSource = masterPageItems;
+            loadPage();
 
+        }
+
+        private async void loadPage()
+        {
+            Service.HeaderService headerService = new Service.HeaderService();
+            int nomina = 0;
+            try
+            {
+                await App.Database.GetGestionFCItemAsync().ContinueWith(x => {
+                    if (x.IsFaulted)
+                    {
+                        throw x.Exception;
+                    }
+
+                    if (!string.IsNullOrEmpty(x.Result[0]?.TokenSesion))
+                    {
+                        nomina = x.Result[0].Nomina;
+                    }
+                });
+
+                await headerService.GetHeader(nomina).ContinueWith(x =>
+                {
+                    //Cargar datros para el binding de información con el header
+                    ViewModel.NombreGerente = x.Result.Progreso?.Nombre + " " + x.Result.Progreso?.Apellidos;
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        BindingContext = ViewModel;
+                    });
+                });
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("MasterPage Error", ex.Message, "Ok");
+            }
         }
 
         private async void listView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
