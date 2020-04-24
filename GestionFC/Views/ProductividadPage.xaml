@@ -1106,213 +1106,212 @@
                     </Label>
 
                 </Grid>
+                <!--DATOS-->
+                <CollectionView 
+                    x:Name="CollecionViewProdDiaria"
+                    IsVisible="True"
+                    ItemsSource="{Binding  ProductividadDiaria.ResultDatos}"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="4"
+                    Margin="0"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout 
+                            Orientation="Vertical" Span="1"></GridItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                Margin="0"
+                                RowSpacing="0"
+                                ColumnSpacing="1"
+                                BackgroundColor="#FFFFFF">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="35"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <!--Nombre-->
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <!--Lunes-->
+                                    <ColumnDefinition Width="0.30*"></ColumnDefinition>
+                                    <!--Martes-->
+                                    <ColumnDefinition Width="0.30*"></ColumnDefinition>
+                                    <!--Miercoles-->
+                                    <ColumnDefinition Width="0.30*"></ColumnDefinition>
+                                    <!--Jueves-->
+                                    <ColumnDefinition Width="0.30*"></ColumnDefinition>
+                                    <!--Viernes-->
+                                    <ColumnDefinition Width="0.30*"></ColumnDefinition>
+                                    <!--Sabado-->
+                                    <ColumnDefinition Width="0.30*"></ColumnDefinition>
+                                    <!--Domingo-->
+                                    <ColumnDefinition Width="0.30*"></ColumnDefinition>
+                                    <!--Total-->
+                                    <ColumnDefinition Width="0.35*"></ColumnDefinition>
+                                    <!--Faltante-->
+                                    <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                                    <!--Meta-->
+                                    <ColumnDefinition Width="0.35*"></ColumnDefinition>
+                                    <!--FCT Inactivo-->
+                                    <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                                    <!--FCT Activo-->
+                                    <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                                    <!--Saldos Menores 30k-->
+                                    <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                                    <!--Total Folios Cert.-->
+                                    <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                    
+                                <!--DATOS-->
+
+                                <Label
+                                    Text="{Binding NombreCompletoAp}"
+                                    Grid.Column="0"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding SaldoVirtualLunes}"
+                                    Grid.Column="1"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding SaldoVirtualMartes}"
+                                    Grid.Column="2"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding SaldoVirtualMiercoles}"
+                                    Grid.Column="3"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding SaldoVirtualJueves}"
+                                    Grid.Column="4"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding SaldoVirtualViernes}"
+                                    Grid.Column="5"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding SaldoVirtualSabado}"
+                                    Grid.Column="6"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding SaldoVirtualDomingo}"
+                                    Grid.Column="7"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+
+                                <Label
+                                    Text="{Binding SaldoVirtualSemana}"
+                                    Grid.Column="8"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding SaldoVirtualFaltante}"
+                                    Grid.Column="9"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding MetaSemana}"
+                                    Grid.Column="10"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+
+                                <Label
+                                    Text="{Binding FctInactivos}"
+                                    Grid.Column="11"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding FctActivos}"
+                                    Grid.Column="12"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding FoliosMenores30K}"
+                                    Grid.Column="13"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding FoliosCertificados}"
+                                    Grid.Column="14"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <!--TERMINA DATOS-->
+
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <!--TERMINA DATOS-->
                 <!--TERMINA PIZARRÓN DIARIA-->
 
-                                                <!--DATOS-->
-                    <CollectionView 
-                        ItemsSource="{Binding  ProductividadDiaria.ResultDatos}"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="4"
-                        Margin="0"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout 
-                                Orientation="Vertical" Span="1"></GridItemsLayout>
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid
-                                    Margin="0"
-                                    RowSpacing="0"
-                                    ColumnSpacing="1"
-                                    BackgroundColor="#FFFFFF">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="35"></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <!--Nombre-->
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                        <!--Lunes-->
-                                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
-                                        <!--Martes-->
-                                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
-                                        <!--Miercoles-->
-                                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
-                                        <!--Jueves-->
-                                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
-                                        <!--Viernes-->
-                                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
-                                        <!--Sabado-->
-                                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
-                                        <!--Domingo-->
-                                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
-                                        <!--Total-->
-                                        <ColumnDefinition Width="0.35*"></ColumnDefinition>
-                                        <!--Faltante-->
-                                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
-                                        <!--Meta-->
-                                        <ColumnDefinition Width="0.35*"></ColumnDefinition>
-                                        <!--FCT Inactivo-->
-                                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
-                                        <!--FCT Activo-->
-                                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
-                                        <!--Saldos Menores 30k-->
-                                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
-                                        <!--Total Folios Cert.-->
-                                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    
-                                    <!--DATOS-->
-
-                                    <Label
-                                        Text="{Binding NombreCompletoAp}"
-                                        Grid.Column="0"
-                                        FontSize="10"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Start"
-                                        TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
-                                    </Label>
-                                    <Label
-                                        Text="{Binding SaldoVirtualLunes}"
-                                        Grid.Column="1"
-                                        FontSize="10"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
-                                    </Label>
-                                    <Label
-                                        Text="{Binding SaldoVirtualMartes}"
-                                        Grid.Column="2"
-                                        FontSize="10"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
-                                    </Label>
-                                    <Label
-                                        Text="{Binding SaldoVirtualMiercoles}"
-                                        Grid.Column="3"
-                                        FontSize="10"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
-                                    </Label>
-                                    <Label
-                                        Text="{Binding SaldoVirtualJueves}"
-                                        Grid.Column="4"
-                                        FontSize="10"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
-                                    </Label>
-                                    <Label
-                                        Text="{Binding SaldoVirtualViernes}"
-                                        Grid.Column="5"
-                                        FontSize="10"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
-                                    </Label>
-                                    <Label
-                                        Text="{Binding SaldoVirtualSabado}"
-                                        Grid.Column="6"
-                                        FontSize="10"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
-                                    </Label>
-                                    <Label
-                                        Text="{Binding SaldoVirtualDomingo}"
-                                        Grid.Column="7"
-                                        FontSize="10"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
-                                    </Label>
-
-                                    <Label
-                                        Text="{Binding SaldoVirtualSemana}"
-                                        Grid.Column="8"
-                                        FontSize="10"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
-                                    </Label>
-                                    <Label
-                                        Text="{Binding SaldoVirtualFaltante}"
-                                        Grid.Column="9"
-                                        FontSize="10"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
-                                    </Label>
-                                    <Label
-                                        Text="{Binding MetaSemana}"
-                                        Grid.Column="10"
-                                        FontSize="10"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
-                                    </Label>
-
-                                    <Label
-                                        Text="{Binding FctInactivos}"
-                                        Grid.Column="11"
-                                        FontSize="10"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
-                                    </Label>
-                                    <Label
-                                        Text="{Binding FctActivos}"
-                                        Grid.Column="12"
-                                        FontSize="10"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
-                                    </Label>
-                                    <Label
-                                        Text="{Binding FoliosMenores30K}"
-                                        Grid.Column="13"
-                                        FontSize="10"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
-                                    </Label>
-                                    <Label
-                                        Text="{Binding FoliosCertificados}"
-                                        Grid.Column="14"
-                                        FontSize="10"
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
-                                    </Label>
-                                    <!--TERMINA DATOS-->
-
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                    <!--TERMINA DATOS-->
-
-
-                
                 <!--PIZARRÓN SEMANAL-->
                 <Grid
                     x:Name="gridProdSemanal"
@@ -1510,12 +1509,128 @@
                     </Label>
                 </Grid>
                 <!--TERMINA PIZARRÓN SEMANAL-->
+                <!--DATOS-->
+                <CollectionView 
+                    x:Name="CollecionViewProdSemanal"
+                    IsVisible="False"
+                    ItemsSource="{Binding  ProductividadSemanal.ResultDatos}"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="4"
+                    Margin="0"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout 
+                            Orientation="Vertical" Span="1"></GridItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                Margin="0"
+                                RowSpacing="0"
+                                ColumnSpacing="1"
+                                BackgroundColor="#FFFFFF">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="35"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <!--Icono Calendario-->
+                                    <ColumnDefinition Width="0.15*"></ColumnDefinition>
+                                    <!--Nombre-->
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <!--Semana 1-->
+                                    <ColumnDefinition Width="0.70*"></ColumnDefinition>
+                                    <!--Semana 2-->
+                                    <ColumnDefinition Width="0.70*"></ColumnDefinition>
+                                    <!--Semana 3-->
+                                    <ColumnDefinition Width="0.70*"></ColumnDefinition>
+                                    <!--Semana 4-->
+                                    <ColumnDefinition Width="0.70*"></ColumnDefinition>
+                                    <!--Total-->
+                                    <ColumnDefinition Width="0.70*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
 
+                                <!--DATOS-->
+
+                                <Label
+                                    Text="{Binding NombreCompletoAp}"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Start"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding SaldoVirtualSemana1}"
+                                    Grid.Column="2"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="{Binding IndicadorSaldoMetaSem1}"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding SaldoVirtualSemana2}"
+                                    Grid.Column="3"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="{Binding IndicadorSaldoMetaSem2}"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding SaldoVirtualSemana3}"
+                                    Grid.Column="4"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="{Binding IndicadorSaldoMetaSem3}"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding SaldoVirtualSemana4}"
+                                    Grid.Column="5"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="{Binding IndicadorSaldoMetaSem4}"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <Label
+                                    Text="{Binding SaldoVirtualTetrasemana}"
+                                    Grid.Column="6"
+                                    FontSize="10"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="{Binding IndicadorSaldoMetaTetra}"
+                                    TextColor="#353535"
+                                    FontFamily="{StaticResource Poppins-Medium}">
+                                </Label>
+                                <!--TERMINA DATOS-->
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <!--TERMINA DATOS-->
             </Grid>
             <!--TERMINA CONTENIDO-->
-            
-
-
         </StackLayout>
 
     </RelativeLayout>

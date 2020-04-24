@@ -37,8 +37,10 @@ namespace GestionFC.Views
                 imgTabProdDiaria.Source = "prod_diaria_verde.png";
                 imgTabProdSemanal.Source = "prod_sem_blanco.png";
                 gridProdDiaria.IsVisible = true;
+                CollecionViewProdDiaria.IsVisible = true;
                 gridProdSemanal.IsVisible = false;
-                
+                CollecionViewProdSemanal.IsVisible = false;
+
                 //Llamar método para cargar la productividad Diaria
 
 
@@ -51,7 +53,9 @@ namespace GestionFC.Views
                 imgTabProdDiaria.Source = "prod_diaria_blanco.png";
                 imgTabProdSemanal.Source = "prod_sem_naranja.png";
                 gridProdDiaria.IsVisible = false;
+                CollecionViewProdDiaria.IsVisible = false;
                 gridProdSemanal.IsVisible = true;
+                CollecionViewProdSemanal.IsVisible = true;
 
                 //Llamar método para cargar la productividad Semanal
 
@@ -144,6 +148,23 @@ namespace GestionFC.Views
                         }
 
                         ViewModel.ComisionEstimada = x.Result;
+
+                    });
+
+                    //Carga de productividad Semanal
+                    await productividadService.GetProduccionSemanal(nomina, 0,0, token).ContinueWith(x =>
+                    {
+                        if (x.IsFaulted)
+                        {
+                            throw x.Exception;
+                        }
+
+                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                        {
+                            throw new Exception("Ocurrió un error");
+                        }
+
+                        ViewModel.ProductividadSemanal = x.Result;
 
                     });
 
