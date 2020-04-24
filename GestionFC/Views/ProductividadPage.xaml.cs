@@ -11,13 +11,13 @@ namespace GestionFC.Views
     public partial class ProductividadPage : ContentPage
     {
         public ProductividadPageViewModel ViewModel { get; set; }
+
         public ProductividadPage()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
 
             ViewModel = new ProductividadPageViewModel();
-            
 
             LoadPage();
 
@@ -66,6 +66,9 @@ namespace GestionFC.Views
         {
             Service.HeaderService headerService = new Service.HeaderService();
             Service.PlantillaService gridPromotoresService = new Service.PlantillaService();
+            Service.ProductividadService productividadService = new Service.ProductividadService();
+
+
             int nomina = 0;
             try
             {
@@ -88,6 +91,16 @@ namespace GestionFC.Views
                 {
                     await headerService.GetHeader(nomina).ContinueWith(x =>
                     {
+                        if (x.IsFaulted)
+                        {
+                            throw x.Exception;
+                        }
+
+                        if (! x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                        {
+                            throw new Exception("Ocurrió un error");
+                        }
+
                         //Cargar datros para el binding de información con el header
                         ViewModel.NombreGerente = x.Result.Progreso?.Nombre + " " + x.Result.Progreso?.Apellidos;
                         ViewModel.Mensaje = x.Result.Progreso?.Genero == "H" ? "¡Bienvenido!" : "¡Bienvenida!";
@@ -98,11 +111,45 @@ namespace GestionFC.Views
                             ViewModel.Gerente = x.Result.Progreso;
                         }
 
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            BindingContext = ViewModel;
-                        });
+                    });
 
+                    //Carga de productividad Diaria
+                    await productividadService.GetProduccionDiaria(nomina, 0, 0, token).ContinueWith(x =>
+                    {
+                        if (x.IsFaulted)
+                        {
+                            throw x.Exception;
+                        }
+
+                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                        {
+                            throw new Exception("Ocurrió un error");
+                        }
+
+                        ViewModel.ProductividadDiaria = x.Result;
+
+                    });
+
+                    //Carga de Comision Estimada
+                    await productividadService.GetComisionEstimada(nomina,new DateTime(), token).ContinueWith(x =>
+                    {
+                        if (x.IsFaulted)
+                        {
+                            throw x.Exception;
+                        }
+
+                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                        {
+                            throw new Exception("Ocurrió un error");
+                        }
+
+                        ViewModel.ComisionEstimada = x.Result;
+
+                    });
+
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        BindingContext = ViewModel;
                     });
 
                 }
@@ -112,7 +159,6 @@ namespace GestionFC.Views
                 await DisplayAlert("Error", ex.Message, "Ok");
             }
         }
-
 
         //Para detectar el giro de pantalla
         protected override void OnAppearing()

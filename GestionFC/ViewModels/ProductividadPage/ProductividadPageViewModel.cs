@@ -1,4 +1,5 @@
-﻿using GestionFC.Models.Share;
+﻿using GestionFC.Models.Productividad;
+using GestionFC.Models.Share;
 
 namespace GestionFC.ViewModels.ProductividadPage
 {
@@ -9,5 +10,8 @@ namespace GestionFC.ViewModels.ProductividadPage
         public int Plantilla { get; set; }
         public int APsMetaAlcanzada { get; set; }
         public Progreso Gerente { get; set; }
+        public ProductividadDiariaResponseModel ProductividadDiaria { get; set; }
+        public ProductividadSemanalResponseModel ProductividadSemanal { get; set; }
+        public ComisionEstimadaResponseModel ComisionEstimada { get; set; }
     }
 }
