@@ -562,7 +562,7 @@
             </Grid>
             <!--TERMINA HEADER-->
 
-            <!--CONTENIDO DE LA PÁGINA-->
+            <!--CONTENIDO-->
             <Grid 
                 Margin="20,0,20,0"
                 ColumnSpacing="0"
@@ -1104,29 +1104,32 @@
                         FontFamily="{StaticResource Poppins-Bold}"
                         FontSize="10">
                     </Label>
-                    
-                    <!--DATOS-->
+
+                </Grid>
+                <!--TERMINA PIZARRÓN DIARIA-->
+
+                                                <!--DATOS-->
                     <CollectionView 
-                        ItemsSource="{Binding  ProductividadDiaria.ResultDatos}" 
-                        Grid.Row="2" 
+                        ItemsSource="{Binding  ProductividadDiaria.ResultDatos}"
                         Grid.Column="0"
-                        Grid.ColumnSpan="15" 
+                        Grid.ColumnSpan="2"
+                        Grid.Row="4"
                         Margin="0"
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout 
-                                Orientation="Vertical"></GridItemsLayout>
+                                Orientation="Vertical" Span="1"></GridItemsLayout>
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid
                                     Margin="0"
                                     RowSpacing="0"
-                                    ColumnSpacing="0"
+                                    ColumnSpacing="1"
                                     BackgroundColor="#FFFFFF">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="58"></RowDefinition>
+                                        <RowDefinition Height="35"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <!--Nombre-->
@@ -1162,10 +1165,9 @@
                                     </Grid.ColumnDefinitions>
                                     
                                     <!--DATOS-->
-                                    
-                                    <!--TERMINA DATOS-->
+
                                     <Label
-                                        Text="{Binding NombreCompleto}"
+                                        Text="{Binding NombreCompletoAp}"
                                         Grid.Column="0"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
@@ -1178,7 +1180,7 @@
                                         Grid.Column="1"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Start"
+                                        HorizontalTextAlignment="Center"
                                         TextColor="#353535"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
@@ -1187,7 +1189,7 @@
                                         Grid.Column="2"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Start"
+                                        HorizontalTextAlignment="Center"
                                         TextColor="#353535"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
@@ -1196,7 +1198,7 @@
                                         Grid.Column="3"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Start"
+                                        HorizontalTextAlignment="Center"
                                         TextColor="#353535"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
@@ -1205,7 +1207,7 @@
                                         Grid.Column="4"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Start"
+                                        HorizontalTextAlignment="Center"
                                         TextColor="#353535"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
@@ -1214,7 +1216,7 @@
                                         Grid.Column="5"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Start"
+                                        HorizontalTextAlignment="Center"
                                         TextColor="#353535"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
@@ -1223,7 +1225,7 @@
                                         Grid.Column="6"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Start"
+                                        HorizontalTextAlignment="Center"
                                         TextColor="#353535"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
@@ -1232,7 +1234,7 @@
                                         Grid.Column="7"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Start"
+                                        HorizontalTextAlignment="Center"
                                         TextColor="#353535"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
@@ -1242,7 +1244,7 @@
                                         Grid.Column="8"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Start"
+                                        HorizontalTextAlignment="Center"
                                         TextColor="#353535"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
@@ -1251,7 +1253,7 @@
                                         Grid.Column="9"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Start"
+                                        HorizontalTextAlignment="Center"
                                         TextColor="#353535"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
@@ -1260,7 +1262,7 @@
                                         Grid.Column="10"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Start"
+                                        HorizontalTextAlignment="Center"
                                         TextColor="#353535"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
@@ -1270,7 +1272,7 @@
                                         Grid.Column="11"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Start"
+                                        HorizontalTextAlignment="Center"
                                         TextColor="#353535"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
@@ -1279,16 +1281,16 @@
                                         Grid.Column="12"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Start"
+                                        HorizontalTextAlignment="Center"
                                         TextColor="#353535"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
                                     <Label
-                                        Text="{Binding FoliosMenores30k}"
+                                        Text="{Binding FoliosMenores30K}"
                                         Grid.Column="13"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Start"
+                                        HorizontalTextAlignment="Center"
                                         TextColor="#353535"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
@@ -1297,11 +1299,11 @@
                                         Grid.Column="14"
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Start"
+                                        HorizontalTextAlignment="Center"
                                         TextColor="#353535"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
-
+                                    <!--TERMINA DATOS-->
 
                                 </Grid>
                             </DataTemplate>
@@ -1309,8 +1311,7 @@
                     </CollectionView>
                     <!--TERMINA DATOS-->
 
-                </Grid>
-                <!--TERMINA PIZARRÓN DIARIA-->
+
                 
                 <!--PIZARRÓN SEMANAL-->
                 <Grid
