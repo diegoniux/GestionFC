@@ -45,12 +45,21 @@ namespace GestionFC.Views
 
         }
 
-        private void listView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void listView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as MasterPageItem;
             if (item != null)
             {
-                App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(item.TargetType));
+                if (item.Title == "Cerrar Sesión")
+                {
+                    if (!await DisplayAlert("Alerta", "¿Estás seguro que desea cerrar sesión?", "Ok", "Cancelar"))
+                    {
+                        listView.SelectedItem = null;
+                        return;
+                    }
+                }
+                    
+                await App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(item.TargetType));
                 listView.SelectedItem = null;
                 App.MasterDetail.IsPresented = false;
             }
