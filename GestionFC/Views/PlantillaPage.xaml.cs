@@ -84,7 +84,7 @@ namespace GestionFC.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", ex.Message, "Ok");
+                await DisplayAlert("PlantillaPage Error", ex.Message, "Ok");
             }
         }
 
