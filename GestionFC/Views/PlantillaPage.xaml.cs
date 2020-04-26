@@ -20,6 +20,7 @@ namespace GestionFC.Views
         {
             InitializeComponent();
             ViewModel = new ViewModels.PlantillaPage.PlantillaPageViewModel();
+            BindingContext = ViewModel;
             LoadPage();
             NavigationPage.SetHasNavigationBar(this, false);
 
@@ -57,7 +58,7 @@ namespace GestionFC.Views
 
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
-                    await headerService.GetHeader(nomina).ContinueWith(x =>
+                    await headerService.GetHeader(nomina).ContinueWith((Action<Task<Models.Share.HeaderResponseModel>>)(x =>
                     {
                         //Cargar datros para el binding de información con el header
                         ViewModel.NombreGerente = x.Result.Progreso?.Nombre + " " + x.Result.Progreso?.Apellidos;
@@ -68,16 +69,21 @@ namespace GestionFC.Views
                         {
                             ViewModel.Gerente = x.Result.Progreso;
                         }
-                    });
+                    }));
 
                     await gridPromotoresService.GetGridPromotores(nomina, token).ContinueWith(x =>
                       {
-                          ViewModel.Agentes = x.Result.Promotores;
-                          if(ViewModel.Agentes?.Count > 0)
-                          Device.BeginInvokeOnMainThread(() =>
+                          if (x.IsFaulted)
                           {
-                              BindingContext = ViewModel;
-                          });
+                              throw x.Exception;
+                          }
+
+                          if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                          {
+                              throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                          }
+
+                          ViewModel.Agentes = x.Result.Promotores;
                       });
 
                 }

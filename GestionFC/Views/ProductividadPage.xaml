@@ -621,6 +621,9 @@
                         Source="prod_diaria_verde.png"
                         Aspect="AspectFill"
                         Grid.Column="0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapProdDiaria_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
                     </Image>
 
                     <!--TAB PRODUCTIVIDAD SEMANAL-->
@@ -629,6 +632,9 @@
                         Source="prod_sem_blanco.png"
                         Aspect="AspectFill"
                         Grid.Column="1">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapProdSemanal_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
                     </Image>
 
                     <!--BOTON PREV-->
@@ -637,6 +643,9 @@
                         Source="prev.png"
                         Aspect="AspectFit"
                         Grid.Column="2">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapPrev_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
                     </Image>
 
                     <!--CALENDARIO-->
@@ -653,6 +662,9 @@
                         Source="next.png"
                         Aspect="AspectFit"
                         Grid.Column="4">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapNext_Tapped"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
                     </Image>
                     
                     <!--SECCION COMISION ESTIMADA-->
@@ -738,7 +750,7 @@
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Margin="0"
-                    ColumnSpacing="1"
+                    ColumnSpacing="0"
                     RowSpacing="0">
 
                     <Grid.RowDefinitions>
@@ -777,7 +789,7 @@
                         <!--Saldos Menores 30k-->
                         <ColumnDefinition Width="0.40*"></ColumnDefinition>
                         <!--Total Folios Cert.-->
-                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.40"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
                     <Label
@@ -1119,15 +1131,16 @@
                     HorizontalOptions="FillAndExpand">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout 
-                            Orientation="Vertical" Span="1"></GridItemsLayout>
+                            Orientation="Vertical"></GridItemsLayout>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid
                                 Margin="0"
-                                RowSpacing="0"
+                                Padding="0"
                                 ColumnSpacing="1"
-                                BackgroundColor="#FFFFFF">
+                                RowSpacing="0"
+                                BackgroundColor="#DCD7D7">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="35"></RowDefinition>
                                 </Grid.RowDefinitions>
@@ -1161,13 +1174,12 @@
                                     <!--Saldos Menores 30k-->
                                     <ColumnDefinition Width="0.40*"></ColumnDefinition>
                                     <!--Total Folios Cert.-->
-                                    <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.40"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                    
                                 <!--DATOS-->
-
                                 <Label
                                     Text="{Binding NombreCompletoAp}"
+                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="0"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1177,6 +1189,7 @@
                                 </Label>
                                 <Label
                                     Text="{Binding SaldoVirtualLunes}"
+                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="1"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1186,6 +1199,7 @@
                                 </Label>
                                 <Label
                                     Text="{Binding SaldoVirtualMartes}"
+                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="2"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1195,6 +1209,7 @@
                                 </Label>
                                 <Label
                                     Text="{Binding SaldoVirtualMiercoles}"
+                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="3"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1204,6 +1219,7 @@
                                 </Label>
                                 <Label
                                     Text="{Binding SaldoVirtualJueves}"
+                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="4"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1213,6 +1229,7 @@
                                 </Label>
                                 <Label
                                     Text="{Binding SaldoVirtualViernes}"
+                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="5"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1222,6 +1239,7 @@
                                 </Label>
                                 <Label
                                     Text="{Binding SaldoVirtualSabado}"
+                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="6"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1231,6 +1249,7 @@
                                 </Label>
                                 <Label
                                     Text="{Binding SaldoVirtualDomingo}"
+                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="7"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1241,6 +1260,7 @@
 
                                 <Label
                                     Text="{Binding SaldoVirtualSemana}"
+                                    BackgroundColor="{Binding IndicadorSaldoMeta}"
                                     Grid.Column="8"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1250,6 +1270,7 @@
                                 </Label>
                                 <Label
                                     Text="{Binding SaldoVirtualFaltante}"
+                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="9"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1259,6 +1280,7 @@
                                 </Label>
                                 <Label
                                     Text="{Binding MetaSemana}"
+                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="10"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1269,6 +1291,7 @@
 
                                 <Label
                                     Text="{Binding FctInactivos}"
+                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="11"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1278,6 +1301,7 @@
                                 </Label>
                                 <Label
                                     Text="{Binding FctActivos}"
+                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="12"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1287,6 +1311,7 @@
                                 </Label>
                                 <Label
                                     Text="{Binding FoliosMenores30K}"
+                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="13"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1296,6 +1321,7 @@
                                 </Label>
                                 <Label
                                     Text="{Binding FoliosCertificados}"
+                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="14"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1345,7 +1371,7 @@
                         <!--Semana 4-->
                         <ColumnDefinition Width="0.70*"></ColumnDefinition>
                         <!--Total-->
-                        <ColumnDefinition Width="0.70*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.70"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
                     <StackLayout
@@ -1528,9 +1554,9 @@
                         <DataTemplate>
                             <Grid
                                 Margin="0"
-                                RowSpacing="0"
                                 ColumnSpacing="1"
-                                BackgroundColor="#FFFFFF">
+                                RowSpacing="1"
+                                BackgroundColor="#DCD7D7">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="35"></RowDefinition>
                                 </Grid.RowDefinitions>
@@ -1548,13 +1574,14 @@
                                     <!--Semana 4-->
                                     <ColumnDefinition Width="0.70*"></ColumnDefinition>
                                     <!--Total-->
-                                    <ColumnDefinition Width="0.70*"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.70"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
 
                                 <!--DATOS-->
 
                                 <Label
                                     Text="{Binding NombreCompletoAp}"
+                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2"
                                     FontSize="10"
