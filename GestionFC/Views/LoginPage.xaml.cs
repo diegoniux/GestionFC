@@ -68,6 +68,11 @@ namespace GestionFC
             iconTap.Tapped += (object sender, EventArgs e) =>
             {
                 PassworUser.IsPassword = !PassworUser.IsPassword;
+                if (PassworUser.IsPassword)
+                    ImgHidePassw.Source = "view.png";
+                else
+                    ImgHidePassw.Source = "view_raya.png";
+
             };
 
             ImgHidePassw.GestureRecognizers.Add(iconTap);
