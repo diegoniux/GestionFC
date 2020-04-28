@@ -15,7 +15,7 @@ namespace GestionFC.Droid
 {
 	
 	
-	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "1.0.0.0")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "1.0.0.0")]
 	public partial class Resource
 	{
 		
@@ -11088,6 +11088,9 @@ namespace GestionFC.Droid
 			// aapt resource value: 0x7F070097
 			public const int view = 2131165335;
 			
+			// aapt resource value: 0x7F070098
+			public const int view_raya = 2131165336;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -12163,6 +12166,9 @@ namespace GestionFC.Droid
 			
 			// aapt resource value: 0x7F0C0020
 			public const int view = 2131492896;
+			
+			// aapt resource value: 0x7F0C0021
+			public const int view_raya = 2131492897;
 			
 			static Mipmap()
 			{
