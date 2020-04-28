@@ -6,6 +6,8 @@ namespace GestionFC.ViewModels.Master
 {
     public class MasterViewModel : INotifyPropertyChanged
     {
+        private string _nombre { get; set; }
+        private string _puesto { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string NombreGerenteMaster
@@ -19,8 +21,18 @@ namespace GestionFC.ViewModels.Master
                 }
             }
         }
-        private string _nombre { get; set; }
-        public string Puesto { get; set; }
+
+        public string Puesto
+        {
+            get { return _puesto; }
+            set {
+                if (_puesto != value)
+                {
+                    _puesto = value;
+                    OnPropertyChanged("Puesto");
+                }
+            }
+        }
 
         public MasterViewModel()
         {

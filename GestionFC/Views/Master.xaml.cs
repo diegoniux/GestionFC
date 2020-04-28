@@ -53,6 +53,7 @@ namespace GestionFC.Views
             {
                 //Cargar datros para el binding de información con el header
                 ViewModel.NombreGerenteMaster = nombreCompleto;
+                ViewModel.Puesto = puesto;
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     BindingContext = ViewModel;
