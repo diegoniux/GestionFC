@@ -15,10 +15,12 @@ namespace GestionFC.Views
     public partial class PlantillaPage : ContentPage
     {
         public ViewModels.PlantillaPage.PlantillaPageViewModel ViewModel { get; set; }
-
+        public Master _master;
         public PlantillaPage()
         {
             InitializeComponent();
+            _master = (Master)App.MasterDetail.Master;
+            
             ViewModel = new ViewModels.PlantillaPage.PlantillaPageViewModel();
             LoadPage();
             NavigationPage.SetHasNavigationBar(this, false);
@@ -36,6 +38,7 @@ namespace GestionFC.Views
 
         private async void LoadPage()
         {
+            Service.LogService logService = new Service.LogService();
             Service.HeaderService headerService = new Service.HeaderService();
             Service.PlantillaService gridPromotoresService = new Service.PlantillaService();
             int nomina = 0;
@@ -68,6 +71,7 @@ namespace GestionFC.Views
                         {
                             ViewModel.Gerente = x.Result.Progreso;
                         }
+                        _master.loadPage(nomina, ViewModel.NombreGerente, string.Empty);
                     });
 
                     await gridPromotoresService.GetGridPromotores(nomina, token).ContinueWith(x =>
@@ -84,6 +88,19 @@ namespace GestionFC.Views
             }
             catch (Exception ex)
             {
+                var logError = new Models.Log.LogErrorModel()
+                {
+                    IdPantalla = 2,
+                    Usuario = nomina,
+                    Error = ex.Message,
+                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+
+                };
+                await logService.LogError(logError, "").ContinueWith(logRes =>
+                {
+                    if (logRes.IsFaulted)
+                        DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                });
                 await DisplayAlert("PlantillaPage Error", ex.Message, "Ok");
             }
         }

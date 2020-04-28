@@ -43,36 +43,19 @@ namespace GestionFC.Views
             });
 
             listView.ItemsSource = masterPageItems;
-            loadPage();
+            //loadPage();
 
         }
 
-        private async void loadPage()
+        public async void loadPage(int nomina, string nombreCompleto, string puesto)
         {
-            Service.HeaderService headerService = new Service.HeaderService();
-            int nomina = 0;
             try
             {
-                await App.Database.GetGestionFCItemAsync().ContinueWith(x => {
-                    if (x.IsFaulted)
-                    {
-                        throw x.Exception;
-                    }
-
-                    if (!string.IsNullOrEmpty(x.Result[0]?.TokenSesion))
-                    {
-                        nomina = x.Result[0].Nomina;
-                    }
-                });
-
-                await headerService.GetHeader(nomina).ContinueWith(x =>
+                //Cargar datros para el binding de información con el header
+                ViewModel.NombreGerenteMaster = nombreCompleto;
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    //Cargar datros para el binding de información con el header
-                    ViewModel.NombreGerente = x.Result.Progreso?.Nombre + " " + x.Result.Progreso?.Apellidos;
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        BindingContext = ViewModel;
-                    });
+                    BindingContext = ViewModel;
                 });
             }
             catch (Exception ex)
@@ -88,16 +71,16 @@ namespace GestionFC.Views
             {
                 if (item.Title == "Cerrar Sesión")
                 {
-                    if (!await DisplayAlert("Alerta", "¿Estás seguro que desea cerrar sesión?", "Ok", "Cancelar"))
+                    if (!await DisplayAlert("Alerta", "¿Está seguro que desea cerrar sesión?", "Ok", "Cancelar"))
                     {
                         listView.SelectedItem = null;
                         return;
                     }
                 }
-                    
+                App.MasterDetail.IsPresented = false;
+                loadPage(0, string.Empty, string.Empty);
                 await App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(item.TargetType));
                 listView.SelectedItem = null;
-                App.MasterDetail.IsPresented = false;
             }
         }
 

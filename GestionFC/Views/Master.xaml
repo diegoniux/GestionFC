@@ -67,7 +67,7 @@
                         </ffimageloading:CachedImage>
                     <!--</Frame>-->
 
-                    <Label Text="{Binding NombreGerente}"
+                    <Label Text="{Binding NombreGerenteMaster}"
                         FontFamily="{StaticResource Poppins-Bold}"
                         FontSize="10"
                         TextColor="#FFFFFF"
