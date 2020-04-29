@@ -26,7 +26,7 @@ namespace GestionFC
             App.MasterDetail = this;
 
             // La siguiente línea para que en tabletas o en modo landscape se oculte el menú hamburguesa
-            //this.MasterBehavior = MasterBehavior.Popover;
+            this.MasterBehavior = MasterBehavior.Popover;
         }
     }
 }
