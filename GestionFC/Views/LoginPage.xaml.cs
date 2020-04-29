@@ -68,6 +68,11 @@ namespace GestionFC
             iconTap.Tapped += (object sender, EventArgs e) =>
             {
                 PassworUser.IsPassword = !PassworUser.IsPassword;
+                if (PassworUser.IsPassword)
+                    ImgHidePassw.Source = "view.png";
+                else
+                    ImgHidePassw.Source = "view_raya.png";
+
             };
 
             ImgHidePassw.GestureRecognizers.Add(iconTap);
@@ -94,6 +99,9 @@ namespace GestionFC
 
         async void btnIniciarSesion_Clicked(object sender, EventArgs e)
         {
+            // Llamamos el servicio para el login
+            LoginService loginService = new LoginService();
+            LogService logService = new LogService();
             try
             {
                 if (LoginViewModel.IsRunning)
@@ -105,10 +113,6 @@ namespace GestionFC
 
                     // construmos el objeto login que se validará
                     var loginModel = new LoginModel() { Nomina = int.Parse(UserName.Text), Password = PassworUser.Text };
-
-                    // Llamamos el servicio para el login
-                    LoginService loginService = new LoginService();
-                    LogService logService = new LogService();
                     using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                     {
                         // Temporal
@@ -197,8 +201,20 @@ namespace GestionFC
             }
             catch (Exception ex)
             {
+                var logError = new LogErrorModel()
+                {
+                    IdPantalla = 1,
+                    Usuario = int.Parse(UserName.Text),
+                    Error = ex.Message,
+                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
 
-                await DisplayAlert("Error", ex.Message, "Ok");
+                };
+                await logService.LogError(logError, "").ContinueWith(logRes =>
+                {
+                    if (logRes.IsFaulted)
+                        DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                });
+                await DisplayAlert("Login Error", ex.Message, "Ok");
 
             }
             finally

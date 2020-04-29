@@ -1,0 +1,27 @@
+{
+  "images": [
+    {
+      "appearances": [],
+      "scale": "1x",
+      "idiom": "ipad",
+      "filename": "view_raya.png"
+    },
+    {
+      "appearances": [],
+      "scale": "2x",
+      "idiom": "ipad",
+      "filename": "view_raya1.png"
+    },
+    {
+      "appearances": [],
+      "scale": "3x",
+      "idiom": "ipad",
+      "filename": "view_raya2.png"
+    }
+  ],
+  "properties": {},
+  "info": {
+    "version": 1,
+    "author": ""
+  }
+}

@@ -49,16 +49,15 @@
                             Grid.Column="0"
                             Grid.Row="0"
                             Grid.RowSpan="4"
-                            Margin="20, 10, 0, 0"
+                            Margin="10, 10, 0, 0"
                             x:Name = "Foto_Gerente"
-                            Source = "capi_circulo.png"
+                            Source = "{Binding Foto}"
                             CacheDuration = "90"
                             RetryCount = "5"
                             RetryDelay = "450"
                             LoadingPlaceholder="capi_circulo.png"
                             ErrorPlaceholder="capi_circulo.png"
                             >
-                            <!--Source = "{Binding Gerente.Foto}"-->
                             <ffimageloading:CachedImage.Transformations>
                                 <fFImageLoadingTrans:CircleTransformation
                                     BorderSize="5"
@@ -67,11 +66,11 @@
                         </ffimageloading:CachedImage>
                     <!--</Frame>-->
 
-                    <Label Text="Nombre Gerente"
+                    <Label Text="{Binding NombreGerenteMaster}"
                         FontFamily="{StaticResource Poppins-Bold}"
                         FontSize="10"
                         TextColor="#FFFFFF"
-                        Margin="20, 0, 0, 0"
+                        Margin="10, 0, 0, 0"
                         HorizontalTextAlignment="Start"
                         Grid.Column="1"
                         Grid.Row="1"
@@ -81,34 +80,25 @@
                     <BoxView
                         BackgroundColor="#B2B2B2"
                         HeightRequest="1"
-                        Margin="20, 0, 0, 0"
+                        Margin="10, 0, 0, 0"
                         Grid.Column="1"
                         Grid.Row="2"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="Start">
                     </BoxView>
 
-                    <Label Text="Gerente Comercial"
+                    <Label Text="{Binding Puesto}"
                         FontFamily="{StaticResource Poppins-Bold}"
                         FontSize="10"
                         TextColor="#FFFFFF"
-                        Margin="20, 0, 0, 0"
+                        Margin="10, 0, 0, 0"
                         HorizontalTextAlignment="Start"
                         Grid.Column="1"
                         Grid.Row="3"
                         VerticalOptions="Start">
                     </Label>
 
-                    <Label Text="{Binding NombreGerente}"
-                        FontFamily="{StaticResource Poppins-Regular}"
-                        FontSize="12"
-                        TextColor="#FFFF8A"
-                        Grid.Column="1"
-                        Grid.ColumnSpan="3"
-                        Grid.Row="3"
-                        HorizontalTextAlignment="Center"
-                        VerticalOptions="Start">
-                    </Label>
+       
 
                     <Image
                         x:Name="btnHamburguesa2"

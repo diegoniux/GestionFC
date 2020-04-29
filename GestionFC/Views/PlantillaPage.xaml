@@ -118,8 +118,8 @@
                                 CacheDuration = "90"
                                 RetryCount = "5"
                                 RetryDelay = "450"
-                                LoadingPlaceholder="foto_capi.png"
-                                ErrorPlaceholder="foto_capi.png">
+                                LoadingPlaceholder="capi_circulo.png"
+                                ErrorPlaceholder="capi_circulo.png">
                                 <ffimageloading:CachedImage.Transformations>
                                     <fFImageLoadingTrans:CircleTransformation
                                         BorderSize="5"
@@ -341,9 +341,10 @@
                                 TextColor="#FFFFFF"
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Grid.ColumnSpan="2"
+                                Grid.ColumnSpan="1"
+                                Margin="0,5,0,0"
                                 HorizontalTextAlignment="Center"
-                                VerticalTextAlignment="Center">
+                                VerticalTextAlignment="Start">
                             </Label>
 
                         </Grid>
@@ -539,18 +540,28 @@
                 </Grid>
 
                 <!-- PIZARRON DIGITAL -->
-                <Image Source="pizarron_verde.png"
+                <Grid
                     Grid.Column="2"
                     Grid.ColumnSpan="1"
                     Grid.Row="2"
                     Grid.RowSpan="2"
-                    Margin="25,0,25,0"
-                    Aspect="Fill">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnTapPizarronDigital_Tapped">
-                        </TapGestureRecognizer>
-                    </Image.GestureRecognizers>
-                </Image>
+                    Margin="14,0,25,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="194"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="pizarron_verde.png"
+                        Aspect="Fill">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapPizarronDigital_Tapped">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Grid>
+
                 <!-- ESTATUS BAR -->
                 <Frame
                     BackgroundColor="#E4E4E5"
@@ -592,14 +603,20 @@
                     <ColumnDefinition Width="0.10*"></ColumnDefinition>
                     <ColumnDefinition Width="20"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-
-                <Image Source="productividad_blanco.png"
+                <Grid
                     Grid.Column="1"
                     Grid.ColumnSpan="3"
-                    Grid.Row="0"
-                    Margin="0,0,0,0"
-                    Aspect="AspectFit">
-                </Image>
+                    Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="54"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="212"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="productividad_blanco.png"
+                        Aspect="AspectFit">
+                    </Image>
+                </Grid>
                 <CollectionView ItemsSource="{Binding  Agentes}" 
                                 Grid.Row="1" 
                                 Grid.Column="1"
@@ -658,8 +675,7 @@
                                             ErrorPlaceholder="capi_circulo.png">
                                             <ffimageloading:CachedImage.Transformations>
                                                 <fFImageLoadingTrans:CircleTransformation
-                                                    BorderSize="5"
-                                                    BorderHexColor="#000000"/> 
+                                                    /> 
                                             </ffimageloading:CachedImage.Transformations>
                                         </ffimageloading:CachedImage>
                                     </Frame>
