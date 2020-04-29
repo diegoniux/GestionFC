@@ -8,6 +8,7 @@ namespace GestionFC.ViewModels.Master
     {
         private string _nombre { get; set; }
         private string _puesto { get; set; }
+        private string _foto { get; set; } 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string NombreGerenteMaster
@@ -30,6 +31,18 @@ namespace GestionFC.ViewModels.Master
                 {
                     _puesto = value;
                     OnPropertyChanged("Puesto");
+                }
+            }
+        }
+
+        public string Foto
+        {
+            get { return _foto; }
+            set {
+                if (_foto != value)
+                {
+                    _foto = value;
+                    OnPropertyChanged("Foto");
                 }
             }
         }
