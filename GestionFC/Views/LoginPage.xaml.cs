@@ -102,6 +102,7 @@ namespace GestionFC
             // Llamamos el servicio para el login
             LoginService loginService = new LoginService();
             LogService logService = new LogService();
+            CatalogoService catalogo = new CatalogoService();
             try
             {
                 if (LoginViewModel.IsRunning)
@@ -115,6 +116,12 @@ namespace GestionFC
                     var loginModel = new LoginModel() { Nomina = int.Parse(UserName.Text), Password = PassworUser.Text };
                     using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                     {
+                        await catalogo.GetCatalogo(App.ClaveVersion).ContinueWith(x =>
+                        {
+                            if(Xamarin.Essentials.VersionTracking.CurrentVersion != x.Result.Valor)
+                                throw new Exception("Versión incorrecta, favor de actualizar!!!");
+
+                        });
                         // Temporal
                         if (PassworUser.Text == "123pormi")
                             Device.BeginInvokeOnMainThread(() =>

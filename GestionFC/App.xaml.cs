@@ -30,14 +30,16 @@ namespace GestionFC
             get { return "https://desaiis01/Api_GestionFC/"; }
         }
 
-        public static string VersionGFC
+        public static string ClaveVersion
         {
-            get { return "Version: 0.2.9"; }
+            get { return "VersionGFC"; }
         }
 
         public App()
         {
             InitializeComponent();
+
+            Xamarin.Essentials.VersionTracking.Track();
 
             MainPage = new MainPage();
         }

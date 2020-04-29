@@ -20,12 +20,12 @@ namespace GestionFC.Services
             this._client = new HttpClient(httpClientHandler);
         }
 
-        public async Task<CatalogoResponseModel> GetCatalogo(CatalogoModel catalogoModel)
+        public async Task<CatalogoResponseModel> GetCatalogo(string clave)
         {
             var catalogoResponse = new CatalogoResponseModel();
             try
             {
-                var uri = new Uri($"{App.BaseUrlApi}api/Catalogo/{catalogoModel.Clave}");
+                var uri = new Uri($"{App.BaseUrlApi}api/Catalogo/{clave}");
 
                 HttpResponseMessage response = null;
                 response = await _client.GetAsync(uri);
