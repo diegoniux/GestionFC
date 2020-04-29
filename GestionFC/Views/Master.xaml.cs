@@ -20,6 +20,7 @@ namespace GestionFC.Views
         public Master()
         {
             InitializeComponent();
+            version.Text = App.VersionGFC;
             ViewModel = new ViewModels.Master.MasterViewModel();
             var masterPageItems = new List<MasterPageItem>();
             //masterPageItems.Add(new MasterPageItem
@@ -54,6 +55,7 @@ namespace GestionFC.Views
                 //Cargar datros para el binding de información con el header
                 ViewModel.NombreGerenteMaster = nombreCompleto;
                 ViewModel.Puesto = puesto;
+                
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     BindingContext = ViewModel;
