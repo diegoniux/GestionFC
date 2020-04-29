@@ -8,6 +8,7 @@ using Acr.UserDialogs;
 using Service = GestionFC.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace GestionFC.Views
 {
@@ -20,7 +21,7 @@ namespace GestionFC.Views
         public Master()
         {
             InitializeComponent();
-            version.Text = App.VersionGFC;
+            version.Text = $"Versión: {VersionTracking.CurrentVersion}";
             ViewModel = new ViewModels.Master.MasterViewModel();
             var masterPageItems = new List<MasterPageItem>();
             //masterPageItems.Add(new MasterPageItem
