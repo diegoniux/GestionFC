@@ -1086,7 +1086,7 @@
                     </Label>
 
                     <Label
-                        Text="Saldos menores 30 m."
+                        Text="Saldos menores 30 mil."
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Center"
                         Grid.Row="0"
