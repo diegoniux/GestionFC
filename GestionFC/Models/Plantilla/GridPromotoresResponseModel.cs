@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionFC.Models.Share;
+using System;
 using System.Collections.Generic;
 
 namespace GestionFC.Models.Plantilla

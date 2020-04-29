@@ -1,30 +1,26 @@
-﻿using GestionFC.Models.Share;
+﻿using GestionFC.Models.Productividad;
+using GestionFC.Models.Share;
 using GestionFC.ViewModels.Share;
-using System;
-using System.Collections.Generic;
 
-namespace GestionFC.ViewModels.PlantillaPage
+namespace GestionFC.ViewModels.ProductividadPage
 {
-    public class PlantillaPageViewModel: ViewModelBase
+    public class ProductividadPageViewModel: ViewModelBase
     {
         private string nombreGerente;
 
         public string NombreGerente
         {
             get { return nombreGerente; }
-            set 
-            { 
-                nombreGerente = value;
+            set { nombreGerente = value;
                 RaisePropertyChanged(nameof(NombreGerente));
             }
         }
-
         private string mensaje;
 
         public string Mensaje
         {
             get { return mensaje; }
-            set 
+            set
             {
                 mensaje = value;
                 RaisePropertyChanged(nameof(Mensaje));
@@ -36,8 +32,8 @@ namespace GestionFC.ViewModels.PlantillaPage
         public int Plantilla
         {
             get { return plantilla; }
-            set 
-            { 
+            set
+            {
                 plantilla = value;
                 RaisePropertyChanged(nameof(Plantilla));
             }
@@ -60,26 +56,42 @@ namespace GestionFC.ViewModels.PlantillaPage
         public Progreso Gerente
         {
             get { return gerente; }
-            set 
+            set
             {
                 gerente = value;
                 RaisePropertyChanged(nameof(Gerente));
             }
         }
 
-        private List<Progreso> agentes;
+        private ProductividadDiariaResponseModel productividadDiaria;
 
-        public List<Progreso> Agentes
+        public ProductividadDiariaResponseModel ProductividadDiaria
         {
-            get { return agentes; }
-            set { agentes = value;
-                RaisePropertyChanged(nameof(Agentes));
+            get { return productividadDiaria; }
+            set {
+                productividadDiaria = value;
+                RaisePropertyChanged(nameof(ProductividadDiaria));
             }
         }
 
-        public PlantillaPageViewModel()
-        {
+        private ProductividadSemanalResponseModel productividadSemanal;
 
+        public ProductividadSemanalResponseModel ProductividadSemanal
+        {
+            get { return productividadSemanal; }
+            set { productividadSemanal = value;
+                RaisePropertyChanged(nameof(ProductividadSemanal));
+            }
+        }
+
+        private ComisionEstimadaResponseModel comisionEstimada;
+
+        public ComisionEstimadaResponseModel ComisionEstimada
+        {
+            get { return comisionEstimada; }
+            set { comisionEstimada = value;
+                RaisePropertyChanged(nameof(ComisionEstimada));
+            }
         }
     }
 }

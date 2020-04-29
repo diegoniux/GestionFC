@@ -1,5 +1,5 @@
 ﻿using System;
-namespace GestionFC.Models.Plantilla
+namespace GestionFC.Models.Share
 {
     public class Progreso
     {
@@ -16,5 +16,7 @@ namespace GestionFC.Models.Plantilla
         public string PorcentajeSaldoVirtualDesc { get; set; }
         public int FCTInactivos { get; set; }
         public int TramitesCertificados { get; set; }
+        public string Perfil { get; set; }
+
     }
 }

@@ -1,17 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
-using GestionFC.Models.Plantilla;
+using GestionFC.Models.Catalogo;
 using Newtonsoft.Json;
 
 namespace GestionFC.Services
 {
-    public class PlantillaService
+    public class CatalogoService
     {
         private readonly HttpClient _client;
-
-        public PlantillaService()
+        public CatalogoService()
         {
             var httpClientHandler = new HttpClientHandler
             {
@@ -20,32 +20,32 @@ namespace GestionFC.Services
             this._client = new HttpClient(httpClientHandler);
         }
 
-        public async Task<PromotoresResponseModel> GetGridPromotores(int nomina, string token)
+        public async Task<CatalogoResponseModel> GetCatalogo(CatalogoModel catalogoModel)
         {
-            var promotoresResponse = new PromotoresResponseModel();
+            var catalogoResponse = new CatalogoResponseModel();
             try
             {
-                var uri = new Uri($"{App.BaseUrlApi}api/Plantilla/{nomina}");
+                var uri = new Uri($"{App.BaseUrlApi}api/Catalogo/{catalogoModel.Clave}");
 
                 HttpResponseMessage response = null;
-                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 response = await _client.GetAsync(uri);
 
                 response.EnsureSuccessStatusCode();
 
                 string jsonResult = await response.Content.ReadAsStringAsync();
-                promotoresResponse = JsonConvert.DeserializeObject<PromotoresResponseModel>(jsonResult);
+                catalogoResponse = JsonConvert.DeserializeObject<CatalogoResponseModel>(jsonResult);
             }
             catch (Exception ex)
             {
-                promotoresResponse.ResultadoEjecucion = new Models.Share.ResultadoEjecucion()
+                catalogoResponse.ResultadoEjecucion = new Models.Share.ResultadoEjecucion()
                 {
                     EjecucionCorrecta = false,
-                    FriendlyMessage = "Ocurrio un error",
+                    FriendlyMessage = "Ocurrió un error",
                     ErrorMessage = ex.Message
                 };
             }
-            return promotoresResponse;
+            return catalogoResponse;
         }
+
     }
 }

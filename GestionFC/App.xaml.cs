@@ -28,7 +28,12 @@ namespace GestionFC
         public static string BaseUrlApi
         {
             get { return "https://desaiis01/Api_GestionFC/"; }
-        } 
+        }
+
+        public static string VersionGFC
+        {
+            get { return "Version: 0.2.9"; }
+        }
 
         public App()
         {

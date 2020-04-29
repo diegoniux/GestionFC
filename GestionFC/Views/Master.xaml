@@ -130,6 +130,21 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <BoxView
+                    BackgroundColor="#B2B2B2"
+                    HeightRequest="1"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="End">
+                </BoxView>
+                <Label Text=""
+                       x:Name="version"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontSize="10"
+                        TextColor="#FFFFFF"
+                        Margin="10, 0, 10, 5"
+                        HorizontalTextAlignment="End"
+                        VerticalOptions="End">
+                </Label>
             </StackLayout>
         </RelativeLayout>
     </ContentPage.Content>
