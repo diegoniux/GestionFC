@@ -1,5 +1,5 @@
 ﻿using System;
-namespace GestionFC.Models.Plantilla
+namespace GestionFC.Models.Share
 {
     public class HeaderResponseModel
     {
