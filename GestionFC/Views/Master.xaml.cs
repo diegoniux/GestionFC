@@ -47,13 +47,14 @@ namespace GestionFC.Views
 
         }
 
-        public async void loadPage(int nomina, string nombreCompleto, string puesto)
+        public async void loadPage(int nomina, string nombreCompleto, string puesto, string foto)
         {
             try
             {
                 //Cargar datros para el binding de información con el header
                 ViewModel.NombreGerenteMaster = nombreCompleto;
                 ViewModel.Puesto = puesto;
+                ViewModel.Foto = foto;
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     BindingContext = ViewModel;
@@ -79,7 +80,7 @@ namespace GestionFC.Views
                     }
                 }
                 App.MasterDetail.IsPresented = false;
-                loadPage(0, string.Empty, string.Empty);
+                loadPage(0, string.Empty, string.Empty, "capi_circulo.png");
                 await App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(item.TargetType));
                 listView.SelectedItem = null;
             }

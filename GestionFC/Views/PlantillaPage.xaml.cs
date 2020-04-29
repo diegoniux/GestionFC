@@ -71,7 +71,7 @@ namespace GestionFC.Views
                         {
                             ViewModel.Gerente = x.Result.Progreso;
                         }
-                        _master.loadPage(nomina, ViewModel.NombreGerente, x.Result.Perfil);
+                        _master.loadPage(nomina, ViewModel.NombreGerente, x.Result.Perfil, x.Result.Progreso.Foto);
                     });
 
                     await gridPromotoresService.GetGridPromotores(nomina, token).ContinueWith(x =>
