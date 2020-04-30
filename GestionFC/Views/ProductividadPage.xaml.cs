@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using GestionFC.ViewModels.ProductividadPage;
 using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Service = GestionFC.Services;
@@ -13,11 +14,14 @@ namespace GestionFC.Views
     {
         private int nomina;
         private string token;
+        private bool isBusy = false;
         public ProductividadPageViewModel ViewModel { get; set; }
+        Service.LogService logService { get; set; }
 
         public ProductividadPage()
         {
             InitializeComponent();
+            logService = new Service.LogService();
             NavigationPage.SetHasNavigationBar(this, false);
 
             // Declaración del ViewModel y asignación al BindingContext
@@ -32,6 +36,7 @@ namespace GestionFC.Views
             Service.HeaderService headerService = new Service.HeaderService();
             Service.ProductividadService productividadService = new Service.ProductividadService();
 
+            IsBusy = true;
             try
             {
                 await App.Database.GetGestionFCItemAsync().ContinueWith(x =>
@@ -110,7 +115,23 @@ namespace GestionFC.Views
             }
             catch (Exception ex)
             {
+                var logError = new Models.Log.LogErrorModel()
+                {
+                    IdPantalla = 3,
+                    Usuario = nomina,
+                    Error = ex.Message,
+                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+                };
+                await logService.LogError(logError, "").ContinueWith(logRes =>
+                {
+                    if (logRes.IsFaulted)
+                        DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                });
                 await DisplayAlert("Error", ex.Message, "Ok");
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
 
@@ -129,6 +150,7 @@ namespace GestionFC.Views
 
         private void OnTapImageProductividad_Tapped(object sender, EventArgs e)
         {
+            if (isBusy) return;
             // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -139,11 +161,13 @@ namespace GestionFC.Views
 
         private void OnTapMenuHamburguesa_Tapped(object sender, EventArgs e)
         {
+            if (isBusy) return;
             App.MasterDetail.IsPresented = !App.MasterDetail.IsPresented;
         }
 
         private void OnTapProdDiaria_Tapped(object sender, EventArgs e)
         {
+            if (isBusy) return;
             imgTabProdDiaria.Source = "prod_diaria_verde.png";
             imgTabProdSemanal.Source = "prod_sem_blanco.png";
             gridProdDiaria.IsVisible = true;
@@ -156,10 +180,10 @@ namespace GestionFC.Views
 
         private async void OnTapProdSemanal_Tapped(object sender, EventArgs e)
         {
-
+            if (isBusy) return;
+            isBusy = true;
             try
             {
-
                 imgTabProdDiaria.Source = "prod_diaria_blanco.png";
                 imgTabProdSemanal.Source = "prod_sem_naranja.png";
                 gridProdDiaria.IsVisible = false;
@@ -199,12 +223,30 @@ namespace GestionFC.Views
             }
             catch (Exception ex)
             {
+                var logError = new Models.Log.LogErrorModel()
+                {
+                    IdPantalla = 3,
+                    Usuario = nomina,
+                    Error = ex.Message,
+                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+                };
+                await logService.LogError(logError, "").ContinueWith(logRes =>
+                {
+                    if (logRes.IsFaulted)
+                        DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                });
                 await DisplayAlert("Error", ex.Message, "Ok");
+            }
+            finally
+            {
+                isBusy = false;
             }
         }
 
         private async void OnTapPrev_Tapped(object sender, EventArgs e)
         {
+            if (isBusy) return;
+            isBusy = true;
             try
             {
                 // Dependiendo del tipo de producción activada (Diaria o Semanal), cargamos el periodo anterior
@@ -274,12 +316,30 @@ namespace GestionFC.Views
             }
             catch (Exception ex)
             {
+                var logError = new Models.Log.LogErrorModel()
+                {
+                    IdPantalla = 3,
+                    Usuario = nomina,
+                    Error = ex.Message,
+                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+                };
+                await logService.LogError(logError, "").ContinueWith(logRes =>
+                {
+                    if (logRes.IsFaulted)
+                        DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                });
                 await DisplayAlert("Error", ex.Message, "Ok");
+            }
+            finally
+            {
+                isBusy = false;
             }
         }
 
         private async void OnTapNext_Tapped(object sender, EventArgs e)
         {
+            if (isBusy) return;
+            isBusy = true;
             try
             {
                 // Dependiendo del tipo de producción activada (Diaria o Semanal), cargamos el periodo siguiente
@@ -374,7 +434,23 @@ namespace GestionFC.Views
             }
             catch (Exception ex)
             {
+                var logError = new Models.Log.LogErrorModel()
+                {
+                    IdPantalla = 3,
+                    Usuario = nomina,
+                    Error = ex.Message,
+                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+                };
+                await logService.LogError(logError, "").ContinueWith(logRes =>
+                {
+                    if (logRes.IsFaulted)
+                        DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                });
                 await DisplayAlert("Error", ex.Message, "Ok");
+            }
+            finally
+            {
+                isBusy = false;
             }
         }
     }
