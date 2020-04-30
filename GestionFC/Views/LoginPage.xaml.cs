@@ -120,7 +120,6 @@ namespace GestionFC
                         {
                             if(Xamarin.Essentials.VersionTracking.CurrentVersion != x.Result.Valor)
                                 throw new Exception("Versión incorrecta, favor de actualizar!!!");
-
                         });
                         // Temporal
                         if (PassworUser.Text == "123pormi")
