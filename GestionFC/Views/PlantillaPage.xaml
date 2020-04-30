@@ -3,13 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:controls="clr-namespace:GestionFC.Views"
+             xmlns:renderers="clr-namespace:GestionFC.Renderers"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:fFImageLoadingTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             xmlns:renderers="clr-namespace:GestionFC.Renderers"
              mc:Ignorable="d"
              x:Class="GestionFC.Views.PlantillaPage">
     <RelativeLayout Padding="0">
+
+        <!--FONDO DE LA PANTALLA-->
         <Image
             Aspect="AspectFill"
             Source="background_app.png"
@@ -26,6 +27,7 @@
             RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
 
+            <!--HEADER-->
             <Grid Margin="0" 
                   Padding="0" 
                   ColumnSpacing="0" 
@@ -414,8 +416,8 @@
                                 VerticalTextAlignment="Center">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS" Value="0,0,0,0" />
-                                        <On Platform="Android" Value="3,-2,0,0" />
+                                        <On Platform="iOS" Value="4,0,0,0" />
+                                        <On Platform="Android" Value="4,-2,0,0" />
                                     </OnPlatform>
                                 </Label.Margin>
                                 <Label.FontSize>
@@ -536,7 +538,7 @@
                         Grid.Row="1"
                         HasShadow="False">
                     </Frame>
-                    <Label Text="AGENTES META ALCANZADA"
+                    <Label Text="AGENTES META&#10;ALCANZADA"
                         FontFamily="{StaticResource Poppins-Regular}"
                         TextColor="#FFFFFF"
                         Grid.Row="1"
@@ -544,17 +546,18 @@
                         Grid.ColumnSpan="1"
                         HorizontalTextAlignment="Start"
                         VerticalTextAlignment="Start"
+                        LineHeight="0.7"
                         VerticalOptions="CenterAndExpand">
                         <Label.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
-                                <On Platform="iOS" Value="10,0,0,0" />
-                                <On Platform="Android" Value="10,3,0,0" />
+                                <On Platform="iOS" Value="10,5,0,0" />
+                                <On Platform="Android" Value="10,0,0,0" />
                             </OnPlatform>
                         </Label.Margin>
                         <Label.FontSize>
                             <OnPlatform x:TypeArguments="x:Double">
                                 <On Platform="iOS" Value="14" />
-                                <On Platform="Android" Value="10" />
+                                <On Platform="Android" Value="14" />
                             </OnPlatform>
                         </Label.FontSize>
                     </Label>
@@ -640,7 +643,7 @@
                         Grid.Row="3"
                         HasShadow="False">
                     </Frame>
-                    <Label Text="TRÁMITES CERTIFICADOS"
+                    <Label Text="TRÁMITES&#10;CERTIFICADOS"
                         FontFamily="{StaticResource Poppins-Regular}"
                         TextColor="#FFFFFF"
                         Grid.Row="3"
@@ -648,18 +651,18 @@
                         Grid.ColumnSpan="1"
                         HorizontalTextAlignment="Start"
                         VerticalTextAlignment="Start"
-                        Margin="10,0,0,0"
+                        LineHeight="0.7"
                         VerticalOptions="CenterAndExpand">
                         <Label.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
-                                <On Platform="iOS" Value="10,0,0,0" />
-                                <On Platform="Android" Value="10,3,0,0" />
+                                <On Platform="iOS" Value="10,5,0,0" />
+                                <On Platform="Android" Value="10,0,0,0" />
                             </OnPlatform>
                         </Label.Margin>
                         <Label.FontSize>
                             <OnPlatform x:TypeArguments="x:Double">
                                 <On Platform="iOS" Value="14" />
-                                <On Platform="Android" Value="12" />
+                                <On Platform="Android" Value="14" />
                             </OnPlatform>
                         </Label.FontSize>
                     </Label>
