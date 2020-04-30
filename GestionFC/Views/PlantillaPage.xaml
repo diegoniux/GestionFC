@@ -761,7 +761,6 @@
                         Aspect="AspectFit">
                     </Image>
                 </Grid>
-                                Grid.Row="1" 
                 <CollectionView ItemsSource="{Binding  Agentes}"
                                 Grid.Row="1"
                                 Grid.Column="1"
