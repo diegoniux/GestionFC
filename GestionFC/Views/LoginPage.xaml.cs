@@ -118,7 +118,11 @@ namespace GestionFC
                     {
                         await catalogo.GetCatalogo(App.ClaveVersion).ContinueWith(x =>
                         {
-                            if(Xamarin.Essentials.VersionTracking.CurrentVersion != x.Result.Valor)
+                            if (x.IsFaulted)
+                                throw new Exception("Ocurrió un error");
+                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                                throw new Exception("Error de conexión.");
+                            if (Xamarin.Essentials.VersionTracking.CurrentVersion != x.Result.Valor)
                                 throw new Exception("Versión incorrecta, favor de actualizar!!!");
                         });
                         // Temporal
