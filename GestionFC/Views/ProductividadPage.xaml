@@ -1542,7 +1542,7 @@
                     ItemsSource="{Binding  ProductividadSemanal.ResultDatos}"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Grid.Row="4"
+                    Grid.Row="3"
                     Margin="0"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand">
@@ -1574,7 +1574,7 @@
                                     <!--Semana 4-->
                                     <ColumnDefinition Width="0.70*"></ColumnDefinition>
                                     <!--Total-->
-                                    <ColumnDefinition Width="0.70"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.70*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
 
                                 <!--DATOS-->
