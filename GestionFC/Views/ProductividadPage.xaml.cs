@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using GestionFC.Models.Log;
 using GestionFC.ViewModels.ProductividadPage;
 using System;
 using Xamarin.Essentials;
@@ -35,8 +36,8 @@ namespace GestionFC.Views
         {
             Service.HeaderService headerService = new Service.HeaderService();
             Service.ProductividadService productividadService = new Service.ProductividadService();
-
             IsBusy = true;
+            
             try
             {
                 await App.Database.GetGestionFCItemAsync().ContinueWith(x =>
@@ -51,7 +52,7 @@ namespace GestionFC.Views
                         token = x.Result[0].TokenSesion;
                         nomina = x.Result[0].Nomina;
                     }
-                });
+                });                
 
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
@@ -110,6 +111,20 @@ namespace GestionFC.Views
                         }
 
                         ViewModel.ComisionEstimada = x.Result;
+                    });
+
+                    //Guardamos genramos la inserción en bitácora (inicio de sesión)
+                    var logModel = new LogSistemaModel()
+                    {
+                        IdPantalla = 3,
+                        IdAccion = 2,
+                        Usuario = nomina,
+                        Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+                    };
+                    await logService.LogSistema(logModel, token).ContinueWith(logRes =>
+                    {
+                        if (logRes.IsFaulted)
+                            throw logRes.Exception;
                     });
                 }
             }
