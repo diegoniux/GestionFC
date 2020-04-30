@@ -49,18 +49,6 @@
                     Grid.Row="0" 
                     Grid.RowSpan="2" 
                     Margin="10, 0, 10, 0">
-                    <Frame.CornerRadius>
-                        <OnPlatform x:TypeArguments="x:Single">
-                            <On Platform="iOS">20</On>
-                            <On Platform="Android">20</On>
-                        </OnPlatform>
-                    </Frame.CornerRadius>
-                    <Frame.HasShadow>
-                        <OnPlatform x:TypeArguments="x:Boolean">
-                            <On Platform="iOS">True</On>
-                            <On Platform="Android">True</On>
-                        </OnPlatform>
-                    </Frame.HasShadow>
                 </Frame>
 
                 <Grid Margin="0"
@@ -129,8 +117,8 @@
                                 CacheDuration = "90"
                                 RetryCount = "5"
                                 RetryDelay = "450"
-                                LoadingPlaceholder="capi_circulo.png"
-                                ErrorPlaceholder="capi_circulo.png">
+                                LoadingPlaceholder="foto_capi.png"
+                                ErrorPlaceholder="foto_capi.png">
                                 <ffimageloading:CachedImage.Transformations>
                                     <fFImageLoadingTrans:CircleTransformation
                                         BorderSize="5"
@@ -143,18 +131,12 @@
                             FontFamily="{StaticResource Poppins-Bold}"
                             FontSize="22"
                             TextColor="#FFFFFF"
+                            Margin="0, -2, 0, 0"
                             HorizontalTextAlignment="Center"
                             Grid.Column="0"
                             Grid.ColumnSpan="3"
                             Grid.Row="1"
                             VerticalOptions="Start">
-                            <Label.Margin>
-                                <OnPlatform x:TypeArguments="Thickness">
-                                    <On Platform="iOS" Value="0,-2,0,0" />
-                                    <On Platform="Android" Value="0,-9,0,0" />
-                                </OnPlatform>
-                            </Label.Margin>
-
                         </Label>
 
                         <Label Text="{Binding NombreGerente}"
@@ -179,18 +161,6 @@
                     Grid.Row="0"
                     Grid.RowSpan="3"
                     Margin="0">
-                    <Frame.CornerRadius>
-                        <OnPlatform x:TypeArguments="x:Single">
-                            <On Platform="iOS">20</On>
-                            <On Platform="Android">20</On>
-                        </OnPlatform>
-                    </Frame.CornerRadius>
-                    <Frame.HasShadow>
-                        <OnPlatform x:TypeArguments="x:Boolean">
-                            <On Platform="iOS">True</On>
-                            <On Platform="Android">True</On>
-                        </OnPlatform>
-                    </Frame.HasShadow>
                     <Grid
                         Margin="0,0,0,0"
                         Padding="0">
@@ -232,114 +202,63 @@
 
                         <Label Text="{Binding Gerente.SaldoAcumulado}"
                             FontFamily="{StaticResource Poppins-Bold}"
+                            FontSize="35"
                             TextColor="#ffffff"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             Grid.Row="1"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Start">
-                            <Label.Margin>
-                                <OnPlatform x:TypeArguments="Thickness">
-                                    <On Platform="iOS" Value="0,0,0,0" />
-                                    <On Platform="Android" Value="0,-11,0,0" />
-                                </OnPlatform>
-                            </Label.Margin>
-                            <Label.FontSize>
-                                <OnPlatform x:TypeArguments="x:Double">
-                                    <On Platform="iOS" Value="35" />
-                                    <On Platform="Android" Value="35" />
-                                </OnPlatform>
-                            </Label.FontSize>
                         </Label>
 
                         <!-- SALDO VIRTUAL -->
                         <Label Text="SALDO VIRTUAL"
                             FontFamily="{StaticResource Poppins-Regular}"
+                            FontSize="12"
                             TextColor="#ffffff"
+                            Margin="0,0,0,0"
                             Grid.Column="0"
                             Grid.ColumnSpan="1"
                             Grid.Row="3"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="End">
-                            <Label.Margin>
-                                <OnPlatform x:TypeArguments="Thickness">
-                                    <On Platform="iOS" Value="0,0,0,0" />
-                                    <On Platform="Android" Value="0,-11,0,0" />
-                                </OnPlatform>
-                            </Label.Margin>
-                            <Label.FontSize>
-                                <OnPlatform x:TypeArguments="x:Double">
-                                    <On Platform="iOS" Value="12" />
-                                    <On Platform="Android" Value="12" />
-                                </OnPlatform>
-                            </Label.FontSize>
                         </Label>
 
                         <Label Text="{Binding Gerente.SaldoVirtual}"
                             FontFamily="{StaticResource Poppins-Bold}"
+                            FontSize="12"
                             TextColor="#ffffff"
+                            Margin="0,0,0,0"
                             Grid.Column="0"
                             Grid.ColumnSpan="1"
                             Grid.Row="4"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Start">
-                            <Label.Margin>
-                                <OnPlatform x:TypeArguments="Thickness">
-                                    <On Platform="iOS" Value="0,0,0,0" />
-                                    <On Platform="Android" Value="0,-11,0,0" />
-                                </OnPlatform>
-                            </Label.Margin>
-                            <Label.FontSize>
-                                <OnPlatform x:TypeArguments="x:Double">
-                                    <On Platform="iOS" Value="12" />
-                                    <On Platform="Android" Value="12" />
-                                </OnPlatform>
-                            </Label.FontSize>
                         </Label>
 
                         <!-- SALDO CANTADO -->
                         <Label Text="SALDO CANTADO FCT"
                             FontFamily="{StaticResource Poppins-Regular}"
+                            FontSize="12"
                             TextColor="#ffffff"
+                            Margin="0,0,0,0"
                             Grid.Column="1"
                             Grid.ColumnSpan="1"
                             Grid.Row="3"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="End">
-                            <Label.Margin>
-                                <OnPlatform x:TypeArguments="Thickness">
-                                    <On Platform="iOS" Value="0,0,0,0" />
-                                    <On Platform="Android" Value="0,-11,0,0" />
-                                </OnPlatform>
-                            </Label.Margin>
-                            <Label.FontSize>
-                                <OnPlatform x:TypeArguments="x:Double">
-                                    <On Platform="iOS" Value="12" />
-                                    <On Platform="Android" Value="12" />
-                                </OnPlatform>
-                            </Label.FontSize>
                         </Label>
 
                         <Label Text="{Binding Gerente.SaldoCantadoFCT}"
                             FontFamily="{StaticResource Poppins-Bold}"
+                            FontSize="12"
                             TextColor="#ffffff"
+                            Margin="0,0,0,0"
                             Grid.Column="1"
                             Grid.ColumnSpan="1"
                             Grid.Row="4"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Start">
-                            <Label.Margin>
-                                <OnPlatform x:TypeArguments="Thickness">
-                                    <On Platform="iOS" Value="0,0,0,0" />
-                                    <On Platform="Android" Value="0,-11,0,0" />
-                                </OnPlatform>
-                            </Label.Margin>
-                            <Label.FontSize>
-                                <OnPlatform x:TypeArguments="x:Double">
-                                    <On Platform="iOS" Value="12" />
-                                    <On Platform="Android" Value="12" />
-                                </OnPlatform>
-                            </Label.FontSize>
                         </Label>
 
                         <Grid Margin="20,0,0,0"
@@ -411,42 +330,19 @@
                                 VerticalOptions="CenterAndExpand"
                                 Margin="5,0,0,0"
                                 VerticalTextAlignment="Center">
-                                <Label.Margin>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS" Value="0,0,0,0" />
-                                        <On Platform="Android" Value="3,-2,0,0" />
-                                    </OnPlatform>
-                                </Label.Margin>
-                                <Label.FontSize>
-                                    <OnPlatform x:TypeArguments="x:Double">
-                                        <On Platform="iOS" Value="12" />
-                                        <On Platform="Android" Value="12" />
-                                    </OnPlatform>
-                                </Label.FontSize>
                             </Label>
 
                             <!-- MSG -->
                             <Label 
                                 Text="Este es el desempeño de tu plantilla"
+                                FontSize="10"
                                 FontAttributes="Bold"
                                 TextColor="#FFFFFF"
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Grid.ColumnSpan="1"
+                                Grid.ColumnSpan="2"
                                 HorizontalTextAlignment="Center"
-                                VerticalTextAlignment="Start">
-                                <Label.Margin>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="iOS" Value="0,5,0,0" />
-                                        <On Platform="Android" Value="0,-1,0,0" />
-                                    </OnPlatform>
-                                </Label.Margin>
-                                <Label.FontSize>
-                                    <OnPlatform x:TypeArguments="x:Double">
-                                        <On Platform="iOS" Value="10" />
-                                        <On Platform="Android" Value="10" />
-                                    </OnPlatform>
-                                </Label.FontSize>
+                                VerticalTextAlignment="Center">
                             </Label>
 
                         </Grid>
@@ -486,25 +382,15 @@
                     </Frame>
                     <Label Text="PLANTILLA"
                         FontFamily="{StaticResource Poppins-Regular}"
+                        FontSize="14"
                         TextColor="#FFFFFF"
                         Grid.Row="0"
                         Grid.Column="1"
                         Grid.ColumnSpan="1"
                         HorizontalTextAlignment="Start"
                         VerticalTextAlignment="Start"
+                        Margin="10,0,0,0"
                         VerticalOptions="CenterAndExpand">
-                        <Label.Margin>
-                            <OnPlatform x:TypeArguments="Thickness">
-                                <On Platform="iOS" Value="10,0,0,0" />
-                                <On Platform="Android" Value="10,3,0,0" />
-                            </OnPlatform>
-                        </Label.Margin>
-                        <Label.FontSize>
-                            <OnPlatform x:TypeArguments="x:Double">
-                                <On Platform="iOS" Value="14" />
-                                <On Platform="Android" Value="14" />
-                            </OnPlatform>
-                        </Label.FontSize>
                     </Label>
                     <Frame
                         BackgroundColor="White"
@@ -537,25 +423,15 @@
                     </Frame>
                     <Label Text="AGENTES META ALCANZADA"
                         FontFamily="{StaticResource Poppins-Regular}"
+                        FontSize="14"
                         TextColor="#FFFFFF"
                         Grid.Row="1"
                         Grid.Column="1"
                         Grid.ColumnSpan="1"
                         HorizontalTextAlignment="Start"
                         VerticalTextAlignment="Start"
+                        Margin="10,0,0,0"
                         VerticalOptions="CenterAndExpand">
-                        <Label.Margin>
-                            <OnPlatform x:TypeArguments="Thickness">
-                                <On Platform="iOS" Value="10,0,0,0" />
-                                <On Platform="Android" Value="10,3,0,0" />
-                            </OnPlatform>
-                        </Label.Margin>
-                        <Label.FontSize>
-                            <OnPlatform x:TypeArguments="x:Double">
-                                <On Platform="iOS" Value="14" />
-                                <On Platform="Android" Value="10" />
-                            </OnPlatform>
-                        </Label.FontSize>
                     </Label>
                     <Frame
                         BackgroundColor="White"
@@ -589,25 +465,15 @@
                     </Frame>
                     <Label Text="FCT INACTIVOS"
                         FontFamily="{StaticResource Poppins-Regular}"
+                        FontSize="14"
                         TextColor="#FFFFFF"
                         Grid.Row="2"
                         Grid.Column="1"
                         Grid.ColumnSpan="1"
                         HorizontalTextAlignment="Start"
                         VerticalTextAlignment="Start"
+                        Margin="10,0,0,0"
                         VerticalOptions="CenterAndExpand">
-                        <Label.Margin>
-                            <OnPlatform x:TypeArguments="Thickness">
-                                <On Platform="iOS" Value="10,0,0,0" />
-                                <On Platform="Android" Value="10,3,0,0" />
-                            </OnPlatform>
-                        </Label.Margin>
-                        <Label.FontSize>
-                            <OnPlatform x:TypeArguments="x:Double">
-                                <On Platform="iOS" Value="14" />
-                                <On Platform="Android" Value="14" />
-                            </OnPlatform>
-                        </Label.FontSize>
                     </Label>
                     <Frame
                         BackgroundColor="White"
@@ -641,6 +507,7 @@
                     </Frame>
                     <Label Text="TRÁMITES CERTIFICADOS"
                         FontFamily="{StaticResource Poppins-Regular}"
+                        FontSize="14"
                         TextColor="#FFFFFF"
                         Grid.Row="3"
                         Grid.Column="1"
@@ -649,18 +516,6 @@
                         VerticalTextAlignment="Start"
                         Margin="10,0,0,0"
                         VerticalOptions="CenterAndExpand">
-                        <Label.Margin>
-                            <OnPlatform x:TypeArguments="Thickness">
-                                <On Platform="iOS" Value="10,0,0,0" />
-                                <On Platform="Android" Value="10,3,0,0" />
-                            </OnPlatform>
-                        </Label.Margin>
-                        <Label.FontSize>
-                            <OnPlatform x:TypeArguments="x:Double">
-                                <On Platform="iOS" Value="14" />
-                                <On Platform="Android" Value="12" />
-                            </OnPlatform>
-                        </Label.FontSize>
                     </Label>
                     <Frame
                         BackgroundColor="White"
@@ -1272,8 +1127,10 @@
                     Grid.ColumnSpan="2"
                     Grid.Row="4"
                     Margin="0"
+                    SelectionMode="Single"
                     VerticalOptions="FillAndExpand"
-                    HorizontalOptions="FillAndExpand">
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="#FFFFFF">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout 
                             Orientation="Vertical"></GridItemsLayout>
@@ -1284,8 +1141,7 @@
                                 Margin="0"
                                 Padding="0"
                                 ColumnSpacing="1"
-                                RowSpacing="0"
-                                BackgroundColor="#DCD7D7">
+                                RowSpacing="0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="35"></RowDefinition>
                                 </Grid.RowDefinitions>
@@ -1324,9 +1180,9 @@
                                 <!--DATOS-->
                                 <Label
                                     Text="{Binding NombreCompletoAp}"
-                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="0"
                                     FontSize="10"
+                                    Margin="5,0,0,0"
                                     VerticalTextAlignment="Center"
                                     HorizontalTextAlignment="Start"
                                     TextColor="#353535"
@@ -1334,7 +1190,6 @@
                                 </Label>
                                 <Label
                                     Text="{Binding SaldoVirtualLunes}"
-                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="1"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1344,7 +1199,6 @@
                                 </Label>
                                 <Label
                                     Text="{Binding SaldoVirtualMartes}"
-                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="2"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1354,7 +1208,6 @@
                                 </Label>
                                 <Label
                                     Text="{Binding SaldoVirtualMiercoles}"
-                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="3"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1364,7 +1217,6 @@
                                 </Label>
                                 <Label
                                     Text="{Binding SaldoVirtualJueves}"
-                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="4"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1374,7 +1226,6 @@
                                 </Label>
                                 <Label
                                     Text="{Binding SaldoVirtualViernes}"
-                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="5"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1384,7 +1235,6 @@
                                 </Label>
                                 <Label
                                     Text="{Binding SaldoVirtualSabado}"
-                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="6"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1394,7 +1244,6 @@
                                 </Label>
                                 <Label
                                     Text="{Binding SaldoVirtualDomingo}"
-                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="7"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1415,7 +1264,6 @@
                                 </Label>
                                 <Label
                                     Text="{Binding SaldoVirtualFaltante}"
-                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="9"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1425,7 +1273,6 @@
                                 </Label>
                                 <Label
                                     Text="{Binding MetaSemana}"
-                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="10"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1436,7 +1283,6 @@
 
                                 <Label
                                     Text="{Binding FctInactivos}"
-                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="11"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1446,7 +1292,6 @@
                                 </Label>
                                 <Label
                                     Text="{Binding FctActivos}"
-                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="12"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1456,7 +1301,6 @@
                                 </Label>
                                 <Label
                                     Text="{Binding FoliosMenores30K}"
-                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="13"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1466,7 +1310,6 @@
                                 </Label>
                                 <Label
                                     Text="{Binding FoliosCertificados}"
-                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="14"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
@@ -1516,7 +1359,7 @@
                         <!--Semana 4-->
                         <ColumnDefinition Width="0.70*"></ColumnDefinition>
                         <!--Total-->
-                        <ColumnDefinition Width="0.70"></ColumnDefinition>
+                        <ColumnDefinition Width="0.70*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
                     <StackLayout
@@ -1684,13 +1527,15 @@
                 <CollectionView 
                     x:Name="CollecionViewProdSemanal"
                     IsVisible="False"
+                    SelectionMode="Single"
                     ItemsSource="{Binding  ProductividadSemanal.ResultDatos}"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Grid.Row="3"
+                    Grid.Row="4"
                     Margin="0"
                     VerticalOptions="FillAndExpand"
-                    HorizontalOptions="FillAndExpand">
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="#FFFFFF">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout 
                             Orientation="Vertical" Span="1"></GridItemsLayout>
@@ -1700,8 +1545,7 @@
                             <Grid
                                 Margin="0"
                                 ColumnSpacing="1"
-                                RowSpacing="1"
-                                BackgroundColor="#DCD7D7">
+                                RowSpacing="0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="35"></RowDefinition>
                                 </Grid.RowDefinitions>
@@ -1726,13 +1570,13 @@
 
                                 <Label
                                     Text="{Binding NombreCompletoAp}"
-                                    BackgroundColor="#FFFFFF"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2"
                                     FontSize="10"
                                     VerticalTextAlignment="Center"
                                     HorizontalTextAlignment="Start"
                                     TextColor="#353535"
+                                    Margin="5,0,0,0"
                                     FontFamily="{StaticResource Poppins-Medium}">
                                 </Label>
                                 <Label
