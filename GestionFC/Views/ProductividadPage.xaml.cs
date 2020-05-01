@@ -17,7 +17,7 @@ namespace GestionFC.Views
         private string token;
         private bool isBusy = false;
         public ProductividadPageViewModel ViewModel { get; set; }
-        Service.LogService logService { get; set; }
+        private Service.LogService logService { get; set; }
 
         public ProductividadPage()
         {
@@ -113,7 +113,7 @@ namespace GestionFC.Views
                         ViewModel.ComisionEstimada = x.Result;
                     });
 
-                    //Guardamos genramos la inserción en bitácora (inicio de sesión)
+                    //Guardamos genramos la inserción en bitácora (acceso de pantalla)
                     var logModel = new LogSistemaModel()
                     {
                         IdPantalla = 3,

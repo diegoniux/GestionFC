@@ -19,6 +19,8 @@ namespace GestionFC.Views
         private int nomina { get; set; }
         private string token { get; set; }
         public Master _master;
+        private Service.LogService logService { get; set; }
+
         public PlantillaPage()
         {
             InitializeComponent();
@@ -42,7 +44,7 @@ namespace GestionFC.Views
 
         private async void LoadPage()
         {
-            Service.LogService logService = new Service.LogService();
+            logService = new Service.LogService();
             Service.HeaderService headerService = new Service.HeaderService();
             Service.PlantillaService gridPromotoresService = new Service.PlantillaService();
             nomina = 0;
@@ -93,7 +95,7 @@ namespace GestionFC.Views
                           ViewModel.Agentes = x.Result.Promotores;
                       });
 
-                    //Guardamos genramos la inserción en bitácora (inicio de sesión)
+                    //Guardamos genramos la inserción en bitácora (acceso de pantalla)
                     var logModel = new LogSistemaModel()
                     {
                         IdPantalla = 2,

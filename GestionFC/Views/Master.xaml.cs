@@ -20,11 +20,14 @@ namespace GestionFC.Views
         public ViewModels.Master.MasterViewModel ViewModel { get; set; }
         private int _nomina { get; set; }
         private string _token { get; set; }
+        private Service.LogService logService { get; set; }
+
         public Master()
         {
             InitializeComponent();
             version.Text = $"Versión: {VersionTracking.CurrentVersion}";
             ViewModel = new ViewModels.Master.MasterViewModel();
+            logService = new Service.LogService();
             var masterPageItems = new List<MasterPageItem>();
             //masterPageItems.Add(new MasterPageItem
             //{
@@ -56,6 +59,7 @@ namespace GestionFC.Views
             try
             {
                 _nomina = nomina;
+                _token = token;
                 //Cargar datros para el binding de información con el header
                 ViewModel.NombreGerenteMaster = nombreCompleto;
                 ViewModel.Puesto = puesto;
@@ -93,13 +97,13 @@ namespace GestionFC.Views
                     Usuario = _nomina,
                     Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
                 };
-                await logService.LogSistema(logModel, token).ContinueWith(logRes =>
+                await logService.LogSistema(logModel, _token).ContinueWith(logRes =>
                 {
                     if (logRes.IsFaulted)
                         throw logRes.Exception;
                 });
                 App.MasterDetail.IsPresented = false;
-                loadPage(0, string.Empty, string.Empty, "capi_circulo.png");
+                loadPage(0, string.Empty, string.Empty, "capi_circulo.png", _token);
                 await App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(item.TargetType));
                 listView.SelectedItem = null;
             }

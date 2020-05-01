@@ -185,7 +185,7 @@ namespace GestionFC
 
                                 App.Database.SaveGestionFCItemAsync(gestionFC);
 
-                            //Guardamos genramos la inserción en bitácora (inicio de sesión)
+                            //Guardamos genramos la inserción en bitácora (Cierre Sesión)
                             var logModel = new LogSistemaModel()
                                 {
                                     IdPantalla = 1,
