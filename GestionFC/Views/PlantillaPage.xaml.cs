@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using Service = GestionFC.Services;
+using GestionFC.Models.Log;
 
 namespace GestionFC.Views
 {
@@ -15,7 +16,11 @@ namespace GestionFC.Views
     public partial class PlantillaPage : ContentPage
     {
         public ViewModels.PlantillaPage.PlantillaPageViewModel ViewModel { get; set; }
+        private int nomina { get; set; }
+        private string token { get; set; }
         public Master _master;
+        private Service.LogService logService { get; set; }
+
         public PlantillaPage()
         {
             InitializeComponent();
@@ -39,13 +44,13 @@ namespace GestionFC.Views
 
         private async void LoadPage()
         {
-            Service.LogService logService = new Service.LogService();
+            logService = new Service.LogService();
             Service.HeaderService headerService = new Service.HeaderService();
             Service.PlantillaService gridPromotoresService = new Service.PlantillaService();
-            int nomina = 0;
+            nomina = 0;
             try
             {
-                string token = string.Empty;
+                token = string.Empty;
                 await App.Database.GetGestionFCItemAsync().ContinueWith(x => {
                     if (x.IsFaulted)
                     {
@@ -72,7 +77,7 @@ namespace GestionFC.Views
                         {
                             ViewModel.Gerente = x.Result.Progreso;
                         }
-                        _master.loadPage(nomina, ViewModel.NombreGerente, x.Result.Perfil, x.Result.Progreso.Foto);
+                        _master.loadPage(nomina, ViewModel.NombreGerente, x.Result.Perfil, x.Result.Progreso.Foto, token);
                     }));
 
                     await gridPromotoresService.GetGridPromotores(nomina, token).ContinueWith(x =>
@@ -89,6 +94,20 @@ namespace GestionFC.Views
 
                           ViewModel.Agentes = x.Result.Promotores;
                       });
+
+                    //Guardamos genramos la inserción en bitácora (acceso de pantalla)
+                    var logModel = new LogSistemaModel()
+                    {
+                        IdPantalla = 2,
+                        IdAccion = 2,
+                        Usuario = nomina,
+                        Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+                    };
+                    await logService.LogSistema(logModel, token).ContinueWith(logRes =>
+                    {
+                        if (logRes.IsFaulted)
+                            throw logRes.Exception;
+                    });
                 }
             }
             catch (Exception ex)

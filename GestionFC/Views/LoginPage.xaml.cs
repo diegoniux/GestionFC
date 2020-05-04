@@ -118,9 +118,12 @@ namespace GestionFC
                     {
                         await catalogo.GetCatalogo(App.ClaveVersion).ContinueWith(x =>
                         {
-                            if(Xamarin.Essentials.VersionTracking.CurrentVersion != x.Result.Valor)
+                            if (x.IsFaulted)
+                                throw new Exception("Ocurrió un error");
+                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                                throw new Exception("Error de conexión.");
+                            if (Xamarin.Essentials.VersionTracking.CurrentVersion != x.Result.Valor)
                                 throw new Exception("Versión incorrecta, favor de actualizar!!!");
-
                         });
                         // Temporal
                         if (PassworUser.Text == "123pormi")
@@ -182,7 +185,7 @@ namespace GestionFC
 
                                 App.Database.SaveGestionFCItemAsync(gestionFC);
 
-                            //Guardamos genramos la inserción en bitácora (inicio de sesión)
+                            //Guardamos genramos la inserción en bitácora (Cierre Sesión)
                             var logModel = new LogSistemaModel()
                                 {
                                     IdPantalla = 1,
