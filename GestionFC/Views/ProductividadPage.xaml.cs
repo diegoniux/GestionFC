@@ -281,6 +281,8 @@ namespace GestionFC.Views
                             anio -= 1;
                         }
 
+                        // Limpiamos la selección y el contenido
+                        CollecionViewProdDiaria.SelectedItem = null;
                         ViewModel.ProductividadDiaria = null;
                         await productividadService.GetProduccionDiaria(nomina, anio, semanaAnio, token).ContinueWith(x =>
                         {
@@ -310,7 +312,8 @@ namespace GestionFC.Views
                             anio -= 1;
                         }
 
-                        // limpiamos la información actial
+                        // limpiamos la información actial y la selección
+                        CollecionViewProdSemanal.SelectedItem = null;
                         ViewModel.ProductividadSemanal = null;
 
                         await productividadService.GetProduccionSemanal(nomina, anio, tetrasemanaAnio, token).ContinueWith(x =>
@@ -385,7 +388,10 @@ namespace GestionFC.Views
 
                     using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                     {
+                        // Limpiamos la selección del content view
+
                         // Limíamos la información actual
+                        CollecionViewProdDiaria.SelectedItem = null;
                         ViewModel.ProductividadDiaria = null;
 
                         await productividadService.GetProduccionDiaria(nomina, anio, semanaAnio, token).ContinueWith(x =>
@@ -429,6 +435,7 @@ namespace GestionFC.Views
                     using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                     {
                         // Limíamos la información actual
+                        CollecionViewProdSemanal.SelectedItem = null;
                         ViewModel.ProductividadSemanal = null;
 
                         await productividadService.GetProduccionSemanal(nomina, anio, tetrasemanaAnio, token).ContinueWith(x =>
