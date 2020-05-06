@@ -20,7 +20,7 @@ namespace GestionFC.Views
         public ViewModels.Master.MasterViewModel ViewModel { get; set; }
         private int _nomina { get; set; }
         private string _token { get; set; }
-        private Service.LogService logService { get; set; }
+        public Service.LogService logService { get; set; }
 
         public Master()
         {
@@ -89,24 +89,34 @@ namespace GestionFC.Views
                         return;
                     }
                 }
-                //Guardamos genramos la inserción en bitácora (inicio de sesión)
-                var logModel = new LogSistemaModel()
-                {
-                    IdPantalla = 3,
-                    IdAccion = 2,
-                    Usuario = _nomina,
-                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
-                };
-                await logService.LogSistema(logModel, _token).ContinueWith(logRes =>
-                {
-                    if (logRes.IsFaulted)
-                        throw logRes.Exception;
-                });
-                App.MasterDetail.IsPresented = false;
-                loadPage(0, string.Empty, string.Empty, "capi_circulo.png", _token);
-                await App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(item.TargetType));
-                listView.SelectedItem = null;
+                await cerrarSesion(item);
             }
+        }
+
+
+        public async Task cerrarSesionError() {
+            await cerrarSesion(null);
+        }
+
+        private async Task cerrarSesion(MasterPageItem item) {
+            //Guardamos genramos la inserción en bitácora (inicio de sesión)
+            var logModel = new LogSistemaModel()
+            {
+                IdPantalla = 3,
+                IdAccion = 2,
+                Usuario = _nomina,
+                Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+            };
+            await logService.LogSistema(logModel, _token).ContinueWith(logRes =>
+            {
+                if (logRes.IsFaulted)
+                    throw logRes.Exception;
+            });
+            App.MasterDetail.IsPresented = false;
+            loadPage(0, string.Empty, string.Empty, "capi_circulo.png", _token);
+            if(item != null)
+                await App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(item.TargetType));
+            listView.SelectedItem = null;
         }
 
         void OnTapMenuHamburguesaBar_Tapped(System.Object sender, System.EventArgs e)

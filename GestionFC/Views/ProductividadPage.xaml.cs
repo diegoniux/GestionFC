@@ -17,12 +17,12 @@ namespace GestionFC.Views
         private string token;
         private bool isBusy = false;
         public ProductividadPageViewModel ViewModel { get; set; }
-        private Service.LogService logService { get; set; }
+        private Master _master;
 
         public ProductividadPage()
         {
             InitializeComponent();
-            logService = new Service.LogService();
+            _master = (Master)App.MasterDetail.Master;
             NavigationPage.SetHasNavigationBar(this, false);
 
             // Declaración del ViewModel y asignación al BindingContext
@@ -121,7 +121,7 @@ namespace GestionFC.Views
                         Usuario = nomina,
                         Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
                     };
-                    await logService.LogSistema(logModel, token).ContinueWith(logRes =>
+                    await _master.logService.LogSistema(logModel, token).ContinueWith(logRes =>
                     {
                         if (logRes.IsFaulted)
                             throw logRes.Exception;
@@ -137,7 +137,7 @@ namespace GestionFC.Views
                     Error = ex.Message,
                     Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
                 };
-                await logService.LogError(logError, "").ContinueWith(logRes =>
+                await _master.logService.LogError(logError, "").ContinueWith(logRes =>
                 {
                     if (logRes.IsFaulted)
                         DisplayAlert("Error", logRes.Exception.Message, "Ok");
@@ -245,7 +245,7 @@ namespace GestionFC.Views
                     Error = ex.Message,
                     Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
                 };
-                await logService.LogError(logError, "").ContinueWith(logRes =>
+                await _master.logService.LogError(logError, "").ContinueWith(logRes =>
                 {
                     if (logRes.IsFaulted)
                         DisplayAlert("Error", logRes.Exception.Message, "Ok");
@@ -338,7 +338,7 @@ namespace GestionFC.Views
                     Error = ex.Message,
                     Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
                 };
-                await logService.LogError(logError, "").ContinueWith(logRes =>
+                await _master.logService.LogError(logError, "").ContinueWith(logRes =>
                 {
                     if (logRes.IsFaulted)
                         DisplayAlert("Error", logRes.Exception.Message, "Ok");
@@ -456,7 +456,7 @@ namespace GestionFC.Views
                     Error = ex.Message,
                     Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
                 };
-                await logService.LogError(logError, "").ContinueWith(logRes =>
+                await _master.logService.LogError(logError, "").ContinueWith(logRes =>
                 {
                     if (logRes.IsFaulted)
                         DisplayAlert("Error", logRes.Exception.Message, "Ok");

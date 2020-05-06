@@ -474,7 +474,7 @@
                         <ColumnDefinition Width="33"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <!-- PLANTILLA -->
+                   <!-- PLANTILLA -->
                     <Frame 
                         CornerRadius="16"
                         BackgroundColor="#83b93d"
@@ -538,7 +538,7 @@
                         Grid.Row="1"
                         HasShadow="False">
                     </Frame>
-                    <Label Text="AGENTES META&#10;ALCANZADA"
+                    <Label Text="AGENTES META ALCANZADA"
                         FontFamily="{StaticResource Poppins-Regular}"
                         TextColor="#FFFFFF"
                         Grid.Row="1"
@@ -546,18 +546,17 @@
                         Grid.ColumnSpan="1"
                         HorizontalTextAlignment="Start"
                         VerticalTextAlignment="Start"
-                        LineHeight="0.7"
-                        VerticalOptions="CenterAndExpand">
+                        VerticalOptions="StartAndExpand">
                         <Label.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
-                                <On Platform="iOS" Value="10,7,0,0" />
-                                <On Platform="Android" Value="10,0,0,0" />
+                                <On Platform="iOS" Value="10,-1,0,-3" />
+                                <On Platform="Android" Value="10,3,0,0" />
                             </OnPlatform>
                         </Label.Margin>
                         <Label.FontSize>
                             <OnPlatform x:TypeArguments="x:Double">
                                 <On Platform="iOS" Value="14" />
-                                <On Platform="Android" Value="14" />
+                                <On Platform="Android" Value="10" />
                             </OnPlatform>
                         </Label.FontSize>
                     </Label>
@@ -643,7 +642,7 @@
                         Grid.Row="3"
                         HasShadow="False">
                     </Frame>
-                    <Label Text="TRÁMITES&#10;CERTIFICADOS"
+                    <Label Text="TRÁMITES CERTIFICADOS"
                         FontFamily="{StaticResource Poppins-Regular}"
                         TextColor="#FFFFFF"
                         Grid.Row="3"
@@ -651,18 +650,18 @@
                         Grid.ColumnSpan="1"
                         HorizontalTextAlignment="Start"
                         VerticalTextAlignment="Start"
-                        LineHeight="0.7"
+                        Margin="10,0,0,0"
                         VerticalOptions="CenterAndExpand">
                         <Label.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
-                                <On Platform="iOS" Value="10,5,0,0" />
-                                <On Platform="Android" Value="10,0,0,0" />
+                                <On Platform="iOS" Value="10,-1,0,-3" />
+                                <On Platform="Android" Value="10,3,0,0" />
                             </OnPlatform>
                         </Label.Margin>
                         <Label.FontSize>
                             <OnPlatform x:TypeArguments="x:Double">
                                 <On Platform="iOS" Value="14" />
-                                <On Platform="Android" Value="14" />
+                                <On Platform="Android" Value="12" />
                             </OnPlatform>
                         </Label.FontSize>
                     </Label>
@@ -683,7 +682,6 @@
                             VerticalOptions="CenterAndExpand">
                         </Label>
                     </Frame>
-
                 </Grid>
 
                 <!-- PIZARRON DIGITAL -->

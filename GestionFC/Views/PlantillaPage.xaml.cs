@@ -19,7 +19,7 @@ namespace GestionFC.Views
         private int nomina { get; set; }
         private string token { get; set; }
         public Master _master;
-        private Service.LogService logService { get; set; }
+        //private Service.LogService logService { get; set; }
 
         public PlantillaPage()
         {
@@ -44,18 +44,20 @@ namespace GestionFC.Views
 
         private async void LoadPage()
         {
-            logService = new Service.LogService();
+            //logService = new Service.LogService();
             Service.HeaderService headerService = new Service.HeaderService();
             Service.PlantillaService gridPromotoresService = new Service.PlantillaService();
             nomina = 0;
             try
             {
                 token = string.Empty;
+                try
+                {
                 await App.Database.GetGestionFCItemAsync().ContinueWith(x => {
                     if (x.IsFaulted)
-                    {
                         throw x.Exception;
-                    }
+                    if (x.Result == null || x.Result.Count == 0)
+                        throw new Exception("SQLite is null or empty.");
 
                     if (!string.IsNullOrEmpty(x.Result[0]?.TokenSesion))
                     {
@@ -63,51 +65,81 @@ namespace GestionFC.Views
                         nomina = x.Result[0].Nomina;
                     }
                 });
-
-                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                }
+                catch (Exception ex)
                 {
-                    await headerService.GetHeader(nomina).ContinueWith((Action<Task<Models.Share.HeaderResponseModel>>)(x =>
-                    {
-                        //Cargar datros para el binding de información con el header
-                        ViewModel.NombreGerente = x.Result.Progreso?.Nombre + " " + x.Result.Progreso?.Apellidos;
-                        ViewModel.Mensaje = x.Result.Progreso?.Genero == "H" ? "¡Bienvenido!" : "¡Bienvenida!";
-                        ViewModel.APsMetaAlcanzada = x.Result.APsMetaAlcanzada;
-                        ViewModel.Plantilla = x.Result.Plantilla;
-                        if (x.Result.Progreso != null)
-                        {
-                            ViewModel.Gerente = x.Result.Progreso;
-                        }
-                        _master.loadPage(nomina, ViewModel.NombreGerente, x.Result.Perfil, x.Result.Progreso.Foto, token);
-                    }));
-
-                    await gridPromotoresService.GetGridPromotores(nomina, token).ContinueWith(x =>
-                      {
-                          if (x.IsFaulted)
-                          {
-                              throw x.Exception;
-                          }
-
-                          if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                          {
-                              throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                          }
-
-                          ViewModel.Agentes = x.Result.Promotores;
-                      });
-
-                    //Guardamos genramos la inserción en bitácora (acceso de pantalla)
-                    var logModel = new LogSistemaModel()
+                    var logError = new Models.Log.LogErrorModel()
                     {
                         IdPantalla = 2,
-                        IdAccion = 2,
                         Usuario = nomina,
+                        Error = (ex.TargetSite == null ? "" : ex.TargetSite.Name + ". ") + ex.Message,
                         Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+
                     };
-                    await logService.LogSistema(logModel, token).ContinueWith(logRes =>
+                    await _master.logService.LogError(logError, "").ContinueWith(logRes =>
                     {
                         if (logRes.IsFaulted)
-                            throw logRes.Exception;
+                            DisplayAlert("Error", logRes.Exception.Message, "Ok");
                     });
+                    await DisplayAlert("SQLite PlantillaPage Error", ex.Message, "Ok");
+                    await _master.cerrarSesionError();
+                }
+                if (nomina > 0)
+                {
+                    using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                    {
+                        await headerService.GetHeader(nomina).ContinueWith((Action<Task<Models.Share.HeaderResponseModel>>)(x =>
+                        {
+                            if (x.IsFaulted)
+                            {
+                                throw x.Exception;
+                            }
+
+                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                            {
+                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                            }
+                            //Cargar datros para el binding de información con el header
+                            ViewModel.NombreGerente = x.Result.Progreso?.Nombre + " " + x.Result.Progreso?.Apellidos;
+                            ViewModel.Mensaje = x.Result.Progreso?.Genero == "H" ? "¡Bienvenido!" : "¡Bienvenida!";
+                            ViewModel.APsMetaAlcanzada = x.Result.APsMetaAlcanzada;
+                            ViewModel.Plantilla = x.Result.Plantilla;
+                            if (x.Result.Progreso != null)
+                            {
+                                ViewModel.Gerente = x.Result.Progreso;
+                            }
+                            _master.loadPage(nomina, ViewModel.NombreGerente, x.Result.Perfil, x.Result.Progreso.Foto, token);
+                        }));
+
+                        await gridPromotoresService.GetGridPromotores(nomina, token).ContinueWith(x =>
+                          {
+                              if (x.IsFaulted)
+                              {
+                                  throw x.Exception;
+                              }
+
+                              if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                              {
+                                  throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                              }
+
+                              ViewModel.Agentes = x.Result.Promotores;
+                          });
+
+                        //Guardamos genramos la inserción en bitácora (acceso de pantalla)
+                        var logModel = new LogSistemaModel()
+                        {
+                            IdPantalla = 2,
+                            IdAccion = 2,
+                            Usuario = nomina,
+                            Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+                        };
+                        await _master.logService.LogSistema(logModel, token).ContinueWith(logRes =>
+                        {
+                            if (logRes.IsFaulted)
+                                throw logRes.Exception;
+                        });
+                    }
                 }
             }
             catch (Exception ex)
@@ -116,11 +148,11 @@ namespace GestionFC.Views
                 {
                     IdPantalla = 2,
                     Usuario = nomina,
-                    Error = ex.Message,
+                    Error = (ex.TargetSite == null ? "" : ex.TargetSite.Name + ". ") + ex.Message,
                     Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
 
                 };
-                await logService.LogError(logError, "").ContinueWith(logRes =>
+                await _master.logService.LogError(logError, "").ContinueWith(logRes =>
                 {
                     if (logRes.IsFaulted)
                         DisplayAlert("Error", logRes.Exception.Message, "Ok");

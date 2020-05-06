@@ -23,7 +23,8 @@ namespace GestionFC
     public partial class LoginPage : ContentPage
     {
         public LoginViewModel LoginViewModel { get; set; }
-
+        private int UserRemember { get; set; }
+        private LogService logService { get; set; }
         public LoginPage()
         {
             InitializeComponent();
@@ -37,9 +38,8 @@ namespace GestionFC
 
             //BecomeFirstResponder();
 
-
-            //Obtenemos el valor del usuario recordado (ne caso de que exista) para mostrarlo en el entry
-            int UserRemember = 0;
+            UserRemember = 0;
+            //Obtenemos el valor del usuario recordado (en caso de que exista) para mostrarlo en el entry
             App.Database.GetGestionFCItemAsync().ContinueWith(x =>
             {
                 if (x.Result[0].UserSaved != 0)
@@ -101,7 +101,7 @@ namespace GestionFC
         {
             // Llamamos el servicio para el login
             LoginService loginService = new LoginService();
-            LogService logService = new LogService();
+            logService = new LogService();
             CatalogoService catalogo = new CatalogoService();
             try
             {
@@ -125,79 +125,48 @@ namespace GestionFC
                             if (Xamarin.Essentials.VersionTracking.CurrentVersion != x.Result.Valor)
                                 throw new Exception("Versión incorrecta, favor de actualizar!!!");
                         });
-                        // Temporal
-                        if (PassworUser.Text == "123pormi")
-                            Device.BeginInvokeOnMainThread(() =>
+                        await loginService.Login(loginModel).ContinueWith(x =>
+                        {
+                            if (x.IsFaulted)
+                                throw new Exception("Ocurrió un error");
+
+                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+
+                            if (!x.Result.UsuarioAutorizado)
+                                throw new Exception("Usuario y/o contraseña no coincide.");
+
+                            if (!x.Result.Activo)
+                                throw new Exception("Usuario inactivo.");
+
+                            if (!x.Result.EsGerente)
+                                throw new Exception("Usuario no cuenta con el perfil de gerente.");
+
+
+                        //Guardamos la información en la base de datos SQL Lite
+                        var gestionFC = new GestionFCModel()
                             {
-                                //Guardamos la información en la base de datos SQL Lite
-                                var gestionFC = new GestionFCModel()
-                                {
-                                    UserSaved = chkRemember.IsChecked ? int.Parse(UserName.Text) : 0,
-                                    Nomina = int.Parse(UserName.Text),
-                                    TokenSesion = "123pormi"
-                                };
+                                UserSaved = chkRemember.IsChecked ? int.Parse(UserName.Text) : 0,
+                                Nomina = int.Parse(UserName.Text),
+                                TokenSesion = x.Result.Token
+                            };
 
-                                App.Database.SaveGestionFCItemAsync(gestionFC);
+                            App.Database.SaveGestionFCItemAsync(gestionFC);
+                            
 
-                                //Guardamos genramos la inserción en bitácora (inicio de sesión)
-                                var logModel = new LogSistemaModel()
-                                {
-                                    IdPantalla = 1,
-                                    IdAccion = 1,
-                                    Usuario = int.Parse(UserName.Text),
-                                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
-                                };
-                                logService.LogSistema(logModel, gestionFC.TokenSesion).ContinueWith(logRes =>
-                                {
-                                    if (logRes.IsFaulted)
-                                        throw logRes.Exception;
-                                });
-
-                                var plantillaPage = new PlantillaPage();
-                                Navigation.PushAsync(plantillaPage);
+                        //Guardamos genramos la inserción en bitácora (Cierre Sesión)
+                        var logModel = new LogSistemaModel()
+                            {
+                                IdPantalla = 1,
+                                IdAccion = 1,
+                                Usuario = int.Parse(UserName.Text),
+                                Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+                            };
+                            logService.LogSistema(logModel, gestionFC.TokenSesion).ContinueWith(logRes =>
+                            {
+                                if (logRes.IsFaulted)
+                                    throw logRes.Exception;
                             });
-                        else
-                            await loginService.Login(loginModel).ContinueWith(x =>
-                            {
-                                if (x.IsFaulted)
-                                    throw new Exception("Ocurrió un error");
-
-                                if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-
-                                if (!x.Result.UsuarioAutorizado)
-                                    throw new Exception("Usuario y/o contraseña no coincide.");
-
-                                if (!x.Result.Activo)
-                                    throw new Exception("Usuario inactivo.");
-
-                                if (!x.Result.EsGerente)
-                                    throw new Exception("Usuario no cuenta con el perfil de gerente.");
-
-
-                            //Guardamos la información en la base de datos SQL Lite
-                            var gestionFC = new GestionFCModel()
-                                {
-                                    UserSaved = chkRemember.IsChecked ? int.Parse(UserName.Text) : 0,
-                                    Nomina = int.Parse(UserName.Text),
-                                    TokenSesion = x.Result.Token
-                                };
-
-                                App.Database.SaveGestionFCItemAsync(gestionFC);
-
-                            //Guardamos genramos la inserción en bitácora (Cierre Sesión)
-                            var logModel = new LogSistemaModel()
-                                {
-                                    IdPantalla = 1,
-                                    IdAccion = 1,
-                                    Usuario = int.Parse(UserName.Text),
-                                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
-                                };
-                                logService.LogSistema(logModel, gestionFC.TokenSesion).ContinueWith(logRes =>
-                                {
-                                    if (logRes.IsFaulted)
-                                        throw logRes.Exception;
-                                });
 
                             // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
                             Device.BeginInvokeOnMainThread(() =>
@@ -205,7 +174,7 @@ namespace GestionFC
                                     var plantillaPage = new PlantillaPage();
                                     Navigation.PushAsync(plantillaPage);
                                 });
-                            });
+                        });
                     }
                 }
             }
@@ -215,7 +184,7 @@ namespace GestionFC
                 {
                     IdPantalla = 1,
                     Usuario = int.Parse(UserName.Text),
-                    Error = ex.Message,
+                    Error = (ex.TargetSite == null ? "" : ex.TargetSite.Name + ". ") + ex.Message,
                     Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
 
                 };
