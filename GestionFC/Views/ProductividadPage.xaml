@@ -8,6 +8,23 @@
              xmlns:fFImageLoadingTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              mc:Ignorable="d"
              x:Class="GestionFC.Views.ProductividadPage">
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="#DCD7D7" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <RelativeLayout>
         
         <!--FONDO DE LA PANTALLA-->
@@ -899,7 +916,8 @@
                     HorizontalOptions="FillAndExpand"
                     Margin="0"
                     ColumnSpacing="0"
-                    RowSpacing="1">
+                    RowSpacing="0"
+                    BackgroundColor="#C4C4C4">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"></RowDefinition>
@@ -1279,14 +1297,14 @@
                         HorizontalOptions="FillAndExpand">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout 
-                                Orientation="Vertical"></GridItemsLayout>
+                                Orientation="Vertical"
+                                VerticalItemSpacing="1"></GridItemsLayout>
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid
                                     Margin="0"
-                                    Padding="0"
-                                    ColumnSpacing="0"
+                                    ColumnSpacing="1"
                                     RowSpacing="0"
                                     BackgroundColor="#FFFFFF">
                                     <Grid.RowDefinitions>
@@ -1406,6 +1424,7 @@
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
+                                        VerticalOptions="FillAndExpand"
                                         TextColor="#353535"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
@@ -1485,7 +1504,8 @@
                     HorizontalOptions="FillAndExpand"
                     Margin="0"
                     ColumnSpacing="0"
-                    RowSpacing="0">
+                    RowSpacing="0"
+                    BackgroundColor="#C4C4C4">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"></RowDefinition>
@@ -1684,15 +1704,17 @@
                         HorizontalOptions="FillAndExpand">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout 
-                                Orientation="Vertical"></GridItemsLayout>
+                                Orientation="Vertical"
+                                VerticalItemSpacing="1"></GridItemsLayout>
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid
                                     Margin="0"
-                                    ColumnSpacing="0"
+                                    ColumnSpacing="1"
+                                    Padding="1"
                                     BackgroundColor="#FFFFFF"
-                                    RowSpacing="1">
+                                    RowSpacing="0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="35"></RowDefinition>
                                     </Grid.RowDefinitions>
