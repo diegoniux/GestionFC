@@ -455,6 +455,9 @@
     <ImageAsset Include="Assets.xcassets\logo_arbol.imageset\Trazado 51255%402x.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\arbol_icap.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\arbol_icap.imageset\arbol_icap.png" />
+    <ImageAsset Include="Assets.xcassets\arbol_icap.imageset\arbol_icap-1.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -489,6 +492,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\logo_arbol.imageset\" />
+    <Folder Include="Assets.xcassets\arbol_icap.imageset\" />
   </ItemGroup>
   <ItemGroup />
   <ProjectExtensions>
