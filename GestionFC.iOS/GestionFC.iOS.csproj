@@ -66,11 +66,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-<<<<<<< HEAD
     <CodesignKey>Apple Distribution: Diego Alberto Nieto Flores (KQKPH57A56)</CodesignKey>
-=======
-    <CodesignKey>iPhone Distribution</CodesignKey>
->>>>>>> 1cb3c47549b2bf20376d0adfc148660b3b75683d
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignProvision>DnietoDistProfile</CodesignProvision>
     <BuildIpa>true</BuildIpa>
