@@ -850,6 +850,7 @@
                         VerticalTextAlignment="Center"
                         FontSize="10"
                         FontAttributes="Bold"
+                        TextColor="#353535"
                         FontFamily="{StaticResource Poppins-Bold}">
                     </Label>
                     <Frame
@@ -868,6 +869,7 @@
                         VerticalTextAlignment="Center"
                         FontSize="16"
                         FontAttributes="Bold"
+                        TextColor="#353535"
                         FontFamily="{StaticResource Poppins-Bold}">
                     </Label>
                     <Label
@@ -879,6 +881,7 @@
                         VerticalTextAlignment="Center"
                         FontSize="10"
                         FontAttributes="Bold"
+                        TextColor="#353535"
                         FontFamily="{StaticResource Poppins-Bold}">
                     </Label>
                     <Frame
@@ -898,6 +901,7 @@
                         VerticalTextAlignment="Center"
                         FontSize="16"
                         FontAttributes="Bold"
+                        TextColor="#353535"
                         FontFamily="{StaticResource Poppins-Bold}">
                     </Label>
                 </Grid>

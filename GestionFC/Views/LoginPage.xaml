@@ -88,25 +88,27 @@
                     </Label>
 
                     <Frame
-                        Padding="1"
+                        Padding="0"
                         CornerRadius="26"
                         Grid.Column="2"
                         Grid.ColumnSpan="4"
                         Grid.Row="6"
                         Margin="0,10,0,10"
-                        HasShadow="False">
+                        HasShadow="False"
+                        BackgroundColor="#FFFFFF">
                         <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
                             <Image Source="user.png" 
                                    WidthRequest="28"
                                    HeightRequest="35"
-                                   Margin="20,0,20,0">
+                                   Margin="20,0,20,0"
+                                   BackgroundColor="#FFFFFF">
                             </Image>
                             <renderers:EntryIcon
                                 x:Name="UserName"
                                 Text="{Binding LoginDTO.Nomina, Mode=TwoWay}"
                                 Keyboard="Numeric"
                                 MaxLength="5"
-                                CornerRadius="26"
+                                CornerRadius="35"
                                 Placeholder="Ingresa tu usuario"
                                 FontFamily="{StaticResource Poppins-Regular}"
                                 PlaceholderColor="#C4C4C4"
@@ -127,7 +129,8 @@
                         Grid.ColumnSpan="4"
                         Grid.Row="7"
                         Margin="0,10,0,10"
-                        HasShadow="False">
+                        HasShadow="False"
+                        BackgroundColor="#FFFFFF">
                         <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
                             <Image Source="candado.png" 
                                    WidthRequest="28"
@@ -136,7 +139,7 @@
                             </Image>
                             <renderers:EntryIcon
                                 x:Name="PassworUser"
-                                CornerRadius="30"
+                                CornerRadius="35"
                                 MaxLength="20"
                                 Placeholder="Ingresa tu contraseña"
                                 IsPassword="True"

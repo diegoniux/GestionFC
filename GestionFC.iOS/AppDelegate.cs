@@ -37,6 +37,6 @@ namespace GestionFC.iOS
         //        return UIInterfaceOrientationMask.AllButUpsideDown;
         //    }
         //    return UIInterfaceOrientationMask.Portrait;
-
+        //}
     }
 }
