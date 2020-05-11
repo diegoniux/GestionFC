@@ -123,7 +123,7 @@ namespace GestionFC
                             if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                                 throw new Exception("Error de conexión.");
                             if (Xamarin.Essentials.VersionTracking.CurrentVersion != x.Result.Valor)
-                                throw new Exception("Versión incorrecta, favor de actualizar!!!");
+                                throw new Exception("Versión incorrecta, favor de actualizar.");
                         });
                         await loginService.Login(loginModel).ContinueWith(x =>
                         {
