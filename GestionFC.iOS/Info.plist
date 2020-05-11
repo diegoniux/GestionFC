@@ -18,7 +18,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>GestionFC</string>
 	<key>CFBundleVersion</key>
-	<string>2.0</string>
+	<string>6.0</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
@@ -66,7 +66,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>CFBundleShortVersionString</key>
-	<string>0.3.4</string>
+	<string>0.3.5</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>CFBundleDocumentTypes</key>
@@ -83,6 +83,6 @@
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.invercap.gestionfc</string>
+	<string>com.icap.GestionFC</string>
 </dict>
 </plist>
