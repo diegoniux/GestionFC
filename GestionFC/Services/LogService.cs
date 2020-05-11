@@ -67,7 +67,8 @@ namespace GestionFC.Services
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = null;
-                _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
+                if(_client.DefaultRequestHeaders.Authorization == null)
+                    _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
                 response = await _client.PostAsync(uri, content);
 
                 response.EnsureSuccessStatusCode();

@@ -88,7 +88,7 @@ namespace GestionFC.Views
                 {
                     using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                     {
-                        await headerService.GetHeader(nomina).ContinueWith((Action<Task<Models.Share.HeaderResponseModel>>)(x =>
+                        await headerService.GetHeader(nomina, token).ContinueWith((Action<Task<Models.Share.HeaderResponseModel>>)(x =>
                         {
                             if (x.IsFaulted)
                             {

@@ -21,13 +21,15 @@ namespace GestionFC.Services
             this._client = new HttpClient(httpClientHandler);
         }
 
-        public async Task<HeaderResponseModel> GetHeader(int nomina) {
+        public async Task<HeaderResponseModel> GetHeader(int nomina, string accessToken) {
             var headerResponse = new HeaderResponseModel();
             try
             {
                 var uri = new Uri($"{App.BaseUrlApi}api/Header/{nomina}");
 
                 HttpResponseMessage response = null;
+                if (_client.DefaultRequestHeaders.Authorization == null)
+                    _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
                 response = await _client.GetAsync(uri);
 
                 response.EnsureSuccessStatusCode();

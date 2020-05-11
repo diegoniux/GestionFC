@@ -20,7 +20,7 @@ namespace GestionFC.Services
             this._client = new HttpClient(httpClientHandler);
         }
 
-        public async Task<PromotoresResponseModel> GetGridPromotores(int nomina, string token)
+        public async Task<PromotoresResponseModel> GetGridPromotores(int nomina, string accessToken)
         {
             var promotoresResponse = new PromotoresResponseModel();
             try
@@ -28,7 +28,8 @@ namespace GestionFC.Services
                 var uri = new Uri($"{App.BaseUrlApi}api/Plantilla/{nomina}");
 
                 HttpResponseMessage response = null;
-                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                if (_client.DefaultRequestHeaders.Authorization == null)
+                    _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
                 response = await _client.GetAsync(uri);
 
                 response.EnsureSuccessStatusCode();

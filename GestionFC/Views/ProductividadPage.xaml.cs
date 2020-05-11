@@ -56,7 +56,7 @@ namespace GestionFC.Views
 
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
-                    await headerService.GetHeader(nomina).ContinueWith(x =>
+                    await headerService.GetHeader(nomina, token).ContinueWith(x =>
                      {
                          if (x.IsFaulted)
                          {
