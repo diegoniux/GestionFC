@@ -12,7 +12,8 @@ namespace GestionFC
 
         static GestionFCDataBase database;
         public static MasterDetailPage MasterDetail { get; set; }
-
+        public static int Nomina { get; set; }
+        public static string Token { get; set; }
         public static GestionFCDataBase Database
         {
             get

@@ -13,8 +13,8 @@ namespace GestionFC.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProductividadPage : ContentPage
     {
-        private int nomina;
-        private string token;
+        private int nomina { get; set; }
+        private string token { get; set; }
         private bool isBusy = false;
         public ProductividadPageViewModel ViewModel { get; set; }
         private Master _master;
@@ -40,19 +40,21 @@ namespace GestionFC.Views
             
             try
             {
-                await App.Database.GetGestionFCItemAsync().ContinueWith(x =>
-                {
-                    if (x.IsFaulted)
-                    {
-                        throw x.Exception;
-                    }
+                nomina = App.Nomina;
+                token = App.Token;
+                //await App.Database.GetGestionFCItemAsync().ContinueWith(x =>
+                //{
+                //    if (x.IsFaulted)
+                //    {
+                //        throw x.Exception;
+                //    }
 
-                    if (!string.IsNullOrEmpty(x.Result[0]?.TokenSesion))
-                    {
-                        token = x.Result[0].TokenSesion;
-                        nomina = x.Result[0].Nomina;
-                    }
-                });                
+                //    if (!string.IsNullOrEmpty(x.Result[0]?.TokenSesion))
+                //    {
+                //        token = x.Result[0].TokenSesion;
+                //        nomina = x.Result[0].Nomina;
+                //    }
+                //});                
 
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
