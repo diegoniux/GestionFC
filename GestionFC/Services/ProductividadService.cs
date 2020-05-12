@@ -50,12 +50,12 @@ namespace GestionFC.Services
             return productividadDiariaResponse;
         }
 
-        public async Task<ProductividadSemanalResponseModel> GetProduccionSemanal(int nomina, int anio, int tetrasemanaAnio, string token, DateTime fechaCorte, Boolean esPosterior)
+        public async Task<ProductividadSemanalResponseModel> GetProduccionSemanal(int nomina, int anio, int tetrasemanaAnio, string token, DateTime fechaCorte, bool esPosterior)
         {
             var productividadSemanalResponse = new ProductividadSemanalResponseModel();
             try
             {
-                var uri = new Uri($"{App.BaseUrlApi}api/Productividad/GetProductividadSemanal/{nomina}/{anio}/{tetrasemanaAnio}/{fechaCorte:yyyy-MM-DD}/{esPosterior}");
+                var uri = new Uri($"{App.BaseUrlApi}api/Productividad/GetProductividadSemanal/{nomina}/{anio}/{tetrasemanaAnio}/{fechaCorte:yyyy-MM-dd}/{esPosterior}");
                                
 
                 HttpResponseMessage response = null;
