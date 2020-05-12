@@ -47,43 +47,44 @@ namespace GestionFC.Views
             //logService = new Service.LogService();
             Service.HeaderService headerService = new Service.HeaderService();
             Service.PlantillaService gridPromotoresService = new Service.PlantillaService();
-            nomina = 0;
             try
             {
-                token = string.Empty;
-                try
-                {
-                await App.Database.GetGestionFCItemAsync().ContinueWith(x => {
-                    if (x.IsFaulted)
-                        throw x.Exception;
-                    if (x.Result == null || x.Result.Count == 0)
-                        throw new Exception("SQLite is null or empty.");
+                nomina = App.Nomina;
+                token = App.Token;
+                
+                //try
+                //{
+                //await App.Database.GetGestionFCItemAsync().ContinueWith(x => {
+                //    if (x.IsFaulted)
+                //        throw x.Exception;
+                //    if (x.Result == null || x.Result.Count == 0)
+                //        throw new Exception("SQLite is null or empty.");
 
-                    if (!string.IsNullOrEmpty(x.Result[0]?.TokenSesion))
-                    {
-                        token = x.Result[0].TokenSesion;
-                        nomina = x.Result[0].Nomina;
-                    }
-                });
-                }
-                catch (Exception ex)
-                {
-                    var logError = new Models.Log.LogErrorModel()
-                    {
-                        IdPantalla = 2,
-                        Usuario = nomina,
-                        Error = (ex.TargetSite == null ? "" : ex.TargetSite.Name + ". ") + ex.Message,
-                        Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+                //    if (!string.IsNullOrEmpty(x.Result[0]?.TokenSesion))
+                //    {
+                //        token = x.Result[0].TokenSesion;
+                //        nomina = x.Result[0].Nomina;
+                //    }
+                //});
+                //}
+                //catch (Exception ex)
+                //{
+                //    var logError = new Models.Log.LogErrorModel()
+                //    {
+                //        IdPantalla = 2,
+                //        Usuario = nomina,
+                //        Error = (ex.TargetSite == null ? "" : ex.TargetSite.Name + ". ") + ex.Message,
+                //        Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
 
-                    };
-                    await _master.logService.LogError(logError, "").ContinueWith(logRes =>
-                    {
-                        if (logRes.IsFaulted)
-                            DisplayAlert("Error", logRes.Exception.Message, "Ok");
-                    });
-                    await DisplayAlert("SQLite PlantillaPage Error", ex.Message, "Ok");
-                    await _master.cerrarSesionError();
-                }
+                //    };
+                //    await _master.logService.LogError(logError, "").ContinueWith(logRes =>
+                //    {
+                //        if (logRes.IsFaulted)
+                //            DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                //    });
+                //    await DisplayAlert("SQLite PlantillaPage Error", ex.Message, "Ok");
+                //    await _master.cerrarSesionError();
+                //}
                 if (nomina > 0)
                 {
                     using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))

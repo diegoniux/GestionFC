@@ -142,7 +142,8 @@ namespace GestionFC
                             if (!x.Result.EsGerente)
                                 throw new Exception("Usuario no cuenta con el perfil de gerente.");
 
-
+                            App.Nomina = Convert.ToInt32(UserName.Text);
+                            App.Token = x.Result.Token;
                         //Guardamos la información en la base de datos SQL Lite
                         var gestionFC = new GestionFCModel()
                             {
