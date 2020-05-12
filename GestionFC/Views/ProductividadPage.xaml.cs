@@ -222,7 +222,7 @@ namespace GestionFC.Views
                     ViewModel.ProductividadSemanal = null;
 
                     Service.ProductividadService productividadService = new Service.ProductividadService();
-                    await productividadService.GetProduccionSemanal(nomina, 0, 0, token).ContinueWith(x =>
+                    await productividadService.GetProduccionSemanal(nomina, 0, 0, token, new DateTime(1900,01,01),false).ContinueWith(x =>
                     {
                         if (x.IsFaulted)
                         {
@@ -307,6 +307,8 @@ namespace GestionFC.Views
                     {
                         int anio = ViewModel.ProductividadSemanal.ResultTotal.Anio;
                         int tetrasemanaAnio = ViewModel.ProductividadSemanal.ResultTotal.TetrasemanaAnio - 1;
+                        bool EsPosterior = false;
+                        DateTime FechaCorte = ViewModel.ProductividadSemanal.ResultTotal.FechaCorte;
 
                         if (tetrasemanaAnio == 0)
                         {
@@ -318,7 +320,7 @@ namespace GestionFC.Views
                         CollecionViewProdSemanal.SelectedItem = null;
                         ViewModel.ProductividadSemanal = null;
 
-                        await productividadService.GetProduccionSemanal(nomina, anio, tetrasemanaAnio, token).ContinueWith(x =>
+                        await productividadService.GetProduccionSemanal(nomina, anio, tetrasemanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
                         {
                             if (x.IsFaulted)
                             {
@@ -425,6 +427,8 @@ namespace GestionFC.Views
 
                     int anio = ViewModel.ProductividadSemanal.ResultTotal.Anio;
                     int tetrasemanaAnio = ViewModel.ProductividadSemanal.ResultTotal.TetrasemanaAnio + 1;
+                    Boolean EsPosterior = true;
+                    DateTime FechaCorte = ViewModel.ProductividadSemanal.ResultTotal.FechaCorte;
 
 
                     // si nos encontrasmos en la ultiuma tetrasemana del año, nos movemos a la primer tetrasemana del próximo año
@@ -440,7 +444,7 @@ namespace GestionFC.Views
                         CollecionViewProdSemanal.SelectedItem = null;
                         ViewModel.ProductividadSemanal = null;
 
-                        await productividadService.GetProduccionSemanal(nomina, anio, tetrasemanaAnio, token).ContinueWith(x =>
+                        await productividadService.GetProduccionSemanal(nomina, anio, tetrasemanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
                         {
                             if (x.IsFaulted)
                             {
