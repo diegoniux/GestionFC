@@ -83,6 +83,6 @@
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.icap.GestionFC</string>
+	<string>com.invercap.GestionFC</string>
 </dict>
 </plist>

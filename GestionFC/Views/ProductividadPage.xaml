@@ -730,7 +730,7 @@
             <Grid 
                 Margin="20,0,20,0"
                 ColumnSpacing="0"
-                RowSpacing="2"
+                RowSpacing="1"
                 VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
@@ -917,8 +917,8 @@
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Margin="0"
+                    RowSpacing="1"
                     ColumnSpacing="0"
-                    RowSpacing="0"
                     BackgroundColor="#C4C4C4">
 
                     <Grid.RowDefinitions>
@@ -1305,8 +1305,8 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid
-                                    Margin="0"
-                                    ColumnSpacing="1"
+                                    Margin="1"
+                                    ColumnSpacing="0"
                                     RowSpacing="0"
                                     BackgroundColor="#FFFFFF">
                                     <Grid.RowDefinitions>
@@ -1426,7 +1426,8 @@
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
-                                        VerticalOptions="FillAndExpand"
+                                        VerticalOptions="Fill"
+                                        HorizontalOptions="FillAndExpand"
                                         TextColor="#353535"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
@@ -1712,9 +1713,9 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid
-                                    Margin="0"
-                                    ColumnSpacing="1"
-                                    Padding="1"
+                                    Margin="1"
+                                    ColumnSpacing="0"
+                                    Padding="0"
                                     BackgroundColor="#FFFFFF"
                                     RowSpacing="0">
                                     <Grid.RowDefinitions>
