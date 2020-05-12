@@ -917,7 +917,7 @@
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Margin="0"
-                    RowSpacing="1"
+                    RowSpacing="0"
                     ColumnSpacing="0"
                     BackgroundColor="#C4C4C4">
 
