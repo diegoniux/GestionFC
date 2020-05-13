@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Xamarin.Forms;
@@ -19,13 +16,16 @@ namespace GestionFC.Views
         private int nomina { get; set; }
         private string token { get; set; }
         public Master _master;
-        //private Service.LogService logService { get; set; }
+        public bool SesionExpired { get; set; }
 
         public PlantillaPage()
         {
             InitializeComponent();
+
+            SesionExpired = false;
+
             _master = (Master)App.MasterDetail.Master;
-            
+
             ViewModel = new ViewModels.PlantillaPage.PlantillaPageViewModel();
             BindingContext = ViewModel;
             LoadPage();
@@ -51,40 +51,7 @@ namespace GestionFC.Views
             {
                 nomina = App.Nomina;
                 token = App.Token;
-                
-                //try
-                //{
-                //await App.Database.GetGestionFCItemAsync().ContinueWith(x => {
-                //    if (x.IsFaulted)
-                //        throw x.Exception;
-                //    if (x.Result == null || x.Result.Count == 0)
-                //        throw new Exception("SQLite is null or empty.");
 
-                //    if (!string.IsNullOrEmpty(x.Result[0]?.TokenSesion))
-                //    {
-                //        token = x.Result[0].TokenSesion;
-                //        nomina = x.Result[0].Nomina;
-                //    }
-                //});
-                //}
-                //catch (Exception ex)
-                //{
-                //    var logError = new Models.Log.LogErrorModel()
-                //    {
-                //        IdPantalla = 2,
-                //        Usuario = nomina,
-                //        Error = (ex.TargetSite == null ? "" : ex.TargetSite.Name + ". ") + ex.Message,
-                //        Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
-
-                //    };
-                //    await _master.logService.LogError(logError, "").ContinueWith(logRes =>
-                //    {
-                //        if (logRes.IsFaulted)
-                //            DisplayAlert("Error", logRes.Exception.Message, "Ok");
-                //    });
-                //    await DisplayAlert("SQLite PlantillaPage Error", ex.Message, "Ok");
-                //    await _master.cerrarSesionError();
-                //}
                 if (nomina > 0)
                 {
                     using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
@@ -98,9 +65,15 @@ namespace GestionFC.Views
 
                             if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                             {
-                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+
+                                // vericamos si la sesión expiró (token)
+                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                {
+                                    SesionExpired = true;
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                }
                             }
-                            //Cargar datros para el binding de información con el header
+                            //Cargar datos para el binding de información con el header
                             ViewModel.NombreGerente = x.Result.Progreso?.Nombre + " " + x.Result.Progreso?.Apellidos;
                             ViewModel.Mensaje = x.Result.Progreso?.Genero == "H" ? "¡Bienvenido!" : "¡Bienvenida!";
                             ViewModel.APsMetaAlcanzada = x.Result.APsMetaAlcanzada;
@@ -110,6 +83,7 @@ namespace GestionFC.Views
                                 ViewModel.Gerente = x.Result.Progreso;
                             }
                             _master.loadPage(nomina, ViewModel.NombreGerente, x.Result.Perfil, x.Result.Progreso.Foto, token);
+
                         }));
 
                         await gridPromotoresService.GetGridPromotores(nomina, token).ContinueWith(x =>
@@ -121,7 +95,12 @@ namespace GestionFC.Views
 
                               if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                               {
-                                  throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                  // vericamos si la sesión expiró (token)
+                                  if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                  {
+                                      SesionExpired = true;
+                                      throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                  }
                               }
 
                               ViewModel.Agentes = x.Result.Promotores;
@@ -145,6 +124,13 @@ namespace GestionFC.Views
             }
             catch (Exception ex)
             {
+                // Si la sesión expiró enviamos mensaje 
+                if (SesionExpired)
+                {
+                    CerrarSesion();
+                    return;
+                }
+
                 var logError = new Models.Log.LogErrorModel()
                 {
                     IdPantalla = 2,
@@ -176,5 +162,19 @@ namespace GestionFC.Views
         {
             App.MasterDetail.IsPresented = !App.MasterDetail.IsPresented;
         }
+
+
+        async void CerrarSesion()
+        {
+            await DisplayAlert("Sesión Expirada.", "La sesión expiró, favor de ingresar nuevamente", "Ok");
+            // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(typeof(LoginPage)));
+                App.MasterDetail.IsPresented = false;
+            });
+        }
+
     }
+
 }

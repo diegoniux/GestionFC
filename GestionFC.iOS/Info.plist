@@ -64,7 +64,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>CFBundleShortVersionString</key>
-	<string>0.3.6</string>
+	<string>0.3.7</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>CFBundleDocumentTypes</key>
@@ -81,7 +81,7 @@
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.icap.GestionFC</string>
+	<string>com.invercap.GestionFC</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 </dict>
