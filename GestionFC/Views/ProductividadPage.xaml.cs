@@ -346,7 +346,7 @@ namespace GestionFC.Views
                             anio -= 1;
                         }
 
-                        // limpiamos la información actial y la selección
+                        // limpiamos la información actial y la selección, solo si carga bien 
                         CollecionViewProdSemanal.SelectedItem = null;
                         ViewModel.ProductividadSemanal = null;
 
@@ -359,14 +359,22 @@ namespace GestionFC.Views
 
                             if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                             {
-                                // vericamos si la sesión expiró (token)
-                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                                {
-                                    SesionExpired = true;
-                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                                }
+                                throw new Exception("Ocurrió un error");
                             }
+
+                            if (x.Result.ResultTotal.EsUltimaFechaCorte)
+                            {
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    DisplayAlert("Mensaje", x.Result.ResultadoEjecucion.ErrorMessage, "Ok");
+                                });
+
+                            }
+
                             ViewModel.ProductividadSemanal = x.Result;
+
+
+
                         });
                     }
                 }

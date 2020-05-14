@@ -21,5 +21,8 @@ namespace GestionFC.Models.Share
 
         [JsonProperty("fechaCorte")]
         public DateTime FechaCorte { get; set; }
+
+        [JsonProperty("EsUltimaFechaCorte")]
+        public bool EsUltimaFechaCorte { get; set; }
     }
 }
