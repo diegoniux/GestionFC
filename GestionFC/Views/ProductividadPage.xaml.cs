@@ -18,10 +18,12 @@ namespace GestionFC.Views
         private bool isBusy = false;
         public ProductividadPageViewModel ViewModel { get; set; }
         private Master _master;
+        public bool SesionExpired { get; set; }
 
         public ProductividadPage()
         {
             InitializeComponent();
+            SesionExpired = false;
             _master = (Master)App.MasterDetail.Master;
             NavigationPage.SetHasNavigationBar(this, false);
 
@@ -41,20 +43,7 @@ namespace GestionFC.Views
             try
             {
                 nomina = App.Nomina;
-                token = App.Token;
-                //await App.Database.GetGestionFCItemAsync().ContinueWith(x =>
-                //{
-                //    if (x.IsFaulted)
-                //    {
-                //        throw x.Exception;
-                //    }
-
-                //    if (!string.IsNullOrEmpty(x.Result[0]?.TokenSesion))
-                //    {
-                //        token = x.Result[0].TokenSesion;
-                //        nomina = x.Result[0].Nomina;
-                //    }
-                //});                
+                token = App.Token;            
 
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
@@ -67,7 +56,12 @@ namespace GestionFC.Views
 
                          if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                          {
-                             throw new Exception("Ocurrió un error");
+                             // vericamos si la sesión expiró (token)
+                             if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                             {
+                                 SesionExpired = true;
+                                 throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                             }
                          }
 
                          //Cargar datros para el binding de información con el header
@@ -92,7 +86,12 @@ namespace GestionFC.Views
 
                          if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                          {
-                             throw new Exception("Ocurrió un error");
+                             // vericamos si la sesión expiró (token)
+                             if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                             {
+                                 SesionExpired = true;
+                                 throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                             }
                          }
 
                          ViewModel.ProductividadDiaria = x.Result;
@@ -109,7 +108,12 @@ namespace GestionFC.Views
 
                         if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                         {
-                            throw new Exception("Ocurrió un error");
+                            // vericamos si la sesión expiró (token)
+                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                            {
+                                SesionExpired = true;
+                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                            }
                         }
 
                         ViewModel.ComisionEstimada = x.Result;
@@ -132,6 +136,14 @@ namespace GestionFC.Views
             }
             catch (Exception ex)
             {
+
+                if (SesionExpired)
+                {
+                    CerrarSesion();
+                    isBusy = false;
+                    return;
+                }
+
                 var logError = new Models.Log.LogErrorModel()
                 {
                     IdPantalla = 3,
@@ -231,7 +243,12 @@ namespace GestionFC.Views
 
                         if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                         {
-                            throw new Exception("Ocurrió un error");
+                            // vericamos si la sesión expiró (token)
+                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                            {
+                                SesionExpired = true;
+                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                            }
                         }
                        
                         ViewModel.ProductividadSemanal = x.Result;
@@ -240,6 +257,14 @@ namespace GestionFC.Views
             }
             catch (Exception ex)
             {
+
+                if (SesionExpired)
+                {
+                    CerrarSesion();
+                    isBusy = false;
+                    return;
+                }
+
                 var logError = new Models.Log.LogErrorModel()
                 {
                     IdPantalla = 3,
@@ -298,7 +323,12 @@ namespace GestionFC.Views
 
                             if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                             {
-                                throw new Exception("Ocurrió un error");
+                                // vericamos si la sesión expiró (token)
+                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                {
+                                    SesionExpired = true;
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                }
                             }
 
                             ViewModel.ProductividadDiaria = x.Result;
@@ -318,7 +348,7 @@ namespace GestionFC.Views
                             anio -= 1;
                         }
 
-                        // limpiamos la información actial y la selección
+                        // limpiamos la información actial y la selección, solo si carga bien 
                         CollecionViewProdSemanal.SelectedItem = null;
                         ViewModel.ProductividadSemanal = null;
 
@@ -333,13 +363,34 @@ namespace GestionFC.Views
                             {
                                 throw new Exception("Ocurrió un error");
                             }
+
+                            if (x.Result.ResultTotal.EsUltimaFechaCorte)
+                            {
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    DisplayAlert("Mensaje", x.Result.ResultadoEjecucion.ErrorMessage, "Ok");
+                                });
+
+                            }
+
                             ViewModel.ProductividadSemanal = x.Result;
+
+
+
                         });
                     }
                 }
             }
             catch (Exception ex)
             {
+
+                if (SesionExpired)
+                {
+                    CerrarSesion();
+                    isBusy = false;
+                    return;
+                }
+
                 var logError = new Models.Log.LogErrorModel()
                 {
                     IdPantalla = 3,
@@ -411,7 +462,12 @@ namespace GestionFC.Views
 
                             if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                             {
-                                throw new Exception("Ocurrió un error");
+                                // vericamos si la sesión expiró (token)
+                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                {
+                                    SesionExpired = true;
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                }
                             }
 
                             ViewModel.ProductividadDiaria = x.Result;
@@ -456,7 +512,12 @@ namespace GestionFC.Views
 
                             if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                             {
-                                throw new Exception("Ocurrió un error");
+                                // vericamos si la sesión expiró (token)
+                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                {
+                                    SesionExpired = true;
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                }
                             }
                             ViewModel.ProductividadSemanal = x.Result;
                         });
@@ -465,6 +526,13 @@ namespace GestionFC.Views
             }
             catch (Exception ex)
             {
+                if (SesionExpired)
+                {
+                    CerrarSesion();
+                    isBusy = false;
+                    return;
+                }
+
                 var logError = new Models.Log.LogErrorModel()
                 {
                     IdPantalla = 3,
@@ -483,6 +551,17 @@ namespace GestionFC.Views
             {
                 isBusy = false;
             }
+        }
+
+        async void CerrarSesion()
+        {
+            await DisplayAlert("Sesión Expirada.", "La sesión expiró, favor de ingresar nuevamente", "Ok");
+            // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(typeof(LoginPage)));
+                App.MasterDetail.IsPresented = false;
+            });
         }
     }
 }
