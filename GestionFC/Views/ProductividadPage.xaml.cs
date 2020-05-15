@@ -331,6 +331,15 @@ namespace GestionFC.Views
                                 }
                             }
 
+                            if (x.Result.ResultAnioSemana.EsUltimaFechaCorte)
+                            {
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    DisplayAlert("Mensaje", x.Result.ResultadoEjecucion.ErrorMessage, "Ok");
+                                });
+
+                            }
+
                             ViewModel.ProductividadDiaria = x.Result;
 
                         });
