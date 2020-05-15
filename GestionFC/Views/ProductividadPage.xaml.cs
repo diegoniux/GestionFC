@@ -436,6 +436,7 @@ namespace GestionFC.Views
                     //Carga de productividad Diaria
                     int anio = ViewModel.ProductividadDiaria.ResultAnioSemana.Anio;
                     int semanaAnio = ViewModel.ProductividadDiaria.ResultAnioSemana.SemanaAnio + 1;
+                    FechaCorte = ViewModel.ProductividadDiaria.ResultAnioSemana.FechaCorte;
 
                     // El máximo de semana es 52, si llegamos a ese numero, asignamos la semana 1 del siguiente año
                     if (semanaAnio == 53)
@@ -451,7 +452,6 @@ namespace GestionFC.Views
                         // Limíamos la información actual
                         CollecionViewProdDiaria.SelectedItem = null;
                         ViewModel.ProductividadDiaria = null;
-                        FechaCorte = ViewModel.ProductividadDiaria.ResultAnioSemana.FechaCorte;
 
                         await productividadService.GetProduccionDiaria(nomina, anio, semanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
                         {

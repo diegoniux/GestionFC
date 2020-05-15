@@ -435,6 +435,7 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\76_x1.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\76_x2.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\83_5_x2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\1024_x1.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -474,6 +475,7 @@
   <ItemGroup />
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork%402x" />
+    <ITunesArtwork Include="iTunesArtwork" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
