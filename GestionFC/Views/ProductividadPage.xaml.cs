@@ -83,7 +83,7 @@ namespace GestionFC.Views
                      });
 
                     //Carga de productividad Diaria
-                    await productividadService.GetProduccionDiaria(nomina, 0, 0, token).ContinueWith(x =>
+                    await productividadService.GetProduccionDiaria(nomina, 0, 0, token, new DateTime(1900, 01, 01), false).ContinueWith(x =>
                      {
                          if (x.IsFaulted)
                          {
@@ -268,6 +268,8 @@ namespace GestionFC.Views
             {
                 // Dependiendo del tipo de producción activada (Diaria o Semanal), cargamos el periodo anterior
                 Service.ProductividadService productividadService = new Service.ProductividadService();
+                bool EsPosterior = false;
+                DateTime FechaCorte;
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
                     if (gridProdDiaria.IsVisible)
@@ -275,6 +277,7 @@ namespace GestionFC.Views
                         //Carga de productividad Diaria
                         int anio = ViewModel.ProductividadDiaria.ResultAnioSemana.Anio;
                         int semanaAnio = ViewModel.ProductividadDiaria.ResultAnioSemana.SemanaAnio - 1;
+                        FechaCorte = ViewModel.ProductividadDiaria.ResultAnioSemana.FechaCorte;
 
                         // si nos encontrabamos en la primer semana del año, nos movemos a la ulutima semana del año anterior
                         if (semanaAnio == 0)
@@ -286,7 +289,7 @@ namespace GestionFC.Views
                         // Limpiamos la selección y el contenido
                         CollecionViewProdDiaria.SelectedItem = null;
                         ViewModel.ProductividadDiaria = null;
-                        await productividadService.GetProduccionDiaria(nomina, anio, semanaAnio, token).ContinueWith(x =>
+                        await productividadService.GetProduccionDiaria(nomina, anio, semanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
                         {
                             if (x.IsFaulted)
                             {
@@ -307,8 +310,7 @@ namespace GestionFC.Views
                     {
                         int anio = ViewModel.ProductividadSemanal.ResultTotal.Anio;
                         int tetrasemanaAnio = ViewModel.ProductividadSemanal.ResultTotal.TetrasemanaAnio - 1;
-                        bool EsPosterior = false;
-                        DateTime FechaCorte = ViewModel.ProductividadSemanal.ResultTotal.FechaCorte;
+                        FechaCorte = ViewModel.ProductividadSemanal.ResultTotal.FechaCorte;
 
                         if (tetrasemanaAnio == 0)
                         {
@@ -366,7 +368,8 @@ namespace GestionFC.Views
             {
                 // Dependiendo del tipo de producción activada (Diaria o Semanal), cargamos el periodo siguiente
                 Service.ProductividadService productividadService = new Service.ProductividadService();
-                
+                Boolean EsPosterior = true;
+                DateTime FechaCorte;
                 if (gridProdDiaria.IsVisible)
                 {
 
@@ -397,8 +400,9 @@ namespace GestionFC.Views
                         // Limíamos la información actual
                         CollecionViewProdDiaria.SelectedItem = null;
                         ViewModel.ProductividadDiaria = null;
+                        FechaCorte = ViewModel.ProductividadDiaria.ResultAnioSemana.FechaCorte;
 
-                        await productividadService.GetProduccionDiaria(nomina, anio, semanaAnio, token).ContinueWith(x =>
+                        await productividadService.GetProduccionDiaria(nomina, anio, semanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
                         {
                             if (x.IsFaulted)
                             {
@@ -427,8 +431,7 @@ namespace GestionFC.Views
 
                     int anio = ViewModel.ProductividadSemanal.ResultTotal.Anio;
                     int tetrasemanaAnio = ViewModel.ProductividadSemanal.ResultTotal.TetrasemanaAnio + 1;
-                    Boolean EsPosterior = true;
-                    DateTime FechaCorte = ViewModel.ProductividadSemanal.ResultTotal.FechaCorte;
+                    FechaCorte = ViewModel.ProductividadSemanal.ResultTotal.FechaCorte;
 
 
                     // si nos encontrasmos en la ultiuma tetrasemana del año, nos movemos a la primer tetrasemana del próximo año

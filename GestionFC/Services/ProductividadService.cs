@@ -22,12 +22,12 @@ namespace GestionFC.Services
             this._client = new HttpClient(httpClientHandler);
         }
 
-        public async Task<ProductividadDiariaResponseModel> GetProduccionDiaria(int nomina, int anio, int semanaAnio, string token)
+        public async Task<ProductividadDiariaResponseModel> GetProduccionDiaria(int nomina, int anio, int semanaAnio, string token, DateTime fechaCorte, bool esPosterior)
         {
             var productividadDiariaResponse = new ProductividadDiariaResponseModel();
             try
             {
-                var uri = new Uri($"{App.BaseUrlApi}api/Productividad/GetProductividadDiaria/{nomina}/{anio}/{semanaAnio}");
+                var uri = new Uri($"{App.BaseUrlApi}api/Productividad/GetProductividadDiaria/{nomina}/{anio}/{semanaAnio}/{fechaCorte:yyyy-MM-dd}/{esPosterior}");
 
                 HttpResponseMessage response = null;
                 _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);

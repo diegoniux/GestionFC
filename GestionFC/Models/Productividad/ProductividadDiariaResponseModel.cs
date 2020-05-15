@@ -1,5 +1,6 @@
 ﻿using GestionFC.Models.Share;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace GestionFC.Models.Productividad
@@ -17,5 +18,6 @@ namespace GestionFC.Models.Productividad
 
         [JsonProperty("resultAnioSemana")]
         public ResultAnioSemanaModel ResultAnioSemana { get; set; }
+
     }
 }
