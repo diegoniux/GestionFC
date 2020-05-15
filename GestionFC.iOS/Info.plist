@@ -18,11 +18,9 @@
 	<key>CFBundleDisplayName</key>
 	<string>GestionFC</string>
 	<key>CFBundleVersion</key>
-	<string>6.0</string>
+	<string>7.0</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>CFBundleName</key>
-	<string>GestionFC</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Poppins-Black</string>
@@ -64,7 +62,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>CFBundleShortVersionString</key>
-	<string>0.3.6</string>
+	<string>0.3.7</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>CFBundleDocumentTypes</key>
@@ -84,5 +82,7 @@
 	<string>com.icap.GestionFC</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleName</key>
+	<string>GestionFC</string>
 </dict>
 </plist>
