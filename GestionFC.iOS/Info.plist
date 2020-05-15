@@ -79,7 +79,7 @@
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.icap.GestionFC</string>
+	<string>com.invercap.GestionFC</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleName</key>
