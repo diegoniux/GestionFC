@@ -1,7 +1,7 @@
 ﻿using GestionFC.Models.Share;
 using GestionFC.SqLite;
 using GestionFC.Views;
-using System;
+using System;        
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -28,7 +28,7 @@ namespace GestionFC
 
         public static string BaseUrlApi
         {
-            get { return "https://desaiis01/Api_GestionFC/"; }
+            get { return "https://desaiis01/spw_Api_GestionFC/"; }
         }
 
         public static string ClaveVersion
