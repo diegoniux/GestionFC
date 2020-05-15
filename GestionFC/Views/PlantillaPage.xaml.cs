@@ -86,6 +86,11 @@ namespace GestionFC.Views
 
                         }));
 
+                    }
+
+                    using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                    {
+
                         await gridPromotoresService.GetGridPromotores(nomina, token).ContinueWith(x =>
                           {
                               if (x.IsFaulted)
