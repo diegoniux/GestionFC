@@ -19,5 +19,8 @@ namespace GestionFC.Models.Productividad
 
         [JsonProperty("resultTotal")]
         public ResultTotalSemanalModel ResultTotal { get; set; }
+
+        [JsonProperty("resultSemanasTotal")]
+        public SemanasTotal ResultSemanasTotal { get; set; }
     }
 }

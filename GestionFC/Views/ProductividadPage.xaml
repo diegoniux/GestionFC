@@ -504,7 +504,7 @@
                         Grid.Row="0"
                         HasShadow="False">
                     </Frame>
-                    <Label Text="PLANTILLA"
+                    <Label Text="Plantilla"
                         FontFamily="{StaticResource Poppins-Regular}"
                         TextColor="#FFFFFF"
                         Grid.Row="0"
@@ -555,7 +555,7 @@
                         Grid.Row="1"
                         HasShadow="False">
                     </Frame>
-                    <Label Text="AGENTES META ALCANZADA"
+                    <Label Text="Agentes Meta Alcanzada"
                         FontFamily="{StaticResource Poppins-Regular}"
                         TextColor="#FFFFFF"
                         Grid.Row="1"
@@ -607,7 +607,7 @@
                         Grid.Row="2"
                         HasShadow="False">
                     </Frame>
-                    <Label Text="FCT INACTIVOS"
+                    <Label Text="FCT Inactivos"
                         FontFamily="{StaticResource Poppins-Regular}"
                         TextColor="#FFFFFF"
                         Grid.Row="2"
@@ -659,7 +659,7 @@
                         Grid.Row="3"
                         HasShadow="False">
                     </Frame>
-                    <Label Text="TRÁMITES CERTIFICADOS"
+                    <Label Text="Trámites Certificados"
                         FontFamily="{StaticResource Poppins-Regular}"
                         TextColor="#FFFFFF"
                         Grid.Row="3"
@@ -1474,7 +1474,7 @@
                                         FontSize="10"
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
-                                        TextColor="#353535"
+                                        TextColor="#FF0000"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
                                     <Label
@@ -1819,6 +1819,77 @@
                     </CollectionView>
 
                     <!-- TOTAL -->
+                    <Label
+                        Text=""
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Bold}">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadSemanal.ResultSemanasTotal.Semana1Total}"
+                        Grid.Column="2"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Bold}">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadSemanal.ResultSemanasTotal.Semana2Total}"
+                        Grid.Column="3"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Bold}">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadSemanal.ResultSemanasTotal.Semana3Total}"
+                        Grid.Column="4"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Bold}">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadSemanal.ResultSemanasTotal.Semana4Total}"
+                        Grid.Column="5"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="{StaticResource Poppins-Bold}">
+                    </Label>
                     <Label
                         Text="{Binding ProductividadSemanal.ResultTotal.SaldoVirtualTotal}"
                         Grid.Column="6"
