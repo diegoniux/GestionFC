@@ -40,7 +40,7 @@
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <CodesignProvision>DnietoDistProfile</CodesignProvision>
-    <CodesignKey>Apple Distribution: Diego Alberto Nieto Flores (KQKPH57A56)</CodesignKey>
+    <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
