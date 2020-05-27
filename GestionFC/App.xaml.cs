@@ -33,7 +33,7 @@ namespace GestionFC
 
         public static string ClaveVersion
         {
-            get { return "VersionGFC2"; }
+            get { return "VersionGFC"; }
         }
 
         public App()
