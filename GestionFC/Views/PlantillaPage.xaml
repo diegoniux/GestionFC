@@ -485,7 +485,7 @@
                         Grid.Row="0"
                         HasShadow="False">
                     </Frame>
-                    <Label Text="PLANTILLA"
+                    <Label Text="Plantilla"
                         FontFamily="{StaticResource Poppins-Regular}"
                         TextColor="#FFFFFF"
                         Grid.Row="0"
@@ -536,7 +536,7 @@
                         Grid.Row="1"
                         HasShadow="False">
                     </Frame>
-                    <Label Text="AGENTES META ALCANZADA"
+                    <Label Text="Agentes Meta Alcanzada"
                         FontFamily="{StaticResource Poppins-Regular}"
                         TextColor="#FFFFFF"
                         Grid.Row="1"
@@ -588,7 +588,7 @@
                         Grid.Row="2"
                         HasShadow="False">
                     </Frame>
-                    <Label Text="FCT INACTIVOS"
+                    <Label Text="FCT Inactivos"
                         FontFamily="{StaticResource Poppins-Regular}"
                         TextColor="#FFFFFF"
                         Grid.Row="2"
@@ -640,7 +640,7 @@
                         Grid.Row="3"
                         HasShadow="False">
                     </Frame>
-                    <Label Text="TRÁMITES CERTIFICADOS"
+                    <Label Text="Trámites Certificados"
                         FontFamily="{StaticResource Poppins-Regular}"
                         TextColor="#FFFFFF"
                         Grid.Row="3"

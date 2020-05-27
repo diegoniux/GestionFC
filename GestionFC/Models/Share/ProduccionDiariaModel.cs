@@ -11,25 +11,25 @@ namespace GestionFC.Models.Share
             public string NombreCompletoAp { get; set; }
 
             [JsonProperty("saldoVirtualLunes")]
-            public int SaldoVirtualLunes { get; set; }
+            public string SaldoVirtualLunes { get; set; }
 
             [JsonProperty("saldoVirtualMartes")]
-            public int SaldoVirtualMartes { get; set; }
+            public string SaldoVirtualMartes { get; set; }
 
             [JsonProperty("saldoVirtualMiercoles")]
-            public int SaldoVirtualMiercoles { get; set; }
+            public string SaldoVirtualMiercoles { get; set; }
 
             [JsonProperty("saldoVirtualJueves")]
-            public int SaldoVirtualJueves { get; set; }
+            public string SaldoVirtualJueves { get; set; }
 
             [JsonProperty("saldoVirtualViernes")]
-            public int SaldoVirtualViernes { get; set; }
+            public string SaldoVirtualViernes { get; set; }
 
             [JsonProperty("saldoVirtualSabado")]
-            public int SaldoVirtualSabado { get; set; }
+            public string SaldoVirtualSabado { get; set; }
 
             [JsonProperty("saldoVirtualDomingo")]
-            public int SaldoVirtualDomingo { get; set; }
+            public string SaldoVirtualDomingo { get; set; }
 
             [JsonProperty("saldoVirtualSemana")]
             public int SaldoVirtualSemana { get; set; }

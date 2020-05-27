@@ -28,12 +28,12 @@ namespace GestionFC
 
         public static string BaseUrlApi
         {
-            get { return "https://spw.invercap.com.mx/spw_Api_GestionFC/"; }
+            get { return "https://desaiis01/spw_Api_GestionFC/"; }
         }
 
         public static string ClaveVersion
         {
-            get { return "VersionGFC"; }
+            get { return "VersionGFC2"; }
         }
 
         public App()
