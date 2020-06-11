@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="clr-namespace:GestionFC.ViewModels.DetalleFolioPage"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fFImageLoadingTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             mc:Ignorable="d"
+             x:Class="GestionFC.Views.DetalleFolioPage">
+    <ContentPage.BindingContext>
+        <viewmodels:DetalleFolioPageViewModel />
+    </ContentPage.BindingContext>
+    
+    <StackLayout Margin="0">
+        <!--<Label Text="{Binding PreviousDetalleFolioModel.NombrePantalla, StringFormat='Previous item: {0}', FallbackValue='Previous item:'}" />
+        <Label Text="{Binding CurrentDetalleFolioModel.NombrePantalla, StringFormat='Current item: {0}', FallbackValue='Current item:'}" />
+        <Label Text="{Binding PreviousPosition, StringFormat='Previous position: {0}'}" />
+        <Label Text="{Binding CurrentPosition, StringFormat='Current position: {0}'}" />-->
+        <CarouselView 
+            ItemsSource="{Binding detalleFolioModel}"
+            CurrentItemChangedCommand="{Binding ItemChangedCommand}"
+            CurrentItemChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=CurrentItem}"
+            PositionChangedCommand="{Binding PositionChangedCommand}"
+            PositionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=Position}">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Grid
+                            HeightRequest="2000">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60" />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <BoxView 
+                                Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                                Color="#64A70B"/>
+                            <Label 
+                                Padding="10"
+                                Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                                FontSize="Large"
+                                TextColor="White"
+                                VerticalOptions="Center"
+                                FontFamily="{StaticResource Poppins-Bold}"
+                                Text="{Binding NombrePantalla}"/>
+                            <Frame 
+                                BackgroundColor="#FFFFFF"
+                                BorderColor="Gray"
+                                Grid.Row="1"
+                                Padding="1"
+                                Grid.Column="0"
+                                Margin="5,0,0,0"
+                                CornerRadius="20"
+                                HasShadow="True">
+                                <Grid Padding="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height=".2*" />
+                                        <RowDefinition Height="1*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView 
+                                        Color="#DDDDDD"
+                                        CornerRadius="20,20,0,0"
+                                        HorizontalOptions="Fill" />
+                                    <Label
+                                        Text="Imagen"
+                                        Margin="10,0,0,0"
+                                        FontFamily="{StaticResource Poppins-Bold}"
+                                        FontSize="Large"
+                                        TextColor="Gray"
+                                        VerticalOptions="Center"/>
+                                    <ffimageloading:CachedImage
+                                        x:Name = "Foto_Gerente"
+                                        Grid.Row="1"
+                                        Source = "{Binding foto}"
+                                        CacheDuration = "90"
+                                        RetryCount = "5"
+                                        RetryDelay = "450"
+                                        LoadingPlaceholder="foto_capi.png"
+                                        ErrorPlaceholder="foto_capi.png">    
+                                        <ffimageloading:CachedImage.Transformations>
+                                        <fFImageLoadingTrans:CircleTransformation
+                                        BorderSize="5"
+                                        BorderHexColor="#ffffff"/>
+                                        </ffimageloading:CachedImage.Transformations>
+                                    </ffimageloading:CachedImage>
+                                </Grid>
+                            </Frame>
+                            <Frame 
+                                BackgroundColor="#FFFFFF"
+                                BorderColor="Gray"
+                                Grid.Row="1"
+                                Padding="1"
+                                Grid.Column="1"
+                                Margin="0,0,5,0"
+                                CornerRadius="20"
+                                HasShadow="True">
+                                <Grid Padding="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height=".2*" />
+                                        <RowDefinition Height="1*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView 
+                                        Color="#DDDDDD"
+                                        CornerRadius="20,20,0,0"
+                                        HorizontalOptions="Fill" />
+                                    <Label
+                                        Text="Preguntas"
+                                        Margin="10,0,0,0"
+                                        FontFamily="{StaticResource Poppins-Bold}"
+                                        FontSize="Large"
+                                        TextColor="Gray"
+                                        VerticalOptions="Center"/>
+
+                                    <Label 
+                                        Grid.Row="1"
+                                        Margin="10,0,0,0"
+                                        FontFamily="{StaticResource Poppins-Bold}"
+                                        Text="{Binding preguntas}"
+                                        HorizontalOptions="StartAndExpand" />
+                                </Grid>
+                                
+                            </Frame>
+
+                            <Frame 
+                                BackgroundColor="#FFFFFF"
+                                BorderColor="Gray"
+                                Grid.Row="2"
+                                Padding="1"
+                                Grid.Column="0"
+                                Margin="5,0,0,0"
+                                CornerRadius="20"
+                                HasShadow="True">
+                                <Grid Padding="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height=".2*" />
+                                        <RowDefinition Height="1*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView 
+                                        Color="#DDDDDD"
+                                        CornerRadius="20,20,0,0"
+                                        HorizontalOptions="Fill" />
+                                    <Label
+                                        Text="Documento"
+                                        Margin="10,0,0,0"
+                                        FontFamily="{StaticResource Poppins-Bold}"
+                                        FontSize="Large"
+                                        TextColor="Gray"
+                                        VerticalOptions="Center"/>
+                                    <!--<Label
+                                        Grid.Row="1"
+                                        Text="{Binding pdf}"
+                                        HorizontalOptions="Center" />-->
+                                    <WebView Grid.Row="1" HeightRequest="1000" WidthRequest="1000" Source="http://www.xamarin.com" />
+                                    
+                                </Grid>
+                                
+                            </Frame>
+                            <Frame 
+                                BackgroundColor="#FFFFFF"
+                                BorderColor="Gray"
+                                Grid.Row="2"
+                                Padding="1"
+                                Grid.Column="1"
+                                Margin="0,0,5,0"
+                                CornerRadius="20"
+                                HasShadow="True">
+                                <Grid Padding="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height=".2*" />
+                                        <RowDefinition Height="1*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <BoxView 
+                                        Color="#DDDDDD"
+                                        CornerRadius="20,20,0,0"
+                                        HorizontalOptions="Fill" />
+
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+    </StackLayout>
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <CollectionView Grid.ColumnSpan="2" Grid.RowSpan="3" ItemsSource="{Binding DetalleFolioModels}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label 
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Text="{Binding foto}"></Label>
+                        <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Text="{Binding preguntas}"></Label>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>-->
+</ContentPage>
