@@ -49,13 +49,6 @@ namespace GestionFC.Views
                 TargetType = typeof(LoginPage),
             });
 
-            masterPageItems.Add(new MasterPageItem
-            {
-                Title = "Alertas",
-                IconSource = "exit.png",
-                TargetType = typeof(Alertas),
-            });
-
             listView.ItemsSource = masterPageItems;
             //loadPage();
 
