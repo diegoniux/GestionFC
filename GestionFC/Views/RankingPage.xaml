@@ -25,30 +25,98 @@
             Spacing="0"
             RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
-            <!--<Grid>
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.5*"></ColumnDefinition>
                     <ColumnDefinition Width="208"></ColumnDefinition>
                     <ColumnDefinition Width="0.5*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Frame>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="110"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Frame Grid.Column="1"
+                       Margin="0, 200, 0, -200"
+                       Padding="0"
+                       CornerRadius="10">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"></ColumnDefinition>
-                            <ColumnDefinition Width="2"></ColumnDefinition>
-                            <ColumnDefinition Width="80"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="1"></ColumnDefinition>
+                            <ColumnDefinition Width="107"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="18"></RowDefinition>
                             <RowDefinition Height="10"></RowDefinition>
-                            <RowDefinition Height="20"></RowDefinition>
-                            <RowDefinition Height="20"></RowDefinition>
-                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="13"></RowDefinition>
+                            <RowDefinition Height="18"></RowDefinition>
+                            <RowDefinition Height="13"></RowDefinition>
                         </Grid.RowDefinitions>
+                        <Image Source="icon_rank_up_green.png"
+                               Grid.Column="0"
+                               Grid.Row="1"></Image>
+                        <Label Text="DIRECCIÓN"
+                               TextColor="#64A70B"
+                               FontFamily="Helvetica"
+                               FontAttributes="Bold"
+                               FontSize="12"
+                               HorizontalTextAlignment="Center"
+                               Grid.Column="0"
+                               Grid.Row="2"></Label>
+                        <Label Text="4"
+                               TextColor="#353535"
+                               FontFamily="Helvetica"
+                               FontAttributes="Bold"
+                               FontSize="20"
+                               HorizontalTextAlignment="Center"
+                               Grid.Column="0"
+                               Grid.Row="3"></Label>
+                        <Label Text="POSICIÓN"
+                               TextColor="#353535"
+                               FontFamily="Helvetica"
+                               FontSize="12"
+                               HorizontalTextAlignment="Center"
+                               Grid.Column="0"
+                               Grid.Row="4"></Label>
+                    <BoxView
+                        BackgroundColor="#B2B2B2"
+                        HeightRequest="1"
+                        Margin="0, -7, 0, 7"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Grid.RowSpan="3"
+                        HorizontalOptions="Center"
+                        VerticalOptions="FillAndExpand">
+                    </BoxView>
+                    <Image Source="icon_rank_down_red.png"
+                               Grid.Column="2"
+                               Grid.Row="1"></Image>
+                        <Label Text="NACIONAL"
+                               TextColor="#64A70B"
+                               FontFamily="Helvetica"
+                               FontAttributes="Bold"
+                               FontSize="12"
+                               HorizontalTextAlignment="Center"
+                               Grid.Column="2"
+                               Grid.Row="2"></Label>
+                        <Label Text="4"
+                               TextColor="#353535"
+                               FontFamily="Helvetica"
+                               FontAttributes="Bold"
+                               FontSize="20"
+                               HorizontalTextAlignment="Center"
+                               Grid.Column="2"
+                               Grid.Row="3"></Label>
+                        <Label Text="POSICIÓN"
+                               TextColor="#353535"
+                               FontFamily="Helvetica"
+                               FontSize="12"
+                               HorizontalTextAlignment="Center"
+                               Grid.Column="2"
+                               Grid.Row="4"></Label>
                     </Grid>
                 </Frame>
-            </Grid>-->
-            <Grid Margin="0" 
+            </Grid>            
+            <Grid Margin="0, -110, 0, 0" 
                   Padding="0" 
                   ColumnSpacing="0" 
                   RowSpacing="0">
@@ -769,7 +837,7 @@
                        VerticalTextAlignment="End"></Label>
                 <Label Text="Equipo Fuerza Comercial"
                        FontFamily="Helvetica"
-                       FontSize="18"
+                       FontSize="16"
                        TextColor="#B2B2B2"
                        Grid.Column="2"
                        Grid.Row="1"
@@ -1184,7 +1252,7 @@
                 </Frame>
                  end 3er lugar 
             </Grid>-->
-            <Grid Margin="0, 20, 0, 0">
+            <Grid Margin="0, 25, 0, 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.1*"></ColumnDefinition>
                     <ColumnDefinition Width="0.8*"></ColumnDefinition>
