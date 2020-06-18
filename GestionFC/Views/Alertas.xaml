@@ -9,13 +9,13 @@
              xmlns:renderers="clr-namespace:GestionFC.Renderers"
              mc:Ignorable="d"
              x:Class="GestionFC.Views.Alertas">
-    <RelativeLayout Padding="0">
-        <Image
+    <RelativeLayout Padding="0" BackgroundColor="#F0F0F1">
+        <!--<Image
             Aspect="AspectFill"
             Source="background_app.png"
             RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
-        </Image>
+        </Image>-->
 
         <StackLayout 
             Margin="0" 
@@ -727,7 +727,7 @@
                     <ColumnDefinition Width="27"></ColumnDefinition>
                     <ColumnDefinition Width="500"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Image Source="campana_verde.png"
+                <Image Source="title_alerta.png"
                        Grid.Column="0"
                        Grid.Row="0"
                        Grid.ColumnSpan="2"
@@ -768,120 +768,336 @@
                     </Label.FormattedText>
                 </Label>
             </Grid>
-            <!-- Panel de notificaciones -->
-            <Grid Margin="54,20,54,0">
+
+            <!--CONTENIDO-->
+            <Grid
+                RowSpacing="0"
+                Margin="27,0,27,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="54"></RowDefinition>
-                    <RowDefinition Height="54"></RowDefinition>
-                    <RowDefinition Height="54"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="54"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <!--<ColumnDefinition Width="0"></ColumnDefinition>-->
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <!-- Detalle de notificaciones -->
-                <Frame Margin="10,-15,1,0"
-                       CornerRadius="10"
-                       BackgroundColor="#f3f3f1"
-                        Grid.Column="1"
-                        Grid.Row="1"
-                        Grid.ColumnSpan="1">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="25"></RowDefinition>
-                                <RowDefinition Height="2"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="54"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Label
-                                Grid.Column="0"
-                                Grid.Row="0">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Apoyar a Maria Pérez, tiene " TextColor="#464646"></Span>
-                                        <Span Text="2 días" TextColor="Red" FontAttributes="Bold"></Span>
-                                        <Span Text=" sin trapasos certificados." TextColor="#464646"></Span>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Image Source="success_check.png"
-                                Margin="2,2,2,2"
-                                Grid.Column="1"
-                                Grid.Row="0"></Image>
-                            <BoxView
-                                Grid.Column="0"
-                                Grid.Row="1"
-                                Grid.ColumnSpan="2"
-                                BackgroundColor="#B2B2B2"
-                                HeightRequest="1"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="End">
-                            </BoxView>
-                        </Grid>                        
-                </Frame>
-                <!-- Cuerpo de la notificación -->
-                <Frame
-                    CornerRadius="10"
-                    Grid.Column="0"
-                    Grid.Row="0"
-                    Grid.ColumnSpan="2"
-                    BorderColor="#B2B2B2"
-                    HasShadow="False">
-
-                </Frame>
-                <Image Source="notificacion.png"
-                    Margin="10,10,10,10"
-                    Grid.Column="0"
-                    Grid.Row="0"></Image>
+                <!--TABS-->
                 <Grid
-                    Grid.Column="1"
+                    Grid.Column="0"
                     Grid.Row="0"
-                    >
+                    ColumnSpacing="0"
+                    RowSpacing="0"
+                    Margin="0,20,0,0"
+                    HorizontalOptions="StartAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="180"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="27"></RowDefinition>
-                        <RowDefinition Height="27"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Label Text="Alerta!"
-                        FontFamily="Helvetica"
-                        FontSize="17"
-                        FontAttributes="Bold"
-                        TextColor="#ba5e53"
+                    <!--TAB PLANTILLA IMPRODUCTIVA-->
+                    <BoxView
+                        x:Name="PlantillaImproductiva"
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#71B417"
+                        Grid.Column="0">
+                        <BoxView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapImproductividad_Tapped"></TapGestureRecognizer>
+                        </BoxView.GestureRecognizers>
+                    </BoxView>
+                    <Label
                         Grid.Column="0"
-                        Grid.Row="0"
-                        Margin="0,10,0,0"
-                        HorizontalTextAlignment="Start"
-                        VerticalTextAlignment="Start"></Label>
-                    <Label Text="Plantilla Improductiva"
-                        FontFamily="Helvetica"
-                        FontSize="17"
-                        TextColor="#B2B2B2"
-                        Grid.Column="0"
-                        Grid.Row="1"
-                        Margin="0,0,0,10"
-                        HorizontalTextAlignment="Start"
-                        VerticalTextAlignment="End"></Label>
-                    <Image Source="detalle_collapse"
-                            Grid.Column="1"
-                            Grid.Row="1"
-                           Margin="0,-11,0,0"></Image>
-                    <!--<Frame BackgroundColor="#f4a70d"
-                            Grid.Column="2"
-                            Grid.Row="0">
-                        <Label Text="VER DETALLE +"
-                            TextColor="#FFFFFF"
-                            FontSize="14"
-                            FontAttributes="Bold"></Label>
-                    </Frame>-->
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontSize="12"
+                        TextColor="#FFFFFF"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"                        
+                        Text="Plantilla improductiva">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapImproductividad_Tapped"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <!--TAB PLANTILLA RECUPERACIÓN-->
+                    <BoxView
+                        x:Name="PlantillaRecuperacion"
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#F9F9F9"
+                        Grid.Column="1">
+                        <BoxView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapRecuperacion_Tapped"></TapGestureRecognizer>
+                        </BoxView.GestureRecognizers>
+                    </BoxView>
+                    <Label
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontSize="12"
+                        Grid.Column="1"
+                        Text="Plantilla en recuperación">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapRecuperacion_Tapped"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <!--TAB PLANTILLA INVESTIGACIÓN-->
+                    <BoxView
+                        x:Name="PlantillaInvestigacion"
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#F9F9F9"
+                        Grid.Column="2">
+                        <BoxView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapInvestigacion_Tapped"></TapGestureRecognizer>
+                        </BoxView.GestureRecognizers>
+                    </BoxView>
+                    <Label
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontSize="12"
+                        Grid.Column="2"
+                        Text="Plantilla en investigación">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapInvestigacion_Tapped"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <!--TAB FOLIOS PENDIENTES SALDO VIRTUAL-->
+                    <BoxView
+                        x:Name="FoliosPendientesSV"
+                        CornerRadius="10,10,0,0"
+                        BackgroundColor="#F9F9F9"
+                        Grid.Column="3">
+                        <BoxView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapPendientesSV_Tapped"></TapGestureRecognizer>
+                        </BoxView.GestureRecognizers>
+                    </BoxView>
+                    <Label
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Margin="4,0,0,0"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontSize="12"
+                        Grid.Column="3"
+                        Text="Folios pendientes Saldo Virtual">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapPendientesSV_Tapped"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </Grid>
+                <!--FIN TABS-->
+                <!--PLANTILLA IMPRODUCTIVA-->
+                <Grid
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    RowSpacing="0"
+                    Margin="0,15,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <!--TITULO TAB-->
+                    <BoxView
+                        Grid.ColumnSpan="3"
+                        Grid.Row="0"
+                        BackgroundColor="White">
+                    </BoxView>
+                    <Label
+                        x:Name="textoTitulo"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="Center"
+                        FontFamily="{StaticResource Poppins-Bold}"
+                        Margin="10,0,0,0"
+                        FontSize="14"
+                        Grid.Column="0"
+                        Text="Plantilla improductiva">
+                    </Label>
+                    <!--DATOS IMPRODUCTIVA-->
+                    <Frame
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        BackgroundColor="#F3F3F3"
+                        CornerRadius="2"
+                        HasShadow="True">
+                        <CollectionView
+                            x:Name="CollecionViewImproductiva"
+                            IsVisible="True"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            ItemsSource="{Binding  PlantillaImproductiva.ResultDatos}">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout 
+                                    Orientation="Vertical"
+                                    VerticalItemSpacing="1"></GridItemsLayout>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid
+                                        RowSpacing="0"
+                                        ColumnSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"></RowDefinition>
+                                            <RowDefinition Height="30"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width=".16*"></ColumnDefinition>
+                                            <ColumnDefinition Width="150"></ColumnDefinition>
+                                            <ColumnDefinition Width=".3*"></ColumnDefinition>
+                                            <ColumnDefinition Width=".3*"></ColumnDefinition>
+                                            <ColumnDefinition Width=".3*"></ColumnDefinition>
+                                            <ColumnDefinition Width=".3*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame
+                                            CornerRadius="45"
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            BackgroundColor="White"
+                                            BorderColor="White"
+                                            Margin="5,5,5,5"
+                                            HasShadow="False">
+                                            <ffimageloading:CachedImage
+                                                x:Name = "Foto_Gerente"
+                                                Source = "{Binding Foto}"
+                                                CacheDuration = "90"
+                                                RetryCount = "5"
+                                                RetryDelay = "450"
+                                                LoadingPlaceholder="capi_circulo.png"
+                                                ErrorPlaceholder="capi_circulo.png">
+                                                <ffimageloading:CachedImage.Transformations>
+                                                    <fFImageLoadingTrans:CircleTransformation
+                                                        BorderSize="5"
+                                                        BorderHexColor="#ffffff"/>
+                                                </ffimageloading:CachedImage.Transformations>
+                                            </ffimageloading:CachedImage>
+                                        </Frame>
+                                        <Label
+                                            Text="{Binding NombreAP}"
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            FontSize="10"
+                                            VerticalTextAlignment="End"
+                                            HorizontalTextAlignment="Start"
+                                            TextColor="#353535"
+                                            Margin="5,0,0,0"
+                                            FontFamily="{StaticResource Poppins-Medium}">
+                                        </Label>
+                                        <Label
+                                            Text="{Binding ApellidosAP}"
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            FontSize="10"
+                                            VerticalTextAlignment="Start"
+                                            HorizontalTextAlignment="Start"
+                                            TextColor="#353535"
+                                            Margin="5,0,0,0"
+                                            FontFamily="{StaticResource Poppins-Bold}">
+                                        </Label>
+                                        <AbsoluteLayout 
+                                            Grid.Column="2"
+                                            Grid.RowSpan="2" 
+                                            HorizontalOptions="Center">
+                                        <Image
+                                            Source="calendar_gold.png"
+                                            Aspect="Fill"
+                                            Margin="5,5,5,0">
+                                        </Image>
+                                        <Label
+                                            Text="{Binding DiasSinFolios}"
+                                            Margin="0,5,0,5"
+                                            HorizontalOptions="Center"                         
+                                            AbsoluteLayout.LayoutFlags="PositionProportional"
+                                            AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+                                        </Label>
+                                        <Label
+                                            x:Name="dia"
+                                            Text="Días"
+                                            Margin="0,5,0,5"
+                                            HorizontalOptions="Center"                         
+                                            AbsoluteLayout.LayoutFlags="PositionProportional"
+                                            AbsoluteLayout.LayoutBounds="0.5,1,-1,-1">
+                                        </Label>
+                                        </AbsoluteLayout>
+                                        <Label
+                                            Text="{Binding Msj1}"
+                                            Grid.Column="3"
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            FontSize="10"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Start"
+                                            TextColor="#353535"
+                                            Margin="5,0,0,0"
+                                            FontFamily="{StaticResource Poppins-Medium}">
+                                        </Label>
+                                        <Image
+                                            Source="icon_sale.png"
+                                            Grid.Column="4"
+                                            Grid.RowSpan="2"
+                                            Margin="0,5,0,5">
+                                        </Image>
+                                        <Label
+                                            Text="{Binding Msj1}"
+                                            Grid.Column="5"
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            FontSize="10"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Start"
+                                            TextColor="#353535"
+                                            Margin="5,0,0,0"
+                                            FontFamily="{StaticResource Poppins-Medium}">
+                                        </Label>
+                                        <BoxView
+                                            VerticalOptions="EndAndExpand"
+                                            HeightRequest="1"
+                                            Margin="0,5,0,0"
+                                            BackgroundColor="Black"
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="6">
+                                        
+                                        </BoxView>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Frame>
+                    <!--FIN DATOS IMPRODUCTIVA-->
+                    <!--DATOS RECUPERACION-->
+                    <CollectionView
+                        x:Name="CollecionViewRecuperacion"
+                        IsVisible="False">
+
+                    </CollectionView>
+                    <!--FIN DATOS RECUPERACION-->
+                    <!--DATOS INVESTIGACION-->
+                    <CollectionView
+                        x:Name="CollecionViewInvestigacion"
+                        IsVisible="False">
+                        
+                    </CollectionView>
+                    <!--FIN DATOS INVESTIGACION-->
+                    <!--DATOS PENDIENTESSV-->
+                    <CollectionView
+                        x:Name="CollecionViewPendientesSV"
+                        IsVisible="False">
+
+                    </CollectionView>
+                    <!--FIN DATOS PENDIENTESSV-->
+                </Grid>
+                <!--FIN PLANTILLA IMPRODUCTIVA-->   
             </Grid>
+            <!--TERMINA CONTENIDO-->
         </StackLayout>
     </RelativeLayout>
 </ContentPage>

@@ -1,4 +1,4 @@
-﻿using GestionFC.Models.Share;
+using GestionFC.Models.Share;
 using GestionFC.SqLite;
 using GestionFC.Views;
 using System;        
@@ -30,7 +30,6 @@ namespace GestionFC
         {
             //get { return "https://desaiis01/spw_Api_GestionFC/"; }
             get { return "https://spw.invercap.com.mx/spw_Api_GestionFC/"; }
-
         }
 
         public static string ClaveVersion
