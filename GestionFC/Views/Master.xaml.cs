@@ -52,8 +52,15 @@ namespace GestionFC.Views
             masterPageItems.Add(new MasterPageItem
             {
                 Title = "Alertas",
-                IconSource = "exit.png",
+                IconSource = "icon_notification.png",
                 TargetType = typeof(Alertas),
+            });
+
+            masterPageItems.Add(new MasterPageItem
+            {
+                Title = "Ranking",
+                IconSource = "exit.png",
+                TargetType = typeof(RankingPage),
             });
 
             listView.ItemsSource = masterPageItems;
@@ -95,8 +102,14 @@ namespace GestionFC.Views
                         listView.SelectedItem = null;
                         return;
                     }
+                    await cerrarSesion(item);
                 }
-                await cerrarSesion(item);
+                else
+                {
+                    App.MasterDetail.IsPresented = false;
+                    await App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(item.TargetType));
+                    listView.SelectedItem = null;
+                }
             }
         }
 
@@ -121,9 +134,11 @@ namespace GestionFC.Views
             });
             App.MasterDetail.IsPresented = false;
             loadPage(0, string.Empty, string.Empty, "capi_circulo.png", _token);
-            if(item != null)
+            if (item != null)
+            {
                 await App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(item.TargetType));
-            listView.SelectedItem = null;
+                listView.SelectedItem = null;
+            }
         }
 
         void OnTapMenuHamburguesaBar_Tapped(System.Object sender, System.EventArgs e)

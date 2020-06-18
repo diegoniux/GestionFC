@@ -56,7 +56,7 @@ namespace GestionFC.Views
 
                          if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                          {
-                             // vericamos si la sesión expiró (token)
+                             // verificamos si la sesión expiró (token)
                              if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
                              {
                                  SesionExpired = true;

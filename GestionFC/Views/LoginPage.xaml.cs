@@ -25,10 +25,33 @@ namespace GestionFC
         public LoginViewModel LoginViewModel { get; set; }
         private int UserRemember { get; set; }
         private LogService logService { get; set; }
+
+        private async Task<Location> getLocation()
+        {
+            try
+            {
+                var location = await Geolocation.GetLocationAsync(new GeolocationRequest
+                {
+                    DesiredAccuracy = GeolocationAccuracy.Medium,
+                    Timeout = TimeSpan.FromSeconds(30)
+                });
+                if (location != null)
+                {
+                    string popo = $" {location.Latitude }";
+                    await DisplayAlert("Loc", popo, "Ok");
+                }
+                return location;
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "Ok");
+                return null;
+            }
+        }
+
         public LoginPage()
         {
             InitializeComponent();
-
             // Ocultamos la barra de navegación
             NavigationPage.SetHasNavigationBar(this, false);
 
@@ -103,6 +126,8 @@ namespace GestionFC
             LoginService loginService = new LoginService();
             logService = new LogService();
             CatalogoService catalogo = new CatalogoService();
+            //await getLocation();
+
             try
             {
                 if (LoginViewModel.IsRunning)
