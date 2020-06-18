@@ -7,7 +7,7 @@
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
              xmlns:fFImageLoadingTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              mc:Ignorable="d"
-             x:Class="GestionFC.Views.ProductividadPage"
+             x:Class="GestionFC.Views.VisionBoardPage"
              BackgroundColor="#F0F0F1">
     <ContentPage.Resources>
         <Style TargetType="Grid">
@@ -756,7 +756,7 @@
                     HorizontalOptions="FillAndExpand">
                 </Image>
 
-                <!--TABS Y CALENDARIO-->
+                <!--TABS-->
                 <Grid
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
@@ -769,14 +769,6 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="148"></ColumnDefinition>
                         <ColumnDefinition Width="148"></ColumnDefinition>
-                        <ColumnDefinition Width="40"></ColumnDefinition>
-                        <ColumnDefinition Width="40"></ColumnDefinition>
-                        <ColumnDefinition Width="40"></ColumnDefinition>
-                        
-                        <ColumnDefinition Width="50"></ColumnDefinition>
-                        <ColumnDefinition Width="100*"></ColumnDefinition>
-                        <ColumnDefinition Width="55"></ColumnDefinition>
-                        <ColumnDefinition Width="100*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
                     <!--TAB PRODUCTIVIDAD DIARIA-->
@@ -800,115 +792,10 @@
                             <TapGestureRecognizer Tapped="OnTapProdSemanal_Tapped"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
                     </Image>
-
-                    <!--BOTON PREV-->
-                    <Image
-                        x:Name="imgPrev"
-                        Source="prev.png"
-                        Aspect="AspectFit"
-                        Grid.Column="2">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnTapPrev_Tapped"></TapGestureRecognizer>
-                        </Image.GestureRecognizers>
-                    </Image>
-
-                    <!--CALENDARIO-->
-                    <Image
-                        x:Name="imgCalendario"
-                        Source="calendar_negro.png"
-                        Aspect="AspectFit"
-                        Grid.Column="3">
-                    </Image>
-
-                    <!--BOTON NEXT-->
-                    <Image
-                        x:Name="imgNext"
-                        Source="next.png"
-                        Aspect="AspectFit"
-                        Grid.Column="4">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnTapNext_Tapped"></TapGestureRecognizer>
-                        </Image.GestureRecognizers>
-                    </Image>
-                    
-                    <!--SECCION COMISION ESTIMADA-->
-                    <Frame
-                        BackgroundColor="#F3F3F3"
-                        Grid.Column="5"
-                        Grid.ColumnSpan="5"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        CornerRadius="10"
-                        IsClippedToBounds="True"
-                        HasShadow="False">
-                    </Frame>
-                    <Label
-                        Text="Comisión Estimada"
-                        Grid.Column="5"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        HorizontalTextAlignment="Start"
-                        VerticalTextAlignment="Center"
-                        FontSize="10"
-                        FontAttributes="Bold"
-                        TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}">
-                    </Label>
-                    <Frame
-                        BackgroundColor="#FFFFFF"
-                        Grid.Column="6"
-                        CornerRadius="10"
-                        BorderColor="#B2B2B2"
-                        HasShadow="False">
-                    </Frame>
-                    <Label
-                        Text="{Binding ComisionEstimada.ComisionEstimada}"
-                        Grid.Column="6"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"
-                        FontSize="16"
-                        FontAttributes="Bold"
-                        TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}">
-                    </Label>
-                    <Label
-                        Text="Bono Excelencia"
-                        Grid.Column="7"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        HorizontalTextAlignment="Start"
-                        VerticalTextAlignment="Center"
-                        FontSize="10"
-                        FontAttributes="Bold"
-                        TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}">
-                    </Label>
-                    <Frame
-                        BackgroundColor="#FFFFFF"
-                        BorderColor="#B2B2B2"
-                        Grid.Column="8"
-                        HorizontalOptions="FillAndExpand"
-                        CornerRadius="10"
-                        HasShadow="False">
-                    </Frame>
-                    <Label
-                        Text="{Binding ComisionEstimada.BonoExcelenciaEstimado}"
-                        Grid.Column="8"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"
-                        FontSize="16"
-                        FontAttributes="Bold"
-                        TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}">
-                    </Label>
                 </Grid>
                 <!--TERMINA TABS Y CALENDARIO-->
                 
-                <!--PIZARRÓN DIARIA-->
+                <!--META PLANTILLA-->
                 <Grid
                     x:Name="gridProdDiaria"
                     Grid.Column="0"
@@ -1495,9 +1382,9 @@
                     </CollectionView>
                     <!--TERMINA DATOS-->
                 </Grid>
-                <!--TERMINA PIZARRÓN DIARIA-->
+                <!--TERMINA META PLANTILLA-->
 
-                <!--PIZARRÓN SEMANAL-->
+                <!--META INDIVIDUAL-->
                 <Grid
                     x:Name="gridProdSemanal"
                     Grid.Column="0"
@@ -1907,7 +1794,7 @@
                     </Label>
 
                 </Grid>
-                <!--TERMINA DATOS-->
+                <!--TERMINA META INDIVIDUAL-->
             </Grid>
             <!--TERMINA CONTENIDO-->
         </StackLayout>
