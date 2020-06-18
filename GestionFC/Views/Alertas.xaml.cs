@@ -6,6 +6,7 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using Service = GestionFC.Services;
 using GestionFC.Models.Log;
+using GestionFC.ViewModels.AlertasPage;
 
 
 namespace GestionFC.Views
@@ -13,12 +14,15 @@ namespace GestionFC.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Alertas : ContentPage
     {
-        public ViewModels.PlantillaPage.PlantillaPageViewModel ViewModel { get; set; }
+        public PlantillaImproductivaViewModel ViewModel { get; set; }
         private int nomina { get; set; }
         private string token { get; set; }
+        private bool isBusy = false;
         public Master _master;
         public bool SesionExpired { get; set; }
 
+       
+        
         public Alertas()
         {
             InitializeComponent();
@@ -26,8 +30,7 @@ namespace GestionFC.Views
 
             _master = (Master)App.MasterDetail.Master;
 
-            ViewModel = new ViewModels.PlantillaPage.PlantillaPageViewModel();
-            BindingContext = ViewModel;
+            
             LoadPage();
             NavigationPage.SetHasNavigationBar(this, false);
 
@@ -37,15 +40,20 @@ namespace GestionFC.Views
             {
                 App.MasterDetail.IsPresented = !App.MasterDetail.IsPresented;
             };
+            // Declaración del ViewModel y asignación al BindingContext
+            ViewModel = new PlantillaImproductivaViewModel();
+            BindingContext = ViewModel;
 
             btnHamburguesa.GestureRecognizers.Add(burguerTap);
         }
 
         private async void LoadPage()
         {
+            
             //logService = new Service.LogService();
             Service.HeaderService headerService = new Service.HeaderService();
             Service.PlantillaService gridPromotoresService = new Service.PlantillaService();
+            IsBusy = true;
             try
             {
                 nomina = App.Nomina;
@@ -95,6 +103,7 @@ namespace GestionFC.Views
                 if (SesionExpired)
                 {
                     CerrarSesion();
+                    IsBusy = false;
                     return;
                 }
 
@@ -113,10 +122,15 @@ namespace GestionFC.Views
                 });
                 await DisplayAlert("PlantillaPage Error", ex.Message, "Ok");
             }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
         void OnTapImageProductividad_Tapped(System.Object sender, System.EventArgs e)
         {
+            if (isBusy) return;
             // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -130,6 +144,54 @@ namespace GestionFC.Views
             App.MasterDetail.IsPresented = !App.MasterDetail.IsPresented;
         }
 
+        private void OnTapImproductividad_Tapped(object sender, EventArgs e)
+        {
+            if (isBusy) return;
+            textoTitulo.Text = "Plantilla improductiva";
+            //imgTabProdSemanal.Source = "prod_sem_blanco.png";
+            //gridProdDiaria.IsVisible = true;
+            //CollecionViewProdDiaria.IsVisible = true;
+            //gridProdSemanal.IsVisible = false;
+            //CollecionViewProdSemanal.IsVisible = false;
+
+            //Llamar método para cargar la productividad Diaria
+        }
+        private void OnTapRecuperacion_Tapped(object sender, EventArgs e)
+        {
+            if (isBusy) return;
+            textoTitulo.Text = "Plantilla Recuperación";
+            //imgTabProdSemanal.Source = "prod_sem_blanco.png";
+            //gridProdDiaria.IsVisible = true;
+            //CollecionViewProdDiaria.IsVisible = true;
+            //gridProdSemanal.IsVisible = false;
+            //CollecionViewProdSemanal.IsVisible = false;
+
+            //Llamar método para cargar la productividad Diaria
+        }
+        private void OnTapInvestigacion_Tapped(object sender, EventArgs e)
+        {
+            if (isBusy) return;
+            textoTitulo.Text = "Plantilla Investigación";
+            //imgTabProdSemanal.Source = "prod_sem_blanco.png";
+            //gridProdDiaria.IsVisible = true;
+            //CollecionViewProdDiaria.IsVisible = true;
+            //gridProdSemanal.IsVisible = false;
+            //CollecionViewProdSemanal.IsVisible = false;
+
+            //Llamar método para cargar la productividad Diaria
+        }
+        private void OnTapPendientesSV_Tapped(object sender, EventArgs e)
+        {
+            if (isBusy) return;
+            textoTitulo.Text = "Folios pendientes Saldo Virtual";
+            //imgTabProdSemanal.Source = "prod_sem_blanco.png";
+            //gridProdDiaria.IsVisible = true;
+            //CollecionViewProdDiaria.IsVisible = true;
+            //gridProdSemanal.IsVisible = false;
+            //CollecionViewProdSemanal.IsVisible = false;
+
+            //Llamar método para cargar la productividad Diaria
+        }
 
         async void CerrarSesion()
         {
