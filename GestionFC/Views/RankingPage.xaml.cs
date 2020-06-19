@@ -44,6 +44,7 @@ namespace GestionFC.Views
         {
             //logService = new Service.LogService();
             Service.HeaderService headerService = new Service.HeaderService();
+            Service.RankingService rankingService = new Service.RankingService();
             Service.PlantillaService gridPromotoresService = new Service.PlantillaService();
             try
             {
@@ -80,206 +81,37 @@ namespace GestionFC.Views
                             {
                                 ViewModel.Gerente = x.Result.Progreso;
                             }
-
-                            ViewModel.TopGerentes.Add(new Models.Share.RankingGte
-                            {
-                                Nombre = "Victoria Janeth",
-                                Apellidos = "Rosas Camacho",
-                                Foto = "capi_circulo.png",
-                                Posicion = "1er LUGAR",
-                                Saldo = "$10,000,000",
-                                TipoSaldo = "",
-                                NumTraspaso = 10,
-                                ImgPosicionSemAnt = "",
-                                ColorPosicion = "#D5A73A",
-                                Estrellas = new Models.Share.RankEstrellas
-                                {
-                                    semana1 = "icon_star_gold.png",
-                                    semana2 = "icon_star_gold.png",
-                                    semana3 = "icon_star_gold.png",
-                                    semana4 = "icon_star_gold.png"
-                                }
-                            });
-                            ViewModel.TopGerentes.Add(new Models.Share.RankingGte
-                            {
-                                Nombre = "Domingo Javier",
-                                Apellidos = "Quintero Espinoza",
-                                Foto = "capi_circulo.png",
-                                Posicion = "2do",
-                                Saldo = "$8,000,000",
-                                TipoSaldo = "",
-                                NumTraspaso = 8,
-                                ImgPosicionSemAnt = "",
-                                ColorPosicion = "#707070",
-                                Estrellas = new Models.Share.RankEstrellas
-                                {
-                                    semana1 = "icon_star_plate.png",
-                                    semana2 = "icon_star_plate.png",
-                                    semana3 = "icon_star_plate.png",
-                                    semana4 = "icon_star_grey.png"
-                                }
-                            });
-                            ViewModel.TopGerentes.Add(new Models.Share.RankingGte
-                            {
-                                Nombre = "Marco Antonio",
-                                Apellidos = "Pérez",
-                                Foto = "capi_circulo.png",
-                                Posicion = "3er",
-                                Saldo = "$5,000,000",
-                                TipoSaldo = "",
-                                NumTraspaso = 6,
-                                ImgPosicionSemAnt = "",
-                                ColorPosicion = "#501313",
-                                Estrellas = new Models.Share.RankEstrellas
-                                {
-                                    semana1 = "icon_star_bronze.png",
-                                    semana2 = "icon_star_bronze.png",
-                                    semana3 = "icon_star_bronze.png",
-                                    semana4 = "icon_star_grey.png"
-                                }
-                            });
-                            ViewModel.Gerentes.Add(new Models.Share.RankingGte
-                            {
-                                Nombre = "Rene Alexander",
-                                Apellidos = "Hernández de la Rosa",
-                                Foto = "capi_circulo.png",
-                                Posicion = "4",
-                                Saldo = "$4,000,000",
-                                TipoSaldo = "SALDO VIRTUAL",
-                                NumTraspaso = 4,
-                                ImgPosicionSemAnt = "icon_rank_up_green.png",
-                                ColorPosicion = "",
-                                Estrellas = new Models.Share.RankEstrellas
-                                {
-                                    semana1 = "icon_star_plate.png",
-                                    semana2 = "icon_star_bronze.png",
-                                    semana3 = "icon_star_gold.png",
-                                    semana4 = "icon_star_grey.png"
-                                }
-                            });
-                            ViewModel.Gerentes.Add(new Models.Share.RankingGte
-                            {
-                                Nombre = "Mario Alberto",
-                                Apellidos = "Villarreal",
-                                Foto = "capi_circulo.png",
-                                Posicion = "5",
-                                Saldo = "$4,000,000",
-                                TipoSaldo = "SALDO VIRTUAL",
-                                NumTraspaso = 4,
-                                ImgPosicionSemAnt = "icon_rank_equal.png",
-                                ColorPosicion = "",
-                                Estrellas = new Models.Share.RankEstrellas
-                                {
-                                    semana1 = "icon_star_bronze.png",
-                                    semana2 = "icon_star_grey.png",
-                                    semana3 = "icon_star_bronze.png",
-                                    semana4 = "icon_star_grey.png"
-                                }
-                            });
-
-                            ViewModel.Gerentes.Add(new Models.Share.RankingGte
-                            {
-                                Nombre = "José Antonio",
-                                Apellidos = "Rodríguez",
-                                Foto = "capi_circulo.png",
-                                Posicion = "6",
-                                Saldo = "$4,000,000",
-                                TipoSaldo = "SALDO VIRTUAL",
-                                NumTraspaso = 4,
-                                ImgPosicionSemAnt = "icon_rank_equal.png",
-                                ColorPosicion = "",
-                                Estrellas = new Models.Share.RankEstrellas
-                                {
-                                    semana1 = "icon_star_bronze.png",
-                                    semana2 = "icon_star_grey.png",
-                                    semana3 = "icon_star_bronze.png",
-                                    semana4 = "icon_star_grey.png"
-                                }
-                            });
-
-                            ViewModel.Gerentes.Add(new Models.Share.RankingGte
-                            {
-                                Nombre = "José Luis",
-                                Apellidos = "Garcia",
-                                Foto = "capi_circulo.png",
-                                Posicion = "7",
-                                Saldo = "$4,000,000",
-                                TipoSaldo = "SALDO VIRTUAL",
-                                NumTraspaso = 4,
-                                ImgPosicionSemAnt = "icon_rank_down_red.png",
-                                ColorPosicion = "",
-                                Estrellas = new Models.Share.RankEstrellas
-                                {
-                                    semana1 = "icon_star_bronze.png",
-                                    semana2 = "icon_star_grey.png",
-                                    semana3 = "icon_star_bronze.png",
-                                    semana4 = "icon_star_grey.png"
-                                }
-                            });
-
-                            ViewModel.Gerentes.Add(new Models.Share.RankingGte
-                            {
-                                Nombre = "José Saul",
-                                Apellidos = "Torres",
-                                Foto = "capi_circulo.png",
-                                Posicion = "8",
-                                Saldo = "$3,400,000",
-                                TipoSaldo = "SALDO VIRTUAL",
-                                NumTraspaso = 4,
-                                ImgPosicionSemAnt = "icon_rank_down_red.png",
-                                ColorPosicion = "",
-                                Estrellas = new Models.Share.RankEstrellas
-                                {
-                                    semana1 = "icon_star_bronze.png",
-                                    semana2 = "icon_star_grey.png",
-                                    semana3 = "icon_star_bronze.png",
-                                    semana4 = "icon_star_grey.png"
-                                }
-                            });
-
-                            ViewModel.Gerentes.Add(new Models.Share.RankingGte
-                            {
-                                Nombre = "Micaela",
-                                Apellidos = "Duarte Gaitán",
-                                Foto = "capi_circulo.png",
-                                Posicion = "9",
-                                Saldo = "$3,000,000",
-                                TipoSaldo = "SALDO VIRTUAL",
-                                NumTraspaso = 5,
-                                ImgPosicionSemAnt = "icon_rank_down_red.png",
-                                ColorPosicion = "",
-                                Estrellas = new Models.Share.RankEstrellas
-                                {
-                                    semana1 = "icon_star_bronze.png",
-                                    semana2 = "icon_star_grey.png",
-                                    semana3 = "icon_star_grey.png",
-                                    semana4 = "icon_star_grey.png"
-                                }
-                            });
-
-                            ViewModel.Gerentes.Add(new Models.Share.RankingGte
-                            {
-                                Nombre = "Erika Sarahi",
-                                Apellidos = "Guajardo Martínez",
-                                Foto = "capi_circulo.png",
-                                Posicion = "10",
-                                Saldo = "$2,000,000",
-                                TipoSaldo = "SALDO VIRTUAL",
-                                NumTraspaso = 2,
-                                ImgPosicionSemAnt = "icon_rank_down_red.png",
-                                ColorPosicion = "",
-                                Estrellas = new Models.Share.RankEstrellas
-                                {
-                                    semana1 = "icon_star_grey.png",
-                                    semana2 = "icon_star_grey.png",
-                                    semana3 = "icon_star_grey.png",
-                                    semana4 = "icon_star_grey.png"
-                                }
-                            });
                         });
-                        
                     }
+                    using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                    {
+                        await rankingService.GetRanking(nomina, token).ContinueWith(x =>
+                        {
+                            if (x.IsFaulted)
+                            {
+                                throw x.Exception;
+                            }
 
+                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                            {
+
+                                // verificamos si la sesión expiró (token)
+                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                {
+                                    SesionExpired = true;
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                }
+                            }
+                            if (x.Result.TopGerentes != null)
+                            {
+                                ViewModel.TopGerentes = x.Result.TopGerentes;
+                            }
+                            if (x.Result.Gerentes != null)
+                            {
+                                ViewModel.Gerentes = x.Result.Gerentes;
+                            }
+                        });
+                    }
                 }
             }
             catch (Exception ex)

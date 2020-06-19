@@ -1460,9 +1460,9 @@
                                     <ColumnDefinition Width="70"></ColumnDefinition>
                                     <ColumnDefinition Width="45"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="120"></ColumnDefinition>
-                                    <ColumnDefinition Width="100"></ColumnDefinition>
-                                    <ColumnDefinition Width="155"></ColumnDefinition>
+                                    <ColumnDefinition Width="115"></ColumnDefinition>
+                                    <ColumnDefinition Width="95"></ColumnDefinition>
+                                    <ColumnDefinition Width="160"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding ImgPosicionSemAnt}"
                                        Grid.Column="0"
@@ -1582,6 +1582,7 @@
                                 <Frame
                                     Grid.Column="6"
                                     Grid.Row="0"
+                                    Margin="0,0,2,0"
                                     BorderColor="#DCD7D7"
                                     CornerRadius="10"
                                     HasShadow="False"

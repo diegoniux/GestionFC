@@ -29,7 +29,7 @@ namespace GestionFC.Services
 
                 HttpResponseMessage response = null;
                 if (_client.DefaultRequestHeaders.Authorization == null)
-                    _client.DefaultRequestHeaders.Add("Authorization", "Bearer" + accessToken);
+                    _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
                 response = await _client.GetAsync(uri);
 
                 response.EnsureSuccessStatusCode();
