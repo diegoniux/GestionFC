@@ -63,6 +63,14 @@ namespace GestionFC.Views
                 TargetType = typeof(RankingPage),
             });
 
+            masterPageItems.Add(new MasterPageItem
+            {
+                Title = "Objetivos de tu plantilla",
+                IconSource = "exit.png",
+                TargetType = typeof(VisionBoardPage),
+            });
+
+
             listView.ItemsSource = masterPageItems;
             //loadPage();
 
