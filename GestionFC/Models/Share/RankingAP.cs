@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GestionFC.Models.Ranking
+namespace GestionFC.Models.Share
 {
     public class RankingAP
     {

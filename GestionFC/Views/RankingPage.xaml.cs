@@ -81,7 +81,7 @@ namespace GestionFC.Views
                                 ViewModel.Gerente = x.Result.Progreso;
                             }
 
-                            ViewModel.AgentesTop.Add(new Models.Ranking.RankingAP
+                            ViewModel.AgentesTop.Add(new Models.Share.RankingAP
                             {
                                 Nombre = "Victoria Janeth",
                                 Apellidos = "Rosas Camacho",
@@ -92,7 +92,7 @@ namespace GestionFC.Views
                                 NumTraspaso = 10,
                                 ImgPosicionSemAnt = "",
                                 ColorPosicion = "#D5A73A",
-                                Estrellas = new Models.Ranking.RankEstrellas
+                                Estrellas = new Models.Share.RankEstrellas
                                 {
                                     semana1 = "icon_star_gold.png",
                                     semana2 = "icon_star_gold.png",
@@ -100,7 +100,7 @@ namespace GestionFC.Views
                                     semana4 = "icon_star_gold.png"
                                 }
                             });
-                            ViewModel.AgentesTop.Add(new Models.Ranking.RankingAP
+                            ViewModel.AgentesTop.Add(new Models.Share.RankingAP
                             {
                                 Nombre = "Domingo Javier",
                                 Apellidos = "Quintero Espinoza",
@@ -111,7 +111,7 @@ namespace GestionFC.Views
                                 NumTraspaso = 8,
                                 ImgPosicionSemAnt = "",
                                 ColorPosicion = "#707070",
-                                Estrellas = new Models.Ranking.RankEstrellas
+                                Estrellas = new Models.Share.RankEstrellas
                                 {
                                     semana1 = "icon_star_plate.png",
                                     semana2 = "icon_star_plate.png",
@@ -119,7 +119,7 @@ namespace GestionFC.Views
                                     semana4 = "icon_star_grey.png"
                                 }
                             });
-                            ViewModel.AgentesTop.Add(new Models.Ranking.RankingAP
+                            ViewModel.AgentesTop.Add(new Models.Share.RankingAP
                             {
                                 Nombre = "Marco Antonio",
                                 Apellidos = "Pérez",
@@ -130,7 +130,7 @@ namespace GestionFC.Views
                                 NumTraspaso = 6,
                                 ImgPosicionSemAnt = "",
                                 ColorPosicion = "#501313",
-                                Estrellas = new Models.Ranking.RankEstrellas
+                                Estrellas = new Models.Share.RankEstrellas
                                 {
                                     semana1 = "icon_star_bronze.png",
                                     semana2 = "icon_star_bronze.png",
@@ -138,7 +138,7 @@ namespace GestionFC.Views
                                     semana4 = "icon_star_grey.png"
                                 }
                             });
-                            ViewModel.Agentes.Add(new Models.Ranking.RankingAP
+                            ViewModel.Agentes.Add(new Models.Share.RankingAP
                             {
                                 Nombre = "Rene Alexander",
                                 Apellidos = "Hernández de la Rosa",
@@ -149,7 +149,7 @@ namespace GestionFC.Views
                                 NumTraspaso = 4,
                                 ImgPosicionSemAnt = "icon_rank_up_green.png",
                                 ColorPosicion = "",
-                                Estrellas = new Models.Ranking.RankEstrellas
+                                Estrellas = new Models.Share.RankEstrellas
                                 {
                                     semana1 = "icon_star_plate.png",
                                     semana2 = "icon_star_bronze.png",
@@ -157,7 +157,7 @@ namespace GestionFC.Views
                                     semana4 = "icon_star_grey.png"
                                 }
                             });
-                            ViewModel.Agentes.Add(new Models.Ranking.RankingAP
+                            ViewModel.Agentes.Add(new Models.Share.RankingAP
                             {
                                 Nombre = "Mario Alberto",
                                 Apellidos = "Villarreal",
@@ -168,7 +168,7 @@ namespace GestionFC.Views
                                 NumTraspaso = 4,
                                 ImgPosicionSemAnt = "icon_rank_equal.png",
                                 ColorPosicion = "",
-                                Estrellas = new Models.Ranking.RankEstrellas
+                                Estrellas = new Models.Share.RankEstrellas
                                 {
                                     semana1 = "icon_star_bronze.png",
                                     semana2 = "icon_star_grey.png",
@@ -177,7 +177,7 @@ namespace GestionFC.Views
                                 }
                             });
 
-                            ViewModel.Agentes.Add(new Models.Ranking.RankingAP
+                            ViewModel.Agentes.Add(new Models.Share.RankingAP
                             {
                                 Nombre = "José Antonio",
                                 Apellidos = "Rodríguez",
@@ -188,7 +188,7 @@ namespace GestionFC.Views
                                 NumTraspaso = 4,
                                 ImgPosicionSemAnt = "icon_rank_equal.png",
                                 ColorPosicion = "",
-                                Estrellas = new Models.Ranking.RankEstrellas
+                                Estrellas = new Models.Share.RankEstrellas
                                 {
                                     semana1 = "icon_star_bronze.png",
                                     semana2 = "icon_star_grey.png",
@@ -197,7 +197,7 @@ namespace GestionFC.Views
                                 }
                             });
 
-                            ViewModel.Agentes.Add(new Models.Ranking.RankingAP
+                            ViewModel.Agentes.Add(new Models.Share.RankingAP
                             {
                                 Nombre = "José Luis",
                                 Apellidos = "Garcia",
@@ -208,7 +208,7 @@ namespace GestionFC.Views
                                 NumTraspaso = 4,
                                 ImgPosicionSemAnt = "icon_rank_down_red.png",
                                 ColorPosicion = "",
-                                Estrellas = new Models.Ranking.RankEstrellas
+                                Estrellas = new Models.Share.RankEstrellas
                                 {
                                     semana1 = "icon_star_bronze.png",
                                     semana2 = "icon_star_grey.png",
@@ -217,7 +217,7 @@ namespace GestionFC.Views
                                 }
                             });
 
-                            ViewModel.Agentes.Add(new Models.Ranking.RankingAP
+                            ViewModel.Agentes.Add(new Models.Share.RankingAP
                             {
                                 Nombre = "José Saul",
                                 Apellidos = "Torres",
@@ -228,7 +228,7 @@ namespace GestionFC.Views
                                 NumTraspaso = 4,
                                 ImgPosicionSemAnt = "icon_rank_down_red.png",
                                 ColorPosicion = "",
-                                Estrellas = new Models.Ranking.RankEstrellas
+                                Estrellas = new Models.Share.RankEstrellas
                                 {
                                     semana1 = "icon_star_bronze.png",
                                     semana2 = "icon_star_grey.png",
@@ -237,7 +237,7 @@ namespace GestionFC.Views
                                 }
                             });
 
-                            ViewModel.Agentes.Add(new Models.Ranking.RankingAP
+                            ViewModel.Agentes.Add(new Models.Share.RankingAP
                             {
                                 Nombre = "Micaela",
                                 Apellidos = "Duarte Gaitán",
@@ -248,7 +248,7 @@ namespace GestionFC.Views
                                 NumTraspaso = 5,
                                 ImgPosicionSemAnt = "icon_rank_down_red.png",
                                 ColorPosicion = "",
-                                Estrellas = new Models.Ranking.RankEstrellas
+                                Estrellas = new Models.Share.RankEstrellas
                                 {
                                     semana1 = "icon_star_bronze.png",
                                     semana2 = "icon_star_grey.png",
@@ -257,7 +257,7 @@ namespace GestionFC.Views
                                 }
                             });
 
-                            ViewModel.Agentes.Add(new Models.Ranking.RankingAP
+                            ViewModel.Agentes.Add(new Models.Share.RankingAP
                             {
                                 Nombre = "Erika Sarahi",
                                 Apellidos = "Guajardo Martínez",
@@ -268,7 +268,7 @@ namespace GestionFC.Views
                                 NumTraspaso = 2,
                                 ImgPosicionSemAnt = "icon_rank_down_red.png",
                                 ColorPosicion = "",
-                                Estrellas = new Models.Ranking.RankEstrellas
+                                Estrellas = new Models.Share.RankEstrellas
                                 {
                                     semana1 = "icon_star_grey.png",
                                     semana2 = "icon_star_grey.png",
