@@ -65,31 +65,32 @@ namespace GestionFC.ViewModels.RankingPage
             }
         }
 
-        private List<RankingAP> _agentesTop;
+        private List<RankingGte> _topGerentes;
 
-        public List<RankingAP> AgentesTop {
-            get { return _agentesTop; }
-            set { _agentesTop = value;
-                RaisePropertyChanged(nameof(AgentesTop));
+        public List<RankingGte> TopGerentes {
+            get { return _topGerentes; }
+            set {
+                _topGerentes = value;
+                RaisePropertyChanged(nameof(TopGerentes));
             }
         }
 
-        private List<RankingAP> _agentes;
+        private List<RankingGte> _gerentes;
 
-        public List<RankingAP> Agentes
+        public List<RankingGte> Gerentes
         {
-            get { return _agentes; }
+            get { return _gerentes; }
             set
             {
-                _agentes = value;
-                RaisePropertyChanged(nameof(Agentes));
+                _gerentes = value;
+                RaisePropertyChanged(nameof(Gerentes));
             }
         }
 
         public RankingViewModel()
         {
-            this.AgentesTop = new List<RankingAP>();
-            this.Agentes = new List<RankingAP>();
+            this.TopGerentes = new List<RankingGte>();
+            this.Gerentes = new List<RankingGte>();
         }
     }
 }

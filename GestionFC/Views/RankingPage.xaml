@@ -1261,7 +1261,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="320"></RowDefinition>
                 </Grid.RowDefinitions>
-                <CollectionView ItemsSource="{Binding AgentesTop}"
+                <CollectionView ItemsSource="{Binding TopGerentes}"
                                 Grid.Column="1"
                                 Grid.Row="0"
                                 Margin="0">
@@ -1442,7 +1442,7 @@
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="3"></RowDefinition>
                 </Grid.RowDefinitions>
-                <CollectionView ItemsSource="{Binding Agentes}"
+                <CollectionView ItemsSource="{Binding Gerentes}"
                                 Grid.Column="1"
                                 Grid.Row="0"
                                 Margin="0">

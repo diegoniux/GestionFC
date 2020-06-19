@@ -81,7 +81,7 @@ namespace GestionFC.Views
                                 ViewModel.Gerente = x.Result.Progreso;
                             }
 
-                            ViewModel.AgentesTop.Add(new Models.Share.RankingAP
+                            ViewModel.TopGerentes.Add(new Models.Share.RankingGte
                             {
                                 Nombre = "Victoria Janeth",
                                 Apellidos = "Rosas Camacho",
@@ -100,7 +100,7 @@ namespace GestionFC.Views
                                     semana4 = "icon_star_gold.png"
                                 }
                             });
-                            ViewModel.AgentesTop.Add(new Models.Share.RankingAP
+                            ViewModel.TopGerentes.Add(new Models.Share.RankingGte
                             {
                                 Nombre = "Domingo Javier",
                                 Apellidos = "Quintero Espinoza",
@@ -119,7 +119,7 @@ namespace GestionFC.Views
                                     semana4 = "icon_star_grey.png"
                                 }
                             });
-                            ViewModel.AgentesTop.Add(new Models.Share.RankingAP
+                            ViewModel.TopGerentes.Add(new Models.Share.RankingGte
                             {
                                 Nombre = "Marco Antonio",
                                 Apellidos = "Pérez",
@@ -138,7 +138,7 @@ namespace GestionFC.Views
                                     semana4 = "icon_star_grey.png"
                                 }
                             });
-                            ViewModel.Agentes.Add(new Models.Share.RankingAP
+                            ViewModel.Gerentes.Add(new Models.Share.RankingGte
                             {
                                 Nombre = "Rene Alexander",
                                 Apellidos = "Hernández de la Rosa",
@@ -157,7 +157,7 @@ namespace GestionFC.Views
                                     semana4 = "icon_star_grey.png"
                                 }
                             });
-                            ViewModel.Agentes.Add(new Models.Share.RankingAP
+                            ViewModel.Gerentes.Add(new Models.Share.RankingGte
                             {
                                 Nombre = "Mario Alberto",
                                 Apellidos = "Villarreal",
@@ -177,7 +177,7 @@ namespace GestionFC.Views
                                 }
                             });
 
-                            ViewModel.Agentes.Add(new Models.Share.RankingAP
+                            ViewModel.Gerentes.Add(new Models.Share.RankingGte
                             {
                                 Nombre = "José Antonio",
                                 Apellidos = "Rodríguez",
@@ -197,7 +197,7 @@ namespace GestionFC.Views
                                 }
                             });
 
-                            ViewModel.Agentes.Add(new Models.Share.RankingAP
+                            ViewModel.Gerentes.Add(new Models.Share.RankingGte
                             {
                                 Nombre = "José Luis",
                                 Apellidos = "Garcia",
@@ -217,7 +217,7 @@ namespace GestionFC.Views
                                 }
                             });
 
-                            ViewModel.Agentes.Add(new Models.Share.RankingAP
+                            ViewModel.Gerentes.Add(new Models.Share.RankingGte
                             {
                                 Nombre = "José Saul",
                                 Apellidos = "Torres",
@@ -237,7 +237,7 @@ namespace GestionFC.Views
                                 }
                             });
 
-                            ViewModel.Agentes.Add(new Models.Share.RankingAP
+                            ViewModel.Gerentes.Add(new Models.Share.RankingGte
                             {
                                 Nombre = "Micaela",
                                 Apellidos = "Duarte Gaitán",
@@ -257,7 +257,7 @@ namespace GestionFC.Views
                                 }
                             });
 
-                            ViewModel.Agentes.Add(new Models.Share.RankingAP
+                            ViewModel.Gerentes.Add(new Models.Share.RankingGte
                             {
                                 Nombre = "Erika Sarahi",
                                 Apellidos = "Guajardo Martínez",

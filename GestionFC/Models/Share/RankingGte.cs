@@ -2,7 +2,7 @@
 
 namespace GestionFC.Models.Share
 {
-    public class RankingAP
+    public class RankingGte
     {
         public string Nombre { get; set; }
         public string Apellidos { get; set; }
