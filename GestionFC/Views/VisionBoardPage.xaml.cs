@@ -197,8 +197,6 @@ namespace GestionFC.Views
         private void OnTapProdDiaria_Tapped(object sender, EventArgs e)
         {
             if (isBusy) return;
-            imgTabProdDiaria.Source = "prod_diaria_verde.png";
-            imgTabProdSemanal.Source = "prod_sem_blanco.png";
             gridProdDiaria.IsVisible = true;
             CollecionViewProdDiaria.IsVisible = true;
             gridProdSemanal.IsVisible = false;
@@ -213,8 +211,6 @@ namespace GestionFC.Views
             isBusy = true;
             try
             {
-                imgTabProdDiaria.Source = "prod_diaria_blanco.png";
-                imgTabProdSemanal.Source = "prod_sem_naranja.png";
                 gridProdDiaria.IsVisible = false;
                 CollecionViewProdDiaria.IsVisible = false;
                 gridProdSemanal.IsVisible = true;
