@@ -114,7 +114,6 @@
     <BundleResource Include="Resources\Fonts\Poppins-ThinItalic.otf" />
     <Compile Include="Renderers\CustomProgressBarRenderer.cs" />
     <BundleResource Include="GoogleService-Info.plist" />
-    <Compile Include="UserInfoViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\arbol.imageset\arbol.png">
@@ -519,6 +518,27 @@
     <ImageAsset Include="Assets.xcassets\icon_rank_equal.imageset\icon_rank_equal%402x.png" />
     <ImageAsset Include="Assets.xcassets\icon_rank_down_red.imageset\icon_rank_down_red.png" />
     <ImageAsset Include="Assets.xcassets\icon_rank_down_red.imageset\icon_rank_down_red%402x.png" />
+    <ImageAsset Include="Assets.xcassets\flag_text_down.png.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\flag_text_down.png.imageset\flag_text_down.png" />
+    <ImageAsset Include="Assets.xcassets\flag_text_down.png.imageset\flag_text_down-1.png" />
+    <ImageAsset Include="Assets.xcassets\flag_text_right_saldo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\flag_text_right_saldo.imageset\flag_text_right_saldo.png" />
+    <ImageAsset Include="Assets.xcassets\flag_text_right_saldo.imageset\flag_text_right_saldo-1.png" />
+    <ImageAsset Include="Assets.xcassets\flag_text_right.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\flag_text_right.imageset\flag_text_right.png" />
+    <ImageAsset Include="Assets.xcassets\flag_text_right.imageset\flag_text_right-1.png" />
+    <ImageAsset Include="Assets.xcassets\flag.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\flag.imageset\flag.png" />
+    <ImageAsset Include="Assets.xcassets\flag.imageset\flag-1.png" />
+    <ImageAsset Include="Assets.xcassets\hand_money_white.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\hand_money_white.imageset\hand_money_white.png" />
+    <ImageAsset Include="Assets.xcassets\hand_money_white.imageset\hand_money_white-1.png" />
+    <ImageAsset Include="Assets.xcassets\hand_money.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\hand_money.imageset\hand_money.png" />
+    <ImageAsset Include="Assets.xcassets\hand_money.imageset\hand_money-1.png" />
+    <ImageAsset Include="Assets.xcassets\target_shooting.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\target_shooting.imageset\target_shooting.png" />
+    <ImageAsset Include="Assets.xcassets\target_shooting.imageset\target_shooting-1.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -589,6 +609,13 @@
     <Folder Include="Assets.xcassets\icon_rank_equal.imageset\" />
     <Folder Include="Assets.xcassets\icon_rank_down_red.imageset\" />
     <Folder Include="Assets.xcassets\icon_rank_up_green.imageset\" />
+    <Folder Include="Assets.xcassets\flag_text_down.png.imageset\" />
+    <Folder Include="Assets.xcassets\flag_text_right_saldo.imageset\" />
+    <Folder Include="Assets.xcassets\flag_text_right.imageset\" />
+    <Folder Include="Assets.xcassets\flag.imageset\" />
+    <Folder Include="Assets.xcassets\hand_money_white.imageset\" />
+    <Folder Include="Assets.xcassets\hand_money.imageset\" />
+    <Folder Include="Assets.xcassets\target_shooting.imageset\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
