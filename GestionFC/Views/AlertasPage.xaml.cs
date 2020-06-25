@@ -9,6 +9,7 @@ using GestionFC.Models.Log;
 using GestionFC.ViewModels.AlertasPage;
 using System.Collections.Generic;
 using GestionFC.Models.Share;
+using Newtonsoft.Json;
 
 namespace GestionFC.Views
 {
@@ -34,7 +35,7 @@ namespace GestionFC.Views
             
             LoadPage();
             NavigationPage.SetHasNavigationBar(this, false);
-
+            
             //Evento tap de la imagen hidepassword
             var burguerTap = new TapGestureRecognizer();
             burguerTap.Tapped += (object sender, EventArgs e) =>
@@ -53,7 +54,7 @@ namespace GestionFC.Views
             
             //logService = new Service.LogService();
             Service.HeaderService headerService = new Service.HeaderService();
-            Service.PlantillaService gridPromotoresService = new Service.PlantillaService();
+            Service.AlertaService alertaService = new Service.AlertaService();
             IsBusy = true;
             try
             {
@@ -93,6 +94,28 @@ namespace GestionFC.Views
                             _master.loadPage(nomina, ViewModel.NombreGerente, x.Result.Perfil, x.Result.Progreso.Foto, token);
 
                         }));
+
+                        await alertaService.GetAlertaPlantillaImproductiva(nomina, token).ContinueWith(x =>
+                        {
+                            if (x.IsFaulted)
+                            {
+                                throw x.Exception;
+                            }
+
+                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                            {
+                                // vericamos si la sesión expiró (token)
+                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                {
+                                    SesionExpired = true;
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                }
+                            }
+
+                            ViewModel.PlantillaImproductiva = x.Result;
+
+                        });
+
 
                     }
                     
@@ -211,6 +234,8 @@ namespace GestionFC.Views
             switch (tab)
             {
                 case 1:
+                    FolioSearch.IsVisible = false;
+                    PickerSV.IsVisible = false;
                     textoTitulo.Text = "Plantilla improductiva";
                     imgNotifyImproductiva.Source = "Notify_Green.png";
                     imgNotifyRecuperacion.Source = "Notify_Gray.png";
@@ -226,6 +251,8 @@ namespace GestionFC.Views
                     lblFoliosPendientesSV.TextColor = Color.FromHex("#C4C4C4");
                     break;
                 case 2:
+                    FolioSearch.IsVisible = false;
+                    PickerSV.IsVisible = false;
                     textoTitulo.Text = "Plantilla Recuperación";
                     imgNotifyImproductiva.Source = "Notify_Gray.png";
                     imgNotifyRecuperacion.Source = "Notify_Green.png";
@@ -241,6 +268,8 @@ namespace GestionFC.Views
                     lblFoliosPendientesSV.TextColor = Color.FromHex("#C4C4C4");
                     break;
                 case 3:
+                    FolioSearch.IsVisible = false;
+                    PickerSV.IsVisible = false;
                     textoTitulo.Text = "Plantilla Investigación";
                     imgNotifyImproductiva.Source = "Notify_Gray.png";
                     imgNotifyRecuperacion.Source = "Notify_Gray.png";
@@ -256,6 +285,8 @@ namespace GestionFC.Views
                     lblFoliosPendientesSV.TextColor = Color.FromHex("#C4C4C4");
                     break;
                 case 4:
+                    FolioSearch.IsVisible = true;
+                    PickerSV.IsVisible = true;
                     textoTitulo.Text = "Folios pendientes Saldo Virtual";
                     imgNotifyImproductiva.Source = "Notify_Gray.png";
                     imgNotifyRecuperacion.Source = "Notify_Gray.png";
@@ -271,6 +302,8 @@ namespace GestionFC.Views
                     lblFoliosPendientesSV.TextColor = Color.FromHex("#FFFFFF");
                     break;
                 default:
+                    FolioSearch.IsVisible = false;
+                    PickerSV.IsVisible = false;
                     textoTitulo.Text = "Plantilla improductiva";
                     imgNotifyImproductiva.Source = "Notify_Green.png";
                     imgNotifyRecuperacion.Source = "Notify_Gray.png";
@@ -288,7 +321,11 @@ namespace GestionFC.Views
             }
         }
 
+        private void SelectedIndexChangedName(object sender, EventArgs e)
+        {
+            var nombre = pickerAP.Items[pickerAP.SelectedIndex];
+            ViewModel.FilterItemsNombre(nombre);
+        }
 
-        
     }
 }

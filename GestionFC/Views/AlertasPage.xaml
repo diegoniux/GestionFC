@@ -826,8 +826,14 @@
                             Source="Notify_Green.png"
                             AbsoluteLayout.LayoutBounds="1,.05,.2,.4"
                             AbsoluteLayout.LayoutFlags="All">
-
                         </Image>
+                        <Label
+                                FontSize="12"
+                                AbsoluteLayout.LayoutBounds="1,.05,.2,.4"
+                                AbsoluteLayout.LayoutFlags="All"
+                                TextColor="#353535"
+                                FontFamily="{StaticResource Poppins-Bold}">
+                        </Label>
                         <AbsoluteLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTapImproductividad_Tapped"/>
                         </AbsoluteLayout.GestureRecognizers>
@@ -938,10 +944,9 @@
                             <TapGestureRecognizer Tapped="OnTapPendientesSV_Tapped"></TapGestureRecognizer>
                         </AbsoluteLayout.GestureRecognizers>
                     </AbsoluteLayout>
-                    
                 </Grid>
                 <!--FIN TABS-->
-                <!--PLANTILLA IMPRODUCTIVA-->
+                <!--TITULO TAB-->
                 <Grid
                     Grid.Column="0"
                     Grid.Row="1"
@@ -952,13 +957,13 @@
                         <RowDefinition Height="500"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <!--TITULO TAB-->
                     <BoxView
-                        Grid.ColumnSpan="3"
+                        Grid.ColumnSpan="4"
                         Grid.Row="0"
                         BackgroundColor="White">
                     </BoxView>
@@ -972,25 +977,126 @@
                         Grid.Column="0"
                         Text="Plantilla improductiva">
                     </Label>
+                    <Frame
+                        x:Name="FolioSearch"
+                        IsVisible="False"
+                        BorderColor="#C4C4C4"
+                        Grid.Column="1"
+                        CornerRadius="5"
+                        Margin="2,8,2,8"
+                        Padding="1">
+                        <Grid  
+                              Padding="0"
+                              ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width=".2*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <SearchBar
+                                Grid.Column="0"
+                                Margin="-40,1,-35,1"
+                                SearchCommand="{Binding FilterCommand}"
+                                SearchCommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"         
+                                MaxLength="10"
+                                FontFamily="{StaticResource Poppins-Regular}"
+                                FontSize="12"
+                                HeightRequest="10"
+                                Placeholder="No. de folio"
+                                VerticalTextAlignment="End"
+                                PlaceholderColor="#C4C4C4"
+                                TextColor="#707070"
+                                HorizontalOptions="FillAndExpand">
+                            </SearchBar>
+                            <BoxView
+                                Grid.Column="1"
+                                BackgroundColor="#C4C4C4">
+                                
+                            </BoxView>
+                            <Image 
+                                Grid.Column="1"
+                                x:Name="iconsearch"
+                                Source="icon_search.png"
+                                WidthRequest="30"
+                                Margin="5"
+                                HorizontalOptions="End">
+                            </Image>
+                        </Grid>
+                    </Frame>
+                    <Frame
+                        IsVisible="False"
+                        x:Name="PickerSV"
+                        BorderColor="#C4C4C4"
+                        Grid.Column="2"
+                        CornerRadius="5"
+                        Margin="2,8,2,8"
+                        Padding="0">
+                        <Grid  
+                              Padding="0"
+                              ColumnSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width=".2*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Picker
+                                Margin="1"
+                                VerticalOptions="End"
+                                HeightRequest="100"
+                                Grid.Column="0"
+                                Title="Nombre AP"
+                                x:Name="pickerAP"
+                                ItemsSource = "{Binding NombresPicker.ResultDatos}" 
+                                ItemDisplayBinding= "{Binding Nombre}"
+                                SelectedIndexChanged="SelectedIndexChangedName"
+                                FontFamily="{StaticResource Poppins-Regular}"
+                                FontSize="12"
+                                TextColor="#707070"
+                                BackgroundColor="#FFFFFF"
+                                HorizontalOptions="FillAndExpand">
+                                
+                            </Picker>
+                            <BoxView Grid.Column="1"
+                                     BackgroundColor="#C4C4C4">
+
+                            </BoxView>
+                            <Image 
+                                Grid.Column="1"
+                                x:Name="iconCombo"
+                                Source="icon_combo.png"
+                                WidthRequest="30"
+                                Margin="10"
+                                HorizontalOptions="End">
+                            </Image>
+                        </Grid>
+                    </Frame>
                     <BoxView
-                        Grid.ColumnSpan="3"
+                        Grid.ColumnSpan="4"
                         Grid.Row="0"
                         HeightRequest="1"
                         BackgroundColor="#C4C4C4"
                         VerticalOptions="End"/>
+                    <!--TITULO TAB-->
                     <!--DATOS IMPRODUCTIVA-->
                     <CollectionView
                             x:Name="CollecionViewImproductiva"
                             IsVisible="True"
                             Grid.Row="1"
                             Grid.Column="0"
-                            Grid.ColumnSpan="3"
+                            Grid.ColumnSpan="4"
                             ItemsSource="{Binding  PlantillaImproductiva.ResultDatos}">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout 
                                     Orientation="Vertical"
                                     VerticalItemSpacing="1"/>
                         </CollectionView.ItemsLayout>
+                        <CollectionView.EmptyView>
+                            <Image
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand"
+                                Source="EmptyView.png"/>
+                        </CollectionView.EmptyView>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid
@@ -1141,16 +1247,32 @@
                     <!--FIN DATOS IMPRODUCTIVA-->
                     <!--DATOS RECUPERACION-->
                     <CollectionView
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
                         x:Name="CollecionViewRecuperacion"
                         IsVisible="False">
-
+                        <CollectionView.EmptyView>
+                            <Image
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand"
+                                Source="EmptyView.png"/>
+                        </CollectionView.EmptyView>
                     </CollectionView>
                     <!--FIN DATOS RECUPERACION-->
                     <!--DATOS INVESTIGACION-->
                     <CollectionView
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
                         x:Name="CollecionViewInvestigacion"
                         IsVisible="False">
-                        
+                        <CollectionView.EmptyView>
+                            <Image
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand"
+                                Source="EmptyView.png"/>
+                        </CollectionView.EmptyView>
                     </CollectionView>
                     <!--FIN DATOS INVESTIGACION-->
                     <!--DATOS PENDIENTESSV-->
@@ -1159,31 +1281,44 @@
                         IsVisible="False"
                         Grid.Row="1"
                         Grid.Column="0"
-                        Grid.ColumnSpan="3"
+                        Grid.ColumnSpan="4"
                         ItemsSource="{Binding  FoliosPendientesSV.ResultDatos}">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout 
                                 Orientation="Vertical"
-                                VerticalItemSpacing="1"></GridItemsLayout>
+                                VerticalItemSpacing="1">
+                            </GridItemsLayout>
                         </CollectionView.ItemsLayout>
+                        <CollectionView.EmptyView>
+                            <Image
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand"
+                                Source="EmptyView.png"/>
+                        </CollectionView.EmptyView>
                         <CollectionView.Header>
                             <Grid
                                         RowSpacing="0"
                                         ColumnSpacing="0">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="60"></RowDefinition>
+                                    <RowDefinition Height="50"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3.5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1.3*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
                                     <ColumnDefinition Width=".5*"></ColumnDefinition>
-                                    <ColumnDefinition Width=".2*"></ColumnDefinition>
-                                    <ColumnDefinition Width=".2*"></ColumnDefinition>
-                                    <ColumnDefinition Width=".3*"></ColumnDefinition>
-                                    <ColumnDefinition Width=".2*"></ColumnDefinition>
-                                    <ColumnDefinition Width=".1*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <BoxView
                                     Grid.Row="0"
                                     Grid.Column="0"
+                                    Grid.ColumnSpan="2"
                                     BackgroundColor="#FFFFFF">
                                     <BoxView.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding orderNombreCommand}"></TapGestureRecognizer>
@@ -1195,16 +1330,38 @@
                                     Grid.Column="0"
                                     TextColor="#707070"
                                     VerticalOptions="Center"
-                                    HorizontalOptions="StartAndExpand"
+                                    HorizontalOptions="Center"
                                     FontSize="12"
                                     FontFamily="{StaticResource Poppins-SemiBold}">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding orderNombreCommand}"></TapGestureRecognizer>
                                     </Label.GestureRecognizers>
                                 </Label>
+                                <Image
+                                    Grid.Column="1"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"
+                                    Source="arrow_down.png"
+                                    Margin="0,0,0,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding orderNombreCommand}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                    
+                                <Image
+                                    Grid.Column="1"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    Source="arrow_up.png"
+                                    Margin="0,0,28,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding orderNombreCommand}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
                                 <BoxView
                                     Grid.Row="0"
-                                    Grid.Column="1"
+                                    Grid.Column="2"
+                                    Grid.ColumnSpan="2"
                                     BackgroundColor="#FFFFFF">
                                     <BoxView.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding orderFolioCommand}"></TapGestureRecognizer>
@@ -1213,19 +1370,40 @@
                                 <Label
                                     Text="Folio"
                                     Grid.Row="0"
-                                    Grid.Column="1"
+                                    Grid.Column="2"
                                     TextColor="#707070"
                                     VerticalOptions="Center"
-                                    HorizontalOptions="StartAndExpand"
+                                    HorizontalOptions="Center"
                                     FontSize="12"
                                     FontFamily="{StaticResource Poppins-SemiBold}">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding orderFolioCommand}"></TapGestureRecognizer>
                                     </Label.GestureRecognizers>
                                 </Label>
+                                <Image
+                                    Grid.Column="3"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"
+                                    Source="arrow_down.png"
+                                    Margin="0,0,0,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding orderFolioCommand}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image
+                                    Grid.Column="3"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    Source="arrow_up.png"
+                                    Margin="0,0,28,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding orderFolioCommand}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
                                 <BoxView
                                     Grid.Row="0"
-                                    Grid.Column="2"
+                                    Grid.Column="4"
+                                    Grid.ColumnSpan="2"
                                     BackgroundColor="#FFFFFF">
                                     <BoxView.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding orderSVCommand}"></TapGestureRecognizer>
@@ -1234,19 +1412,40 @@
                                 <Label
                                     Text="Saldo Virtual"
                                     Grid.Row="0"
-                                    Grid.Column="2"
+                                    Grid.Column="4"
                                     TextColor="#707070"
                                     VerticalOptions="Center"
-                                    HorizontalOptions="StartAndExpand"
+                                    HorizontalOptions="Center"
                                     FontSize="12"
                                     FontFamily="{StaticResource Poppins-SemiBold}">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding orderSVCommand}"></TapGestureRecognizer>
                                     </Label.GestureRecognizers>
                                 </Label>
+                                <Image
+                                    Grid.Column="5"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"
+                                    Source="arrow_down.png"
+                                    Margin="0,0,0,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding orderSVCommand}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image
+                                    Grid.Column="5"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    Source="arrow_up.png"
+                                    Margin="0,0,28,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding orderSVCommand}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
                                 <BoxView
                                     Grid.Row="0"
-                                    Grid.Column="3"
+                                    Grid.Column="6"
+                                    Grid.ColumnSpan="2"
                                     BackgroundColor="#FFFFFF">
                                     <BoxView.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding orderTipoSolicitudCommand}"></TapGestureRecognizer>
@@ -1255,19 +1454,40 @@
                                 <Label
                                     Text="Tipo de solicitud"
                                     Grid.Row="0"
-                                    Grid.Column="3"
+                                    Grid.Column="6"
                                     TextColor="#707070"
                                     VerticalOptions="Center"
-                                    HorizontalOptions="StartAndExpand"
+                                    HorizontalOptions="Center"
                                     FontSize="12"
                                     FontFamily="{StaticResource Poppins-SemiBold}">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding orderTipoSolicitudCommand}"></TapGestureRecognizer>
                                     </Label.GestureRecognizers>
                                 </Label>
+                                <Image
+                                    Grid.Column="7"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"
+                                    Source="arrow_down.png"
+                                    Margin="0,0,0,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding orderTipoSolicitudCommand}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image
+                                    Grid.Column="7"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    Source="arrow_up.png"
+                                    Margin="0,0,28,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding orderTipoSolicitudCommand}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
                                 <BoxView
                                     Grid.Row="0"
-                                    Grid.Column="4"
+                                    Grid.Column="8"
+                                    Grid.ColumnSpan="2"
                                     BackgroundColor="#FFFFFF">
                                     <BoxView.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding orderFechaFirmaCommand}"></TapGestureRecognizer>
@@ -1276,32 +1496,42 @@
                                 <Label
                                     Text="Fecha firma"
                                     Grid.Row="0"
-                                    Grid.Column="4"
+                                    Grid.Column="8"
                                     TextColor="#707070"
                                     VerticalOptions="Center"
-                                    HorizontalOptions="StartAndExpand"
+                                    HorizontalOptions="Center"
                                     FontSize="12"
                                     FontFamily="{StaticResource Poppins-SemiBold}">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding orderFechaFirmaCommand}"></TapGestureRecognizer>
                                     </Label.GestureRecognizers>
                                 </Label>
+                                <Image
+                                    Grid.Column="9"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"
+                                    Source="arrow_down.png"
+                                    Margin="0,0,0,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding orderFechaFirmaCommand}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image
+                                    Grid.Column="9"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    Source="arrow_up.png"
+                                    Margin="0,0,28,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding orderFechaFirmaCommand}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                </Image>
                                 <BoxView
                                     Grid.Row="0"
-                                    Grid.Column="5"
+                                    Grid.Column="10"
                                     BackgroundColor="#FFFFFF">
-                                    
-                                </BoxView>
-                                <Label
-                                    Text=""
-                                    Grid.Row="0"
-                                    Grid.Column="5"
-                                    TextColor="#707070"
-                                    VerticalOptions="Center"
-                                    FontSize="12"
-                                    HorizontalOptions="Center">
-                                 </Label>
 
+                                </BoxView>
                             </Grid>
                         </CollectionView.Header>
                         <CollectionView.ItemTemplate>
@@ -1313,12 +1543,12 @@
                                         <RowDefinition Height="60"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width=".5*"></ColumnDefinition>
+                                        <ColumnDefinition Width=".4*"></ColumnDefinition>
                                         <ColumnDefinition Width=".2*"></ColumnDefinition>
                                         <ColumnDefinition Width=".2*"></ColumnDefinition>
                                         <ColumnDefinition Width=".3*"></ColumnDefinition>
                                         <ColumnDefinition Width=".2*"></ColumnDefinition>
-                                        <ColumnDefinition Width=".1*"></ColumnDefinition>
+                                        <ColumnDefinition Width=".05*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <BoxView
                                         Grid.Column="0"
@@ -1379,7 +1609,7 @@
                                     <Image
                                         HorizontalOptions="Center"
                                         VerticalOptions="Center"
-                                        Margin="5,5,5,5"
+                                        Margin="0,5,5,5"
                                         Grid.Column="5"
                                         Source="icon_money_bag.png"/>
 

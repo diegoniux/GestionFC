@@ -16,6 +16,10 @@ namespace GestionFC.ViewModels.AlertasPage
     {
         readonly IList<FoliosPendientesSVModel> source;
 
+        readonly IList<FoliosPendientesSVModel> sourcePicker;
+        
+        readonly IList<PlantillaImproductivaModel> sourceImproductivos;
+
 
 
         public ICommand orderNombreCommand => new Command<FoliosPendientesSVModel>(orderNombre);
@@ -23,8 +27,11 @@ namespace GestionFC.ViewModels.AlertasPage
         public ICommand orderSVCommand => new Command<FoliosPendientesSVModel>(orderSV);
         public ICommand orderTipoSolicitudCommand => new Command<FoliosPendientesSVModel>(orderTipoSolicitud);
         public ICommand orderFechaFirmaCommand => new Command<FoliosPendientesSVModel>(orderFechaFirma);
+        public ICommand FilterCommand => new Command<string>(FilterItemsFolio);
+        //public ICommand FilterCommandNombre => new Command<string>(FilterItemsNombre);
 
         public bool ascdesc = true;
+        public bool ejec = true;
 
         private string nombreGerente;
 
@@ -109,102 +116,28 @@ namespace GestionFC.ViewModels.AlertasPage
             }
         }
 
+        private FoliosPendientesSVResponseModel nombresPicker;
+        public FoliosPendientesSVResponseModel NombresPicker
+        {
+            get { return nombresPicker; }
+            set
+            {
+                nombresPicker = value;
+                RaisePropertyChanged(nameof(NombresPicker));
+            }
+        }
+
         public PlantillaImproductivaViewModel()
         {
             PlantillaImproductiva = new PlantillaImproductivaResponseModel();
             source = new List<FoliosPendientesSVModel>();
+            sourcePicker = new List<FoliosPendientesSVModel>();
+            sourceImproductivos = new List<PlantillaImproductivaModel>();
             CreateCollection();
         }
 
         void CreateCollection()
         {
-            PlantillaImproductiva.ResultDatos = new List<PlantillaImproductivaModel>();
-            PlantillaImproductiva.ResultDatos.Add(new PlantillaImproductivaModel
-            {
-                Foto = "",
-                IdAlerta = 1,
-                IdEstatusAlerta = 1,
-                NominaAp = 11111,
-                NombreAP = "Camilo Angel",
-                ApellidosAP = "Grimaldo Arreguin",
-                DiasSinFolios = 2,
-                DiasRestantes = 1,
-                Msj1 = "Actividad en riesgo",
-                Msj2 = "",
-                Msj3 = ""
-            });
-            PlantillaImproductiva.ResultDatos.Add(new PlantillaImproductivaModel
-            {
-                Foto = "",
-                IdAlerta = 2,
-                IdEstatusAlerta = 2,
-                NominaAp = 22222,
-                NombreAP = "Diex",
-                ApellidosAP = "Nieto Nieto",
-                DiasSinFolios = 0,
-                DiasRestantes = 0,
-                Msj1 = "Actividad Completada",
-                Msj2 = "",
-                Msj3 = ""
-            });
-            PlantillaImproductiva.ResultDatos.Add(new PlantillaImproductivaModel
-            {
-                Foto = "",
-                IdAlerta = 3,
-                IdEstatusAlerta = 3,
-                NominaAp = 33333,
-                NombreAP = "Ricardiño",
-                ApellidosAP = "Sierra",
-                DiasSinFolios = 2,
-                DiasRestantes = 1,
-                Msj1 = "Tienes",
-                Msj2 = "2 días",
-                Msj3 = "para convertir en exitoso a tu especialista."
-            });
-            PlantillaImproductiva.ResultDatos.Add(new PlantillaImproductivaModel
-            {
-                Foto = "",
-                IdAlerta = 3,
-                IdEstatusAlerta = 3,
-                NominaAp = 33333,
-                NombreAP = "Ricardiño",
-                ApellidosAP = "Sierra",
-                DiasSinFolios = 2,
-                DiasRestantes = 1,
-                Msj1 = "Tienes",
-                Msj2 = "2 días",
-                Msj3 = "para convertir en exitoso a tu especialista."
-            });
-            PlantillaImproductiva.ResultDatos.Add(new PlantillaImproductivaModel
-            {
-                Foto = "",
-                IdAlerta = 3,
-                IdEstatusAlerta = 3,
-                NominaAp = 33333,
-                NombreAP = "Ricardiño",
-                ApellidosAP = "Sierra",
-                DiasSinFolios = 2,
-                DiasRestantes = 1,
-                Msj1 = "Tienes",
-                Msj2 = "2 días",
-                Msj3 = "para convertir en exitoso a tu especialista."
-            });
-            PlantillaImproductiva.ResultDatos.Add(new PlantillaImproductivaModel
-            {
-                Foto = "",
-                IdAlerta = 3,
-                IdEstatusAlerta = 3,
-                NominaAp = 33333,
-                NombreAP = "Ricardiño",
-                ApellidosAP = "Sierra",
-                DiasSinFolios = 2,
-                DiasRestantes = 1,
-                Msj1 = "Tienes",
-                Msj2 = "2 días",
-                Msj3 = "para convertir en exitoso a tu especialista."
-            });
-
-
             source.Add(new FoliosPendientesSVModel
             {
                 Nombre = "Angel Grimaldo Arreguin",
@@ -244,6 +177,47 @@ namespace GestionFC.ViewModels.AlertasPage
 
             FoliosPendientesSV = new FoliosPendientesSVResponseModel();
             FoliosPendientesSV.ResultDatos = new ObservableCollection<FoliosPendientesSVModel>(source);
+
+            sourcePicker.Add(new FoliosPendientesSVModel
+            {
+                Nombre = "Angel Grimaldo Arreguin",
+                Folio = "9999999999",
+                SaldoVirtual = 300000.ToString("C0"),
+                TipoSolicitud = "Traspaso FCT",
+                FechaFirma = "22/06/20",
+                TieneSV = true
+            });
+            sourcePicker.Add(new FoliosPendientesSVModel
+            {
+                Nombre = "Camilo",
+                Folio = "9999999998",
+                SaldoVirtual = 400000.ToString("C0"),
+                TipoSolicitud = "Traspaso FCT",
+                FechaFirma = "25/06/20",
+                TieneSV = true
+            });
+            sourcePicker.Add(new FoliosPendientesSVModel
+            {
+                Nombre = "Bamilo Angel Arreguin",
+                Folio = "9999999999",
+                SaldoVirtual = 150000.ToString("C0"),
+                TipoSolicitud = "Registro",
+                FechaFirma = "24/06/20",
+                TieneSV = true
+            });
+            sourcePicker.Add(new FoliosPendientesSVModel
+            {
+                Nombre = "Damilo Angel",
+                Folio = "9999999997",
+                SaldoVirtual = 109000.ToString("C0"),
+                TipoSolicitud = "Traspasop",
+                FechaFirma = "26/06/20",
+                TieneSV = true
+            });
+
+            NombresPicker = new FoliosPendientesSVResponseModel();
+            nombresPicker.ResultDatos = new ObservableCollection<FoliosPendientesSVModel>(sourcePicker);
+
         }
 
         private void orderNombre(FoliosPendientesSVModel item)
@@ -359,6 +333,50 @@ namespace GestionFC.ViewModels.AlertasPage
             {
                 FoliosPendientesSV.ResultDatos.Add(c);
             }
+        }
+
+        void FilterItemsFolio(string filter)
+        {
+            var filteredItems = source.Where(folios => folios.Folio.ToLower().Contains(filter.ToLower())).ToList();
+            foreach (var folios in source)
+            {
+                if (!filteredItems.Contains(folios))
+                {
+                    FoliosPendientesSV.ResultDatos.Remove(folios);
+                }
+                else
+                {
+                    if (!FoliosPendientesSV.ResultDatos.Contains(folios))
+                    {
+                        FoliosPendientesSV.ResultDatos.Add(folios);
+                    }
+                }
+            }
+        }
+
+         public void FilterItemsNombre(string filter)
+        {
+            if (ejec)
+            {
+                ejec = false;
+                var filteredItems = source.Where(nombre => nombre.Nombre.ToLower().Contains(filter.ToLower())).ToList();
+                foreach (var nombre in source)
+                {
+                    if (!filteredItems.Contains(nombre))
+                    {
+                        FoliosPendientesSV.ResultDatos.Remove(nombre);
+                    }
+                    else
+                    {
+                        if (!FoliosPendientesSV.ResultDatos.Contains(nombre))
+                        {
+                            FoliosPendientesSV.ResultDatos.Add(nombre);
+                        }
+                    }
+                }
+            }
+            ejec = true;
+            
         }
 
     }
