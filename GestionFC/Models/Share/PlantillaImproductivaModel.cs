@@ -40,5 +40,23 @@ namespace GestionFC.Models.Alertas
         [JsonProperty("msj3")]
         public string Msj3 { get; set; }
 
+        [JsonProperty("banderaCalendar")]
+        public bool BanderaCalendar { get; set; }
+
+        [JsonProperty("colorCalendar")]
+        public string colorCalendar { get; set; }
+
+        [JsonProperty("msjEstatus")]
+        public string MsjEstatus { get; set; }
+
+        [JsonProperty("imgNotificacion")]
+        public string ImgNotificacion { get; set; }
+
+        [JsonProperty("imgWarning")]
+        public bool ImgWarning { get; set; }
+
+
+
+
     }
 }

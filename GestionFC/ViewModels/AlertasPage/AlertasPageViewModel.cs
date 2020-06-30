@@ -130,93 +130,18 @@ namespace GestionFC.ViewModels.AlertasPage
         public PlantillaImproductivaViewModel()
         {
             PlantillaImproductiva = new PlantillaImproductivaResponseModel();
+            FoliosPendientesSV = new FoliosPendientesSVResponseModel();
+            NombresPicker = new FoliosPendientesSVResponseModel();
+
             source = new List<FoliosPendientesSVModel>();
             sourcePicker = new List<FoliosPendientesSVModel>();
+
             sourceImproductivos = new List<PlantillaImproductivaModel>();
             CreateCollection();
         }
 
         void CreateCollection()
         {
-            source.Add(new FoliosPendientesSVModel
-            {
-                Nombre = "Angel Grimaldo Arreguin",
-                Folio = "9999999999",
-                SaldoVirtual = 300000.ToString("C0"),
-                TipoSolicitud = "Traspaso FCT",
-                FechaFirma = "22/06/20",
-                TieneSV = true
-            });
-            source.Add(new FoliosPendientesSVModel
-            {
-                Nombre = "Camilo",
-                Folio = "9999999998",
-                SaldoVirtual = 400000.ToString("C0"),
-                TipoSolicitud = "Traspaso FCT",
-                FechaFirma = "25/06/20",
-                TieneSV = true
-            });
-            source.Add(new FoliosPendientesSVModel
-            {
-                Nombre = "Bamilo Angel Arreguin",
-                Folio = "9999999999",
-                SaldoVirtual = 150000.ToString("C0"),
-                TipoSolicitud = "Registro",
-                FechaFirma = "24/06/20",
-                TieneSV = true
-            });
-            source.Add(new FoliosPendientesSVModel
-            {
-                Nombre = "Damilo Angel",
-                Folio = "9999999997",
-                SaldoVirtual = 109000.ToString("C0"),
-                TipoSolicitud = "Traspasop",
-                FechaFirma = "26/06/20",
-                TieneSV = true
-            });
-
-            FoliosPendientesSV = new FoliosPendientesSVResponseModel();
-            FoliosPendientesSV.ResultDatos = new ObservableCollection<FoliosPendientesSVModel>(source);
-
-            sourcePicker.Add(new FoliosPendientesSVModel
-            {
-                Nombre = "Angel Grimaldo Arreguin",
-                Folio = "9999999999",
-                SaldoVirtual = 300000.ToString("C0"),
-                TipoSolicitud = "Traspaso FCT",
-                FechaFirma = "22/06/20",
-                TieneSV = true
-            });
-            sourcePicker.Add(new FoliosPendientesSVModel
-            {
-                Nombre = "Camilo",
-                Folio = "9999999998",
-                SaldoVirtual = 400000.ToString("C0"),
-                TipoSolicitud = "Traspaso FCT",
-                FechaFirma = "25/06/20",
-                TieneSV = true
-            });
-            sourcePicker.Add(new FoliosPendientesSVModel
-            {
-                Nombre = "Bamilo Angel Arreguin",
-                Folio = "9999999999",
-                SaldoVirtual = 150000.ToString("C0"),
-                TipoSolicitud = "Registro",
-                FechaFirma = "24/06/20",
-                TieneSV = true
-            });
-            sourcePicker.Add(new FoliosPendientesSVModel
-            {
-                Nombre = "Damilo Angel",
-                Folio = "9999999997",
-                SaldoVirtual = 109000.ToString("C0"),
-                TipoSolicitud = "Traspasop",
-                FechaFirma = "26/06/20",
-                TieneSV = true
-            });
-
-            NombresPicker = new FoliosPendientesSVResponseModel();
-            nombresPicker.ResultDatos = new ObservableCollection<FoliosPendientesSVModel>(sourcePicker);
 
         }
 

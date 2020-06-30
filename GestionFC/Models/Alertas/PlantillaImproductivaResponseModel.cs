@@ -12,6 +12,9 @@ namespace GestionFC.Models.Alertas
         [JsonProperty("resultadoEjecucion")]
         public ResultadoEjecucion ResultadoEjecucion { get; set; }
 
+        [JsonProperty("cantidad")]
+        public int cantidad { get; set; }
+
         [JsonProperty("resultDatos")]
         public ObservableCollection<PlantillaImproductivaModel> ResultDatos { get; set; }
 

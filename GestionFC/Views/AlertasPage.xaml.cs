@@ -44,8 +44,8 @@ namespace GestionFC.Views
             };
             // Declaración del ViewModel y asignación al BindingContext
             ViewModel = new PlantillaImproductivaViewModel();
-            BindingContext = ViewModel;
-
+            BindingContext = ViewModel;            
+ 
             btnHamburguesa.GestureRecognizers.Add(burguerTap);
         }
 
@@ -111,14 +111,32 @@ namespace GestionFC.Views
                                     throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
                                 }
                             }
-
                             ViewModel.PlantillaImproductiva = x.Result;
+                        });
 
+                        await alertaService.GetAlertaPlantillaSinSaldoVirtual(nomina, token).ContinueWith(x =>
+                        {
+                            if (x.IsFaulted)
+                            {
+                                throw x.Exception;
+                            }
+
+                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                            {
+                                // vericamos si la sesión expiró (token)
+                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                {
+                                    SesionExpired = true;
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                }
+                            }
+                            ViewModel.FoliosPendientesSV = x.Result;
                         });
 
 
                     }
-                    
+                    notidicacionImp.Text = ViewModel.PlantillaImproductiva.cantidad.ToString();
+
                 }
             }
             catch (Exception ex)
@@ -158,7 +176,7 @@ namespace GestionFC.Views
             // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
             Device.BeginInvokeOnMainThread(() =>
             {
-                App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(typeof(ProductividadPage)));
+                App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(typeof(PlantillaPage)));
                 App.MasterDetail.IsPresented = false;
             });
         }
@@ -237,7 +255,7 @@ namespace GestionFC.Views
                     FolioSearch.IsVisible = false;
                     PickerSV.IsVisible = false;
                     textoTitulo.Text = "Plantilla improductiva";
-                    imgNotifyImproductiva.Source = "Notify_Green.png";
+                    imgNotifyImproductiva.Source = "notification_circle_green.png";
                     imgNotifyRecuperacion.Source = "Notify_Gray.png";
                     imgNotifyInvestigacion.Source = "Notify_Gray.png";
                     imgNotifyFolioPendientesSV.Source = "Notify_Gray.png";
@@ -255,9 +273,9 @@ namespace GestionFC.Views
                     PickerSV.IsVisible = false;
                     textoTitulo.Text = "Plantilla Recuperación";
                     imgNotifyImproductiva.Source = "Notify_Gray.png";
-                    imgNotifyRecuperacion.Source = "Notify_Green.png";
-                    imgNotifyInvestigacion.Source = "Notify_Gray.png";
-                    imgNotifyFolioPendientesSV.Source = "Notify_Gray.png";
+                    imgNotifyRecuperacion.Source = "notification_circle_green.png";
+                    imgNotifyInvestigacion.Source = "notification_circle_grey.png";
+                    imgNotifyFolioPendientesSV.Source = "notification_circle_grey.png";
                     BVPlantillaImproductiva.BackgroundColor = Color.FromHex("#F3F3F3");
                     BVPlantillaRecuperacion.BackgroundColor = Color.FromHex("#64A70B");
                     BVPlantillaInvestigacion.BackgroundColor = Color.FromHex("#F3F3F3");
@@ -271,10 +289,10 @@ namespace GestionFC.Views
                     FolioSearch.IsVisible = false;
                     PickerSV.IsVisible = false;
                     textoTitulo.Text = "Plantilla Investigación";
-                    imgNotifyImproductiva.Source = "Notify_Gray.png";
-                    imgNotifyRecuperacion.Source = "Notify_Gray.png";
-                    imgNotifyInvestigacion.Source = "Notify_Green.png";
-                    imgNotifyFolioPendientesSV.Source = "Notify_Gray.png";
+                    imgNotifyImproductiva.Source = "notification_circle_grey.png";
+                    imgNotifyRecuperacion.Source = "notification_circle_grey.png";
+                    imgNotifyInvestigacion.Source = "notification_circle_green.png";
+                    imgNotifyFolioPendientesSV.Source = "notification_circle_grey.png";
                     BVPlantillaImproductiva.BackgroundColor = Color.FromHex("#F3F3F3");
                     BVPlantillaRecuperacion.BackgroundColor = Color.FromHex("#F3F3F3");
                     BVPlantillaInvestigacion.BackgroundColor = Color.FromHex("#64A70B");
@@ -288,10 +306,10 @@ namespace GestionFC.Views
                     FolioSearch.IsVisible = true;
                     PickerSV.IsVisible = true;
                     textoTitulo.Text = "Folios pendientes Saldo Virtual";
-                    imgNotifyImproductiva.Source = "Notify_Gray.png";
-                    imgNotifyRecuperacion.Source = "Notify_Gray.png";
-                    imgNotifyInvestigacion.Source = "Notify_Gray.png";
-                    imgNotifyFolioPendientesSV.Source = "Notify_Green.png";
+                    imgNotifyImproductiva.Source = "notification_circle_grey.png";
+                    imgNotifyRecuperacion.Source = "notification_circle_grey.png";
+                    imgNotifyInvestigacion.Source = "notification_circle_grey.png";
+                    imgNotifyFolioPendientesSV.Source = "notification_circle_green.png";
                     BVPlantillaImproductiva.BackgroundColor = Color.FromHex("#F3F3F3");
                     BVPlantillaRecuperacion.BackgroundColor = Color.FromHex("#F3F3F3");
                     BVPlantillaInvestigacion.BackgroundColor = Color.FromHex("#F3F3F3");
@@ -305,9 +323,9 @@ namespace GestionFC.Views
                     FolioSearch.IsVisible = false;
                     PickerSV.IsVisible = false;
                     textoTitulo.Text = "Plantilla improductiva";
-                    imgNotifyImproductiva.Source = "Notify_Green.png";
-                    imgNotifyRecuperacion.Source = "Notify_Gray.png";
-                    imgNotifyInvestigacion.Source = "Notify_Gray.png";
+                    imgNotifyImproductiva.Source = "notification_circle_green.png";
+                    imgNotifyRecuperacion.Source = "notification_circle_grey.png";
+                    imgNotifyInvestigacion.Source = "notification_circle_grey.png";
                     imgNotifyFolioPendientesSV.Source = "Notify_Gray.png";
                     BVPlantillaImproductiva.BackgroundColor = Color.FromHex("#64A70B");
                     BVPlantillaRecuperacion.BackgroundColor = Color.FromHex("#F3F3F3");
@@ -318,6 +336,66 @@ namespace GestionFC.Views
                     lblPlantillaInvestigacion.TextColor = Color.FromHex("#C4C4C4");
                     lblFoliosPendientesSV.TextColor = Color.FromHex("#C4C4C4");
                     break;
+            }
+        }
+
+        private async void OnTapFolioConSaldo_Tapped(object sender, EventArgs e)
+        {
+            if (isBusy) return;
+            isBusy = true;
+            var idalerta = ((Image)sender).ClassId;
+            Service.AlertaService alertaService = new Service.AlertaService();
+            try
+            {
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                {
+
+                    await alertaService.GetAlertaPlantillaSeguimientoSinSaldoVirtual(nomina, Convert.ToInt32(idalerta), token).ContinueWith(x =>
+                    {
+                        if (x.IsFaulted)
+                        {
+                            throw x.Exception;
+                        }
+
+                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                        {
+                            // vericamos si la sesión expiró (token)
+                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                            {
+                                SesionExpired = true;
+                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                            }
+                        }
+                        ViewModel.FoliosPendientesSV = x.Result;
+                    });
+                }
+            }
+            catch(Exception ex)
+            {
+                if (SesionExpired)
+                {
+                    CerrarSesion();
+                    isBusy = false;
+                    return;
+                }
+
+                var logError = new Models.Log.LogErrorModel()
+                {
+                    IdPantalla = 3,
+                    Usuario = nomina,
+                    Error = ex.Message,
+                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+                };
+                await _master.logService.LogError(logError, "").ContinueWith(logRes =>
+                {
+                    if (logRes.IsFaulted)
+                        DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                });
+                await DisplayAlert("Error", ex.Message, "Ok");
+            }
+            finally
+            {
+                isBusy = false;
             }
         }
 

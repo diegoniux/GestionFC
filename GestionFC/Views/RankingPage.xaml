@@ -8,14 +8,32 @@
              xmlns:fFImageLoadingTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:renderers="clr-namespace:GestionFC.Renderers"
              mc:Ignorable="d"
-             x:Class="GestionFC.Views.RankingPage">
-    <RelativeLayout Padding="0">
-        <Image
+             x:Class="GestionFC.Views.RankingPage"
+             BackgroundColor="#F0F0F1">
+ <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="#DCD7D7" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    <RelativeLayout>
+        <!--<Image
             Aspect="AspectFill"
             Source="background_app.png"
             RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
-        </Image>
+        </Image>-->
 
         <StackLayout 
             Margin="0" 
@@ -1055,7 +1073,7 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="115"></ColumnDefinition>
                                     <ColumnDefinition Width="95"></ColumnDefinition>
-                                    <ColumnDefinition Width="160"></ColumnDefinition>
+                                    <ColumnDefinition Width="165"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding ImgPosicionSemAnt}"
                                        Grid.Column="0"
@@ -1175,7 +1193,7 @@
                                 <Frame
                                     Grid.Column="6"
                                     Grid.Row="0"
-                                    Margin="0,0,2,0"
+                                    Margin="0,0,6,0"
                                     BorderColor="#DCD7D7"
                                     CornerRadius="10"
                                     HasShadow="False"
