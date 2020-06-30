@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
-using GestionFC.Models.Share;
 using System.Collections.ObjectModel;
+using System.Text;
+using GestionFC.Models.Share;
+using Newtonsoft.Json;
 
 namespace GestionFC.Models.Alertas
 {
-    public class PlantillaImproductivaResponseModel
+    public class FoliosPendientesSVResponseModel
     {
         [JsonProperty("resultadoEjecucion")]
         public ResultadoEjecucion ResultadoEjecucion { get; set; }
 
         [JsonProperty("resultDatos")]
-        public ObservableCollection<PlantillaImproductivaModel> ResultDatos { get; set; }
-
+        public ObservableCollection<FoliosPendientesSVModel> ResultDatos { get; set; }
     }
 }
