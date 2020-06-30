@@ -198,9 +198,9 @@ namespace GestionFC.Views
         {
             if (isBusy) return;
             gridProdDiaria.IsVisible = true;
-            CollecionViewProdDiaria.IsVisible = true;
+            //CollecionViewProdDiaria.IsVisible = true;
             gridProdSemanal.IsVisible = false;
-            CollecionViewProdSemanal.IsVisible = false;
+            CollecionViewMetasAP.IsVisible = false;
 
             //Llamar método para cargar la productividad Diaria
         }
@@ -212,9 +212,9 @@ namespace GestionFC.Views
             try
             {
                 gridProdDiaria.IsVisible = false;
-                CollecionViewProdDiaria.IsVisible = false;
+                //CollecionViewProdDiaria.IsVisible = false;
                 gridProdSemanal.IsVisible = true;
-                CollecionViewProdSemanal.IsVisible = true;
+                CollecionViewMetasAP.IsVisible = true;
 
                 ViewModel = (ProductividadPageViewModel)BindingContext;
                 // vsalidación para solo cargar la información cuando
@@ -308,7 +308,7 @@ namespace GestionFC.Views
                         }
 
                         // Limpiamos la selección y el contenido
-                        CollecionViewProdDiaria.SelectedItem = null;
+                        //CollecionViewProdDiaria.SelectedItem = null;
                         ViewModel.ProductividadDiaria = null;
                         await productividadService.GetProduccionDiaria(nomina, anio, semanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
                         {
@@ -354,7 +354,7 @@ namespace GestionFC.Views
                         }
 
                         // limpiamos la información actial y la selección, solo si carga bien 
-                        CollecionViewProdSemanal.SelectedItem = null;
+                        CollecionViewMetasAP.SelectedItem = null;
                         ViewModel.ProductividadSemanal = null;
 
                         await productividadService.GetProduccionSemanal(nomina, anio, tetrasemanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
@@ -455,7 +455,7 @@ namespace GestionFC.Views
                         // Limpiamos la selección del content view
 
                         // Limíamos la información actual
-                        CollecionViewProdDiaria.SelectedItem = null;
+                        //CollecionViewProdDiaria.SelectedItem = null;
                         ViewModel.ProductividadDiaria = null;
 
                         await productividadService.GetProduccionDiaria(nomina, anio, semanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
@@ -505,7 +505,7 @@ namespace GestionFC.Views
                     using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                     {
                         // Limíamos la información actual
-                        CollecionViewProdSemanal.SelectedItem = null;
+                        CollecionViewMetasAP.SelectedItem = null;
                         ViewModel.ProductividadSemanal = null;
 
                         await productividadService.GetProduccionSemanal(nomina, anio, tetrasemanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
