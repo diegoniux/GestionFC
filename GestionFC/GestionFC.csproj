@@ -53,7 +53,6 @@
     <Folder Include="ViewModels\Master\" />
     <Folder Include="ViewModels\RankingPage\" />
     <Folder Include="Models\Ranking\" />
-    <Folder Include="Models\VisionBoard\" />
     <Folder Include="ViewModels\VisionBoard\" />
   </ItemGroup>
   <ItemGroup>
