@@ -776,6 +776,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -1040,24 +1041,51 @@
                         Grid.Column="0"
                         Text="Plantilla improductiva">
                     </Label>
-
-                    <SearchBar
+                    <Frame
                         x:Name="FolioSearch"
-                        IsVisible="false"
+                        IsVisible="False"
+                        BorderColor="#C4C4C4"
                         Grid.Column="1"
-                        Margin="-40,1,-35,1"
-                        SearchCommand="{Binding FilterCommand}"
-                        SearchCommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"         
-                        MaxLength="10"
-                        FontFamily="{StaticResource Poppins-Regular}"
-                        FontSize="12"
-                        HeightRequest="10"
-                        Placeholder="No. de folio"
-                        VerticalTextAlignment="End"
-                        PlaceholderColor="#C4C4C4"
-                        TextColor="#707070"
-                        HorizontalOptions="FillAndExpand">
-                    </SearchBar>
+                        CornerRadius="5"
+                        Margin="2,8,2,8"
+                        Padding="1">
+                        <Grid  
+                              Padding="0"
+                              ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width=".2*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <SearchBar
+                                Grid.Column="0"
+                                Margin="-40,1,-35,1"
+                                SearchCommand="{Binding FilterCommand}"
+                                SearchCommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"         
+                                MaxLength="10"
+                                FontFamily="Helvetica"
+                                FontSize="12"
+                                HeightRequest="10"
+                                Placeholder="No. de folio"
+                                VerticalTextAlignment="End"
+                                PlaceholderColor="#C4C4C4"
+                                TextColor="#707070"
+                                HorizontalOptions="FillAndExpand">
+                            </SearchBar>
+                            <BoxView
+                                Grid.Column="1"
+                                BackgroundColor="#C4C4C4">
+                                
+                            </BoxView>
+                            <Image 
+                                Grid.Column="1"
+                                x:Name="iconsearch"
+                                Source="icon_search.png"
+                                WidthRequest="30"
+                                Margin="5"
+                                HorizontalOptions="End">
+                            </Image>
+                        </Grid>
+                    </Frame>
                     <Frame
                         IsVisible="False"
                         x:Name="PickerSV"
