@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using GestionFC.Models.Log;
 using GestionFC.ViewModels.ProductividadPage;
+using GestionFC.ViewModels.VisionBoard;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -16,7 +17,7 @@ namespace GestionFC.Views
         private int nomina { get; set; }
         private string token { get; set; }
         private bool isBusy = false;
-        public ProductividadPageViewModel ViewModel { get; set; }
+        public VisionBoardViewModel ViewModel { get; set; }
         private Master _master;
         public bool SesionExpired { get; set; }
 
@@ -28,7 +29,7 @@ namespace GestionFC.Views
             NavigationPage.SetHasNavigationBar(this, false);
 
             // Declaración del ViewModel y asignación al BindingContext
-            ViewModel = new ProductividadPageViewModel();
+            ViewModel = new VisionBoardViewModel();
             BindingContext = ViewModel;
 
             LoadPage();
@@ -37,7 +38,7 @@ namespace GestionFC.Views
         private async void LoadPage()
         {
             Service.HeaderService headerService = new Service.HeaderService();
-            Service.ProductividadService productividadService = new Service.ProductividadService();
+            Service.VisionBoardService visionBoardService = new Service.VisionBoardService();
             IsBusy = true;
             
             try
@@ -76,8 +77,8 @@ namespace GestionFC.Views
 
                      });
 
-                    //Carga de productividad Diaria
-                    await productividadService.GetProduccionDiaria(nomina, 0, 0, token, new DateTime(1900, 01, 01), false).ContinueWith(x =>
+                    //Carga de Meta Plantilla
+                    await visionBoardService.GetMetaPlantilla(nomina, token).ContinueWith(x =>
                      {
                          if (x.IsFaulted)
                          {
@@ -94,12 +95,12 @@ namespace GestionFC.Views
                              }
                          }
 
-                         ViewModel.ProductividadDiaria = x.Result;
+                         ViewModel.GetMetaPlantilla = x.Result;
 
                      });
 
-                    //Carga de Comision Estimada
-                    await productividadService.GetComisionEstimada(nomina, new DateTime(), token).ContinueWith(x =>
+                    //Carga de Plantilla Individual
+                    await visionBoardService.GetMetaPlantillaIndividual(nomina,token).ContinueWith(x =>
                     {
                         if (x.IsFaulted)
                         {
@@ -116,13 +117,13 @@ namespace GestionFC.Views
                             }
                         }
 
-                        ViewModel.ComisionEstimada = x.Result;
+                        ViewModel.GetMetaPlantillaIndividual = x.Result;
                     });
 
                     //Guardamos genramos la inserción en bitácora (acceso de pantalla)
                     var logModel = new LogSistemaModel()
                     {
-                        IdPantalla = 3,
+                        IdPantalla = 6,
                         IdAccion = 2,
                         Usuario = nomina,
                         Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
@@ -211,45 +212,45 @@ namespace GestionFC.Views
             isBusy = true;
             try
             {
-                gridProdDiaria.IsVisible = false;
-                //CollecionViewProdDiaria.IsVisible = false;
-                gridProdSemanal.IsVisible = true;
-                CollecionViewMetasAP.IsVisible = true;
+                //gridProdDiaria.IsVisible = false;
+                ////CollecionViewProdDiaria.IsVisible = false;
+                //gridProdSemanal.IsVisible = true;
+                //CollecionViewMetasAP.IsVisible = true;
 
-                ViewModel = (ProductividadPageViewModel)BindingContext;
-                // vsalidación para solo cargar la información cuando
-                if (ViewModel.ProductividadSemanal?.ResultDatos.Count > 0)
-                {
-                    return;
-                }
+                //ViewModel = (VisionBoardViewModel)BindingContext;
+                //// vsalidación para solo cargar la información cuando
+                //if (ViewModel.ProductividadSemanal?.ResultDatos.Count > 0)
+                //{
+                //    return;
+                //}
 
-                //Carga de productividad Semanal
-                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
-                {
-                    // Limpiamos la información actual
-                    ViewModel.ProductividadSemanal = null;
+                ////Carga de productividad Semanal
+                //using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                //{
+                //    // Limpiamos la información actual
+                //    ViewModel.ProductividadSemanal = null;
 
-                    Service.ProductividadService productividadService = new Service.ProductividadService();
-                    await productividadService.GetProduccionSemanal(nomina, 0, 0, token, new DateTime(1900,01,01),false).ContinueWith(x =>
-                    {
-                        if (x.IsFaulted)
-                        {
-                            throw x.Exception;
-                        }
+                //    Service.ProductividadService productividadService = new Service.ProductividadService();
+                //    await productividadService.GetProduccionSemanal(nomina, 0, 0, token, new DateTime(1900,01,01),false).ContinueWith(x =>
+                //    {
+                //        if (x.IsFaulted)
+                //        {
+                //            throw x.Exception;
+                //        }
 
-                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                        {
-                            // vericamos si la sesión expiró (token)
-                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                            {
-                                SesionExpired = true;
-                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                            }
-                        }
+                //        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                //        {
+                //            // vericamos si la sesión expiró (token)
+                //            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                //            {
+                //                SesionExpired = true;
+                //                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                //            }
+                //        }
                        
-                        ViewModel.ProductividadSemanal = x.Result;
-                    });
-                }
+                //        ViewModel.ProductividadSemanal = x.Result;
+                //    });
+                //}
             }
             catch (Exception ex)
             {
@@ -293,97 +294,97 @@ namespace GestionFC.Views
                 DateTime FechaCorte;
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
-                    if (gridProdDiaria.IsVisible)
-                    {
-                        //Carga de productividad Diaria
-                        int anio = ViewModel.ProductividadDiaria.ResultAnioSemana.Anio;
-                        int semanaAnio = ViewModel.ProductividadDiaria.ResultAnioSemana.SemanaAnio - 1;
-                        FechaCorte = ViewModel.ProductividadDiaria.ResultAnioSemana.FechaCorte;
+                    //if (gridProdDiaria.IsVisible)
+                    //{
+                    //    //Carga de productividad Diaria
+                    //    int anio = ViewModel.ProductividadDiaria.ResultAnioSemana.Anio;
+                    //    int semanaAnio = ViewModel.ProductividadDiaria.ResultAnioSemana.SemanaAnio - 1;
+                    //    FechaCorte = ViewModel.ProductividadDiaria.ResultAnioSemana.FechaCorte;
 
-                        // si nos encontrabamos en la primer semana del año, nos movemos a la ulutima semana del año anterior
-                        if (semanaAnio == 0)
-                        {
-                            semanaAnio = 52;
-                            anio -= 1;
-                        }
+                    //    // si nos encontrabamos en la primer semana del año, nos movemos a la ulutima semana del año anterior
+                    //    if (semanaAnio == 0)
+                    //    {
+                    //        semanaAnio = 52;
+                    //        anio -= 1;
+                    //    }
 
-                        // Limpiamos la selección y el contenido
-                        //CollecionViewProdDiaria.SelectedItem = null;
-                        ViewModel.ProductividadDiaria = null;
-                        await productividadService.GetProduccionDiaria(nomina, anio, semanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
-                        {
-                            if (x.IsFaulted)
-                            {
-                                throw x.Exception;
-                            }
+                    //    // Limpiamos la selección y el contenido
+                    //    //CollecionViewProdDiaria.SelectedItem = null;
+                    //    ViewModel.ProductividadDiaria = null;
+                    //    await productividadService.GetProduccionDiaria(nomina, anio, semanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
+                    //    {
+                    //        if (x.IsFaulted)
+                    //        {
+                    //            throw x.Exception;
+                    //        }
 
-                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                            {
-                                // vericamos si la sesión expiró (token)
-                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                                {
-                                    SesionExpired = true;
-                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                                }
-                            }
+                    //        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                    //        {
+                    //            // vericamos si la sesión expiró (token)
+                    //            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                    //            {
+                    //                SesionExpired = true;
+                    //                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                    //            }
+                    //        }
 
-                            if (x.Result.ResultAnioSemana.EsUltimaFechaCorte)
-                            {
-                                Device.BeginInvokeOnMainThread(() =>
-                                {
-                                    DisplayAlert("Mensaje", x.Result.ResultadoEjecucion.ErrorMessage, "Ok");
-                                });
+                    //        if (x.Result.ResultAnioSemana.EsUltimaFechaCorte)
+                    //        {
+                    //            Device.BeginInvokeOnMainThread(() =>
+                    //            {
+                    //                DisplayAlert("Mensaje", x.Result.ResultadoEjecucion.ErrorMessage, "Ok");
+                    //            });
 
-                            }
+                    //        }
 
-                            ViewModel.ProductividadDiaria = x.Result;
+                    //        ViewModel.ProductividadDiaria = x.Result;
 
-                        });
-                    }
-                    // cargar periodo anterior Semanal
-                    else
-                    {
-                        int anio = ViewModel.ProductividadSemanal.ResultTotal.Anio;
-                        int tetrasemanaAnio = ViewModel.ProductividadSemanal.ResultTotal.TetrasemanaAnio - 1;
-                        FechaCorte = ViewModel.ProductividadSemanal.ResultTotal.FechaCorte;
+                    //    });
+                    //}
+                    //// cargar periodo anterior Semanal
+                    //else
+                    //{
+                    //    int anio = ViewModel.ProductividadSemanal.ResultTotal.Anio;
+                    //    int tetrasemanaAnio = ViewModel.ProductividadSemanal.ResultTotal.TetrasemanaAnio - 1;
+                    //    FechaCorte = ViewModel.ProductividadSemanal.ResultTotal.FechaCorte;
 
-                        if (tetrasemanaAnio == 0)
-                        {
-                            tetrasemanaAnio = 13;
-                            anio -= 1;
-                        }
+                    //    if (tetrasemanaAnio == 0)
+                    //    {
+                    //        tetrasemanaAnio = 13;
+                    //        anio -= 1;
+                    //    }
 
-                        // limpiamos la información actial y la selección, solo si carga bien 
-                        CollecionViewMetasAP.SelectedItem = null;
-                        ViewModel.ProductividadSemanal = null;
+                    //    // limpiamos la información actial y la selección, solo si carga bien 
+                    //    CollecionViewMetasAP.SelectedItem = null;
+                    //    ViewModel.ProductividadSemanal = null;
 
-                        await productividadService.GetProduccionSemanal(nomina, anio, tetrasemanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
-                        {
-                            if (x.IsFaulted)
-                            {
-                                throw x.Exception;
-                            }
+                    //    await productividadService.GetProduccionSemanal(nomina, anio, tetrasemanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
+                    //    {
+                    //        if (x.IsFaulted)
+                    //        {
+                    //            throw x.Exception;
+                    //        }
 
-                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                            {
-                                throw new Exception("Ocurrió un error");
-                            }
+                    //        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                    //        {
+                    //            throw new Exception("Ocurrió un error");
+                    //        }
 
-                            if (x.Result.ResultTotal.EsUltimaFechaCorte)
-                            {
-                                Device.BeginInvokeOnMainThread(() =>
-                                {
-                                    DisplayAlert("Mensaje", x.Result.ResultadoEjecucion.ErrorMessage, "Ok");
-                                });
+                    //        if (x.Result.ResultTotal.EsUltimaFechaCorte)
+                    //        {
+                    //            Device.BeginInvokeOnMainThread(() =>
+                    //            {
+                    //                DisplayAlert("Mensaje", x.Result.ResultadoEjecucion.ErrorMessage, "Ok");
+                    //            });
 
-                            }
+                    //        }
 
-                            ViewModel.ProductividadSemanal = x.Result;
+                    //        ViewModel.ProductividadSemanal = x.Result;
 
 
 
-                        });
-                    }
+                    //    });
+                    //}
                 }
             }
             catch (Exception ex)
@@ -426,108 +427,108 @@ namespace GestionFC.Views
                 Service.ProductividadService productividadService = new Service.ProductividadService();
                 Boolean EsPosterior = true;
                 DateTime FechaCorte;
-                if (gridProdDiaria.IsVisible)
-                {
+                //if (gridProdDiaria.IsVisible)
+                //{
 
-                    // Validamos si se encuentra en el periodo actual, enviamos mensaje indicando que no se pueden consultar periodos
-                    // mayores al actual
-                    if (ViewModel.ProductividadDiaria.ResultAnioSemana.EsActual)
-                    {
-                        await DisplayAlert("Aviso", "No es posible consultar información de periodos mayores al actual.", "Ok");
-                        return;
-                    }
-
-
-                    //Carga de productividad Diaria
-                    int anio = ViewModel.ProductividadDiaria.ResultAnioSemana.Anio;
-                    int semanaAnio = ViewModel.ProductividadDiaria.ResultAnioSemana.SemanaAnio + 1;
-                    FechaCorte = ViewModel.ProductividadDiaria.ResultAnioSemana.FechaCorte;
-
-                    // El máximo de semana es 52, si llegamos a ese numero, asignamos la semana 1 del siguiente año
-                    if (semanaAnio == 53)
-                    {
-                        semanaAnio = 1;
-                        anio += 1;
-                    }
-
-                    using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
-                    {
-                        // Limpiamos la selección del content view
-
-                        // Limíamos la información actual
-                        //CollecionViewProdDiaria.SelectedItem = null;
-                        ViewModel.ProductividadDiaria = null;
-
-                        await productividadService.GetProduccionDiaria(nomina, anio, semanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
-                        {
-                            if (x.IsFaulted)
-                            {
-                                throw x.Exception;
-                            }
-
-                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                            {
-                                // vericamos si la sesión expiró (token)
-                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                                {
-                                    SesionExpired = true;
-                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                                }
-                            }
-
-                            ViewModel.ProductividadDiaria = x.Result;
-
-                        });
-                    }
-                }
-                // cargar periodo anterior Semanal
-                else
-                {
-                    //Si nos encontramos en la tretrasemana actual, mostramos mensaje indicando que no esposible consultar tetasemana futuras
-                    if (ViewModel.ProductividadSemanal.ResultTotal.EsActual)
-                    {
-                        await DisplayAlert("Aviso", "No es posible consultar información de periodos mayores al actual.", "Ok");
-                        return;
-                    }
-
-                    int anio = ViewModel.ProductividadSemanal.ResultTotal.Anio;
-                    int tetrasemanaAnio = ViewModel.ProductividadSemanal.ResultTotal.TetrasemanaAnio + 1;
-                    FechaCorte = ViewModel.ProductividadSemanal.ResultTotal.FechaCorte;
+                //    // Validamos si se encuentra en el periodo actual, enviamos mensaje indicando que no se pueden consultar periodos
+                //    // mayores al actual
+                //    if (ViewModel.ProductividadDiaria.ResultAnioSemana.EsActual)
+                //    {
+                //        await DisplayAlert("Aviso", "No es posible consultar información de periodos mayores al actual.", "Ok");
+                //        return;
+                //    }
 
 
-                    // si nos encontrasmos en la ultiuma tetrasemana del año, nos movemos a la primer tetrasemana del próximo año
-                    if (tetrasemanaAnio == 14)
-                    {
-                        tetrasemanaAnio = 1;
-                        anio += 1;
-                    }
+                //    //Carga de productividad Diaria
+                //    int anio = ViewModel.ProductividadDiaria.ResultAnioSemana.Anio;
+                //    int semanaAnio = ViewModel.ProductividadDiaria.ResultAnioSemana.SemanaAnio + 1;
+                //    FechaCorte = ViewModel.ProductividadDiaria.ResultAnioSemana.FechaCorte;
 
-                    using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
-                    {
-                        // Limíamos la información actual
-                        CollecionViewMetasAP.SelectedItem = null;
-                        ViewModel.ProductividadSemanal = null;
+                //    // El máximo de semana es 52, si llegamos a ese numero, asignamos la semana 1 del siguiente año
+                //    if (semanaAnio == 53)
+                //    {
+                //        semanaAnio = 1;
+                //        anio += 1;
+                //    }
 
-                        await productividadService.GetProduccionSemanal(nomina, anio, tetrasemanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
-                        {
-                            if (x.IsFaulted)
-                            {
-                                throw x.Exception;
-                            }
+                //    using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                //    {
+                //        // Limpiamos la selección del content view
 
-                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                            {
-                                // vericamos si la sesión expiró (token)
-                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                                {
-                                    SesionExpired = true;
-                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                                }
-                            }
-                            ViewModel.ProductividadSemanal = x.Result;
-                        });
-                    }
-                }
+                //        // Limíamos la información actual
+                //        //CollecionViewProdDiaria.SelectedItem = null;
+                //        ViewModel.ProductividadDiaria = null;
+
+                //        await productividadService.GetProduccionDiaria(nomina, anio, semanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
+                //        {
+                //            if (x.IsFaulted)
+                //            {
+                //                throw x.Exception;
+                //            }
+
+                //            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                //            {
+                //                // vericamos si la sesión expiró (token)
+                //                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                //                {
+                //                    SesionExpired = true;
+                //                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                //                }
+                //            }
+
+                //            ViewModel.ProductividadDiaria = x.Result;
+
+                //        });
+                //    }
+                //}
+                //// cargar periodo anterior Semanal
+                //else
+                //{
+                //    //Si nos encontramos en la tretrasemana actual, mostramos mensaje indicando que no esposible consultar tetasemana futuras
+                //    if (ViewModel.ProductividadSemanal.ResultTotal.EsActual)
+                //    {
+                //        await DisplayAlert("Aviso", "No es posible consultar información de periodos mayores al actual.", "Ok");
+                //        return;
+                //    }
+
+                //    int anio = ViewModel.ProductividadSemanal.ResultTotal.Anio;
+                //    int tetrasemanaAnio = ViewModel.ProductividadSemanal.ResultTotal.TetrasemanaAnio + 1;
+                //    FechaCorte = ViewModel.ProductividadSemanal.ResultTotal.FechaCorte;
+
+
+                //    // si nos encontrasmos en la ultiuma tetrasemana del año, nos movemos a la primer tetrasemana del próximo año
+                //    if (tetrasemanaAnio == 14)
+                //    {
+                //        tetrasemanaAnio = 1;
+                //        anio += 1;
+                //    }
+
+                //    using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                //    {
+                //        // Limíamos la información actual
+                //        CollecionViewMetasAP.SelectedItem = null;
+                //        ViewModel.ProductividadSemanal = null;
+
+                //        await productividadService.GetProduccionSemanal(nomina, anio, tetrasemanaAnio, token, FechaCorte, EsPosterior).ContinueWith(x =>
+                //        {
+                //            if (x.IsFaulted)
+                //            {
+                //                throw x.Exception;
+                //            }
+
+                //            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                //            {
+                //                // vericamos si la sesión expiró (token)
+                //                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                //                {
+                //                    SesionExpired = true;
+                //                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                //                }
+                //            }
+                //            ViewModel.ProductividadSemanal = x.Result;
+                //        });
+                //    }
+                //}
             }
             catch (Exception ex)
             {
