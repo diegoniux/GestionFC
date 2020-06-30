@@ -176,7 +176,7 @@ namespace GestionFC.Views
             // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
             Device.BeginInvokeOnMainThread(() =>
             {
-                App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(typeof(ProductividadPage)));
+                App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(typeof(PlantillaPage)));
                 App.MasterDetail.IsPresented = false;
             });
         }
