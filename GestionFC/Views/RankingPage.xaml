@@ -8,14 +8,32 @@
              xmlns:fFImageLoadingTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              xmlns:renderers="clr-namespace:GestionFC.Renderers"
              mc:Ignorable="d"
-             x:Class="GestionFC.Views.RankingPage">
+             x:Class="GestionFC.Views.RankingPage"
+             BackgroundColor="#F0F0F1">
+ <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="#DCD7D7" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <RelativeLayout Padding="0">
-        <Image
+        <!--<Image
             Aspect="AspectFill"
             Source="background_app.png"
             RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
-        </Image>
+        </Image>-->
 
         <StackLayout 
             Margin="0" 
