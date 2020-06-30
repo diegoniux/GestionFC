@@ -44,8 +44,8 @@ namespace GestionFC.Views
             };
             // Declaración del ViewModel y asignación al BindingContext
             ViewModel = new PlantillaImproductivaViewModel();
-            BindingContext = ViewModel;
-
+            BindingContext = ViewModel;            
+ 
             btnHamburguesa.GestureRecognizers.Add(burguerTap);
         }
 
@@ -111,14 +111,32 @@ namespace GestionFC.Views
                                     throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
                                 }
                             }
-
                             ViewModel.PlantillaImproductiva = x.Result;
+                        });
 
+                        await alertaService.GetAlertaPlantillaSinSaldoVirtual(nomina, token).ContinueWith(x =>
+                        {
+                            if (x.IsFaulted)
+                            {
+                                throw x.Exception;
+                            }
+
+                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                            {
+                                // vericamos si la sesión expiró (token)
+                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                {
+                                    SesionExpired = true;
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                }
+                            }
+                            ViewModel.FoliosPendientesSV = x.Result;
                         });
 
 
                     }
-                    
+                    notidicacionImp.Text = ViewModel.PlantillaImproductiva.cantidad.ToString();
+
                 }
             }
             catch (Exception ex)
@@ -318,6 +336,66 @@ namespace GestionFC.Views
                     lblPlantillaInvestigacion.TextColor = Color.FromHex("#C4C4C4");
                     lblFoliosPendientesSV.TextColor = Color.FromHex("#C4C4C4");
                     break;
+            }
+        }
+
+        private async void OnTapFolioConSaldo_Tapped(object sender, EventArgs e)
+        {
+            if (isBusy) return;
+            isBusy = true;
+            var idalerta = ((Image)sender).ClassId;
+            Service.AlertaService alertaService = new Service.AlertaService();
+            try
+            {
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                {
+
+                    await alertaService.GetAlertaPlantillaSeguimientoSinSaldoVirtual(nomina, Convert.ToInt32(idalerta), token).ContinueWith(x =>
+                    {
+                        if (x.IsFaulted)
+                        {
+                            throw x.Exception;
+                        }
+
+                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                        {
+                            // vericamos si la sesión expiró (token)
+                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                            {
+                                SesionExpired = true;
+                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                            }
+                        }
+                        ViewModel.FoliosPendientesSV = x.Result;
+                    });
+                }
+            }
+            catch(Exception ex)
+            {
+                if (SesionExpired)
+                {
+                    CerrarSesion();
+                    isBusy = false;
+                    return;
+                }
+
+                var logError = new Models.Log.LogErrorModel()
+                {
+                    IdPantalla = 3,
+                    Usuario = nomina,
+                    Error = ex.Message,
+                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+                };
+                await _master.logService.LogError(logError, "").ContinueWith(logRes =>
+                {
+                    if (logRes.IsFaulted)
+                        DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                });
+                await DisplayAlert("Error", ex.Message, "Ok");
+            }
+            finally
+            {
+                isBusy = false;
             }
         }
 

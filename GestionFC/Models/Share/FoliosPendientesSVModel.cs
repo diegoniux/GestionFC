@@ -7,6 +7,15 @@ namespace GestionFC.Models.Share
 {
     public class FoliosPendientesSVModel
     {
+        [JsonProperty("idAlerta")]
+        public int IdAlerta { get; set; }
+
+        [JsonProperty("idTipoAlerta")]
+        public int IdTipoAlerta { get; set; }
+
+        [JsonProperty("idEstatusAlerta")]
+        public int IdEstatusAlerta { get; set; }
+
         [JsonProperty("nombre")]
         public string Nombre { get; set; }
 

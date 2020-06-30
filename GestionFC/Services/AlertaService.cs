@@ -50,5 +50,60 @@ namespace GestionFC.Services
             return plantillaImproductivaResponse;
         }
 
+        public async Task<FoliosPendientesSVResponseModel> GetAlertaPlantillaSinSaldoVirtual(int nomina, string token)
+        {
+            var plantillaImproductivaResponse = new FoliosPendientesSVResponseModel();
+            try
+            {
+                var uri = new Uri($"{App.BaseUrlApi}api/Alerta/GetAlertasPlantillaSinSaldoVirtual/{nomina}");
+
+                HttpResponseMessage response = null;
+                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                response = await _client.GetAsync(uri);
+
+                response.EnsureSuccessStatusCode();
+
+                string jsonResult = await response.Content.ReadAsStringAsync();
+                plantillaImproductivaResponse = JsonConvert.DeserializeObject<FoliosPendientesSVResponseModel>(jsonResult);
+            }
+            catch (Exception ex)
+            {
+                plantillaImproductivaResponse.ResultadoEjecucion = new Models.Share.ResultadoEjecucion()
+                {
+                    EjecucionCorrecta = false,
+                    FriendlyMessage = "Ocurrio un error",
+                    ErrorMessage = ex.Message
+                };
+            }
+            return plantillaImproductivaResponse;
+        }
+
+        public async Task<FoliosPendientesSVResponseModel> GetAlertaPlantillaSeguimientoSinSaldoVirtual(int nomina,int idalerta, string token)
+        {
+            var plantillaImproductivaResponse = new FoliosPendientesSVResponseModel();
+            try
+            {
+                var uri = new Uri($"{App.BaseUrlApi}api/Alerta/GetAlertasPlantillaSinSaldoVirtual/{nomina}/{idalerta}");
+
+                HttpResponseMessage response = null;
+                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                response = await _client.GetAsync(uri);
+
+                response.EnsureSuccessStatusCode();
+
+                string jsonResult = await response.Content.ReadAsStringAsync();
+                plantillaImproductivaResponse = JsonConvert.DeserializeObject<FoliosPendientesSVResponseModel>(jsonResult);
+            }
+            catch (Exception ex)
+            {
+                plantillaImproductivaResponse.ResultadoEjecucion = new Models.Share.ResultadoEjecucion()
+                {
+                    EjecucionCorrecta = false,
+                    FriendlyMessage = "Ocurrio un error",
+                    ErrorMessage = ex.Message
+                };
+            }
+            return plantillaImproductivaResponse;
+        }
     }
 }
