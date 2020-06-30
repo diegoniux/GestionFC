@@ -7,11 +7,11 @@ using Newtonsoft.Json;
 
 namespace GestionFC.Services
 {
-    public class RankingService
+    public class VisionBoard
     {
         private readonly HttpClient _client;
 
-        public RankingService()
+        public VisionBoard()
         {
             var httpClientHandler = new HttpClientHandler
             {
