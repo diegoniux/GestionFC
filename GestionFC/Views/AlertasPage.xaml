@@ -1227,7 +1227,7 @@
                                             Margin="10,1,10,1"
                                             HorizontalOptions="Center">
                                         <Image
-                                                Source="calendar_gold.png"
+                                                Source="{Binding colorCalendar}"
                                                 Aspect="Fill"
                                                 >
                                         </Image>
