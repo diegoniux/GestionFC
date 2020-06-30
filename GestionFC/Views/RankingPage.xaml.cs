@@ -110,6 +110,10 @@ namespace GestionFC.Views
                             {
                                 ViewModel.Gerentes = x.Result.Gerentes;
                             }
+                            ViewModel.ImgPosicionSemAntDireccion = x.Result.ImgPosicionSemAntDireccion;
+                            ViewModel.ImgPosicionSemAntNacional = x.Result.ImgPosicionSemAntNacional;
+                            ViewModel.PosicionDireccion = x.Result.PosicionDireccion;
+                            ViewModel.PosicionNacional = x.Result.PosicionNacional;
                         });
                     }
                 }

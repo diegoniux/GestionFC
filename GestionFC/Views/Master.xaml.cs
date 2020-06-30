@@ -29,25 +29,6 @@ namespace GestionFC.Views
             ViewModel = new ViewModels.Master.MasterViewModel();
             logService = new Service.LogService();
             var masterPageItems = new List<MasterPageItem>();
-            //masterPageItems.Add(new MasterPageItem
-            //{
-            //    Title = "Plantilla",
-            //    IconSource = "exit.png",
-            //    TargetType = typeof(PlantillaPage),
-            //});
-            //masterPageItems.Add(new MasterPageItem
-            //{
-            //    Title = "Productividad",
-            //    IconSource = "exit.png",
-            //    TargetType = typeof(ProductividadPage),
-            //});
-
-            masterPageItems.Add(new MasterPageItem
-            {
-                Title = "Cerrar Sesión",
-                IconSource = "exit.png",
-                TargetType = typeof(LoginPage),
-            });
 
             masterPageItems.Add(new MasterPageItem
             {
@@ -58,18 +39,24 @@ namespace GestionFC.Views
 
             masterPageItems.Add(new MasterPageItem
             {
+                Title = "Objetivos de tu plantilla",
+                IconSource = "icon_target.png",
+                TargetType = typeof(VisionBoardPage),
+            });
+
+            masterPageItems.Add(new MasterPageItem
+            {
                 Title = "Ranking",
-                IconSource = "exit.png",
+                IconSource = "icon_ranking.png",
                 TargetType = typeof(RankingPage),
             });
 
             masterPageItems.Add(new MasterPageItem
             {
-                Title = "Objetivos de tu plantilla",
-                IconSource = "exit.png",
-                TargetType = typeof(VisionBoardPage),
+                Title = "Cerrar Sesión",
+                IconSource = "icon_singout.png",
+                TargetType = typeof(LoginPage),
             });
-
 
             listView.ItemsSource = masterPageItems;
             //loadPage();

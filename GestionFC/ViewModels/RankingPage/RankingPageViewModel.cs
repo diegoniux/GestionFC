@@ -86,11 +86,59 @@ namespace GestionFC.ViewModels.RankingPage
                 RaisePropertyChanged(nameof(Gerentes));
             }
         }
+        private int _posicionDireccion;
+
+        public int PosicionDireccion
+        {
+            get { return _posicionDireccion; }
+            set
+            {
+                _posicionDireccion = value;
+                RaisePropertyChanged(nameof(PosicionDireccion));
+            }
+        }
+
+        private string _imgPosicionSemAntDireccion;
+
+        public string ImgPosicionSemAntDireccion
+        {
+            get { return _imgPosicionSemAntDireccion; }
+            set
+            {
+                _imgPosicionSemAntDireccion = value;
+                RaisePropertyChanged(nameof(ImgPosicionSemAntDireccion));
+            }
+        }
+
+        private int _posicionNacional;
+
+        public int PosicionNacional
+        {
+            get { return _posicionNacional; }
+            set
+            {
+                _posicionNacional = value;
+                RaisePropertyChanged(nameof(PosicionNacional));
+            }
+        }
+
+        private string _imgPosicionSemAntNacional;
+
+        public string ImgPosicionSemAntNacional
+        {
+            get { return _imgPosicionSemAntNacional; }
+            set
+            {
+                _imgPosicionSemAntNacional = value;
+                RaisePropertyChanged(nameof(ImgPosicionSemAntNacional));
+            }
+        }
 
         public RankingViewModel()
         {
             this.TopGerentes = new List<RankingGte>();
             this.Gerentes = new List<RankingGte>();
         }
+
     }
 }
