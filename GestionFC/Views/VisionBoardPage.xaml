@@ -925,7 +925,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtMetaTraspasos"
-                        Text="{Binding LoginDTO.Nomina, Mode=TwoWay}"
+                        Text="{Binding GetMetaPlantilla.MetaPlantilla.Traspasos, Mode=TwoWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="15"
@@ -961,7 +961,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtMetaFCT"
-                        Text="{Binding LoginDTO.Nomina, Mode=TwoWay}"
+                        Text="{Binding GetMetaPlantilla.MetaPlantilla.TraspasosFCT, Mode=TwoWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="15"
@@ -995,7 +995,7 @@
                         FontSize="21">
                     </Label>
                     <Label
-                        Text="{Binding ProductividadDiaria.ResultFechas.FechaLunes}"
+                        Text="{Binding GetMetaPlantilla.FechasSemana.SaldoLunes, Mode=TwoWay}"
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Center"
                         Grid.Row="2"
@@ -1010,7 +1010,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtLunes"
-                        Text="70"
+                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoLunes, Mode=TwoWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="5"
@@ -1047,7 +1047,7 @@
                         FontSize="21">
                     </Label>
                     <Label
-                        Text="{Binding ProductividadDiaria.ResultFechas.FechaMartes}"
+                        Text="{Binding GetMetaPlantilla.FechasSemana.FechaMartes}"
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Center"
                         Grid.Row="2"
@@ -1062,7 +1062,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtMartes"
-                        Text="70"
+                        Text="{Binding GetMetaPlantilla.FechasSemana.SaldoMartes, Mode=TwoWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="5"
@@ -1099,7 +1099,7 @@
                         FontSize="21">
                     </Label>
                     <Label
-                        Text="{Binding ProductividadDiaria.ResultFechas.FechaMiercoles}"
+                        Text="{Binding GetMetaPlantilla.FechasSemana.FechaMiercoles}"
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Center"
                         Grid.Row="2"
@@ -1114,7 +1114,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtMiercoles"
-                        Text="70"
+                        Text="{Binding GetMetaPlantilla.FechasSemana.SaldoMiercoles, Mode=TwoWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="5"
@@ -1151,7 +1151,7 @@
                         FontSize="21">
                     </Label>
                     <Label
-                        Text="{Binding ProductividadDiaria.ResultFechas.FechaJueves}"
+                        Text="{Binding GetMetaPlantilla.FechasSemana.FechaJueves}"
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Center"
                         Grid.Row="2"
@@ -1166,7 +1166,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtJueves"
-                        Text="80"
+                        Text="{Binding GetMetaPlantilla.FechasSemana.SaldoJueves, Mode=TwoWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="5"
@@ -1203,7 +1203,7 @@
                         FontSize="21">
                     </Label>
                     <Label
-                        Text="{Binding ProductividadDiaria.ResultFechas.FechaViernes}"
+                        Text="{Binding GetMetaPlantilla.FechasSemana.FechaViernes}"
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Center"
                         Grid.Row="2"
@@ -1218,7 +1218,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtViernes"
-                        Text="70"
+                        Text="{Binding GetMetaPlantilla.FechasSemana.SaldoViernes, Mode=TwoWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="5"
@@ -1255,7 +1255,7 @@
                         FontSize="21">
                     </Label>
                     <Label
-                        Text="{Binding ProductividadDiaria.ResultFechas.FechaSabado}"
+                        Text="{Binding GetMetaPlantilla.FechasSemana.FechaSabado}"
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Center"
                         Grid.Row="2"
@@ -1270,7 +1270,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtSabado"
-                        Text="40"
+                        Text="{Binding GetMetaPlantilla.FechasSemana.SaldoSabado, Mode=TwoWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="5"
@@ -1307,7 +1307,7 @@
                         FontSize="21">
                     </Label>
                     <Label
-                        Text="{Binding ProductividadDiaria.ResultFechas.FechaDomingo}"
+                        Text="{Binding GetMetaPlantilla.FechasSemana.FechaDomingo}"
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Center"
                         Grid.Row="2"
@@ -1322,7 +1322,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtDomingo"
-                        Text="0"
+                        Text="{Binding GetMetaPlantilla.FechasSemana.SaldoDomingo, Mode=TwoWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="5"

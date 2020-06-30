@@ -26,7 +26,8 @@ namespace GestionFC.Services
             var getMetaPlantillaResponse = new GetMetaPlantillaResponseModel();
             try
             {
-                var uri = new Uri($"{App.BaseUrlApi}api/GetMetaPlantilla/{nomina}");
+                //var uri = new Uri($"{App.BaseUrlApi}api/GetMetaPlantilla/{nomina}");
+                var uri = new Uri($"https://desaiis01/Api_GestionFC/api/GetMetaPlantilla/{nomina}");
 
                 HttpResponseMessage response = null;
                 if (_client.DefaultRequestHeaders.Authorization == null)
@@ -55,7 +56,7 @@ namespace GestionFC.Services
             var getMetaPlantillaIndividualResponse = new GetMetaPlantillaIndividualResponseModel();
             try
             {
-                var uri = new Uri($"{App.BaseUrlApi}api/GetMetaPlantillaIndividual/{nomina}");
+                var uri = new Uri($"https://desaiis01/Api_GestionFC/api/GetMetaPlantillaIndividual/{nomina}");
 
                 HttpResponseMessage response = null;
                 if (_client.DefaultRequestHeaders.Authorization == null)
