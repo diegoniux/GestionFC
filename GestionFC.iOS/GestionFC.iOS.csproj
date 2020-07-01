@@ -183,12 +183,6 @@
     <ImageAsset Include="Assets.xcassets\capi.imageset\capi2.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\capi_circulo.imageset\capi_circulo3.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\capi_circulo.imageset\capi_circulo4.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\capi_circulo.imageset\capi_circulo5.png">
       <Visible>false</Visible>
     </ImageAsset>
@@ -778,6 +772,8 @@
     <ImageAsset Include="Assets.xcassets\icon_combo.imageset\icon_combo.png" />
     <ImageAsset Include="Assets.xcassets\EmptyView.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\EmptyView.imageset\EmptyView.png" />
+    <ImageAsset Include="Assets.xcassets\capi_circulo.imageset\capi_circulo-1.png" />
+    <ImageAsset Include="Assets.xcassets\capi_circulo.imageset\capi_circulo%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
