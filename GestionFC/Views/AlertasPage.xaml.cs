@@ -45,7 +45,7 @@ namespace GestionFC.Views
             // Declaración del ViewModel y asignación al BindingContext
             ViewModel = new PlantillaImproductivaViewModel();
             BindingContext = ViewModel;            
- 
+            
             btnHamburguesa.GestureRecognizers.Add(burguerTap);
         }
 
@@ -131,11 +131,19 @@ namespace GestionFC.Views
                                 }
                             }
                             ViewModel.FoliosPendientesSV = x.Result;
+                            ViewModel.CreateCollection();
+                            
+
                         });
 
 
                     }
+                    foreach (FoliosPendientesSVModel a in ViewModel.FoliosPendientesSV.ResultDatos)
+                    {
+                        pickerAP.Items.Add(a.Nombre);
+                    }
                     notidicacionImp.Text = ViewModel.PlantillaImproductiva.cantidad.ToString();
+                    notidicacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
 
                 }
             }
@@ -249,16 +257,19 @@ namespace GestionFC.Views
 
         void CambiaTab(int tab)
         {
+
+            string notifyGreen = "notification_circle_green.png";
+            string notifyGray = "notification_circle_grey.png";
             switch (tab)
             {
                 case 1:
                     FolioSearch.IsVisible = false;
                     PickerSV.IsVisible = false;
                     textoTitulo.Text = "Plantilla improductiva";
-                    imgNotifyImproductiva.Source = "notification_circle_green.png";
-                    imgNotifyRecuperacion.Source = "Notify_Gray.png";
-                    imgNotifyInvestigacion.Source = "Notify_Gray.png";
-                    imgNotifyFolioPendientesSV.Source = "Notify_Gray.png";
+                    imgNotifyImproductiva.Source = notifyGreen;
+                    imgNotifyRecuperacion.Source = notifyGray;
+                    imgNotifyInvestigacion.Source = notifyGray;
+                    imgNotifyFolioPendientesSV.Source = notifyGray;
                     BVPlantillaImproductiva.BackgroundColor = Color.FromHex("#64A70B");
                     BVPlantillaRecuperacion.BackgroundColor = Color.FromHex("#F3F3F3");
                     BVPlantillaInvestigacion.BackgroundColor = Color.FromHex("#F3F3F3");
@@ -272,10 +283,10 @@ namespace GestionFC.Views
                     FolioSearch.IsVisible = false;
                     PickerSV.IsVisible = false;
                     textoTitulo.Text = "Plantilla Recuperación";
-                    imgNotifyImproductiva.Source = "Notify_Gray.png";
-                    imgNotifyRecuperacion.Source = "notification_circle_green.png";
-                    imgNotifyInvestigacion.Source = "notification_circle_grey.png";
-                    imgNotifyFolioPendientesSV.Source = "notification_circle_grey.png";
+                    imgNotifyImproductiva.Source = notifyGray;
+                    imgNotifyRecuperacion.Source = notifyGreen;
+                    imgNotifyInvestigacion.Source = notifyGray;
+                    imgNotifyFolioPendientesSV.Source = notifyGray;
                     BVPlantillaImproductiva.BackgroundColor = Color.FromHex("#F3F3F3");
                     BVPlantillaRecuperacion.BackgroundColor = Color.FromHex("#64A70B");
                     BVPlantillaInvestigacion.BackgroundColor = Color.FromHex("#F3F3F3");
@@ -289,10 +300,10 @@ namespace GestionFC.Views
                     FolioSearch.IsVisible = false;
                     PickerSV.IsVisible = false;
                     textoTitulo.Text = "Plantilla Investigación";
-                    imgNotifyImproductiva.Source = "notification_circle_grey.png";
-                    imgNotifyRecuperacion.Source = "notification_circle_grey.png";
-                    imgNotifyInvestigacion.Source = "notification_circle_green.png";
-                    imgNotifyFolioPendientesSV.Source = "notification_circle_grey.png";
+                    imgNotifyImproductiva.Source = notifyGray;
+                    imgNotifyRecuperacion.Source = notifyGray;
+                    imgNotifyInvestigacion.Source = notifyGreen;
+                    imgNotifyFolioPendientesSV.Source = notifyGray;
                     BVPlantillaImproductiva.BackgroundColor = Color.FromHex("#F3F3F3");
                     BVPlantillaRecuperacion.BackgroundColor = Color.FromHex("#F3F3F3");
                     BVPlantillaInvestigacion.BackgroundColor = Color.FromHex("#64A70B");
@@ -306,10 +317,10 @@ namespace GestionFC.Views
                     FolioSearch.IsVisible = true;
                     PickerSV.IsVisible = true;
                     textoTitulo.Text = "Folios pendientes Saldo Virtual";
-                    imgNotifyImproductiva.Source = "notification_circle_grey.png";
-                    imgNotifyRecuperacion.Source = "notification_circle_grey.png";
-                    imgNotifyInvestigacion.Source = "notification_circle_grey.png";
-                    imgNotifyFolioPendientesSV.Source = "notification_circle_green.png";
+                    imgNotifyImproductiva.Source = notifyGray;
+                    imgNotifyRecuperacion.Source = notifyGray;
+                    imgNotifyInvestigacion.Source = notifyGray;
+                    imgNotifyFolioPendientesSV.Source = notifyGreen;
                     BVPlantillaImproductiva.BackgroundColor = Color.FromHex("#F3F3F3");
                     BVPlantillaRecuperacion.BackgroundColor = Color.FromHex("#F3F3F3");
                     BVPlantillaInvestigacion.BackgroundColor = Color.FromHex("#F3F3F3");
@@ -323,10 +334,10 @@ namespace GestionFC.Views
                     FolioSearch.IsVisible = false;
                     PickerSV.IsVisible = false;
                     textoTitulo.Text = "Plantilla improductiva";
-                    imgNotifyImproductiva.Source = "notification_circle_green.png";
-                    imgNotifyRecuperacion.Source = "notification_circle_grey.png";
-                    imgNotifyInvestigacion.Source = "notification_circle_grey.png";
-                    imgNotifyFolioPendientesSV.Source = "Notify_Gray.png";
+                    imgNotifyImproductiva.Source = notifyGreen;
+                    imgNotifyRecuperacion.Source = notifyGray;
+                    imgNotifyInvestigacion.Source = notifyGray;
+                    imgNotifyFolioPendientesSV.Source = notifyGray;
                     BVPlantillaImproductiva.BackgroundColor = Color.FromHex("#64A70B");
                     BVPlantillaRecuperacion.BackgroundColor = Color.FromHex("#F3F3F3");
                     BVPlantillaInvestigacion.BackgroundColor = Color.FromHex("#F3F3F3");
@@ -368,6 +379,7 @@ namespace GestionFC.Views
                         }
                         ViewModel.FoliosPendientesSV = x.Result;
                     });
+
                 }
             }
             catch(Exception ex)

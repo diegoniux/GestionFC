@@ -83,7 +83,7 @@ namespace GestionFC.Services
             var plantillaImproductivaResponse = new FoliosPendientesSVResponseModel();
             try
             {
-                var uri = new Uri($"{App.BaseUrlApi}api/Alerta/GetAlertasPlantillaSinSaldoVirtual/{nomina}/{idalerta}");
+                var uri = new Uri($"{App.BaseUrlApi}api/Alerta/GetAlertasPlantillaSeguimientoSinSaldoVirtual/{nomina}/{idalerta}");
 
                 HttpResponseMessage response = null;
                 _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);

@@ -1067,8 +1067,6 @@
                                 Grid.ColumnSpan="2"
                                 Title="Nombre AP"
                                 x:Name="pickerAP"
-                                ItemsSource = "{Binding NombresPicker.ResultDatos}" 
-                                ItemDisplayBinding= "{Binding Nombre}"
                                 SelectedIndexChanged="SelectedIndexChangedName"
                                 FontFamily="Helvetica"
                                 FontSize="12"

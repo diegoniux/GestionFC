@@ -14,11 +14,9 @@ namespace GestionFC.ViewModels.AlertasPage
 {
     public class PlantillaImproductivaViewModel : ViewModelBase, INotifyPropertyChanged
     {
-        readonly IList<FoliosPendientesSVModel> source;
+        public readonly IList<FoliosPendientesSVModel> source;
 
-        readonly IList<FoliosPendientesSVModel> sourcePicker;
-        
-        readonly IList<PlantillaImproductivaModel> sourceImproductivos;
+        public readonly IList<FoliosPendientesSVModel> sourcePicker;
 
 
 
@@ -116,33 +114,35 @@ namespace GestionFC.ViewModels.AlertasPage
             }
         }
 
-        private FoliosPendientesSVResponseModel nombresPicker;
-        public FoliosPendientesSVResponseModel NombresPicker
-        {
-            get { return nombresPicker; }
-            set
-            {
-                nombresPicker = value;
-                RaisePropertyChanged(nameof(NombresPicker));
-            }
-        }
-
         public PlantillaImproductivaViewModel()
         {
             PlantillaImproductiva = new PlantillaImproductivaResponseModel();
             FoliosPendientesSV = new FoliosPendientesSVResponseModel();
-            NombresPicker = new FoliosPendientesSVResponseModel();
-
             source = new List<FoliosPendientesSVModel>();
             sourcePicker = new List<FoliosPendientesSVModel>();
 
-            sourceImproductivos = new List<PlantillaImproductivaModel>();
-            CreateCollection();
+            
         }
 
-        void CreateCollection()
+        public void CreateCollection()
         {
+            
 
+            if (FoliosPendientesSV.ResultDatos != null)
+            {
+                foreach (var a in source)
+                {
+                    source.Remove(a);
+                    sourcePicker.Remove(a);
+                }
+                foreach (var a in FoliosPendientesSV.ResultDatos)
+                {
+                    source.Add(a);
+                    sourcePicker.Add(a);
+                }
+            }
+            
+            
         }
 
         private void orderNombre(FoliosPendientesSVModel item)
@@ -263,7 +263,7 @@ namespace GestionFC.ViewModels.AlertasPage
         void FilterItemsFolio(string filter)
         {
             var filteredItems = source.Where(folios => folios.Folio.ToLower().Contains(filter.ToLower())).ToList();
-            foreach (var folios in source)
+            foreach (FoliosPendientesSVModel folios in source)
             {
                 if (!filteredItems.Contains(folios))
                 {
