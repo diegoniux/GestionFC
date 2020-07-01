@@ -39,5 +39,9 @@ namespace GestionFC.Models.Share
 
         [JsonProperty("maxSemanas")]
         public long MaxSemanas { get; set; }
+
+        [JsonProperty("totalTetra")]
+        public string TotalTetra { get; set; }
+
     }
 }

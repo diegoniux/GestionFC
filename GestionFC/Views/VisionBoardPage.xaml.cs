@@ -7,6 +7,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Service = GestionFC.Services;
+using System.Drawing;
 
 namespace GestionFC.Views
 {
@@ -195,27 +196,38 @@ namespace GestionFC.Views
             App.MasterDetail.IsPresented = !App.MasterDetail.IsPresented;
         }
 
-        private void OnTapProdDiaria_Tapped(object sender, EventArgs e)
+        private void OnTapPlantilla_Tapped(object sender, EventArgs e)
         {
             if (isBusy) return;
-            gridProdDiaria.IsVisible = true;
-            //CollecionViewProdDiaria.IsVisible = true;
-            gridProdSemanal.IsVisible = false;
+            gridPlantilla.IsVisible = true;
+
+            tabPlantilla.BackgroundColor = Xamarin.Forms.Color.FromHex("#64A70B");
+            lblTabPlantilla.TextColor = Xamarin.Forms.Color.FromHex("#FFFFFF");
+
+            tabIndividual.BackgroundColor = Xamarin.Forms.Color.FromHex("#F3F3F3");
+            lblTabIndividual.TextColor = Xamarin.Forms.Color.FromHex("#707070");
+
+            gridIndividual.IsVisible = false;
             CollecionViewMetasAP.IsVisible = false;
 
-            //Llamar método para cargar la productividad Diaria
         }
 
-        private async void OnTapProdSemanal_Tapped(object sender, EventArgs e)
+        private async void OnTapIndividual_Tapped(object sender, EventArgs e)
         {
             if (isBusy) return;
             isBusy = true;
             try
             {
-                //gridProdDiaria.IsVisible = false;
-                ////CollecionViewProdDiaria.IsVisible = false;
-                //gridProdSemanal.IsVisible = true;
-                //CollecionViewMetasAP.IsVisible = true;
+                gridPlantilla.IsVisible = false;
+                
+                gridIndividual.IsVisible = true;
+                CollecionViewMetasAP.IsVisible = true;
+
+                tabPlantilla.BackgroundColor = Xamarin.Forms.Color.FromHex("#F3F3F3");
+                lblTabPlantilla.TextColor = Xamarin.Forms.Color.FromHex("#707070");
+
+                tabIndividual.BackgroundColor = Xamarin.Forms.Color.FromHex("#FFA400");
+                lblTabIndividual.TextColor = Xamarin.Forms.Color.FromHex("#FFFFFF");
 
                 //ViewModel = (VisionBoardViewModel)BindingContext;
                 //// vsalidación para solo cargar la información cuando
@@ -247,7 +259,7 @@ namespace GestionFC.Views
                 //                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
                 //            }
                 //        }
-                       
+
                 //        ViewModel.ProductividadSemanal = x.Result;
                 //    });
                 //}
