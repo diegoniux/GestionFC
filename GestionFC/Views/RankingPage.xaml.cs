@@ -42,7 +42,6 @@ namespace GestionFC.Views
 
         private async void LoadPage()
         {
-            //logService = new Service.LogService();
             Service.HeaderService headerService = new Service.HeaderService();
             Service.RankingService rankingService = new Service.RankingService();
             Service.PlantillaService gridPromotoresService = new Service.PlantillaService();
@@ -116,6 +115,25 @@ namespace GestionFC.Views
                             ViewModel.PosicionNacional = x.Result.PosicionNacional;
                         });
                     }
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        ViewModel.getLocation().ContinueWith(loc => {
+                            //Guardamos genramos la inserción en bitácora (Cierre Sesión)
+                            var logModel = new LogSistemaModel()
+                            {
+                                IdPantalla = 5,
+                                IdAccion = 2,
+                                Usuario = nomina,
+                                Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name,
+                                Geolocalizacion = loc.Result
+                            };
+                            _master.logService.LogSistema(logModel, token).ContinueWith(logRes =>
+                            {
+                                if (logRes.IsFaulted)
+                                    throw logRes.Exception;
+                            });
+                        });
+                    });
                 }
             }
             catch (Exception ex)

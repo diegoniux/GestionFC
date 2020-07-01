@@ -114,18 +114,25 @@ namespace GestionFC.Views
         }
 
         private async Task cerrarSesion(MasterPageItem item) {
-            //Guardamos genramos la inserción en bitácora (inicio de sesión)
-            var logModel = new LogSistemaModel()
+            //Guardamos genramos la inserción en bitácora
+            Device.BeginInvokeOnMainThread(() =>
             {
-                IdPantalla = 3,
-                IdAccion = 2,
-                Usuario = _nomina,
-                Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
-            };
-            await logService.LogSistema(logModel, _token).ContinueWith(logRes =>
-            {
-                if (logRes.IsFaulted)
-                    throw logRes.Exception;
+                ViewModel.getLocation().ContinueWith(loc => {
+                    //Guardamos genramos la inserción en bitácora (Cierre Sesión)
+                    var logModel = new LogSistemaModel()
+                    {
+                        IdPantalla = 1,
+                        IdAccion = 3,
+                        Usuario = _nomina,
+                        Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name,
+                        Geolocalizacion = loc.Result
+                    };
+                    logService.LogSistema(logModel, _token).ContinueWith(logRes =>
+                    {
+                        if (logRes.IsFaulted)
+                            throw logRes.Exception;
+                    });
+                });
             });
             App.MasterDetail.IsPresented = false;
             loadPage(0, string.Empty, string.Empty, "capi_circulo.png", _token);

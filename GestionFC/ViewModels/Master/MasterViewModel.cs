@@ -4,12 +4,11 @@ using System.Runtime.CompilerServices;
 
 namespace GestionFC.ViewModels.Master
 {
-    public class MasterViewModel : INotifyPropertyChanged
+    public class MasterViewModel : Share.ViewModelBase
     {
         private string _nombre { get; set; }
         private string _puesto { get; set; }
         private string _foto { get; set; } 
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public string NombreGerenteMaster
         {
@@ -18,7 +17,7 @@ namespace GestionFC.ViewModels.Master
                 if (_nombre != value)
                 {
                     _nombre = value;
-                    OnPropertyChanged("NombreGerenteMaster");
+                    RaisePropertyChanged(NombreGerenteMaster);
                 }
             }
         }
@@ -30,7 +29,7 @@ namespace GestionFC.ViewModels.Master
                 if (_puesto != value)
                 {
                     _puesto = value;
-                    OnPropertyChanged("Puesto");
+                    RaisePropertyChanged(Puesto);
                 }
             }
         }
@@ -42,19 +41,13 @@ namespace GestionFC.ViewModels.Master
                 if (_foto != value)
                 {
                     _foto = value;
-                    OnPropertyChanged("Foto");
+                    RaisePropertyChanged(Foto);
                 }
             }
         }
 
         public MasterViewModel()
         {
-        }
-
-        public virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

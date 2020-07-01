@@ -774,6 +774,12 @@
     <ImageAsset Include="Assets.xcassets\EmptyView.imageset\EmptyView.png" />
     <ImageAsset Include="Assets.xcassets\capi_circulo.imageset\capi_circulo-1.png" />
     <ImageAsset Include="Assets.xcassets\capi_circulo.imageset\capi_circulo%402x.png" />
+    <ImageAsset Include="Assets.xcassets\title_productividad.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\title_pizarron_digital.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\title_productividad.imageset\title_productividad.png" />
+    <ImageAsset Include="Assets.xcassets\title_productividad.imageset\title_productividad%402x.png" />
+    <ImageAsset Include="Assets.xcassets\title_pizarron_digital.imageset\title_pizarron_digital.png" />
+    <ImageAsset Include="Assets.xcassets\title_pizarron_digital.imageset\title_pizarron_digital%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -858,6 +864,8 @@
     <Folder Include="Assets.xcassets\notification_circle_green.imageset\" />
     <Folder Include="Assets.xcassets\icon_combo.imageset\" />
     <Folder Include="Assets.xcassets\EmptyView.imageset\" />
+    <Folder Include="Assets.xcassets\title_productividad.imageset\" />
+    <Folder Include="Assets.xcassets\title_pizarron_digital.imageset\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
