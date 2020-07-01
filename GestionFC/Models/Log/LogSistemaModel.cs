@@ -10,5 +10,6 @@ namespace GestionFC.Models.Log
         public int IdPantalla { get; set; }
         public int Usuario { get; set; }
         public string Dispositivo { get; set; }
+        public string Geolocalizacion { get; set; }
     }
 }
