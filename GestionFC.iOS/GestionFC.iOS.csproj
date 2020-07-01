@@ -776,6 +776,8 @@
     <ImageAsset Include="Assets.xcassets\notification_circle_green.imageset\notification_circle_green%402x.PNG" />
     <ImageAsset Include="Assets.xcassets\icon_combo.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\icon_combo.imageset\icon_combo.png" />
+    <ImageAsset Include="Assets.xcassets\EmptyView.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\EmptyView.imageset\EmptyView.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -859,6 +861,7 @@
     <Folder Include="Assets.xcassets\notification_circle_grey.imageset\" />
     <Folder Include="Assets.xcassets\notification_circle_green.imageset\" />
     <Folder Include="Assets.xcassets\icon_combo.imageset\" />
+    <Folder Include="Assets.xcassets\EmptyView.imageset\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -795,10 +795,10 @@
                         <RowDefinition Height="70"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="170"></ColumnDefinition>
+                        <ColumnDefinition Width="170"></ColumnDefinition>
+                        <ColumnDefinition Width="170"></ColumnDefinition>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <!--TAB PLANTILLA IMPRODUCTIVA-->
                     <AbsoluteLayout
@@ -1019,8 +1019,8 @@
                         <RowDefinition Height="500"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
@@ -1041,56 +1041,12 @@
                         Grid.Column="0"
                         Text="Plantilla improductiva">
                     </Label>
-                    <Frame
-                        x:Name="FolioSearch"
-                        IsVisible="False"
-                        BorderColor="#C4C4C4"
-                        Grid.Column="1"
-                        CornerRadius="5"
-                        Margin="2,8,2,8"
-                        Padding="1">
-                        <Grid  
-                              Padding="0"
-                              ColumnSpacing="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                <ColumnDefinition Width=".2*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <SearchBar
-                                Grid.Column="0"
-                                Margin="-40,1,-35,1"
-                                SearchCommand="{Binding FilterCommand}"
-                                SearchCommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"         
-                                MaxLength="10"
-                                FontFamily="Helvetica"
-                                FontSize="12"
-                                HeightRequest="10"
-                                Placeholder="No. de folio"
-                                VerticalTextAlignment="End"
-                                PlaceholderColor="#C4C4C4"
-                                TextColor="#707070"
-                                HorizontalOptions="FillAndExpand">
-                            </SearchBar>
-                            <BoxView
-                                Grid.Column="1"
-                                BackgroundColor="#C4C4C4">
-                                
-                            </BoxView>
-                            <Image 
-                                Grid.Column="1"
-                                x:Name="iconsearch"
-                                Source="icon_search.png"
-                                WidthRequest="30"
-                                Margin="5"
-                                HorizontalOptions="End">
-                            </Image>
-                        </Grid>
-                    </Frame>
+
                     <Frame
                         IsVisible="False"
                         x:Name="PickerSV"
                         BorderColor="#C4C4C4"
-                        Grid.Column="2"
+                        Grid.Column="1"
                         CornerRadius="5"
                         Margin="2,8,2,8"
                         HasShadow="False"
@@ -1108,6 +1064,7 @@
                             <Picker
                                 Margin="1, 0, 0, 0"
                                 Grid.Column="0"
+                                Grid.ColumnSpan="2"
                                 Title="Nombre AP"
                                 x:Name="pickerAP"
                                 ItemsSource = "{Binding NombresPicker.ResultDatos}" 
@@ -1122,7 +1079,7 @@
                             </Picker>
                             <BoxView Grid.Column="1"
                                      BackgroundColor="#C4C4C4"
-                                     CornerRadius="0,5,0,5">
+                                     CornerRadius="-5,5,0,5">
 
                             </BoxView>
                             <Image 
@@ -1141,6 +1098,21 @@
                         HeightRequest="1"
                         BackgroundColor="#C4C4C4"
                         VerticalOptions="End"/>
+                    <SearchBar
+                        x:Name="FolioSearch"
+                        IsVisible="false"
+                        Grid.Column="2"
+                        Margin="0,1,-35,1"
+                        SearchCommand="{Binding FilterCommand}"
+                        SearchCommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"         
+                        MaxLength="10"
+                        FontFamily="Helvetica"
+                        FontSize="12"
+                        Placeholder="No. de folio"
+                        VerticalTextAlignment="Center"
+                        PlaceholderColor="#C4C4C4"
+                        TextColor="#707070">
+                    </SearchBar>
                     <!--TITULO TAB-->
                     <!--DATOS IMPRODUCTIVA-->
                     <CollectionView
@@ -1446,7 +1418,8 @@
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
                                     FontSize="12"
-                                    FontFamily="{StaticResource Poppins-SemiBold}">
+                                    FontAttributes="Bold"
+                                    FontFamily="Helvetica">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding orderNombreCommand}"></TapGestureRecognizer>
                                     </Label.GestureRecognizers>
@@ -1489,7 +1462,8 @@
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
                                     FontSize="12"
-                                    FontFamily="{StaticResource Poppins-SemiBold}">
+                                    FontAttributes="Bold"
+                                    FontFamily="Helvetica">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding orderFolioCommand}"></TapGestureRecognizer>
                                     </Label.GestureRecognizers>
@@ -1531,7 +1505,8 @@
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
                                     FontSize="12"
-                                    FontFamily="{StaticResource Poppins-SemiBold}">
+                                    FontAttributes="Bold"
+                                    FontFamily="Helvetica">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding orderSVCommand}"></TapGestureRecognizer>
                                     </Label.GestureRecognizers>
@@ -1566,14 +1541,15 @@
                                     </BoxView.GestureRecognizers>
                                 </BoxView>
                                 <Label
-                                    Text="Tipo de solicitud"
+                                    Text="Tipo de Solicitud"
                                     Grid.Row="0"
                                     Grid.Column="6"
                                     TextColor="#707070"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
                                     FontSize="12"
-                                    FontFamily="{StaticResource Poppins-SemiBold}">
+                                    FontAttributes="Bold"
+                                    FontFamily="Helvetica">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding orderTipoSolicitudCommand}"></TapGestureRecognizer>
                                     </Label.GestureRecognizers>
@@ -1608,14 +1584,15 @@
                                     </BoxView.GestureRecognizers>
                                 </BoxView>
                                 <Label
-                                    Text="Fecha firma"
+                                    Text="Fecha Firma"
                                     Grid.Row="0"
                                     Grid.Column="8"
                                     TextColor="#707070"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
                                     FontSize="12"
-                                    FontFamily="{StaticResource Poppins-SemiBold}">
+                                    FontAttributes="Bold"
+                                    FontFamily="Helvetica">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding orderFechaFirmaCommand}"></TapGestureRecognizer>
                                     </Label.GestureRecognizers>
@@ -1678,7 +1655,7 @@
                                             HorizontalTextAlignment="Start"
                                             TextColor="#707070"
                                             Margin="5,0,0,0"
-                                            FontFamily="{StaticResource Poppins-Regular}">
+                                            FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                             Text="{Binding Folio}"
@@ -1688,7 +1665,7 @@
                                             HorizontalTextAlignment="Start"
                                             TextColor="#707070"
                                             Margin="0,0,0,0"
-                                            FontFamily="{StaticResource Poppins-Regular}">
+                                            FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                             Text="{Binding SaldoVirtual}"
@@ -1698,7 +1675,7 @@
                                             HorizontalTextAlignment="Start"
                                             TextColor="#707070"
                                             Margin="0,0,0,0"
-                                            FontFamily="{StaticResource Poppins-Regular}">
+                                            FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                             Text="{Binding TipoSolicitud}"
@@ -1708,7 +1685,7 @@
                                             HorizontalTextAlignment="Start"
                                             TextColor="#707070"
                                             Margin="0,0,0,0"
-                                            FontFamily="{StaticResource Poppins-Regular}">
+                                            FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                             Text="{Binding FechaFirma}"
@@ -1718,7 +1695,7 @@
                                             HorizontalTextAlignment="Start"
                                             TextColor="#707070"
                                             Margin="0,0,0,0"
-                                            FontFamily="{StaticResource Poppins-Regular}">
+                                            FontFamily="Helvetica">
                                     </Label>
                                     <Image
                                         IsVisible="{Binding TieneSV}"
