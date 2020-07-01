@@ -1203,7 +1203,7 @@
                                         </Grid.RowDefinitions>
 
                                         <Image
-                                            Source="calendar_gold.png"
+                                            Source="{Binding colorCalendar}"
                                             Margin="3,0,0,8"
                                             Grid.Column="0"
                                             Grid.Row="0"
@@ -1235,7 +1235,7 @@
                                         </Label>
                                     </Grid>
                                     <Label
-                                            Text="{Binding Msj1}"
+                                            Text="{Binding MsjEstatus}"
                                             Grid.Column="3"
                                             Grid.Row="0"
                                             Grid.RowSpan="2"
