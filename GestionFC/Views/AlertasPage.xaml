@@ -1015,7 +1015,7 @@
                     Margin="0,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"></RowDefinition>
-                        <RowDefinition Height="500"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="200"></ColumnDefinition>
@@ -1151,6 +1151,7 @@
                                     <ffimageloading:CachedImage
                                             x:Name = "Foto_Gerente"
                                             Source = "{Binding Foto}"
+                                            Margin="3,3,3,3"
                                             Grid.Column="0"
                                             Grid.Row="0"
                                             Grid.RowSpan="2"
@@ -1195,20 +1196,18 @@
                                             HorizontalOptions="Center">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="55"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="28"></RowDefinition>
-                                            <RowDefinition Height="28"></RowDefinition>
+                                            <RowDefinition Height="29"></RowDefinition>
+                                            <RowDefinition Height="29"></RowDefinition>
                                         </Grid.RowDefinitions>
 
                                         <Image
                                             Source="calendar_gold.png"
-                                            Margin="3,2,0,2"
+                                            Margin="3,0,0,8"
                                             Grid.Column="0"
                                             Grid.Row="0"
-                                            Grid.RowSpan="2"
-                                                >
+                                            Grid.RowSpan="2">
                                         </Image>
                                         <Label
                                             Text="{Binding DiasSinFolios}"
@@ -1216,7 +1215,7 @@
                                             Grid.Row="0"
                                             TextColor="#FFA400"
                                             FontSize="18"
-                                            Margin="0,10,0,-10"
+                                            Margin="0,10,0,-6"
                                             HorizontalTextAlignment="Center"
                                             VerticalTextAlignment="End"
                                             FontAttributes="Bold"
