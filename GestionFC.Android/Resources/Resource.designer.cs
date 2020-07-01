@@ -13674,22 +13674,22 @@ namespace GestionFC.Droid
 			public const int notification_bg_normal_pressed = 2131165334;
 			
 			// aapt resource value: 0x7F070097
-			public const int notification_icon_background = 2131165335;
+			public const int notification_circle_green = 2131165335;
 			
 			// aapt resource value: 0x7F070098
-			public const int notification_template_icon_bg = 2131165336;
+			public const int notification_circle_grey = 2131165336;
 			
 			// aapt resource value: 0x7F070099
-			public const int notification_template_icon_low_bg = 2131165337;
+			public const int notification_icon_background = 2131165337;
 			
 			// aapt resource value: 0x7F07009A
-			public const int notification_tile_bg = 2131165338;
+			public const int notification_template_icon_bg = 2131165338;
 			
 			// aapt resource value: 0x7F07009B
-			public const int Notify_Gray = 2131165339;
+			public const int notification_template_icon_low_bg = 2131165339;
 			
 			// aapt resource value: 0x7F07009C
-			public const int Notify_Green = 2131165340;
+			public const int notification_tile_bg = 2131165340;
 			
 			// aapt resource value: 0x7F07009D
 			public const int notify_panel_notification_icon_bg = 2131165341;
