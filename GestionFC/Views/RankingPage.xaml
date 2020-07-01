@@ -1150,8 +1150,8 @@
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="0.5*"></RowDefinition>
-                                        <RowDefinition Height="0.5*"></RowDefinition>
+                                        <RowDefinition Height="0.4*"></RowDefinition>
+                                        <RowDefinition Height="0.6*"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Label Text="{Binding Saldo}"
                                            Grid.Column="0"
@@ -1164,6 +1164,7 @@
                                            Grid.Column="0"
                                            Grid.Row="1"
                                            HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center"
                                            FontSize="10"
                                            FontFamily="Helvetica"></Label>
                                 </Grid>
