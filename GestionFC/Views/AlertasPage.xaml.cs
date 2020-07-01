@@ -10,6 +10,7 @@ using GestionFC.ViewModels.AlertasPage;
 using System.Collections.Generic;
 using GestionFC.Models.Share;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace GestionFC.Views
 {
@@ -22,14 +23,14 @@ namespace GestionFC.Views
         private bool isBusy = false;
         public Master _master;
         public bool SesionExpired { get; set; }
-
+        public DateTime Fecha { get; set; }
        
         
         public Alertas()
         {
             InitializeComponent();
             SesionExpired = false;
-
+            Fecha = DateTime.Today;
             _master = (Master)App.MasterDetail.Master;
 
             
@@ -44,6 +45,8 @@ namespace GestionFC.Views
             };
             // Declaración del ViewModel y asignación al BindingContext
             ViewModel = new PlantillaImproductivaViewModel();
+            ViewModel.Dia = Fecha.ToString("dddd", CultureInfo.CreateSpecificCulture("es-MX")).UppercaseFirst();
+            ViewModel.Fecha = $" {Fecha.ToString("dd", CultureInfo.CreateSpecificCulture("es-MX"))} de {Fecha.ToString("MMMM", CultureInfo.CreateSpecificCulture("es-MX")).UppercaseFirst()} de {Fecha.ToString("yyyy")}";
             BindingContext = ViewModel;            
             
             btnHamburguesa.GestureRecognizers.Add(burguerTap);

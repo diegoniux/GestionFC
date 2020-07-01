@@ -753,7 +753,7 @@
                        VerticalTextAlignment="Start"></Label>
                 <Label
                        FontFamily="Helvetica"
-                       FontSize="18"
+                       FontSize="16"
                        Grid.Column="0"
                        Grid.ColumnSpan="3"
                        Grid.Row="2"
@@ -762,8 +762,8 @@
                        VerticalTextAlignment="End">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="Martes" TextColor="#69942b" FontAttributes="Bold"></Span>
-                            <Span Text=" 28 de Marzo de 2020" TextColor="#707070"></Span>
+                            <Span Text="{Binding Dia}" TextColor="#69942b"></Span>
+                            <Span Text="{Binding Fecha}" TextColor="#707070"></Span>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>

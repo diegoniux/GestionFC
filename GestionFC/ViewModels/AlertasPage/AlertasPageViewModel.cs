@@ -31,6 +31,29 @@ namespace GestionFC.ViewModels.AlertasPage
         public bool ascdesc = true;
         public bool ejec = true;
 
+        private string _dia;
+
+        public string Dia
+        {
+            get { return _dia; }
+            set {
+                _dia = value;
+                RaisePropertyChanged(nameof(Dia));
+            }
+        }
+
+        private string _fecha;
+
+        public string Fecha
+        {
+            get { return _fecha; }
+            set
+            {
+                _fecha = value;
+                RaisePropertyChanged(nameof(Fecha));
+            }
+        }
+
         private string nombreGerente;
 
         public string NombreGerente
