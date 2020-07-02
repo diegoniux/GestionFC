@@ -1131,6 +1131,7 @@
                             <renderers:EntryIcon
                                 Keyboard="Numeric"
                                 Grid.Column="0"
+                                Grid.ColumnSpan="2"
                                 x:Name="SearchFolio"
                                 CornerRadius="10"
                                 BorderColor="Transparent"
@@ -1692,7 +1693,7 @@
                                         <ColumnDefinition Width=".2*"></ColumnDefinition>
                                         <ColumnDefinition Width=".3*"></ColumnDefinition>
                                         <ColumnDefinition Width=".2*"></ColumnDefinition>
-                                        <ColumnDefinition Width=".05*"></ColumnDefinition>
+                                        <ColumnDefinition Width="30"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <BoxView
                                         Grid.Column="0"
@@ -1752,9 +1753,7 @@
                                     </Label>
                                     <Image
                                         IsVisible="{Binding TieneSV}"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center"
-                                        Margin="0,5,5,5"
+                                        Margin="0,0,13,0"
                                         Grid.Column="5"
                                         Source="icon_money_bag.png"
                                         ClassId="{Binding IdAlerta}">
