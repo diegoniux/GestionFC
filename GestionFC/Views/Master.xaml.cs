@@ -32,7 +32,7 @@ namespace GestionFC.Views
 
             masterPageItems.Add(new MasterPageItem
             {
-                Title = "Alertas",
+                Title = "Alarmas",
                 IconSource = "icon_notification.png",
                 TargetType = typeof(Alertas),
             });
