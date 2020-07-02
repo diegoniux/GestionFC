@@ -989,7 +989,7 @@
                     </BoxView>
                     <renderers:EntryIcon
                         x:Name="txtMetaFCT"
-                        Text="{Binding GetMetaPlantilla.MetaPlantilla.TraspasosFct, Mode=TwoWay}"
+                        Text="{Binding GetMetaPlantilla.MetaPlantilla.TraspasosFct, Mode=OneWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="10"
@@ -1026,7 +1026,7 @@
                         FontSize="21">
                     </Label>
                     <Label
-                        Text="{Binding GetMetaPlantilla.FechasSemana.FechaLunes, Mode=TwoWay}"
+                        Text="{Binding GetMetaPlantilla.FechasSemana.FechaLunes, Mode=OneWay}"
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Center"
                         Grid.Row="2"
@@ -1399,7 +1399,7 @@
                     </Label>
 
                     <Label
-                        Text="{Binding GetMetaPlantilla.MetaPlantilla.SaldoAcumuladoMeta, Mode=TwoWay}"
+                        Text="{Binding GetMetaPlantilla.MetaPlantilla.SaldoAcumuladoMeta, Mode=OneWay}"
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Center"
                         Grid.Row="3"
@@ -1526,7 +1526,7 @@
                         </Label>
 
                         <Label
-                            Text="{Binding GetMetaPlantilla.MetaPlantilla.SemanaTetraSemana, Mode=TwoWay}"
+                            Text="{Binding GetMetaPlantilla.MetaPlantilla.SemanaTetraSemana, Mode=OneWay}"
                             FontSize="25"
                             TextColor="#FFA400"
                             BackgroundColor="Transparent"
@@ -1552,7 +1552,7 @@
                         </BoxView>
 
                         <Label
-                            Text="{Binding GetMetaPlantilla.MetaPlantilla.MaxSemanas, Mode=TwoWay}"
+                            Text="{Binding GetMetaPlantilla.MetaPlantilla.MaxSemanas, Mode=OneWay}"
                             FontSize="25"
                             TextColor="#B8B6B6"
                             FontAttributes="Bold"
@@ -1594,7 +1594,7 @@
 
                             <renderers:EntryIcon
                                 x:Name="txtMetaComSem"
-                                Text="{Binding GetMetaPlantilla.MetaPlantilla.ComisionSem}"
+                                Text="{Binding GetMetaPlantilla.MetaPlantilla.ComisionSem, Mode=OneWay}"
                                 Keyboard="Numeric"
                                 MaxLength="9"
                                 CornerRadius="15"
@@ -1610,7 +1610,7 @@
                                 HeightRequest="40"
                                 BorderColor="#C4C4C4"
                                 Margin="2"
-                                IsEnabled="False">
+                                IsReadOnly="True">
                                 <!--<renderers:EntryIcon.Behaviors>
                                     <renderers:CurrencyValidationBehavior />
                                 </renderers:EntryIcon.Behaviors>-->
@@ -1773,7 +1773,7 @@
                         </BoxView>
                         <renderers:EntryIcon
                             x:Name="txtBonoDes"
-                            Text="{Binding GetMetaPlantilla.MetaPlantilla.BonoDesarrollo, Mode=TwoWay}"
+                            Text="{Binding GetMetaPlantilla.MetaPlantilla.BonoDesarrollo, Mode=OneWay}"
                             Keyboard="Numeric"
                             MaxLength="8"
                             CornerRadius="10"
@@ -1789,7 +1789,7 @@
                             Grid.Row="2"
                             Grid.Column="2"
                             Margin="17,7,17,7"
-                            IsEnabled="False">
+                            IsReadOnly="True">
                             <!--<renderers:EntryIcon.Behaviors>
                                 <renderers:NumericValidationBehavior />
                             </renderers:EntryIcon.Behaviors>-->
@@ -1804,7 +1804,7 @@
                         </BoxView>
                         <renderers:EntryIcon
                             x:Name="txtBonoExc"
-                            Text="{Binding GetMetaPlantilla.MetaPlantilla.BonoExcelencia, Mode=TwoWay}"
+                            Text="{Binding GetMetaPlantilla.MetaPlantilla.BonoExcelencia, Mode=OneWay}"
                             Keyboard="Numeric"
                             MaxLength="8"
                             CornerRadius="10"
@@ -1820,7 +1820,7 @@
                             Grid.Row="3"
                             Grid.Column="2"
                             Margin="17,7,17,7"
-                            IsEnabled="False">
+                            IsReadOnly="True">
                             <!--<renderers:EntryIcon.Behaviors>
                                 <renderers:NumericValidationBehavior />
                             </renderers:EntryIcon.Behaviors>-->
@@ -1836,7 +1836,7 @@
                         </BoxView>
 
                         <Label
-                            Text="{Binding GetMetaPlantilla.MetaPlantilla.TotalTetra, Mode=TwoWay}"
+                            Text="{Binding GetMetaPlantilla.MetaPlantilla.TotalTetra, Mode=OneWay}"
                             FontSize="16"
                             TextColor="#353535"
                             FontAttributes="Bold"
@@ -1922,7 +1922,7 @@
                         </BoxView>
                         <renderers:EntryIcon
                             x:Name="txtComEstGerente"
-                            Text="{Binding GetMetaPlantillaIndividual.ComisionEstimada, Mode=TwoWay}"
+                            Text="{Binding GetMetaPlantillaIndividual.ComisionEstimada, Mode=OneWay}"
                             Keyboard="Numeric"
                             MaxLength="9"
                             CornerRadius="10"
@@ -1938,7 +1938,7 @@
                             Grid.Column="5"
                             Margin="10"
                             FontSize="16"
-                            IsEnabled="False">
+                            IsReadOnly="True">
                             <!--<renderers:EntryIcon.Behaviors>
                                 <renderers:NumericValidationBehavior />
                             </renderers:EntryIcon.Behaviors>-->
@@ -1950,7 +1950,7 @@
                         x:Name="CollecionViewMetasAP"
                         IsVisible="False"
                         SelectionMode="Single"
-                        ItemsSource="{Binding GetMetaPlantillaIndividual.ListMetaAp}"
+                        ItemsSource="{Binding GetMetaPlantillaIndividual.ListMetaAp, Mode=OneWay}"
                         Grid.Column="0"
                         Grid.ColumnSpan="6"
                         Grid.Row="1"
@@ -2138,7 +2138,7 @@
                                         Margin="10"
                                         FontSize="16"
                                         ClassId="{Binding Nomina}"
-                                        IsEnabled="False">
+                                        IsReadOnly="True">
                                         <!--<renderers:EntryIcon.Behaviors>
                                             <renderers:NumericValidationBehavior />
                                         </renderers:EntryIcon.Behaviors>-->
