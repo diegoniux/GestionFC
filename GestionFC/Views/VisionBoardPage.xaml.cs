@@ -210,7 +210,7 @@ namespace GestionFC.Views
                 tabPlantilla.BackgroundColor = Xamarin.Forms.Color.FromHex("#64A70B");
                 lblTabPlantilla.TextColor = Xamarin.Forms.Color.FromHex("#FFFFFF");
 
-                tabIndividual.BackgroundColor = Xamarin.Forms.Color.FromHex("#F3F3F3");
+                tabIndividual.BackgroundColor = Xamarin.Forms.Color.FromHex("#CBCBCB");
                 lblTabIndividual.TextColor = Xamarin.Forms.Color.FromHex("#707070");
 
                 gridIndividual.IsVisible = false;
@@ -281,7 +281,7 @@ namespace GestionFC.Views
                 gridIndividual.IsVisible = true;
                 CollecionViewMetasAP.IsVisible = true;
 
-                tabPlantilla.BackgroundColor = Xamarin.Forms.Color.FromHex("#F3F3F3");
+                tabPlantilla.BackgroundColor = Xamarin.Forms.Color.FromHex("#CBCBCB");
                 lblTabPlantilla.TextColor = Xamarin.Forms.Color.FromHex("#707070");
 
                 tabIndividual.BackgroundColor = Xamarin.Forms.Color.FromHex("#FFA400");
@@ -353,15 +353,27 @@ namespace GestionFC.Views
 
         void txtLunes_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
+            if (txtLunes.Text.Trim() == "")
+            {
+                txtLunes.Text = "0";
+            }
+
             int meta = int.Parse(txtLunes.Text);
+
             if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoLunes)
             {
                 ActualizarMetaDia(1, meta);
             }
+
         }
 
         void txtMartes_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
+            if (txtMartes.Text.Trim() == "")
+            {
+                txtMartes.Text = "0";
+            }
+
             int meta = int.Parse(txtMartes.Text);
             if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoMartes)
             {
@@ -371,6 +383,10 @@ namespace GestionFC.Views
 
         void txtMiercoles_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
+            if (txtMiercoles.Text.Trim() == "")
+            {
+                txtMiercoles.Text = "0";
+            }
             int meta = int.Parse(txtMiercoles.Text);
             if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoMiercoles)
             {
@@ -380,6 +396,10 @@ namespace GestionFC.Views
 
         void txtJueves_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
+            if (txtJueves.Text.Trim() == "")
+            {
+                txtJueves.Text = "0";
+            }
             int meta = int.Parse(txtJueves.Text);
             if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoJueves)
             {
@@ -389,6 +409,10 @@ namespace GestionFC.Views
 
         void txtViernes_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
+            if (txtViernes.Text.Trim() == "")
+            {
+                txtViernes.Text = "0";
+            }
             int meta = int.Parse(txtViernes.Text);
             if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoViernes)
             {
@@ -398,6 +422,10 @@ namespace GestionFC.Views
 
         void txtSabado_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
+            if (txtSabado.Text.Trim() == "")
+            {
+                txtSabado.Text = "0";
+            }
             int meta = int.Parse(txtSabado.Text);
             if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoSabado)
             {
@@ -407,6 +435,10 @@ namespace GestionFC.Views
 
         void txtDomingo_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
+            if (txtDomingo.Text.Trim() == "")
+            {
+                txtDomingo.Text = "0";
+            }
             int meta = int.Parse(txtDomingo.Text);
             if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoDomingo)
             {

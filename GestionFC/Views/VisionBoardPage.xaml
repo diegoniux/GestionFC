@@ -797,14 +797,18 @@
                         CornerRadius="10,10,0,0"
                         BackgroundColor="#71B417"
                         Grid.Column="0">
+                        <BoxView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapPlantilla_Tapped"></TapGestureRecognizer>
+                        </BoxView.GestureRecognizers>
                         
                     </BoxView>
                     <Label
                         x:Name="lblTabPlantilla"
                         Text="Plantilla"
                         TextColor="#FFFFFF"
-                        FontSize="14"
+                        FontSize="16"
                         FontFamily="{StaticResource Poppins-Bold}"
+                        FontAttributes="Bold"
                         Grid.Column="0"
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
@@ -819,7 +823,7 @@
                     <BoxView
                         x:Name="tabIndividual"
                         CornerRadius="10,10,0,0"
-                        BackgroundColor="#F3F3F3"
+                        BackgroundColor="#CBCBCB"
                         Grid.Column="1 ">
                         <BoxView.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTapIndividual_Tapped"></TapGestureRecognizer>
@@ -829,7 +833,8 @@
                         x:Name="lblTabIndividual"
                         Text="Individual"
                         TextColor="#707070"
-                        FontSize="14"
+                        FontSize="16"
+                        FontAttributes="Bold"
                         FontFamily="{StaticResource Poppins-Bold}"
                         Grid.Column="1"
                         VerticalOptions="FillAndExpand"
@@ -1562,7 +1567,7 @@
                         <!--Panel derecha-->
                         <!--Fondo Gris-->
                         <BoxView
-                            BackgroundColor="#DCD7D7"
+                            BackgroundColor="#CBCBCB"
                             VerticalOptions="FillAndExpand"
                             HorizontalOptions="FillAndExpand"
                             Grid.Row="1"
@@ -1691,7 +1696,7 @@
                             Grid.Row="1"
                             Grid.ColumnSpan="2"
                             Grid.RowSpan="5"
-                            BackgroundColor="#DCD7D7"
+                            BackgroundColor="#CBCBCB"
                             VerticalOptions="FillAndExpand"
                             HorizontalOptions="FillAndExpand">
                         </BoxView>
