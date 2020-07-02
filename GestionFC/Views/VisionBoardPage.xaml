@@ -928,12 +928,20 @@
                         FontSize="13">
                     </Label>
 
+
+                    <BoxView
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Margin="0,7,0,7"
+                        BackgroundColor="#C4C4C4"
+                        CornerRadius="10">
+                    </BoxView>
                     <renderers:EntryIcon
                         x:Name="txtMetaTraspasos"
                         Text="{Binding GetMetaPlantilla.MetaPlantilla.Traspasos, Mode=OneWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
-                        CornerRadius="15"
+                        CornerRadius="10"
                         FontFamily="{StaticResource Poppins-Regular}"
                         PlaceholderColor="#C4C4C4"
                         TextColor="#353535"
@@ -944,13 +952,13 @@
                         VerticalTextAlignment="Center"
                         Grid.Row="0"
                         Grid.Column="2"
-                        Margin="0,7,0,7"
+                        Margin="2,8,2,8"
                         Unfocused="MetaFolios_Unfocused">
                         <renderers:EntryIcon.Behaviors>
                             <renderers:NumericValidationBehavior />
                         </renderers:EntryIcon.Behaviors>
                     </renderers:EntryIcon>
-
+                    
                     <!--Meta de FCT-->
                     <Label
                         Text="Meta de FCT"
@@ -967,12 +975,19 @@
                         FontSize="10">
                     </Label>
 
+                    <BoxView
+                        Grid.Row="0"
+                        Grid.Column="4"
+                        Margin="0,7,0,7"
+                        BackgroundColor="#C4C4C4"
+                        CornerRadius="10">
+                    </BoxView>
                     <renderers:EntryIcon
                         x:Name="txtMetaFCT"
                         Text="{Binding GetMetaPlantilla.MetaPlantilla.TraspasosFct, Mode=TwoWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
-                        CornerRadius="15"
+                        CornerRadius="10"
                         FontFamily="{StaticResource Poppins-Regular}"
                         PlaceholderColor="#C4C4C4"
                         TextColor="#353535"
@@ -983,7 +998,7 @@
                         VerticalTextAlignment="Center"
                         Grid.Row="0"
                         Grid.Column="4"
-                        Margin="0,7,0,7"
+                        Margin="2,8,2,8"
                         Unfocused="MetaFolios_Unfocused">
                         <renderers:EntryIcon.Behaviors>
                             <renderers:NumericValidationBehavior />
@@ -1571,6 +1586,7 @@
                                 Aspect="AspectFit">
                             </Image>
 
+
                             <renderers:EntryIcon
                                 x:Name="txtMetaComSem"
                                 Text="{Binding GetMetaPlantilla.MetaPlantilla.ComisionSem}"
@@ -1586,11 +1602,16 @@
                                 VerticalOptions="FillAndExpand"
                                 HorizontalTextAlignment="Center"
                                 VerticalTextAlignment="Center"
-                                HeightRequest="40">
+                                HeightRequest="40"
+                                BorderColor="#C4C4C4"
+                                Margin="2"
+                                IsEnabled="False">
                                 <!--<renderers:EntryIcon.Behaviors>
                                     <renderers:CurrencyValidationBehavior />
                                 </renderers:EntryIcon.Behaviors>-->
-                            </renderers:EntryIcon>
+                        </renderers:EntryIcon>
+
+                            
 
                         </StackLayout>
 
@@ -1738,12 +1759,19 @@
                             Margin="15,7,7,7">
                         </Image>
 
+                        <BoxView
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Margin="15,5,15,5"
+                            BackgroundColor="#C4C4C4"
+                            CornerRadius="10">
+                        </BoxView>
                         <renderers:EntryIcon
                             x:Name="txtBonoDes"
                             Text="{Binding GetMetaPlantilla.MetaPlantilla.BonoDesarrollo, Mode=TwoWay}"
                             Keyboard="Numeric"
                             MaxLength="8"
-                            CornerRadius="15"
+                            CornerRadius="10"
                             FontFamily="{StaticResource Poppins-Bold}"
                             FontAttributes="Bold"
                             TextColor="#353535"
@@ -1755,18 +1783,26 @@
                             VerticalTextAlignment="Center"
                             Grid.Row="2"
                             Grid.Column="2"
-                            Margin="15,5,15,5">
+                            Margin="17,7,17,7"
+                            IsEnabled="False">
                             <!--<renderers:EntryIcon.Behaviors>
                                 <renderers:NumericValidationBehavior />
                             </renderers:EntryIcon.Behaviors>-->
                         </renderers:EntryIcon>
 
+                        <BoxView
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            Margin="15,5,15,5"
+                            BackgroundColor="#C4C4C4"
+                            CornerRadius="10">
+                        </BoxView>
                         <renderers:EntryIcon
                             x:Name="txtBonoExc"
                             Text="{Binding GetMetaPlantilla.MetaPlantilla.BonoExcelencia, Mode=TwoWay}"
                             Keyboard="Numeric"
                             MaxLength="8"
-                            CornerRadius="15"
+                            CornerRadius="10"
                             FontFamily="{StaticResource Poppins-Bold}"
                             FontAttributes="Bold"
                             TextColor="#353535"
@@ -1778,7 +1814,8 @@
                             VerticalTextAlignment="Center"
                             Grid.Row="3"
                             Grid.Column="2"
-                            Margin="15,5,15,5">
+                            Margin="17,7,17,7"
+                            IsEnabled="False">
                             <!--<renderers:EntryIcon.Behaviors>
                                 <renderers:NumericValidationBehavior />
                             </renderers:EntryIcon.Behaviors>-->
@@ -1831,29 +1868,29 @@
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
-                        <!--Header-->
+                        <!--Foto AP-->
+                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                        <!--Nombre-->
                         <ColumnDefinition Width="*"></ColumnDefinition>
-                        <!--Comision estimada Gerente-->
-                        <ColumnDefinition Width="115"></ColumnDefinition>
+                        <!--Icono Meta-->
+                        <ColumnDefinition Width="0.30*"></ColumnDefinition>
+                        <!--Entry Meta Saldo-->
+                        <ColumnDefinition Width="0.60*"></ColumnDefinition>
+                        <!--Label Meta Comision estimada-->
+                        <ColumnDefinition Width="0.70*"></ColumnDefinition>
+                        <!--Entry Meta comisión estimada-->
+                        <ColumnDefinition Width="0.60*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <StackLayout
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="0"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        BackgroundColor="#F3F3F3"
-                        Orientation="Horizontal"
-                        Margin="0"
-                        Spacing="0">
 
                         <Image
                             Source="hand_money.png"
                             Aspect="AspectFit"
                             Margin="30,5,0,5"
                             HeightRequest="29"
-                            WidthRequest="34">
+                            WidthRequest="34"
+                            Grid.Row="0"
+                            Grid.Column="0">
                         </Image>
                         <Label
                             Text="Comisión estimada Gerente"
@@ -1863,33 +1900,44 @@
                             TextColor="#353535"
                             FontAttributes="Bold"
                             FontFamily="{StaticResource Poppins-Bold}"
-                            FontSize="14">
+                            FontSize="14"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="4">
                         </Label>
-                    </StackLayout>
 
-                    
-                    <renderers:EntryIcon
-                        x:Name="txtComEstGerente"
-                        Text="{Binding GetMetaPlantillaIndividual.ComisionEstimada, Mode=TwoWay}"
-                        Keyboard="Numeric"
-                        MaxLength="9"
-                        CornerRadius="15"
-                        FontFamily="{StaticResource Poppins-Bold}"
-                        PlaceholderColor="#C4C4C4"
-                        TextColor="#353535"
-                        BackgroundColor="#FFFFFF" 
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        Margin="0,10,15,10"
-                        FontSize="16">
-                        <!--<renderers:EntryIcon.Behaviors>
-                            <renderers:NumericValidationBehavior />
-                        </renderers:EntryIcon.Behaviors>-->
-                    </renderers:EntryIcon>
+                        <BoxView
+                            Grid.Row="0"
+                            Grid.Column="5"
+                            BackgroundColor="#C4C4C4"
+                            CornerRadius="10"
+                            Margin="8"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand">
+                        </BoxView>
+                        <renderers:EntryIcon
+                            x:Name="txtComEstGerente"
+                            Text="{Binding GetMetaPlantillaIndividual.ComisionEstimada, Mode=TwoWay}"
+                            Keyboard="Numeric"
+                            MaxLength="9"
+                            CornerRadius="10"
+                            FontFamily="{StaticResource Poppins-Bold}"
+                            PlaceholderColor="#C4C4C4"
+                            TextColor="#353535"
+                            BackgroundColor="#FFFFFF" 
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            Grid.Row="0"
+                            Grid.Column="5"
+                            Margin="10"
+                            FontSize="16"
+                            IsEnabled="False">
+                            <!--<renderers:EntryIcon.Behaviors>
+                                <renderers:NumericValidationBehavior />
+                            </renderers:EntryIcon.Behaviors>-->
+                        </renderers:EntryIcon>
                   
                     <!--TERMINA PIZARRÓN SEMANAL-->
                     <!--DATOS-->
@@ -1899,7 +1947,7 @@
                         SelectionMode="Single"
                         ItemsSource="{Binding GetMetaPlantillaIndividual.ListMetaAp}"
                         Grid.Column="0"
-                        Grid.ColumnSpan="2"
+                        Grid.ColumnSpan="6"
                         Grid.Row="1"
                         Margin="0"
                         VerticalOptions="FillAndExpand"
@@ -2003,12 +2051,22 @@
                                         Margin="5">
                                     </Image>
 
+                                    <BoxView
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                        Grid.Column="3"
+                                        BackgroundColor="#C4C4C4"
+                                        CornerRadius="10"
+                                        Margin="8"
+                                        VerticalOptions="FillAndExpand"
+                                        HorizontalOptions="FillAndExpand">
+                                    </BoxView>
                                     <renderers:EntryIcon
                                         x:Name="txtMetaSaldo"
                                         Text="{Binding SaldoMeta, Mode=OneWay}"
                                         Keyboard="Numeric"
                                         MaxLength="8"
-                                        CornerRadius="15"
+                                        CornerRadius="10"
                                         FontFamily="{StaticResource Poppins-Bold}"
                                         PlaceholderColor="#C4C4C4"
                                         TextColor="#353535"
@@ -2020,7 +2078,7 @@
                                         Grid.Row="0"
                                         Grid.RowSpan="2"
                                         Grid.Column="3"
-                                        Margin="15,10,15,10"
+                                        Margin="10"
                                         FontSize="16"
                                         ClassId="{Binding Nomina}"
                                         Unfocused="txtMetaSaldo_Unfocused">
@@ -2044,12 +2102,23 @@
                                         TextColor="#707070"
                                         FontFamily="{StaticResource Poppins-Medium}">
                                     </Label>
+
+                                    <BoxView
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                        Grid.Column="5"
+                                        BackgroundColor="#C4C4C4"
+                                        CornerRadius="10"
+                                        Margin="8"
+                                        VerticalOptions="FillAndExpand"
+                                        HorizontalOptions="FillAndExpand">
+                                    </BoxView>
                                     <renderers:EntryIcon
                                         x:Name="txtComEst"
                                         Text="{Binding ComisionEstimada, Mode=OneWay}"
                                         Keyboard="Numeric"
                                         MaxLength="8"
-                                        CornerRadius="15"
+                                        CornerRadius="10"
                                         FontFamily="{StaticResource Poppins-Bold}"
                                         PlaceholderColor="#C4C4C4"
                                         TextColor="#353535"
@@ -2061,9 +2130,10 @@
                                         Grid.Row="0"
                                         Grid.RowSpan="2"
                                         Grid.Column="5"
-                                        Margin="0,10,15,10"
+                                        Margin="10"
                                         FontSize="16"
-                                        ClassId="{Binding Nomina}">
+                                        ClassId="{Binding Nomina}"
+                                        IsEnabled="False">
                                         <!--<renderers:EntryIcon.Behaviors>
                                             <renderers:NumericValidationBehavior />
                                         </renderers:EntryIcon.Behaviors>-->
