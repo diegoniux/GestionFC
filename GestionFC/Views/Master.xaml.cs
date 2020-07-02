@@ -114,6 +114,7 @@ namespace GestionFC.Views
         }
 
         private async Task cerrarSesion(MasterPageItem item) {
+            int nomina = _nomina;
             //Guardamos genramos la inserción en bitácora
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -123,7 +124,7 @@ namespace GestionFC.Views
                     {
                         IdPantalla = 1,
                         IdAccion = 3,
-                        Usuario = _nomina,
+                        Usuario = nomina,
                         Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name,
                         Geolocalizacion = loc.Result
                     };
@@ -132,10 +133,12 @@ namespace GestionFC.Views
                         if (logRes.IsFaulted)
                             throw logRes.Exception;
                     });
+                    
                 });
             });
             App.MasterDetail.IsPresented = false;
             loadPage(0, string.Empty, string.Empty, "capi_circulo.png", _token);
+
             if (item != null)
             {
                 await App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(item.TargetType));
