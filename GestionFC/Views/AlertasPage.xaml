@@ -1115,6 +1115,7 @@
                     </SearchBar>-->
                     <Frame
                         x:Name="FolioSearch"
+                        IsVisible="false"
                         Padding="0"
                         BorderColor="#C4C4C4"
                         CornerRadius="10"
