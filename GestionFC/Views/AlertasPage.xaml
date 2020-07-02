@@ -1115,11 +1115,12 @@
                     </SearchBar>-->
                     <Frame
                         x:Name="FolioSearch"
-                        Padding="1"
+                        IsVisible="false"
+                        Padding="0"
                         BorderColor="#C4C4C4"
                         CornerRadius="10"
                         Grid.Column="2"
-                        Margin="0,10,0,10"
+                        Margin="0,8,0,8"
                         HasShadow="False"
                         BackgroundColor="#FFFFFF">
                         <Grid>
@@ -1130,8 +1131,10 @@
                             <renderers:EntryIcon
                                 Keyboard="Numeric"
                                 Grid.Column="0"
+                                Grid.ColumnSpan="2"
                                 x:Name="SearchFolio"
                                 CornerRadius="10"
+                                BorderColor="Transparent"
                                 MaxLength="10"
                                 Placeholder="No. de folio"
                                 IsPassword="false"
@@ -1145,7 +1148,8 @@
                             </renderers:EntryIcon>
                             <BoxView
                                 Grid.Column="1"
-                                BackgroundColor="#C4C4C4">
+                                BackgroundColor="#C4C4C4"
+                                CornerRadius="0,5,0,5">
                                 <BoxView.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="FolioFiltro"></TapGestureRecognizer>
                                 </BoxView.GestureRecognizers>
@@ -1689,7 +1693,7 @@
                                         <ColumnDefinition Width=".2*"></ColumnDefinition>
                                         <ColumnDefinition Width=".3*"></ColumnDefinition>
                                         <ColumnDefinition Width=".2*"></ColumnDefinition>
-                                        <ColumnDefinition Width=".05*"></ColumnDefinition>
+                                        <ColumnDefinition Width="30"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <BoxView
                                         Grid.Column="0"
@@ -1749,9 +1753,7 @@
                                     </Label>
                                     <Image
                                         IsVisible="{Binding TieneSV}"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center"
-                                        Margin="0,5,5,5"
+                                        Margin="0,0,13,0"
                                         Grid.Column="5"
                                         Source="icon_money_bag.png"
                                         ClassId="{Binding IdAlerta}">

@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GestionFC.Models.Alertas;
 using GestionFC.Models.Share;
 using GestionFC.ViewModels.Share;
-using GestionFC.Models.Alertas;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
-using System.Linq;
-using System.Collections.ObjectModel;
 
 namespace GestionFC.ViewModels.AlertasPage
 {
@@ -37,7 +35,8 @@ namespace GestionFC.ViewModels.AlertasPage
         public string Dia
         {
             get { return _dia; }
-            set {
+            set
+            {
                 _dia = value;
                 RaisePropertyChanged(nameof(Dia));
             }
@@ -145,7 +144,7 @@ namespace GestionFC.ViewModels.AlertasPage
             source = new List<FoliosPendientesSVModel>();
             sourcePicker = new List<FoliosPendientesSVModel>();
 
-            
+
         }
 
         public void CreateCollection()
@@ -161,260 +160,311 @@ namespace GestionFC.ViewModels.AlertasPage
                     sourcePicker.Add(a);
                 }
             }
-            
-            
+
+
         }
 
         private void orderNombre(FoliosPendientesSVModel item)
         {
-            if (isBusy)
+            try
             {
-                isBusy = false;
-                foreach (var a in sourcePicker)
+                if (isBusy)
                 {
-                    source.Remove(a);
-                }
-                foreach (var a in FoliosPendientesSV.ResultDatos)
-                {
-                    source.Add(a);
-                }
-                var sortFolio = source.OrderBy(c => c.Nombre);
-                if (ascdesc)
-                {
-                    ascdesc = false;
-                }
-                else
-                {
-                    sortFolio = source.OrderByDescending(c => c.Nombre);
-                    ascdesc = true;
-                }
+                    isBusy = false;
+                    foreach (var a in sourcePicker)
+                    {
+                        source.Remove(a);
+                    }
+                    foreach (var a in FoliosPendientesSV.ResultDatos)
+                    {
+                        source.Add(a);
+                    }
+                    var sortFolio = source.OrderBy(c => c.Nombre);
+                    if (ascdesc)
+                    {
+                        ascdesc = false;
+                    }
+                    else
+                    {
+                        sortFolio = source.OrderByDescending(c => c.Nombre);
+                        ascdesc = true;
+                    }
 
-                foreach (var c in sortFolio)
-                {
-                    FoliosPendientesSV.ResultDatos.Remove(c);
+                    foreach (var c in sortFolio)
+                    {
+                        FoliosPendientesSV.ResultDatos.Remove(c);
+                    }
+                    foreach (var c in sortFolio)
+                    {
+                        FoliosPendientesSV.ResultDatos.Add(c);
+                    }
+                    isBusy = true;
                 }
-                foreach (var c in sortFolio)
-                {
-                    FoliosPendientesSV.ResultDatos.Add(c);
-                }
-                isBusy = true;
             }
-            
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+            }
+
+
         }
 
         private void orderFolio(FoliosPendientesSVModel item)
         {
-            if (isBusy)
+            try
             {
-                isBusy = false;
-                foreach (var a in sourcePicker)
+                if (isBusy)
                 {
-                    source.Remove(a);
-                }
-                foreach (var a in FoliosPendientesSV.ResultDatos)
-                {
-                    source.Add(a);
-                }
-                var sortFolio = source.OrderBy(c => c.Folio);
-                if (ascdesc)
-                {
-                    ascdesc = false;
-                }
-                else
-                {
-                    sortFolio = source.OrderByDescending(c => c.Folio);
-                    ascdesc = true;
-                }
+                    isBusy = false;
+                    foreach (var a in sourcePicker)
+                    {
+                        source.Remove(a);
+                    }
+                    foreach (var a in FoliosPendientesSV.ResultDatos)
+                    {
+                        source.Add(a);
+                    }
+                    var sortFolio = source.OrderBy(c => c.Folio);
+                    if (ascdesc)
+                    {
+                        ascdesc = false;
+                    }
+                    else
+                    {
+                        sortFolio = source.OrderByDescending(c => c.Folio);
+                        ascdesc = true;
+                    }
 
-                foreach (var c in sortFolio)
-                {
-                    FoliosPendientesSV.ResultDatos.Remove(c);
+                    foreach (var c in sortFolio)
+                    {
+                        FoliosPendientesSV.ResultDatos.Remove(c);
+                    }
+                    foreach (var c in sortFolio)
+                    {
+                        FoliosPendientesSV.ResultDatos.Add(c);
+                    }
+                    isBusy = true;
                 }
-                foreach (var c in sortFolio)
-                {
-                    FoliosPendientesSV.ResultDatos.Add(c);
-                }
-                isBusy = true;
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
             }
         }
 
         private void orderSV(FoliosPendientesSVModel item)
         {
-            if (isBusy)
+            try
             {
-                isBusy = false;
-                foreach (var a in sourcePicker)
+                if (isBusy)
                 {
-                    source.Remove(a);
-                }
-                foreach (var a in FoliosPendientesSV.ResultDatos)
-                {
-                    source.Add(a);
-                }
-                var sortFolio = source.OrderBy(c => c.SaldoVirtual); 
-                if (ascdesc)
-                {
-                    ascdesc = false;
-                }
-                else
-                {
-                    sortFolio = source.OrderByDescending(c => c.SaldoVirtual);
-                    ascdesc = true;
-                }
+                    isBusy = false;
+                    foreach (var a in sourcePicker)
+                    {
+                        source.Remove(a);
+                    }
+                    foreach (var a in FoliosPendientesSV.ResultDatos)
+                    {
+                        source.Add(a);
+                    }
+                    var sortFolio = source.OrderBy(c => c.SaldoVirtual);
+                    if (ascdesc)
+                    {
+                        ascdesc = false;
+                    }
+                    else
+                    {
+                        sortFolio = source.OrderByDescending(c => c.SaldoVirtual);
+                        ascdesc = true;
+                    }
 
-                foreach (var c in sortFolio)
-                {
-                    FoliosPendientesSV.ResultDatos.Remove(c);
-                }
-                foreach (var c in sortFolio)
-                {
-                    FoliosPendientesSV.ResultDatos.Add(c);
-                }
+                    foreach (var c in sortFolio)
+                    {
+                        FoliosPendientesSV.ResultDatos.Remove(c);
+                    }
+                    foreach (var c in sortFolio)
+                    {
+                        FoliosPendientesSV.ResultDatos.Add(c);
+                    }
                     isBusy = true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
             }
         }
 
         private void orderTipoSolicitud(FoliosPendientesSVModel item)
         {
-            if (isBusy)
+            try
             {
-                isBusy = false;
-                foreach (var a in sourcePicker)
+                if (isBusy)
                 {
-                    source.Remove(a);
-                }
-                foreach (var a in FoliosPendientesSV.ResultDatos)
-                {
-                    source.Add(a);
-                }
-                var sortFolio = source.OrderBy(c => c.TipoSolicitud);
-                if (ascdesc)
-                {
-                    ascdesc = false;
-                }
-                else
-                {
-                    sortFolio = source.OrderByDescending(c => c.TipoSolicitud);
-                    ascdesc = true;
-                }
+                    isBusy = false;
+                    foreach (var a in sourcePicker)
+                    {
+                        source.Remove(a);
+                    }
+                    foreach (var a in FoliosPendientesSV.ResultDatos)
+                    {
+                        source.Add(a);
+                    }
+                    var sortFolio = source.OrderBy(c => c.TipoSolicitud);
+                    if (ascdesc)
+                    {
+                        ascdesc = false;
+                    }
+                    else
+                    {
+                        sortFolio = source.OrderByDescending(c => c.TipoSolicitud);
+                        ascdesc = true;
+                    }
 
-                foreach (var c in sortFolio)
-                {
-                    FoliosPendientesSV.ResultDatos.Remove(c);
-                }
-                foreach (var c in sortFolio)
-                {
-                    FoliosPendientesSV.ResultDatos.Add(c);
-                }
+                    foreach (var c in sortFolio)
+                    {
+                        FoliosPendientesSV.ResultDatos.Remove(c);
+                    }
+                    foreach (var c in sortFolio)
+                    {
+                        FoliosPendientesSV.ResultDatos.Add(c);
+                    }
                     isBusy = true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
             }
         }
 
         private void orderFechaFirma(FoliosPendientesSVModel item)
         {
-            if (isBusy)
+            try
             {
-                isBusy = false;
-                foreach (var a in sourcePicker)
+                if (isBusy)
                 {
-                    source.Remove(a);
-                }
-                foreach (var a in FoliosPendientesSV.ResultDatos)
-                {
-                    source.Add(a);
-                }
-                var sortFolio = source.OrderBy(c => c.FechaFirma);
-                if (ascdesc)
-                {
-                    ascdesc = false;
-                }
-                else
-                {
-                    sortFolio = source.OrderByDescending(c => c.FechaFirma);
-                    ascdesc = true;
-                }
-
-                foreach (var c in sortFolio)
-                {
-                    FoliosPendientesSV.ResultDatos.Remove(c);
-                }
-                foreach (var c in sortFolio)
-                {
-                    if (!FoliosPendientesSV.ResultDatos.Contains(c))
+                    isBusy = false;
+                    foreach (var a in sourcePicker)
                     {
-                        FoliosPendientesSV.ResultDatos.Add(c);
+                        source.Remove(a);
                     }
+                    foreach (var a in FoliosPendientesSV.ResultDatos)
+                    {
+                        source.Add(a);
+                    }
+                    var sortFolio = source.OrderBy(c => c.FechaFirma);
+                    if (ascdesc)
+                    {
+                        ascdesc = false;
+                    }
+                    else
+                    {
+                        sortFolio = source.OrderByDescending(c => c.FechaFirma);
+                        ascdesc = true;
+                    }
+
+                    foreach (var c in sortFolio)
+                    {
+                        FoliosPendientesSV.ResultDatos.Remove(c);
+                    }
+                    foreach (var c in sortFolio)
+                    {
+                        if (!FoliosPendientesSV.ResultDatos.Contains(c))
+                        {
+                            FoliosPendientesSV.ResultDatos.Add(c);
+                        }
+                    }
+                    isBusy = true;
                 }
-                isBusy = true;
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
             }
         }
 
         public void FilterItemsFolio(string filter)
         {
-            var filteredItems = sourcePicker.Where(folios => folios.Folio.ToLower().Contains(filter.ToLower())).ToList();
-            if (string.IsNullOrEmpty(filter))
+            try
             {
-                foreach (FoliosPendientesSVModel folios in sourcePicker)
+                var filteredItems = sourcePicker.Where(folios => folios.Folio.ToLower().Contains(filter.ToLower())).ToList();
+                if (string.IsNullOrEmpty(filter))
                 {
-                    FoliosPendientesSV.ResultDatos.Remove(folios);
-                    FoliosPendientesSV.ResultDatos.Add(folios);
-                }
-            }
-            else
-            {
-                foreach (FoliosPendientesSVModel folios in sourcePicker)
-                {
-                    if (!filteredItems.Contains(folios))
+                    foreach (FoliosPendientesSVModel folios in sourcePicker)
                     {
                         FoliosPendientesSV.ResultDatos.Remove(folios);
-                    }
-                    else
-                    {
-                        if (!FoliosPendientesSV.ResultDatos.Contains(folios))
-                        {
-                            FoliosPendientesSV.ResultDatos.Add(folios);
-                        }
-                    }
-                }
-            }
-        }
-
-         public void FilterItemsNombre(string filter)
-        {
-            if (ejec)
-            {
-                ejec = false;
-                var filteredItems = sourcePicker.Where(nombre => nombre.Nombre.ToLower().Contains(filter.ToLower())).ToList();
-                if (filter == "Todos")
-                {
-                    foreach (var nombre in sourcePicker)
-                    {
-                        FoliosPendientesSV.ResultDatos.Remove(nombre);
-                        FoliosPendientesSV.ResultDatos.Add(nombre);
+                        FoliosPendientesSV.ResultDatos.Add(folios);
                     }
                 }
                 else
                 {
-                    foreach (var nombre in sourcePicker)
+                    foreach (FoliosPendientesSVModel folios in sourcePicker)
                     {
-                        if (!filteredItems.Contains(nombre))
+                        if (!filteredItems.Contains(folios))
                         {
-                            FoliosPendientesSV.ResultDatos.Remove(nombre);
+                            FoliosPendientesSV.ResultDatos.Remove(folios);
                         }
                         else
                         {
-                            if (!FoliosPendientesSV.ResultDatos.Contains(nombre))
+                            if (!FoliosPendientesSV.ResultDatos.Contains(folios))
                             {
-                                FoliosPendientesSV.ResultDatos.Add(nombre);
+                                FoliosPendientesSV.ResultDatos.Add(folios);
                             }
                         }
                     }
                 }
-                
             }
-            ejec = true;
-            
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+            }
         }
+
+        public void FilterItemsNombre(string filter)
+        {
+            try
+            {
+                if (ejec)
+                {
+                    ejec = false;
+                    var filteredItems = sourcePicker.Where(nombre => nombre.Nombre.ToLower().Contains(filter.ToLower())).ToList();
+                    if (filter == "Todos")
+                    {
+                        foreach (var nombre in sourcePicker)
+                        {
+                            FoliosPendientesSV.ResultDatos.Remove(nombre);
+                            FoliosPendientesSV.ResultDatos.Add(nombre);
+                        }
+                    }
+                    else
+                    {
+                        foreach (var nombre in sourcePicker)
+                        {
+                            if (!filteredItems.Contains(nombre))
+                            {
+                                FoliosPendientesSV.ResultDatos.Remove(nombre);
+                            }
+                            else
+                            {
+                                if (!FoliosPendientesSV.ResultDatos.Contains(nombre))
+                                {
+                                    FoliosPendientesSV.ResultDatos.Add(nombre);
+                                }
+                            }
+                        }
+                    }
+                    ejec = true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+            }
+
+
+        }
+
 
     }
 }
