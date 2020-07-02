@@ -15,7 +15,7 @@ namespace GestionFC.ViewModels.Master
             get { return _nombre; }
             set {
                     _nombre = value;
-                    RaisePropertyChanged(NombreGerenteMaster);
+                    RaisePropertyChanged(nameof(NombreGerenteMaster));
             }
         }
 
@@ -24,7 +24,7 @@ namespace GestionFC.ViewModels.Master
             get { return _puesto; }
             set {
                     _puesto = value;
-                    RaisePropertyChanged(Puesto);
+                    RaisePropertyChanged(nameof(Puesto));
             }
         }
 
@@ -33,7 +33,7 @@ namespace GestionFC.ViewModels.Master
             get { return _foto; }
             set {
                     _foto = value;
-                    RaisePropertyChanged(Foto);
+                    RaisePropertyChanged(nameof(Foto));
             }
         }
 
