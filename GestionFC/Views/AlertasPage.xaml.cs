@@ -141,6 +141,7 @@ namespace GestionFC.Views
 
 
                     }
+                    pickerAP.Items.Add("Todos");
                     foreach (FoliosPendientesSVModel a in ViewModel.FoliosPendientesSV.ResultDatos)
                     {
                         pickerAP.Items.Add(a.Nombre);
@@ -355,37 +356,46 @@ namespace GestionFC.Views
 
         private async void OnTapFolioConSaldo_Tapped(object sender, EventArgs e)
         {
+            bool limpiar = false;
             if (isBusy) return;
             isBusy = true;
+
             var idalerta = ((Image)sender).ClassId;
             Service.AlertaService alertaService = new Service.AlertaService();
+
+            
             try
             {
+
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
 
-                    await alertaService.GetAlertaPlantillaSeguimientoSinSaldoVirtual(nomina, Convert.ToInt32(idalerta), token).ContinueWith(x =>
+                    limpiar = await DisplayAlert("Mensaje", "¿Desea limpiar el registro?", "Aceptar", "Cancelar");
+                    if (limpiar)
                     {
-                        if (x.IsFaulted)
+                        await alertaService.GetAlertaPlantillaSeguimientoSinSaldoVirtual(nomina, Convert.ToInt32(idalerta), token).ContinueWith(x =>
                         {
-                            throw x.Exception;
-                        }
-
-                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                        {
-                            // vericamos si la sesión expiró (token)
-                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                            if (x.IsFaulted)
                             {
-                                SesionExpired = true;
-                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                throw x.Exception;
                             }
-                        }
-                        ViewModel.FoliosPendientesSV = x.Result;
-                    });
 
+                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                            {
+                                // vericamos si la sesión expiró (token)
+                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                {
+                                    SesionExpired = true;
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                }
+                            }
+                            ViewModel.FoliosPendientesSV = x.Result;
+                        });
+                    }
                 }
+                notidicacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 if (SesionExpired)
                 {
@@ -418,6 +428,16 @@ namespace GestionFC.Views
         {
             var nombre = pickerAP.Items[pickerAP.SelectedIndex];
             ViewModel.FilterItemsNombre(nombre);
+        }
+
+        private void FolioFiltro(object sender, EventArgs e)
+        {
+            ViewModel.FilterItemsFolio(SearchFolio.Text);
+        }
+
+        private void button1_Clicked(object sender, EventArgs e)
+        {
+            pickerAP.Focus();
         }
 
     }

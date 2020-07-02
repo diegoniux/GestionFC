@@ -732,7 +732,7 @@
                        Grid.Row="0"
                        Grid.ColumnSpan="2"
                        Grid.RowSpan="2"></Image>
-                <Label Text="Alertas"
+                <Label Text="Alarmas"
                        FontFamily="Helvetica"
                        FontSize="22"
                        FontAttributes="Bold"
@@ -1083,13 +1083,15 @@
                                 Grid.Column="1"
                                 x:Name="iconCombo"
                                 Source="icon_combo.png"
+                                Margin="10">
+                                <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="button1_Clicked"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
                                 
-                                Margin="10"
-                                >
                             </Image>
                         </Grid>
                     </Frame>
-                    <BoxView
+                    <!--<BoxView
                         Grid.ColumnSpan="4"
                         Grid.Row="0"
                         HeightRequest="1"
@@ -1099,6 +1101,7 @@
                         x:Name="FolioSearch"
                         IsVisible="false"
                         Grid.Column="2"
+                        
                         Margin="0,1,-35,1"
                         SearchCommand="{Binding FilterCommand}"
                         SearchCommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"         
@@ -1109,7 +1112,58 @@
                         VerticalTextAlignment="Center"
                         PlaceholderColor="#C4C4C4"
                         TextColor="#707070">
-                    </SearchBar>
+                    </SearchBar>-->
+                    <Frame
+                        x:Name="FolioSearch"
+                        Padding="1"
+                        BorderColor="#C4C4C4"
+                        CornerRadius="10"
+                        Grid.Column="2"
+                        Margin="0,10,0,10"
+                        HasShadow="False"
+                        BackgroundColor="#FFFFFF">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"></ColumnDefinition>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <renderers:EntryIcon
+                                Keyboard="Numeric"
+                                Grid.Column="0"
+                                x:Name="SearchFolio"
+                                CornerRadius="10"
+                                MaxLength="10"
+                                Placeholder="No. de folio"
+                                IsPassword="false"
+                                PlaceholderColor="#C4C4C4"
+                                BackgroundColor="#FFFFFF"
+                                FontFamily="Helvetica"
+                                FontSize="12"
+                                Margin="1"
+                                TextColor="#707070"
+                                HorizontalOptions="FillAndExpand">
+                            </renderers:EntryIcon>
+                            <BoxView
+                                Grid.Column="1"
+                                BackgroundColor="#C4C4C4">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="FolioFiltro"></TapGestureRecognizer>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+                            <Image
+                                Grid.Column="1"
+                                Source="icon_search.png" 
+                                WidthRequest="28"
+                                HeightRequest="35"
+                                Margin="5,5,5,5"
+                                HorizontalOptions="EndAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="FolioFiltro"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
+
+                        </Grid>
+                    </Frame>
                     <!--TITULO TAB-->
                     <!--DATOS IMPRODUCTIVA-->
                     <CollectionView
