@@ -850,14 +850,15 @@
                                 </Grid>
 
                                 <Label Text="{Binding Nombre}"
-                                    FontFamily="{StaticResource Poppins-Regular}"
+                                    FontFamily="Helvetica"
                                     Grid.Row="1"
                                     FontSize="12"
                                     HorizontalTextAlignment="Center"
                                     TextColor="#353535">
                                 </Label>
                                 <Label Text="{Binding Apellidos}"
-                                        FontFamily="{StaticResource Poppins-Bold}"
+                                        FontFamily="Helvetica"
+                                       FontAttributes="Bold"
                                         Grid.Row="2"
                                         FontSize="12"
                                         HorizontalTextAlignment="Center"
@@ -905,7 +906,8 @@
                                 </Frame>
 
                                 <Label Text="{Binding PorcentajeSaldoVirtualDesc}"
-                                       FontFamily="{StaticResource Poppins-Bold}"
+                                       FontFamily="Helvetica"
+                                       FontAttributes="Bold"
                                        Grid.Row="4"
                                        FontSize="12"
                                        HorizontalTextAlignment="Center"

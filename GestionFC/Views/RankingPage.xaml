@@ -1067,15 +1067,17 @@
                                     <RowDefinition Height="45"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                    <ColumnDefinition Width="15"></ColumnDefinition>
                                     <ColumnDefinition Width="70"></ColumnDefinition>
                                     <ColumnDefinition Width="45"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="115"></ColumnDefinition>
                                     <ColumnDefinition Width="95"></ColumnDefinition>
-                                    <ColumnDefinition Width="165"></ColumnDefinition>
+                                    <ColumnDefinition Width="160"></ColumnDefinition>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding ImgPosicionSemAnt}"
+                                       Margin="5,0,0,0"
                                        Grid.Column="0"
                                        Grid.Row="0"></Image>
                                 <Grid Grid.Column="1"
@@ -1194,7 +1196,7 @@
                                 <Frame
                                     Grid.Column="6"
                                     Grid.Row="0"
-                                    Margin="0,0,6,0"
+                                    Margin="0,0,5,0"
                                     BorderColor="#DCD7D7"
                                     CornerRadius="10"
                                     HasShadow="False"

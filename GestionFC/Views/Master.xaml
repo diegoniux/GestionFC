@@ -67,7 +67,8 @@
                     <!--</Frame>-->
 
                     <Label Text="{Binding NombreGerenteMaster}"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
+                        FontAttributes="Bold"
                         FontSize="10"
                         TextColor="#FFFFFF"
                         Margin="10, 0, 0, 0"
@@ -88,7 +89,8 @@
                     </BoxView>
 
                     <Label Text="{Binding Puesto}"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
+                        FontAttributes="Bold"
                         FontSize="10"
                         TextColor="#FFFFFF"
                         Margin="10, 0, 0, 0"
@@ -138,7 +140,7 @@
                 </BoxView>
                 <Label Text=""
                        x:Name="version"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontSize="10"
                         TextColor="#FFFFFF"
                         Margin="10, 0, 10, 5"

@@ -878,7 +878,7 @@
                         FontSize="10"
                         FontAttributes="Bold"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}">
+                        FontFamily="Helvetica">
                     </Label>
                     <Frame
                         BackgroundColor="#FFFFFF"
@@ -897,7 +897,7 @@
                         FontSize="16"
                         FontAttributes="Bold"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}">
+                        FontFamily="Helvetica">
                     </Label>
                     <Label
                         Text="Bono Excelencia"
@@ -909,7 +909,7 @@
                         FontSize="10"
                         FontAttributes="Bold"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}">
+                        FontFamily="Helvetica">
                     </Label>
                     <Frame
                         BackgroundColor="#FFFFFF"
@@ -929,7 +929,7 @@
                         FontSize="16"
                         FontAttributes="Bold"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}">
+                        FontFamily="Helvetica">
                     </Label>
                 </Grid>
                 <!--TERMINA TABS Y CALENDARIO-->
@@ -999,7 +999,7 @@
                         BackgroundColor="#275D38"
                         TextColor="#FFFFFF"
                         FontAttributes="Bold"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontSize="10">
                     </Label>
                     
@@ -1014,7 +1014,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontAttributes="Bold"
                         FontSize="16">
                     </Label>
@@ -1028,7 +1028,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontFamily="Helvetica"
                         FontSize="8">
                     </Label>
                     <!--Martes-->
@@ -1042,7 +1042,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontAttributes="Bold"
                         FontSize="16">
                     </Label>
@@ -1056,7 +1056,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontFamily="Helvetica"
                         FontSize="8">
                     </Label>
                     <!--Miercoles-->
@@ -1070,7 +1070,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontAttributes="Bold"
                         FontSize="16">
                     </Label>
@@ -1084,7 +1084,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontFamily="Helvetica"
                         FontSize="8">
                     </Label>
                     <!--Jueves-->
@@ -1098,7 +1098,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontAttributes="Bold"
                         FontSize="16">
                     </Label>
@@ -1112,7 +1112,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontFamily="Helvetica"
                         FontSize="8">
                     </Label>
                     <!--Viernes-->
@@ -1126,7 +1126,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontAttributes="Bold"
                         FontSize="16">
                     </Label>
@@ -1140,7 +1140,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontFamily="Helvetica"
                         FontSize="8">
                     </Label>
                     <!--Sabado-->
@@ -1154,7 +1154,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontAttributes="Bold"
                         FontSize="16">
                     </Label>
@@ -1168,7 +1168,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontFamily="Helvetica"
                         FontSize="8">
                     </Label>
                     <!--Domingo-->
@@ -1182,7 +1182,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontAttributes="Bold"
                         FontSize="16">
                     </Label>
@@ -1196,7 +1196,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontFamily="Helvetica"
                         FontSize="8">
                     </Label>
 
@@ -1212,7 +1212,7 @@
                         BackgroundColor="#DE9401"
                         TextColor="#FFFFFF"
                         FontAttributes="Bold"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontSize="12">
                     </Label>
 
@@ -1228,7 +1228,7 @@
                         BackgroundColor="#DE9401"
                         TextColor="#FFFFFF"
                         FontAttributes="Bold"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontSize="12">
                     </Label>
 
@@ -1244,7 +1244,7 @@
                         BackgroundColor="#DE9401"
                         TextColor="#FFFFFF"
                         FontAttributes="Bold"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontSize="12">
                     </Label>
 
@@ -1260,7 +1260,7 @@
                         BackgroundColor="#C78400"
                         TextColor="#FFFFFF"
                         FontAttributes="Bold"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontSize="10">
                     </Label>
 
@@ -1276,7 +1276,7 @@
                         BackgroundColor="#C78400"
                         TextColor="#FFFFFF"
                         FontAttributes="Bold"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontSize="10">
                     </Label>
 
@@ -1292,7 +1292,7 @@
                         BackgroundColor="#C78400"
                         TextColor="#FFFFFF"
                         FontAttributes="Bold"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontSize="10">
                     </Label>
 
@@ -1308,7 +1308,7 @@
                         BackgroundColor="#C78400"
                         TextColor="#FFFFFF"
                         FontAttributes="Bold"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontSize="10">
                     </Label>
 
@@ -1380,7 +1380,7 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Start"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding SaldoVirtualLunes}"
@@ -1389,7 +1389,7 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding SaldoVirtualMartes}"
@@ -1407,7 +1407,7 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding SaldoVirtualJueves}"
@@ -1416,7 +1416,7 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding SaldoVirtualViernes}"
@@ -1425,7 +1425,7 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding SaldoVirtualSabado}"
@@ -1434,7 +1434,7 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding SaldoVirtualDomingo}"
@@ -1443,7 +1443,7 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
 
                                     <Label
@@ -1456,7 +1456,7 @@
                                         VerticalOptions="Fill"
                                         HorizontalOptions="FillAndExpand"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding SaldoVirtualFaltante}"
@@ -1465,7 +1465,7 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding MetaSemana}"
@@ -1474,7 +1474,7 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
 
                                     <Label
@@ -1484,7 +1484,7 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding FctActivos}"
@@ -1493,7 +1493,7 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding FoliosMenores30K}"
@@ -1502,7 +1502,8 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
                                         TextColor="#FF0000"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontAttributes="Bold"
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding FoliosCertificados}"
@@ -1511,7 +1512,7 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <!--TERMINA DATOS-->
 
@@ -1587,7 +1588,7 @@
                             HorizontalTextAlignment="Start"
                             TextColor="#FFFFFF"
                             FontAttributes="Bold"
-                            FontFamily="{StaticResource Poppins-Bold}"
+                            FontFamily="Helvetica"
                             FontSize="12">
                         </Label>
                     </StackLayout>
@@ -1603,7 +1604,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontAttributes="Bold"
                         FontSize="16">
                     </Label>
@@ -1617,7 +1618,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontFamily="Helvetica"
                         FontSize="8">
                     </Label>
                     <!--SEM 2-->
@@ -1631,7 +1632,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontAttributes="Bold"
                         FontSize="16">
                     </Label>
@@ -1645,7 +1646,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontFamily="Helvetica"
                         FontSize="8">
                     </Label>
                     <!--Sem 3-->
@@ -1659,7 +1660,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontAttributes="Bold"
                         FontSize="16">
                     </Label>
@@ -1673,7 +1674,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontFamily="Helvetica"
                         FontSize="8">
                     </Label>
                     <!--SEm 4-->
@@ -1687,7 +1688,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontAttributes="Bold"
                         FontSize="16">
                     </Label>
@@ -1701,7 +1702,7 @@
                         HorizontalOptions="FillAndExpand"
                         BackgroundColor="#F3F3F3"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Regular}"
+                        FontFamily="Helvetica"
                         FontSize="8">
                     </Label>
                     <Label
@@ -1716,7 +1717,7 @@
                         BackgroundColor="#DE9401"
                         TextColor="#FFFFFF"
                         FontAttributes="Bold"
-                        FontFamily="{StaticResource Poppins-Bold}"
+                        FontFamily="Helvetica"
                         FontSize="12">
                     </Label>
                     <!--TERMINA PIZARRÓN SEMANAL-->
@@ -1776,7 +1777,7 @@
                                         HorizontalTextAlignment="Start"
                                         TextColor="#353535"
                                         Margin="5,0,0,0"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding SaldoVirtualSemana1}"
@@ -1788,7 +1789,7 @@
                                         HorizontalOptions="FillAndExpand"
                                         BackgroundColor="{Binding IndicadorSaldoMetaSem1}"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding SaldoVirtualSemana2}"
@@ -1800,7 +1801,7 @@
                                         HorizontalOptions="FillAndExpand"
                                         BackgroundColor="{Binding IndicadorSaldoMetaSem2}"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding SaldoVirtualSemana3}"
@@ -1812,7 +1813,7 @@
                                         HorizontalOptions="FillAndExpand"
                                         BackgroundColor="{Binding IndicadorSaldoMetaSem3}"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding SaldoVirtualSemana4}"
@@ -1824,7 +1825,7 @@
                                         HorizontalOptions="FillAndExpand"
                                         BackgroundColor="{Binding IndicadorSaldoMetaSem4}"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding SaldoVirtualTetrasemana}"
@@ -1837,7 +1838,7 @@
                                         FontAttributes="Bold"
                                         BackgroundColor="{Binding IndicadorSaldoMetaTetra}"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <!--TERMINA DATOS-->
                                 </Grid>
