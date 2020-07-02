@@ -51,13 +51,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer: Ricardo Joan Garza Reyna (9AQ48K9WFC)</CodesignKey>
+    <CodesignKey>Apple Distribution: Diego Alberto Nieto Flores (KQKPH57A56)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>None</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
     <BuildIpa>true</BuildIpa>
-    <CodesignProvision>GestiónFC</CodesignProvision>
+    <CodesignProvision>icap.dist</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -70,10 +70,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer: Ricardo Joan Garza Reyna (9AQ48K9WFC)</CodesignKey>
+    <CodesignKey>Apple Distribution: Diego Alberto Nieto Flores (KQKPH57A56)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <BuildIpa>true</BuildIpa>
-    <CodesignProvision>GestionFC</CodesignProvision>
+    <CodesignProvision>icap.dist</CodesignProvision>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>

@@ -8,6 +8,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Service = GestionFC.Services;
 using System.Drawing;
+using GestionFC.Models.VisionBoard;
+using GestionFC.Services;
 
 namespace GestionFC.Views
 {
@@ -580,6 +582,234 @@ namespace GestionFC.Views
                 App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(typeof(LoginPage)));
                 App.MasterDetail.IsPresented = false;
             });
+        }
+
+        void txtLunes_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            int meta = int.Parse(txtLunes.Text);
+            if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoLunes)
+            {
+                ActualizarMetaDia(1, meta);
+            }
+        }
+
+        void txtMartes_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            int meta = int.Parse(txtMartes.Text);
+            if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoMartes)
+            {
+                ActualizarMetaDia(2, meta);
+            }
+        }
+
+        void txtMiercoles_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            int meta = int.Parse(txtMiercoles.Text);
+            if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoMiercoles)
+            {
+                ActualizarMetaDia(3, meta);
+            }
+        }
+
+        void txtJueves_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            int meta = int.Parse(txtJueves.Text);
+            if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoJueves)
+            {
+                ActualizarMetaDia(4, meta);
+            }
+        }
+
+        void txtViernes_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            int meta = int.Parse(txtViernes.Text);
+            if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoViernes)
+            {
+                ActualizarMetaDia(5, meta);
+            }
+        }
+
+        void txtSabado_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            int meta = int.Parse(txtSabado.Text);
+            if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoSabado)
+            {
+                ActualizarMetaDia(6, meta);
+            }
+        }
+
+        void txtDomingo_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            int meta = int.Parse(txtDomingo.Text);
+            if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoDomingo)
+            {
+                ActualizarMetaDia(7, meta);
+            }
+        }
+
+        async void ActualizarMetaDia(int dia, int meta)
+        {
+            try
+            {
+                VisionBoardService service = new VisionBoardService();
+
+                var request = new MetaPlantillaRequestModel()
+                {
+                    MetaPlantillaDia = new Models.Share.MetaPlantillaDiaModel()
+                    {
+                        IdPeriodo = 1,
+                        Nomina = App.Nomina,
+                        SaldoAcumuladoMeta = meta,
+                        Dia = dia
+                    }
+                };
+
+                await service.RegistrarMetaPlantilla(request, token).ContinueWith(x =>
+                {
+                    if (x.IsFaulted)
+                    {
+                        throw x.Exception;
+                    }
+
+                    ActualizaPantalla();
+
+                });
+            }
+            catch (Exception ex)
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    DisplayAlert("Error", ex.Message, "Ok");
+                });
+            }
+
+        }
+
+        async void ActualizaPantalla()
+        {
+            Service.HeaderService headerService = new Service.HeaderService();
+            Service.VisionBoardService visionBoardService = new Service.VisionBoardService();
+            IsBusy = true;
+            try
+            {
+                await headerService.GetHeader(nomina, token).ContinueWith(x =>
+                {
+                    if (x.IsFaulted)
+                    {
+                        throw x.Exception;
+                    }
+
+                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                    {
+                        // verificamos si la sesión expiró (token)
+                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                        {
+                            SesionExpired = true;
+                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                        }
+                    }
+
+                    //Cargar datros para el binding de información con el header
+                    ViewModel.NombreGerente = x.Result.Progreso?.Nombre + " " + x.Result.Progreso?.Apellidos;
+                    ViewModel.Mensaje = x.Result.Progreso?.Genero == "H" ? "¡Bienvenido!" : "¡Bienvenida!";
+                    ViewModel.APsMetaAlcanzada = x.Result.APsMetaAlcanzada;
+                    ViewModel.Plantilla = x.Result.Plantilla;
+                    if (x.Result.Progreso != null)
+                    {
+                        ViewModel.Gerente = x.Result.Progreso;
+                    }
+
+                });
+
+                //Carga de Meta Plantilla
+                await visionBoardService.GetMetaPlantilla(nomina, token).ContinueWith(x =>
+                {
+                    if (x.IsFaulted)
+                    {
+                        throw x.Exception;
+                    }
+
+                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                    {
+                        // vericamos si la sesión expiró (token)
+                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                        {
+                            SesionExpired = true;
+                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                        }
+                    }
+
+                    ViewModel.GetMetaPlantilla = x.Result;
+
+                });
+
+                //Carga de Plantilla Individual
+                await visionBoardService.GetMetaPlantillaIndividual(nomina, token).ContinueWith(x =>
+                {
+                    if (x.IsFaulted)
+                    {
+                        throw x.Exception;
+                    }
+
+                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                    {
+                        // vericamos si la sesión expiró (token)
+                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                        {
+                            SesionExpired = true;
+                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                        }
+                    }
+
+                    ViewModel.GetMetaPlantillaIndividual = x.Result;
+                });
+            }
+            catch (Exception ex)
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    DisplayAlert("Error", ex.Message, "Ok");
+                });
+            }
+        }
+
+        async void MetaFolios_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            try
+            {
+                VisionBoardService service = new VisionBoardService();
+                if (int.Parse(txtMetaTraspasos.Text) == ViewModel.GetMetaPlantilla.MetaPlantilla.Traspasos &&
+                    int.Parse(txtMetaFCT.Text) == ViewModel.GetMetaPlantilla.MetaPlantilla.TraspasosFct)
+                {
+                    return;
+                }
+
+                var request = new MetaPlantillaFoliosRequestModel()
+                {
+                    MetaPlantillaFolios = new Models.Share.MetaPlantillaFoliosModel()
+                    {
+                        Nomina = App.Nomina,
+                        Folios = int.Parse(txtMetaTraspasos.Text),
+                        FoliosFct = int.Parse(txtMetaFCT.Text)
+                    }
+                };
+
+                await service.RegistrarMetaPlantillaFolios(request, token).ContinueWith(x =>
+                {
+                    if (x.IsFaulted)
+                    {
+                        throw x.Exception;
+                    }
+                });
+
+            }
+            catch (Exception ex)
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    DisplayAlert("Error", ex.Message, "Ok");
+                });
+            }
         }
     }
 }

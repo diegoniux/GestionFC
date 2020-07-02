@@ -930,7 +930,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtMetaTraspasos"
-                        Text="{Binding GetMetaPlantilla.MetaPlantilla.Traspasos, Mode=TwoWay}"
+                        Text="{Binding GetMetaPlantilla.MetaPlantilla.Traspasos, Mode=OneWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="15"
@@ -944,7 +944,8 @@
                         VerticalTextAlignment="Center"
                         Grid.Row="0"
                         Grid.Column="2"
-                        Margin="0,7,0,7">
+                        Margin="0,7,0,7"
+                        Unfocused="MetaFolios_Unfocused">
                         <renderers:EntryIcon.Behaviors>
                             <renderers:NumericValidationBehavior />
                         </renderers:EntryIcon.Behaviors>
@@ -982,7 +983,8 @@
                         VerticalTextAlignment="Center"
                         Grid.Row="0"
                         Grid.Column="4"
-                        Margin="0,7,0,7">
+                        Margin="0,7,0,7"
+                        Unfocused="MetaFolios_Unfocused">
                         <renderers:EntryIcon.Behaviors>
                             <renderers:NumericValidationBehavior />
                         </renderers:EntryIcon.Behaviors>
@@ -1019,7 +1021,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtLunes"
-                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoLunes, Mode=TwoWay}"
+                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoLunes, Mode=OneWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="5"
@@ -1034,7 +1036,8 @@
                         VerticalTextAlignment="Center"
                         Grid.Row="3"
                         Grid.Column="0"
-                        Margin="1">
+                        Margin="1"
+                        Unfocused="txtLunes_Unfocused">
                         <renderers:EntryIcon.Behaviors>
                             <renderers:NumericValidationBehavior />
                         </renderers:EntryIcon.Behaviors>
@@ -1071,7 +1074,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtMartes"
-                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoMartes, Mode=TwoWay}"
+                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoMartes, Mode=OneWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="5"
@@ -1086,7 +1089,8 @@
                         VerticalTextAlignment="Center"
                         Grid.Row="3"
                         Grid.Column="1"
-                        Margin="1">
+                        Margin="1"
+                        Unfocused="txtMartes_Unfocused">
                         <renderers:EntryIcon.Behaviors>
                             <renderers:NumericValidationBehavior />
                         </renderers:EntryIcon.Behaviors>
@@ -1123,7 +1127,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtMiercoles"
-                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoMiercoles, Mode=TwoWay}"
+                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoMiercoles, Mode=OneWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="5"
@@ -1138,7 +1142,8 @@
                         VerticalTextAlignment="Center"
                         Grid.Row="3"
                         Grid.Column="2"
-                        Margin="1">
+                        Margin="1"
+                        Unfocused="txtMiercoles_Unfocused">
                         <renderers:EntryIcon.Behaviors>
                             <renderers:NumericValidationBehavior />
                         </renderers:EntryIcon.Behaviors>
@@ -1175,7 +1180,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtJueves"
-                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoJueves, Mode=TwoWay}"
+                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoJueves, Mode=OneWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="5"
@@ -1190,7 +1195,8 @@
                         VerticalTextAlignment="Center"
                         Grid.Row="3"
                         Grid.Column="3"
-                        Margin="1">
+                        Margin="1"
+                        Unfocused="txtJueves_Unfocused">
                         <renderers:EntryIcon.Behaviors>
                             <renderers:NumericValidationBehavior />
                         </renderers:EntryIcon.Behaviors>
@@ -1227,7 +1233,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtViernes"
-                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoViernes, Mode=TwoWay}"
+                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoViernes, Mode=OneWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="5"
@@ -1242,7 +1248,8 @@
                         VerticalTextAlignment="Center"
                         Grid.Row="3"
                         Grid.Column="4"
-                        Margin="1">
+                        Margin="1"
+                        Unfocused="txtViernes_Unfocused">
                         <renderers:EntryIcon.Behaviors>
                             <renderers:NumericValidationBehavior />
                         </renderers:EntryIcon.Behaviors>
@@ -1279,7 +1286,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtSabado"
-                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoSabado, Mode=TwoWay}"
+                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoSabado, Mode=OneWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="5"
@@ -1294,7 +1301,8 @@
                         VerticalTextAlignment="Center"
                         Grid.Row="3"
                         Grid.Column="5"
-                        Margin="1">
+                        Margin="1"
+                        Unfocused="txtSabado_Unfocused">
                         <renderers:EntryIcon.Behaviors>
                             <renderers:NumericValidationBehavior />
                         </renderers:EntryIcon.Behaviors>
@@ -1331,7 +1339,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtDomingo"
-                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoDomingo, Mode=TwoWay}"
+                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoDomingo, Mode=OneWay}"
                         Keyboard="Numeric"
                         MaxLength="3"
                         CornerRadius="5"
@@ -1346,7 +1354,8 @@
                         VerticalTextAlignment="Center"
                         Grid.Row="3"
                         Grid.Column="6"
-                        Margin="1">
+                        Margin="1"
+                        Unfocused="txtDomingo_Unfocused">
                         <renderers:EntryIcon.Behaviors>
                             <renderers:NumericValidationBehavior />
                         </renderers:EntryIcon.Behaviors>
