@@ -141,7 +141,7 @@ namespace GestionFC.Views
 
 
                     }
-                    pickerAP.Items.Add("Todos");
+                    pickerAP.Items.Add("TODOS");
                     foreach (FoliosPendientesSVModel a in ViewModel.FoliosPendientesSV.ResultDatos)
                     {
                         pickerAP.Items.Add(a.Nombre);

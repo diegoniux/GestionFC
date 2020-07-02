@@ -429,7 +429,7 @@ namespace GestionFC.ViewModels.AlertasPage
                 {
                     ejec = false;
                     var filteredItems = sourcePicker.Where(nombre => nombre.Nombre.ToLower().Contains(filter.ToLower())).ToList();
-                    if (filter == "Todos")
+                    if (filter == "TODOS")
                     {
                         foreach (var nombre in sourcePicker)
                         {
