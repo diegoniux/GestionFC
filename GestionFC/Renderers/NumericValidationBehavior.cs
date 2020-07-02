@@ -23,13 +23,21 @@ namespace GestionFC.Renderers
 
         private static void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
-
-            if (!string.IsNullOrWhiteSpace(args.NewTextValue))
+            try
             {
-                bool isValid = args.NewTextValue.ToCharArray().All(x => char.IsDigit(x)); //Make sure all characters are numbers
+                if (!string.IsNullOrWhiteSpace(args.NewTextValue))
+                {
+                    bool isValid = args.NewTextValue.ToCharArray().All(x => char.IsDigit(x)); //Make sure all characters are numbers
 
-                ((Entry)sender).Text = isValid ? args.NewTextValue : args.NewTextValue.Remove(args.NewTextValue.Length - 1);
+                    ((Entry)sender).Text = isValid ? args.NewTextValue : args.NewTextValue.Remove(args.NewTextValue.Length - 1);
+                }
             }
+            catch (Exception ex)
+            {
+
+            }
+
+            
         }
 
 

@@ -39,7 +39,7 @@ namespace GestionFC.Views
 
             masterPageItems.Add(new MasterPageItem
             {
-                Title = "Objetivos de tu plantilla",
+                Title = "Objetivos",
                 IconSource = "icon_target.png",
                 TargetType = typeof(VisionBoardPage),
             });
