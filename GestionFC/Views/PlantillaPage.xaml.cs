@@ -44,7 +44,6 @@ namespace GestionFC.Views
 
         private async void LoadPage()
         {
-            //logService = new Service.LogService();
             Service.HeaderService headerService = new Service.HeaderService();
             Service.PlantillaService gridPromotoresService = new Service.PlantillaService();
             try
@@ -111,18 +110,24 @@ namespace GestionFC.Views
                               ViewModel.Agentes = x.Result.Promotores;
                           });
 
-                        //Guardamos genramos la inserción en bitácora (acceso de pantalla)
-                        var logModel = new LogSistemaModel()
+                        Device.BeginInvokeOnMainThread(() =>
                         {
-                            IdPantalla = 2,
-                            IdAccion = 2,
-                            Usuario = nomina,
-                            Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
-                        };
-                        await _master.logService.LogSistema(logModel, token).ContinueWith(logRes =>
-                        {
-                            if (logRes.IsFaulted)
-                                throw logRes.Exception;
+                            ViewModel.getLocation().ContinueWith(loc => {
+                                //Guardamos genramos la inserción en bitácora (Cierre Sesión)
+                                var logModel = new LogSistemaModel()
+                                {
+                                    IdPantalla = 2,
+                                    IdAccion = 2,
+                                    Usuario = nomina,
+                                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name,
+                                    Geolocalizacion = loc.Result
+                                };
+                                _master.logService.LogSistema(logModel, token).ContinueWith(logRes =>
+                                {
+                                    if (logRes.IsFaulted)
+                                        throw logRes.Exception;
+                                });
+                            });
                         });
                     }
                 }

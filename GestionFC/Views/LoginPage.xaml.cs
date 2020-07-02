@@ -26,29 +26,6 @@ namespace GestionFC
         private int UserRemember { get; set; }
         private LogService logService { get; set; }
 
-        private async Task<Location> getLocation()
-        {
-            try
-            {
-                var location = await Geolocation.GetLocationAsync(new GeolocationRequest
-                {
-                    DesiredAccuracy = GeolocationAccuracy.Medium,
-                    Timeout = TimeSpan.FromSeconds(30)
-                });
-                if (location != null)
-                {
-                    string popo = $" {location.Latitude }";
-                    await DisplayAlert("Loc", popo, "Ok");
-                }
-                return location;
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Error", ex.Message, "Ok");
-                return null;
-            }
-        }
-
         public LoginPage()
         {
             InitializeComponent();
@@ -177,29 +154,33 @@ namespace GestionFC
                                 TokenSesion = x.Result.Token
                             };
 
-                            App.Database.SaveGestionFCItemAsync(gestionFC);
-                            
-
-                        //Guardamos genramos la inserción en bitácora (Cierre Sesión)
-                        var logModel = new LogSistemaModel()
-                            {
-                                IdPantalla = 1,
-                                IdAccion = 1,
-                                Usuario = int.Parse(UserName.Text),
-                                Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
-                            };
-                            logService.LogSistema(logModel, gestionFC.TokenSesion).ContinueWith(logRes =>
-                            {
-                                if (logRes.IsFaulted)
-                                    throw logRes.Exception;
-                            });
-
-                            // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
-                            Device.BeginInvokeOnMainThread(() =>
+                        App.Database.SaveGestionFCItemAsync(gestionFC);
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            LoginViewModel.getLocation().ContinueWith(loc => {
+                                //Guardamos genramos la inserción en bitácora (Cierre Sesión)
+                                var logModel = new LogSistemaModel()
                                 {
-                                    var plantillaPage = new PlantillaPage();
-                                    Navigation.PushAsync(plantillaPage);
+                                    IdPantalla = 1,
+                                    IdAccion = 1,
+                                    Usuario = int.Parse(UserName.Text),
+                                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name,
+                                    Geolocalizacion = loc.Result
+                                };
+                            logService.LogSistema(logModel, gestionFC.TokenSesion).ContinueWith(logRes =>
+                                {
+                                    if (logRes.IsFaulted)
+                                        throw logRes.Exception;
                                 });
+                            });
+                        });
+
+                        // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
+                        Device.BeginInvokeOnMainThread(() =>
+                            {
+                                var plantillaPage = new PlantillaPage();
+                                Navigation.PushAsync(plantillaPage);
+                            });
                         });
                     }
                 }
@@ -212,7 +193,6 @@ namespace GestionFC
                     Usuario = int.Parse(UserName.Text),
                     Error = (ex.TargetSite == null ? "" : ex.TargetSite.Name + ". ") + ex.Message,
                     Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
-
                 };
                 await logService.LogError(logError, "").ContinueWith(logRes =>
                 {
