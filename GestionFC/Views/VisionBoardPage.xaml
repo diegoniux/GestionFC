@@ -1573,7 +1573,7 @@
 
                             <renderers:EntryIcon
                                 x:Name="txtMetaComSem"
-                                Text="{Binding GetMetaPlantilla.MetaPlantilla.ComisionSem, Mode=TwoWay}"
+                                Text="{Binding GetMetaPlantilla.MetaPlantilla.ComisionSem}"
                                 Keyboard="Numeric"
                                 MaxLength="9"
                                 CornerRadius="15"
@@ -1588,7 +1588,7 @@
                                 VerticalTextAlignment="Center"
                                 HeightRequest="40">
                                 <!--<renderers:EntryIcon.Behaviors>
-                                    <renderers:NumericValidationBehavior />
+                                    <renderers:CurrencyValidationBehavior />
                                 </renderers:EntryIcon.Behaviors>-->
                             </renderers:EntryIcon>
 
@@ -1937,31 +1937,24 @@
                                     </Grid.ColumnDefinitions>
 
                                     <!--DATOS-->
-                                    <Frame
-                                        CornerRadius="45"
-                                        Grid.Column="0"
-                                        Grid.Row="0"
-                                        Grid.RowSpan="2"
-                                        BackgroundColor="White"
-                                        BorderColor="White"
-                                        Margin="5,5,5,5"
-                                        HasShadow="False">
-                                        <ffimageloading:CachedImage
-                                            x:Name = "Foto_Gerente"
+                                    <ffimageloading:CachedImage
+                                            x:Name = "FotoAP"
                                             Source = "{Binding Foto}"
+                                            Margin="3,3,3,3"
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
                                             CacheDuration = "90"
                                             RetryCount = "5"
                                             RetryDelay = "450"
                                             LoadingPlaceholder="capi_circulo.png"
                                             ErrorPlaceholder="capi_circulo.png">
-                                            <ffimageloading:CachedImage.Transformations>
-                                                <fFImageLoadingTrans:CircleTransformation
-                                                    BorderSize="3"
+                                        <ffimageloading:CachedImage.Transformations>
+                                            <fFImageLoadingTrans:CircleTransformation
+                                                    BorderSize="2"
                                                     BorderHexColor="#ffffff"/>
-                                            </ffimageloading:CachedImage.Transformations>
-                                        </ffimageloading:CachedImage>
-                                    </Frame>
-
+                                        </ffimageloading:CachedImage.Transformations>
+                                    </ffimageloading:CachedImage>
 
                                     <Label
                                         Text="{Binding Nombre}"
@@ -2012,7 +2005,7 @@
 
                                     <renderers:EntryIcon
                                         x:Name="txtMetaSaldo"
-                                        Text="{Binding SaldoMeta}"
+                                        Text="{Binding SaldoMeta, Mode=OneWay}"
                                         Keyboard="Numeric"
                                         MaxLength="8"
                                         CornerRadius="15"
@@ -2028,7 +2021,9 @@
                                         Grid.RowSpan="2"
                                         Grid.Column="3"
                                         Margin="15,10,15,10"
-                                        FontSize="16">
+                                        FontSize="16"
+                                        ClassId="{Binding Nomina}"
+                                        Unfocused="txtMetaSaldo_Unfocused">
                                         <!--<renderers:EntryIcon.Behaviors>
                                             <renderers:NumericValidationBehavior />
                                         </renderers:EntryIcon.Behaviors>-->
@@ -2051,7 +2046,7 @@
                                     </Label>
                                     <renderers:EntryIcon
                                         x:Name="txtComEst"
-                                        Text="{Binding ComisionEstimada}"
+                                        Text="{Binding ComisionEstimada, Mode=OneWay}"
                                         Keyboard="Numeric"
                                         MaxLength="8"
                                         CornerRadius="15"
@@ -2067,7 +2062,8 @@
                                         Grid.RowSpan="2"
                                         Grid.Column="5"
                                         Margin="0,10,15,10"
-                                        FontSize="16">
+                                        FontSize="16"
+                                        ClassId="{Binding Nomina}">
                                         <!--<renderers:EntryIcon.Behaviors>
                                             <renderers:NumericValidationBehavior />
                                         </renderers:EntryIcon.Behaviors>-->
