@@ -754,32 +754,84 @@
     <ImageAsset Include="Assets.xcassets\icon_singout.imageset\exit2.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\icon_singout.imageset\icon_singout.png" />
-    <ImageAsset Include="Assets.xcassets\icon_singout.imageset\icon_singout%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_ranking.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_ranking.imageset\icon_ranking.png" />
-    <ImageAsset Include="Assets.xcassets\icon_ranking.imageset\icon_ranking%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_target.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_target.imageset\icon_target.png" />
-    <ImageAsset Include="Assets.xcassets\icon_target.imageset\icon_target%402x.png" />
-    <ImageAsset Include="Assets.xcassets\notification_circle_grey.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\notification_circle_grey.imageset\notification_circle_grey.PNG" />
-    <ImageAsset Include="Assets.xcassets\notification_circle_grey.imageset\notification_circle_grey%402x.PNG" />
-    <ImageAsset Include="Assets.xcassets\notification_circle_green.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\notification_circle_green.imageset\notification_circle_green.PNG" />
-    <ImageAsset Include="Assets.xcassets\notification_circle_green.imageset\notification_circle_green%402x.PNG" />
-    <ImageAsset Include="Assets.xcassets\icon_combo.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_combo.imageset\icon_combo.png" />
-    <ImageAsset Include="Assets.xcassets\EmptyView.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\EmptyView.imageset\EmptyView.png" />
-    <ImageAsset Include="Assets.xcassets\capi_circulo.imageset\capi_circulo-1.png" />
-    <ImageAsset Include="Assets.xcassets\capi_circulo.imageset\capi_circulo%402x.png" />
-    <ImageAsset Include="Assets.xcassets\title_productividad.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\title_pizarron_digital.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\title_productividad.imageset\title_productividad.png" />
-    <ImageAsset Include="Assets.xcassets\title_productividad.imageset\title_productividad%402x.png" />
-    <ImageAsset Include="Assets.xcassets\title_pizarron_digital.imageset\title_pizarron_digital.png" />
-    <ImageAsset Include="Assets.xcassets\title_pizarron_digital.imageset\title_pizarron_digital%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_singout.imageset\icon_singout.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_singout.imageset\icon_singout%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_ranking.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_ranking.imageset\icon_ranking.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_ranking.imageset\icon_ranking%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_target.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_target.imageset\icon_target.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_target.imageset\icon_target%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\notification_circle_grey.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\notification_circle_grey.imageset\notification_circle_grey.PNG">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\notification_circle_grey.imageset\notification_circle_grey%402x.PNG">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\notification_circle_green.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\notification_circle_green.imageset\notification_circle_green.PNG">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\notification_circle_green.imageset\notification_circle_green%402x.PNG">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_combo.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_combo.imageset\icon_combo.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\EmptyView.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\EmptyView.imageset\EmptyView.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\capi_circulo.imageset\capi_circulo-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\capi_circulo.imageset\capi_circulo%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\title_productividad.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\title_pizarron_digital.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\title_productividad.imageset\title_productividad.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\title_productividad.imageset\title_productividad%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\title_pizarron_digital.imageset\title_pizarron_digital.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\title_pizarron_digital.imageset\title_pizarron_digital%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
