@@ -1610,7 +1610,7 @@
                                 HeightRequest="40"
                                 BorderColor="#C4C4C4"
                                 Margin="2"
-                                IsReadOnly="True">
+                                Unfocused="txtComisionSem_Unfocused">
                                 <!--<renderers:EntryIcon.Behaviors>
                                     <renderers:CurrencyValidationBehavior />
                                 </renderers:EntryIcon.Behaviors>-->
