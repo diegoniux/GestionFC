@@ -203,8 +203,17 @@ namespace GestionFC.Views
         private void OnTapProdDiaria_Tapped(object sender, EventArgs e)
         {
             if (isBusy) return;
-            imgTabProdDiaria.Source = "prod_diaria_verde.png";
-            imgTabProdSemanal.Source = "prod_sem_blanco.png";
+            //imgTabProdDiaria.Source = "prod_diaria_verde.png";
+            //imgTabProdSemanal.Source = "prod_sem_blanco.png";
+            // Diaria
+            bxvProducticidadDiaria.BackgroundColor = Color.FromHex("#64A70B");
+            lblProductividad1.TextColor = Color.FromHex("#FFFFFF");
+            lblProductividadDiaria.TextColor = Color.FromHex("#FFFFFF");
+            // Semanal
+            bxvProducticidadSemanal.BackgroundColor = Color.FromHex("#F3F3F3");
+            lblProductividad2.TextColor = Color.FromHex("#C4C4C4");
+            lblProductividadSemanal.TextColor = Color.FromHex("#C4C4C4");
+
             gridProdDiaria.IsVisible = true;
             CollecionViewProdDiaria.IsVisible = true;
             gridProdSemanal.IsVisible = false;
@@ -219,8 +228,17 @@ namespace GestionFC.Views
             isBusy = true;
             try
             {
-                imgTabProdDiaria.Source = "prod_diaria_blanco.png";
-                imgTabProdSemanal.Source = "prod_sem_naranja.png";
+                //imgTabProdDiaria.Source = "prod_diaria_blanco.png";
+                //imgTabProdSemanal.Source = "prod_sem_naranja.png";
+                // Diaria
+                bxvProducticidadDiaria.BackgroundColor = Color.FromHex("#F3F3F3");
+                lblProductividad1.TextColor = Color.FromHex("#C4C4C4");
+                lblProductividadDiaria.TextColor = Color.FromHex("#C4C4C4");
+                // Semanal
+                bxvProducticidadSemanal.BackgroundColor = Color.FromHex("#64A70B");
+                lblProductividad2.TextColor = Color.FromHex("#FFFFFF");
+                lblProductividadSemanal.TextColor = Color.FromHex("#FFFFFF");
+
                 gridProdDiaria.IsVisible = false;
                 CollecionViewProdDiaria.IsVisible = false;
                 gridProdSemanal.IsVisible = true;

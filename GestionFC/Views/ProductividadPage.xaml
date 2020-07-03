@@ -806,7 +806,7 @@
                     </Grid.ColumnDefinitions>
 
                     <!--TAB PRODUCTIVIDAD DIARIA-->
-                    <Image
+                    <!--<Image
                         x:Name="imgTabProdDiaria"
                         Source="prod_diaria_verde.png"
                         Aspect="AspectFill"
@@ -814,10 +814,57 @@
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTapProdDiaria_Tapped"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
-                    </Image>
-
+                    </Image>-->
+                    <AbsoluteLayout Grid.Column="0">
+                        <AbsoluteLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapProdDiaria_Tapped"></TapGestureRecognizer>
+                        </AbsoluteLayout.GestureRecognizers>
+                        <Grid
+                            AbsoluteLayout.LayoutBounds="0,.6,1,.6"
+                            AbsoluteLayout.LayoutFlags="All">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"></RowDefinition>
+                                <RowDefinition Height="25"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <BoxView
+                                x:Name="bxvProducticidadDiaria"
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                CornerRadius="10,10,0,0"
+                                BackgroundColor="#64A70B"/>
+                            <Label
+                                x:Name="lblProductividad1"
+                                Text="Productividad"
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Margin="10,0,0,0"
+                                FontFamily="Helvetica"
+                                FontSize="14"
+                                TextColor="#FFFFFF"
+                                VerticalTextAlignment="End"
+                                HorizontalTextAlignment="Start"
+                                />
+                            <Label
+                                x:Name="lblProductividadDiaria"
+                                Text="Diaria"
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                Margin="10,-10,0,0"
+                                FontFamily="Helvetica"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="#FFFFFF"
+                                VerticalTextAlignment="Start"
+                                HorizontalTextAlignment="Start"
+                                />
+                        </Grid>
+                    </AbsoluteLayout>
                     <!--TAB PRODUCTIVIDAD SEMANAL-->
-                    <Image
+                    <!--<Image
                         x:Name="imgTabProdSemanal"
                         Source="prod_sem_blanco.png"
                         Aspect="AspectFill"
@@ -825,7 +872,55 @@
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTapProdSemanal_Tapped"></TapGestureRecognizer>
                         </Image.GestureRecognizers>
-                    </Image>
+                    </Image>-->
+                    <AbsoluteLayout Grid.Column="1">
+                        <AbsoluteLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapProdSemanal_Tapped"></TapGestureRecognizer>
+                        </AbsoluteLayout.GestureRecognizers>
+                        <Grid
+                            AbsoluteLayout.LayoutBounds="0,.6,1,.6"
+                            AbsoluteLayout.LayoutFlags="All">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"></RowDefinition>
+                                <RowDefinition Height="25"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <BoxView
+                                x:Name="bxvProducticidadSemanal"
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                CornerRadius="10,10,0,0"
+                                BackgroundColor="#F3F3F3"/>
+                            <Label
+                                x:Name="lblProductividad2"
+                                Text="Productividad"
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Margin="10,0,0,0"
+                                FontFamily="Helvetica"
+                                FontSize="14"
+                                TextColor="#C4C4C4"
+                                VerticalTextAlignment="End"
+                                HorizontalTextAlignment="Start"
+                                />
+                            <Label
+                                x:Name="lblProductividadSemanal"
+                                Text="Semanal"
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                Margin="10,-10,0,0"
+                                FontFamily="Helvetica"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="#C4C4C4"
+                                VerticalTextAlignment="Start"
+                                HorizontalTextAlignment="Start"
+                                />
+                        </Grid>
+                    </AbsoluteLayout>
 
                     <!--BOTON PREV-->
                     <Image
