@@ -7,6 +7,6 @@ namespace GestionFC.Models.VisionBoard
     public class MetaPlantillaSaldoAcumuladoRequestModel
     {
         [JsonProperty("MetaSaldoAcumulado")]
-        public MetaSaldoAcumulado MetaSaldoAcumulado { get; set; }
+        public MetaSaldoAcumuladoModel MetaSaldoAcumulado { get; set; }
     }
 }
