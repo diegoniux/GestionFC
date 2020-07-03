@@ -174,5 +174,67 @@ namespace GestionFC.Services
             return MetaPlantillaFoliosResponse;
         }
 
+        public async Task<MetaPlantillaSaldoAcumuladoResponseModel> RegistrarMetaPlantillaSaldoAcumulado(MetaPlantillaSaldoAcumuladoRequestModel metaSaldoAcumulado, string accessToken)
+        {
+            var MetaPlantillaResponse = new MetaPlantillaSaldoAcumuladoResponseModel();
+            try
+            {
+                var uri = new Uri(App.BaseUrlApi + "api/VisionBoard/RegistrarMetaPlantillaSaldoAcumulado");
+                var json = JsonConvert.SerializeObject(metaSaldoAcumulado);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = null;
+                if (_client.DefaultRequestHeaders.Authorization == null)
+                    _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
+                response = await _client.PostAsync(uri, content);
+
+                response.EnsureSuccessStatusCode();
+
+                string jsonResult = await response.Content.ReadAsStringAsync();
+                MetaPlantillaResponse = JsonConvert.DeserializeObject<MetaPlantillaSaldoAcumuladoResponseModel>(jsonResult);
+            }
+            catch (Exception ex)
+            {
+                MetaPlantillaResponse.ResultadoEjecucion = new ResultadoEjecucion()
+                {
+                    EjecucionCorrecta = false,
+                    FriendlyMessage = "Ocurrió un error",
+                    ErrorMessage = ex.Message
+                };
+            }
+            return MetaPlantillaResponse;
+        }
+
+        public async Task<MetaPlantillaComisionSemResponseModel> RegistrarMetaPlantillaComisionSem(MetaPlantillaComisionSemRequestModel metaMetaComisionSem, string accessToken)
+        {
+            var MetaPlantillaResponse = new MetaPlantillaComisionSemResponseModel();
+            try
+            {
+                var uri = new Uri(App.BaseUrlApi + "api/VisionBoard/RegistrarMetaPlantillaComisionSem");
+                var json = JsonConvert.SerializeObject(metaMetaComisionSem);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = null;
+                if (_client.DefaultRequestHeaders.Authorization == null)
+                    _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
+                response = await _client.PostAsync(uri, content);
+
+                response.EnsureSuccessStatusCode();
+
+                string jsonResult = await response.Content.ReadAsStringAsync();
+                MetaPlantillaResponse = JsonConvert.DeserializeObject<MetaPlantillaComisionSemResponseModel>(jsonResult);
+            }
+            catch (Exception ex)
+            {
+                MetaPlantillaResponse.ResultadoEjecucion = new ResultadoEjecucion()
+                {
+                    EjecucionCorrecta = false,
+                    FriendlyMessage = "Ocurrió un error",
+                    ErrorMessage = ex.Message
+                };
+            }
+            return MetaPlantillaResponse;
+        }
+
     }
 }

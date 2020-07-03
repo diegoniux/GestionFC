@@ -1708,7 +1708,7 @@
                                             VerticalTextAlignment="Center"
                                             HorizontalTextAlignment="Start"
                                             TextColor="#707070"
-                                            Margin="5,0,0,0"
+                                            Margin="5,0,10,0"
                                             FontFamily="Helvetica">
                                     </Label>
                                     <Label
