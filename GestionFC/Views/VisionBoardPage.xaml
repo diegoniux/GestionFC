@@ -756,53 +756,33 @@
                 </Label>
             </Grid>
 
-            <!--CONTENIDO-->
-            <ScrollView>
-                <Grid 
-                Margin="20,0,20,0"
-                ColumnSpacing="0"
-                RowSpacing="1"
-                VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="10"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="52"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="151"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-
-                <!--TABS-->
-                <Grid
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Grid.Row="2"
-                    Margin="0"
+            <!--TABS-->
+            <Grid
+                    Margin="20,30,0,0"
                     ColumnSpacing="5"
                     RowSpacing="0"
                     HorizontalOptions="StartAndExpand"
-                    VerticalOptions="FillAndExpand">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="148"></ColumnDefinition>
-                        <ColumnDefinition Width="148"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
+                    VerticalOptions="Fill">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="148"></ColumnDefinition>
+                    <ColumnDefinition Width="148"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-                    <!--TAB PLANTILLA-->
-                    <BoxView
+                <!--TAB PLANTILLA-->
+                <BoxView
                         x:Name="tabPlantilla"
                         CornerRadius="10,10,0,0"
                         BackgroundColor="#71B417"
                         Grid.Column="0">
-                        <BoxView.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnTapPlantilla_Tapped"></TapGestureRecognizer>
-                        </BoxView.GestureRecognizers>
-                        
-                    </BoxView>
-                    <Label
+                    <BoxView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTapPlantilla_Tapped"></TapGestureRecognizer>
+                    </BoxView.GestureRecognizers>
+
+                </BoxView>
+                <Label
                         x:Name="lblTabPlantilla"
                         Text="Plantilla"
                         TextColor="#FFFFFF"
@@ -814,22 +794,22 @@
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Center"
                         VerticalTextAlignment="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnTapPlantilla_Tapped"></TapGestureRecognizer>
-                        </Label.GestureRecognizers>
-                    </Label>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTapPlantilla_Tapped"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
 
-                    <!--TAB INDIVIDUAL-->
-                    <BoxView
+                <!--TAB INDIVIDUAL-->
+                <BoxView
                         x:Name="tabIndividual"
                         CornerRadius="10,10,0,0"
                         BackgroundColor="#CBCBCB"
                         Grid.Column="1 ">
-                        <BoxView.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnTapIndividual_Tapped"></TapGestureRecognizer>
-                        </BoxView.GestureRecognizers>
-                    </BoxView>
-                    <Label
+                    <BoxView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTapIndividual_Tapped"></TapGestureRecognizer>
+                    </BoxView.GestureRecognizers>
+                </BoxView>
+                <Label
                         x:Name="lblTabIndividual"
                         Text="Individual"
                         TextColor="#707070"
@@ -841,13 +821,31 @@
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Center"
                         VerticalTextAlignment="Center">
-                       <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnTapIndividual_Tapped"></TapGestureRecognizer>
-                        </Label.GestureRecognizers>
-                    </Label>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTapIndividual_Tapped"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
 
-                </Grid>
-                <!--TERMINA TABS Y CALENDARIO-->
+            </Grid>
+            <!--TERMINA TABS Y CALENDARIO-->
+            <!--CONTENIDO-->
+            <ScrollView>
+                <Grid
+                Margin="20,0,20,0"
+                ColumnSpacing="0"
+                RowSpacing="1"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="151"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                
                 
                 <!--META PLANTILLA-->
                 <Grid
@@ -855,7 +853,7 @@
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     IsVisible="True"
-                    Grid.Row="3"
+                    Grid.Row="0"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Margin="0"
@@ -1860,7 +1858,7 @@
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     IsVisible="False"
-                    Grid.Row="3"
+                    Grid.Row="0"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     Margin="0"
