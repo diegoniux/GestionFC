@@ -663,5 +663,57 @@ namespace GestionFC.Views
                 });
             }
         }
+
+        async void txtComisionSem_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            try
+            {
+                if (txtMetaComSem.Text.Trim().Replace("$","").Replace(",","") == "")
+                {
+                    txtMetaComSem.Text = "0";
+                    return;
+                }
+                var Comision = int.Parse(txtMetaComSem.Text.Trim().Replace("$", "").Replace(",", ""));
+
+
+                VisionBoardService service = new VisionBoardService();
+
+                var request = new MetaPlantillaComisionSemRequestModel()
+                {
+                    MetaComisionSem = new Models.Share.MetaComisionSemModel()
+                    {
+                        IdPeriodo = 1,
+                        Nomina = App.Nomina,
+                        ComisionSem = Comision
+                    }
+                };
+
+                await service.RegistrarMetaPlantillaComisionSem(request, token).ContinueWith(x =>
+                {
+                    if (x.IsFaulted)
+                    {
+                        throw x.Exception;
+                    }
+
+                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                    {
+                        throw new Exception(x.Result.ResultadoEjecucion.ErrorMessage);
+                    }
+
+                    ActualizaPantalla();
+                });
+
+            }
+            catch (Exception ex)
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    DisplayAlert("Error", ex.Message, "Ok");
+                });
+            }
+
+        }
+
+
     }
 }
