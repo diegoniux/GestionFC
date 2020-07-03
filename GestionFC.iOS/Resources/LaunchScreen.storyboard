@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="ipad9_7" orientation="portrait" appearance="light" layout="fullscreen"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -11,19 +12,27 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
-                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                        <viewControllerLayoutGuide type="top" id="6wc-Ww-cgY"/>
+                        <viewControllerLayoutGuide type="bottom" id="ozt-Ms-qb8"/>
                     </layoutGuides>
                     <view key="view" contentMode="center" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.3922021985" green="0.6530439854" blue="0.0414179638" alpha="1"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="399" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="logo_arbol">
-                                <rect key="frame" x="162" y="394" width="444" height="237"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_arbol" translatesAutoresizingMaskIntoConstraints="NO" id="399" semanticContentAttribute="spatial" highlighted="YES">
+                                <rect key="frame" x="235" y="394" width="298" height="237"/>
+                                <constraints>
+                                    <constraint id="1648" firstAttribute="width" secondItem="399" secondAttribute="height" multiplier="298:237"/>
+                                </constraints>
                             </imageView>
                         </subviews>
+                        <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.4434882998" green="0.7043524384" blue="0.09318033606" alpha="1"/>
+                        <constraints>
+                            <constraint id="1215" firstItem="399" firstAttribute="top" secondItem="6wc-Ww-cgY" secondAttribute="bottom" constant="374"/>
+                            <constraint id="1217" firstItem="399" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="215"/>
+                            <constraint id="1218" firstItem="ozt-Ms-qb8" firstAttribute="top" secondItem="399" secondAttribute="bottom" constant="393"/>
+                            <constraint id="1220" firstAttribute="trailingMargin" secondItem="399" secondAttribute="trailing" constant="215"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
