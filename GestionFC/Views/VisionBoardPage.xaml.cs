@@ -289,26 +289,29 @@ namespace GestionFC.Views
 
                 //Carga de Meta Plantilla
                 VisionBoardService service = new VisionBoardService();
-                await service.GetMetaPlantillaIndividual(nomina, token).ContinueWith(x =>
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
-                    if (x.IsFaulted)
+                    await service.GetMetaPlantillaIndividual(nomina, token).ContinueWith(x =>
                     {
-                        throw x.Exception;
-                    }
-
-                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                    {
-                        // vericamos si la sesión expiró (token)
-                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                        if (x.IsFaulted)
                         {
-                            SesionExpired = true;
-                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                            throw x.Exception;
                         }
-                    }
 
-                    ViewModel.GetMetaPlantillaIndividual = x.Result;
+                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                        {
+                            // vericamos si la sesión expiró (token)
+                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                            {
+                                SesionExpired = true;
+                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                            }
+                        }
 
-                });
+                        ViewModel.GetMetaPlantillaIndividual = x.Result;
+
+                    });
+                }
             }
             catch (Exception ex)
             {
