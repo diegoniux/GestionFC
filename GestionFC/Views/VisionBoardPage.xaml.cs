@@ -1,4 +1,4 @@
-using Acr.UserDialogs;
+﻿using Acr.UserDialogs;
 using GestionFC.Models.Log;
 using GestionFC.ViewModels.ProductividadPage;
 using GestionFC.ViewModels.VisionBoard;
@@ -10,7 +10,6 @@ using Service = GestionFC.Services;
 using System.Drawing;
 using GestionFC.Models.VisionBoard;
 using GestionFC.Services;
-using System.Collections.Generic;
 
 namespace GestionFC.Views
 {
@@ -25,8 +24,6 @@ namespace GestionFC.Views
         public VisionBoardViewModel ViewModel { get; set; }
         private Master _master;
         public bool SesionExpired { get; set; }
-        public GetMetaPlantillaResponseModel MetaPlantilla { get; set; }
-        public GetMetaPlantillaIndividualResponseModel MetaPlantillaIndividual { get; set; }
 
         public VisionBoardPage()
         {
@@ -107,25 +104,25 @@ namespace GestionFC.Views
                      });
 
                     //Carga de Plantilla Individual
-                    //await visionBoardService.GetMetaPlantillaIndividual(nomina,token).ContinueWith(x =>
-                    //{
-                    //    if (x.IsFaulted)
-                    //    {
-                    //        throw x.Exception;
-                    //    }
+                    await visionBoardService.GetMetaPlantillaIndividual(nomina,token).ContinueWith(x =>
+                    {
+                        if (x.IsFaulted)
+                        {
+                            throw x.Exception;
+                        }
 
-                    //    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                    //    {
-                    //        // vericamos si la sesión expiró (token)
-                    //        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                    //        {
-                    //            SesionExpired = true;
-                    //            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                    //        }
-                    //    }
+                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                        {
+                            // vericamos si la sesión expiró (token)
+                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                            {
+                                SesionExpired = true;
+                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                            }
+                        }
 
-                    //    ViewModel.GetMetaPlantillaIndividual = x.Result;
-                    //});
+                        ViewModel.GetMetaPlantillaIndividual = x.Result;
+                    });
 
                     //Guardamos genramos la inserción en bitácora (acceso de pantalla)
                     var logModel = new LogSistemaModel()
@@ -168,26 +165,6 @@ namespace GestionFC.Views
             }
             finally
             {
-                MetaPlantilla = new GetMetaPlantillaResponseModel()
-                {
-                    MetaPlantilla = new Models.Share.MetaPlantillaModel()
-                    {
-                        SaldoAcumuladoMeta = ViewModel.GetMetaPlantilla.MetaPlantilla.SaldoAcumuladoMeta,
-                        ComisionSem = ViewModel.GetMetaPlantilla.MetaPlantilla.ComisionSem
-                    },
-                    DetalleMetaPorDia = new Models.Share.MetaDiaModel()
-                    {
-                        SaldoLunes = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoLunes,
-                        SaldoMartes = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoMartes,
-                        SaldoMiercoles = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoMiercoles,
-                        SaldoJueves = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoJueves,
-                        SaldoViernes = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoViernes,
-                        SaldoSabado = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoSabado,
-                        SaldoDomingo = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoDomingo
-                    }
-                    
-                };
-
                 IsBusy = false;
             }
         }
@@ -224,6 +201,7 @@ namespace GestionFC.Views
 
         private async void OnTapPlantilla_Tapped(object sender, EventArgs e)
         {
+            if (isBusy) return;
 
             try
             {
@@ -239,32 +217,28 @@ namespace GestionFC.Views
                 gridIndividual.IsVisible = false;
                 CollecionViewMetasAP.IsVisible = false;
 
-
-                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                //Carga de Meta Plantilla
+                VisionBoardService service = new VisionBoardService();
+                await service.GetMetaPlantilla(nomina, token).ContinueWith(x =>
                 {
-                    //Carga de Meta Plantilla
-                    VisionBoardService service = new VisionBoardService();
-                    await service.GetMetaPlantilla(nomina, token).ContinueWith(x =>
+                    if (x.IsFaulted)
                     {
-                        if (x.IsFaulted)
+                        throw x.Exception;
+                    }
+
+                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                    {
+                        // vericamos si la sesión expiró (token)
+                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
                         {
-                            throw x.Exception;
+                            SesionExpired = true;
+                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
                         }
+                    }
 
-                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                        {
-                            // vericamos si la sesión expiró (token)
-                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                            {
-                                SesionExpired = true;
-                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                            }
-                        }
+                    ViewModel.GetMetaPlantilla = x.Result;
 
-                        ViewModel.GetMetaPlantilla = x.Result;
-
-                    });
-                }
+                });
             }
             catch (Exception ex)
             {
@@ -299,6 +273,8 @@ namespace GestionFC.Views
 
         private async void OnTapIndividual_Tapped(object sender, EventArgs e)
         {
+            if (isBusy) return;
+            isBusy = true;
             try
             {
                 gridPlantilla.IsVisible = false;
@@ -312,31 +288,28 @@ namespace GestionFC.Views
                 tabIndividual.BackgroundColor = Xamarin.Forms.Color.FromHex("#FFA400");
                 lblTabIndividual.TextColor = Xamarin.Forms.Color.FromHex("#FFFFFF");
 
-                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                //Carga de Meta Plantilla
+                VisionBoardService service = new VisionBoardService();
+                await service.GetMetaPlantillaIndividual(nomina, token).ContinueWith(x =>
                 {
-                    //Carga de Meta Plantilla
-                    VisionBoardService service = new VisionBoardService();
-                    await service.GetMetaPlantillaIndividual(nomina, token).ContinueWith(x =>
+                    if (x.IsFaulted)
                     {
-                        if (x.IsFaulted)
+                        throw x.Exception;
+                    }
+
+                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                    {
+                        // vericamos si la sesión expiró (token)
+                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
                         {
-                            throw x.Exception;
+                            SesionExpired = true;
+                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
                         }
+                    }
 
-                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                        {
-                            // vericamos si la sesión expiró (token)
-                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                            {
-                                SesionExpired = true;
-                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                            }
-                        }
+                    ViewModel.GetMetaPlantillaIndividual = x.Result;
 
-                        ViewModel.GetMetaPlantillaIndividual = x.Result;
-
-                    });
-                }
+                });
             }
             catch (Exception ex)
             {
@@ -364,20 +337,6 @@ namespace GestionFC.Views
             }
             finally
             {
-                MetaPlantillaIndividual = new GetMetaPlantillaIndividualResponseModel()
-                {
-                    ListMetaAp = new List<Models.Share.MetaAP>()
-                };
-                MetaPlantillaIndividual.ListMetaAp = new List<Models.Share.MetaAP>();
-                foreach (var item in ViewModel.GetMetaPlantillaIndividual.ListMetaAp)
-                {
-                    MetaPlantillaIndividual.ListMetaAp.Add(new Models.Share.MetaAP()
-                    {
-                        Nomina = item.Nomina,
-                        SaldoMeta = item.SaldoMeta
-                    });
-                }
-
                 isBusy = false;
             }
         }
@@ -402,7 +361,7 @@ namespace GestionFC.Views
 
             int meta = int.Parse(txtLunes.Text);
 
-            if (meta != MetaPlantilla.DetalleMetaPorDia.SaldoLunes)
+            if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoLunes)
             {
                 ActualizarMetaDia(1, meta);
             }
@@ -417,7 +376,7 @@ namespace GestionFC.Views
             }
 
             int meta = int.Parse(txtMartes.Text);
-            if (meta != MetaPlantilla.DetalleMetaPorDia.SaldoMartes)
+            if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoMartes)
             {
                 ActualizarMetaDia(2, meta);
             }
@@ -430,7 +389,7 @@ namespace GestionFC.Views
                 txtMiercoles.Text = "0";
             }
             int meta = int.Parse(txtMiercoles.Text);
-            if (meta != MetaPlantilla.DetalleMetaPorDia.SaldoMiercoles)
+            if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoMiercoles)
             {
                 ActualizarMetaDia(3, meta);
             }
@@ -443,7 +402,7 @@ namespace GestionFC.Views
                 txtJueves.Text = "0";
             }
             int meta = int.Parse(txtJueves.Text);
-            if (meta != MetaPlantilla.DetalleMetaPorDia.SaldoJueves)
+            if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoJueves)
             {
                 ActualizarMetaDia(4, meta);
             }
@@ -456,7 +415,7 @@ namespace GestionFC.Views
                 txtViernes.Text = "0";
             }
             int meta = int.Parse(txtViernes.Text);
-            if (meta != MetaPlantilla.DetalleMetaPorDia.SaldoViernes)
+            if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoViernes)
             {
                 ActualizarMetaDia(5, meta);
             }
@@ -469,7 +428,7 @@ namespace GestionFC.Views
                 txtSabado.Text = "0";
             }
             int meta = int.Parse(txtSabado.Text);
-            if (meta != MetaPlantilla.DetalleMetaPorDia.SaldoSabado)
+            if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoSabado)
             {
                 ActualizarMetaDia(6, meta);
             }
@@ -482,7 +441,7 @@ namespace GestionFC.Views
                 txtDomingo.Text = "0";
             }
             int meta = int.Parse(txtDomingo.Text);
-            if (meta != MetaPlantilla.DetalleMetaPorDia.SaldoDomingo)
+            if (meta != ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoDomingo)
             {
                 ActualizarMetaDia(7, meta);
             }
@@ -512,48 +471,18 @@ namespace GestionFC.Views
                         throw x.Exception;
                     }
 
-                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                    {
-                        // verificamos si la sesión expiró (token)
-                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                        {
-                            SesionExpired = true;
-                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                        }
-                    }
-
                     ActualizaPantalla();
 
                 });
             }
             catch (Exception ex)
             {
-
-                if (SesionExpired)
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    CerrarSesion();
-                    isBusy = false;
-                    return;
-                }
-
-                var logError = new Models.Log.LogErrorModel()
-                {
-                    IdPantalla = 6,
-                    Usuario = nomina,
-                    Error = ex.Message,
-                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
-                };
-                await _master.logService.LogError(logError, "").ContinueWith(logRes =>
-                {
-                    if (logRes.IsFaulted)
-                        DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                    DisplayAlert("Error", ex.Message, "Ok");
                 });
-                await DisplayAlert("Error", ex.Message, "Ok");
             }
-            finally
-            {
-                IsBusy = false;
-            }
+
         }
 
         async void ActualizaPantalla()
@@ -637,32 +566,10 @@ namespace GestionFC.Views
             }
             catch (Exception ex)
             {
-
-                if (SesionExpired)
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    CerrarSesion();
-                    isBusy = false;
-                    return;
-                }
-
-                var logError = new Models.Log.LogErrorModel()
-                {
-                    IdPantalla = 6,
-                    Usuario = nomina,
-                    Error = ex.Message,
-                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
-                };
-                await _master.logService.LogError(logError, "").ContinueWith(logRes =>
-                {
-                    if (logRes.IsFaulted)
-                        DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                    DisplayAlert("Error", ex.Message, "Ok");
                 });
-                await DisplayAlert("Error", ex.Message, "Ok");
-            }
-            finally
-            {
-                MetaPlantilla = ViewModel.GetMetaPlantilla;
-                IsBusy = false;
             }
         }
 
@@ -671,8 +578,8 @@ namespace GestionFC.Views
             try
             {
                 VisionBoardService service = new VisionBoardService();
-                if (int.Parse(txtMetaTraspasos.Text) == MetaPlantilla.MetaPlantilla.Traspasos &&
-                    int.Parse(txtMetaFCT.Text) == MetaPlantilla.MetaPlantilla.TraspasosFct)
+                if (int.Parse(txtMetaTraspasos.Text) == ViewModel.GetMetaPlantilla.MetaPlantilla.Traspasos &&
+                    int.Parse(txtMetaFCT.Text) == ViewModel.GetMetaPlantilla.MetaPlantilla.TraspasosFct)
                 {
                     return;
                 }
@@ -693,47 +600,15 @@ namespace GestionFC.Views
                     {
                         throw x.Exception;
                     }
-
-                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                    {
-                        // vericamos si la sesión expiró (token)
-                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                        {
-                            SesionExpired = true;
-                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                        }
-                    }
-
                 });
 
             }
             catch (Exception ex)
             {
-
-                if (SesionExpired)
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    CerrarSesion();
-                    isBusy = false;
-                    return;
-                }
-
-                var logError = new Models.Log.LogErrorModel()
-                {
-                    IdPantalla = 6,
-                    Usuario = nomina,
-                    Error = ex.Message,
-                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
-                };
-                await _master.logService.LogError(logError, "").ContinueWith(logRes =>
-                {
-                    if (logRes.IsFaulted)
-                        DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                    DisplayAlert("Error", ex.Message, "Ok");
                 });
-                await DisplayAlert("Error", ex.Message, "Ok");
-            }
-            finally
-            {
-                IsBusy = false;
             }
         }
 
@@ -741,11 +616,10 @@ namespace GestionFC.Views
         {
             try
             {
-                isBusy = true;
                 var entry = (Entry)sender;
 
                 var NominaAP = int.Parse(entry.ClassId);
-                var MetaAP = MetaPlantillaIndividual.ListMetaAp.Find(item => item.Nomina == NominaAP);
+                var MetaAP = ViewModel.GetMetaPlantillaIndividual.ListMetaAp.Find(item => item.Nomina == NominaAP);
 
                 var metaActual = int.Parse(MetaAP.SaldoMeta.Replace("$","").Replace(",","")); 
                 var nuevaMeta = int.Parse(entry.Text.Replace("$","").Replace(",",""));
@@ -775,15 +649,7 @@ namespace GestionFC.Views
 
                     if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                     {
-                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                        {
-                            // vericamos si la sesión expiró (token)
-                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                            {
-                                SesionExpired = true;
-                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                            }
-                        }
+                        throw new Exception(x.Result.ResultadoEjecucion.ErrorMessage);
                     }
 
                     ActualizaPantalla();
@@ -792,31 +658,10 @@ namespace GestionFC.Views
             }
             catch (Exception ex)
             {
-
-                if (SesionExpired)
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    CerrarSesion();
-                    isBusy = false;
-                    return;
-                }
-
-                var logError = new Models.Log.LogErrorModel()
-                {
-                    IdPantalla = 6,
-                    Usuario = nomina,
-                    Error = ex.Message,
-                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
-                };
-                await _master.logService.LogError(logError, "").ContinueWith(logRes =>
-                {
-                    if (logRes.IsFaulted)
-                        DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                    DisplayAlert("Error", ex.Message, "Ok");
                 });
-                await DisplayAlert("Error", ex.Message, "Ok");
-            }
-            finally
-            {
-                IsBusy = false;
             }
         }
 
@@ -829,17 +674,8 @@ namespace GestionFC.Views
                     txtMetaComSem.Text = "0";
                     return;
                 }
-
-                var entry = (Entry)sender;
-
-                var comisionActual = int.Parse(MetaPlantilla.MetaPlantilla.ComisionSem.Replace("$", "").Replace(",", ""));
-
                 var Comision = int.Parse(txtMetaComSem.Text.Trim().Replace("$", "").Replace(",", ""));
 
-                if (comisionActual == Comision)
-                {
-                    return;
-                }
 
                 VisionBoardService service = new VisionBoardService();
 
@@ -862,12 +698,7 @@ namespace GestionFC.Views
 
                     if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                     {
-                        // vericamos si la sesión expiró (token)
-                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                        {
-                            SesionExpired = true;
-                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                        }
+                        throw new Exception(x.Result.ResultadoEjecucion.ErrorMessage);
                     }
 
                     ActualizaPantalla();
@@ -876,108 +707,14 @@ namespace GestionFC.Views
             }
             catch (Exception ex)
             {
-
-                if (SesionExpired)
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    CerrarSesion();
-                    isBusy = false;
-                    return;
-                }
-
-                var logError = new Models.Log.LogErrorModel()
-                {
-                    IdPantalla = 6,
-                    Usuario = nomina,
-                    Error = ex.Message,
-                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
-                };
-                await _master.logService.LogError(logError, "").ContinueWith(logRes =>
-                {
-                    if (logRes.IsFaulted)
-                        DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                    DisplayAlert("Error", ex.Message, "Ok");
                 });
-                await DisplayAlert("Error", ex.Message, "Ok");
-            }
-            finally
-            {
-                IsBusy = false;
             }
 
         }
 
-        async void txtTotal_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
-        {
-            try
-            {
-                if (txtTotal.Text.Trim().Replace("$", "").Replace(",", "") == "")
-                {
-                    txtTotal.Text = "0";
-                    return;
-                }
-                var TotalSaldoAcumulado = int.Parse(txtTotal.Text.Trim().Replace("$", "").Replace(",", ""));
 
-
-                VisionBoardService service = new VisionBoardService();
-
-                var request = new MetaPlantillaSaldoAcumuladoRequestModel()
-                {
-                    MetaSaldoAcumulado = new Models.Share.MetaSaldoAcumuladoModel()
-                    {
-                        IdPeriodo = 1,
-                        Nomina = App.Nomina,
-                        SaldoAcumuladoMeta = TotalSaldoAcumulado
-                    }
-                };
-
-                await service.RegistrarMetaPlantillaSaldoAcumulado(request, token).ContinueWith(x =>
-                {
-                    if (x.IsFaulted)
-                    {
-                        throw x.Exception;
-                    }
-
-                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                    {
-                        // vericamos si la sesión expiró (token)
-                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                        {
-                            SesionExpired = true;
-                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                        }
-                    }
-
-                    ActualizaPantalla();
-                });
-
-            }
-            catch (Exception ex)
-            {
-
-                if (SesionExpired)
-                {
-                    CerrarSesion();
-                    isBusy = false;
-                    return;
-                }
-
-                var logError = new Models.Log.LogErrorModel()
-                {
-                    IdPantalla = 6,
-                    Usuario = nomina,
-                    Error = ex.Message,
-                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
-                };
-                await _master.logService.LogError(logError, "").ContinueWith(logRes =>
-                {
-                    if (logRes.IsFaulted)
-                        DisplayAlert("Error", logRes.Exception.Message, "Ok");
-                });
-                await DisplayAlert("Error", ex.Message, "Ok");
-            }
-            finally
-            {
-                IsBusy = false;
-            }
-        }
     }
 }
