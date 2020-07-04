@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:renderers="clr-namespace:GestionFC.Renderers" 
+             xmlns:renderers="clr-namespace:GestionFC.Renderers"
+             xmlns:util="clr-namespace:GestionFC.Converters;assembly=GestionFC" 
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
              xmlns:fFImageLoadingTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              mc:Ignorable="d"
@@ -25,6 +26,8 @@
                 </VisualStateGroupList>
             </Setter>
         </Style>
+
+        <util:CurrencyConverter x:Key="currencyConverter" />
     </ContentPage.Resources>
     <RelativeLayout>
             <StackLayout 
@@ -1398,11 +1401,10 @@
                         FontSize="18">
                     </Label>
 
-                   <renderers:EntryIcon
+                   <Entry
                         x:Name="txtTotal"
-                        Text="{Binding GetMetaPlantilla.MetaPlantilla.SaldoAcumuladoMeta}"
+                        Text="{Binding GetMetaPlantilla.MetaPlantilla.SaldoAcumuladoMeta, Converter={StaticResource currencyConverter}}"
                         Keyboard="Numeric"
-                        CornerRadius="5"
                         MaxLength="10"
                         FontFamily="{StaticResource Poppins-Bold}"
                         TextColor="#353535"
@@ -1417,7 +1419,7 @@
                         Grid.Column="7"
                         Margin="1"
                         Unfocused="txtTotal_Unfocused">
-                    </renderers:EntryIcon>
+                    </Entry>
 
                     <!--Grid comisión estimada Semanal-->
                     <Grid

@@ -909,12 +909,12 @@ namespace GestionFC.Views
         {
             try
             {
-                if (txtTotal.Text.Trim().Replace("$", "").Replace(",", "") == "")
-                {
-                    txtTotal.Text = "0";
-                    return;
-                }
-                var TotalSaldoAcumulado = int.Parse(txtTotal.Text.Trim().Replace("$", "").Replace(",", ""));
+                //if (txtTotal.Text.Trim().Replace("$", "").Replace(",", "") == "")
+                //{
+                //    txtTotal.Text = "0";
+                //    return;
+                //}
+                //var TotalSaldoAcumulado = int.Parse(txtTotal.Text.Trim().Replace("$", "").Replace(",", ""));
 
 
                 VisionBoardService service = new VisionBoardService();
@@ -925,8 +925,8 @@ namespace GestionFC.Views
                     {
                         IdPeriodo = 1,
                         Nomina = App.Nomina,
-                        SaldoAcumuladoMeta = TotalSaldoAcumulado
-                    }
+                        SaldoAcumuladoMeta = int.Parse(txtTotal.Text.Trim().Replace("$", "").Replace(",", ""))
+            }
                 };
 
                 await service.RegistrarMetaPlantillaSaldoAcumulado(request, token).ContinueWith(x =>
