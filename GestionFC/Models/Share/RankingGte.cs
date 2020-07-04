@@ -13,6 +13,7 @@ namespace GestionFC.Models.Share
         public int NumTraspaso { get; set; }
         public string ImgPosicionSemAnt { get; set; }
         public string ColorPosicion { get; set; }
+        public string ColorTextoSaldo { get; set; }
         public RankEstrellas Estrellas { get; set; }
     }
 }

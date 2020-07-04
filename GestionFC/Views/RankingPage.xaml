@@ -1161,6 +1161,7 @@
                                            Grid.Row="0"
                                            HorizontalTextAlignment="Center"
                                            FontAttributes="Bold"
+                                           TextColor="{Binding ColorTextoSaldo}"
                                            FontSize="14"
                                            FontFamily="Helvetica"></Label>
                                     <Label Text="{Binding TipoSaldo}"
@@ -1169,6 +1170,7 @@
                                            HorizontalTextAlignment="Center"
                                            VerticalTextAlignment="Center"
                                            FontSize="10"
+                                           TextColor="{Binding ColorTextoSaldo}"
                                            FontFamily="Helvetica"></Label>
                                 </Grid>
                                 <Grid Grid.Column="5"
