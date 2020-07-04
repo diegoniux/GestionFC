@@ -264,6 +264,10 @@ namespace GestionFC.Views
 
             string notifyGreen = "notification_circle_green.png";
             string notifyGray = "notification_circle_grey.png";
+            string colorBoxGreen = "#71B417";
+            string colorBoxGray = "#CBCBCB";
+            string colorTextEnable = "#FFFFFF";
+            string colorTextDisable = "#707070";
             switch (tab)
             {
                 case 1:
@@ -274,14 +278,14 @@ namespace GestionFC.Views
                     imgNotifyRecuperacion.Source = notifyGray;
                     imgNotifyInvestigacion.Source = notifyGray;
                     imgNotifyFolioPendientesSV.Source = notifyGray;
-                    BVPlantillaImproductiva.BackgroundColor = Color.FromHex("#64A70B");
-                    BVPlantillaRecuperacion.BackgroundColor = Color.FromHex("#F3F3F3");
-                    BVPlantillaInvestigacion.BackgroundColor = Color.FromHex("#F3F3F3");
-                    BVFoliosPendientesSV.BackgroundColor = Color.FromHex("#F3F3F3");
-                    lblPlantillaImproductiva.TextColor = Color.FromHex("#FFFFFF");
-                    lblPlantillaRecuperacion.TextColor = Color.FromHex("#C4C4C4");
-                    lblPlantillaInvestigacion.TextColor = Color.FromHex("#C4C4C4");
-                    lblFoliosPendientesSV.TextColor = Color.FromHex("#C4C4C4");
+                    BVPlantillaImproductiva.BackgroundColor = Color.FromHex(colorBoxGreen);
+                    BVPlantillaRecuperacion.BackgroundColor = Color.FromHex(colorBoxGray);
+                    BVPlantillaInvestigacion.BackgroundColor = Color.FromHex(colorBoxGray);
+                    BVFoliosPendientesSV.BackgroundColor = Color.FromHex(colorBoxGray);
+                    lblPlantillaImproductiva.TextColor = Color.FromHex(colorTextEnable);
+                    lblPlantillaRecuperacion.TextColor = Color.FromHex(colorTextDisable);
+                    lblPlantillaInvestigacion.TextColor = Color.FromHex(colorTextDisable);
+                    lblFoliosPendientesSV.TextColor = Color.FromHex(colorTextDisable);
                     break;
                 case 2:
                     FolioSearch.IsVisible = false;
@@ -291,14 +295,14 @@ namespace GestionFC.Views
                     imgNotifyRecuperacion.Source = notifyGreen;
                     imgNotifyInvestigacion.Source = notifyGray;
                     imgNotifyFolioPendientesSV.Source = notifyGray;
-                    BVPlantillaImproductiva.BackgroundColor = Color.FromHex("#F3F3F3");
-                    BVPlantillaRecuperacion.BackgroundColor = Color.FromHex("#64A70B");
-                    BVPlantillaInvestigacion.BackgroundColor = Color.FromHex("#F3F3F3");
-                    BVFoliosPendientesSV.BackgroundColor = Color.FromHex("#F3F3F3");
-                    lblPlantillaImproductiva.TextColor = Color.FromHex("#C4C4C4");
-                    lblPlantillaRecuperacion.TextColor = Color.FromHex("#FFFFFF");
-                    lblPlantillaInvestigacion.TextColor = Color.FromHex("#C4C4C4");
-                    lblFoliosPendientesSV.TextColor = Color.FromHex("#C4C4C4");
+                    BVPlantillaImproductiva.BackgroundColor = Color.FromHex(colorBoxGray);
+                    BVPlantillaRecuperacion.BackgroundColor = Color.FromHex(colorBoxGreen);
+                    BVPlantillaInvestigacion.BackgroundColor = Color.FromHex(colorBoxGray);
+                    BVFoliosPendientesSV.BackgroundColor = Color.FromHex(colorBoxGray);
+                    lblPlantillaImproductiva.TextColor = Color.FromHex(colorTextDisable);
+                    lblPlantillaRecuperacion.TextColor = Color.FromHex(colorTextEnable);
+                    lblPlantillaInvestigacion.TextColor = Color.FromHex(colorTextDisable);
+                    lblFoliosPendientesSV.TextColor = Color.FromHex(colorTextDisable);
                     break;
                 case 3:
                     FolioSearch.IsVisible = false;
@@ -308,14 +312,14 @@ namespace GestionFC.Views
                     imgNotifyRecuperacion.Source = notifyGray;
                     imgNotifyInvestigacion.Source = notifyGreen;
                     imgNotifyFolioPendientesSV.Source = notifyGray;
-                    BVPlantillaImproductiva.BackgroundColor = Color.FromHex("#F3F3F3");
-                    BVPlantillaRecuperacion.BackgroundColor = Color.FromHex("#F3F3F3");
-                    BVPlantillaInvestigacion.BackgroundColor = Color.FromHex("#64A70B");
-                    BVFoliosPendientesSV.BackgroundColor = Color.FromHex("#F3F3F3");
-                    lblPlantillaImproductiva.TextColor = Color.FromHex("#C4C4C4");
-                    lblPlantillaRecuperacion.TextColor = Color.FromHex("#C4C4C4");
-                    lblPlantillaInvestigacion.TextColor = Color.FromHex("#FFFFFF");
-                    lblFoliosPendientesSV.TextColor = Color.FromHex("#C4C4C4");
+                    BVPlantillaImproductiva.BackgroundColor = Color.FromHex(colorBoxGray);
+                    BVPlantillaRecuperacion.BackgroundColor = Color.FromHex(colorBoxGray);
+                    BVPlantillaInvestigacion.BackgroundColor = Color.FromHex(colorBoxGreen);
+                    BVFoliosPendientesSV.BackgroundColor = Color.FromHex(colorBoxGray);
+                    lblPlantillaImproductiva.TextColor = Color.FromHex(colorTextDisable);
+                    lblPlantillaRecuperacion.TextColor = Color.FromHex(colorTextDisable);
+                    lblPlantillaInvestigacion.TextColor = Color.FromHex(colorTextEnable);
+                    lblFoliosPendientesSV.TextColor = Color.FromHex(colorTextDisable);
                     break;
                 case 4:
                     FolioSearch.IsVisible = true;
@@ -325,14 +329,14 @@ namespace GestionFC.Views
                     imgNotifyRecuperacion.Source = notifyGray;
                     imgNotifyInvestigacion.Source = notifyGray;
                     imgNotifyFolioPendientesSV.Source = notifyGreen;
-                    BVPlantillaImproductiva.BackgroundColor = Color.FromHex("#F3F3F3");
-                    BVPlantillaRecuperacion.BackgroundColor = Color.FromHex("#F3F3F3");
-                    BVPlantillaInvestigacion.BackgroundColor = Color.FromHex("#F3F3F3");
-                    BVFoliosPendientesSV.BackgroundColor = Color.FromHex("#64A70B");
-                    lblPlantillaImproductiva.TextColor = Color.FromHex("#C4C4C4");
-                    lblPlantillaRecuperacion.TextColor = Color.FromHex("#C4C4C4");
-                    lblPlantillaInvestigacion.TextColor = Color.FromHex("#C4C4C4");
-                    lblFoliosPendientesSV.TextColor = Color.FromHex("#FFFFFF");
+                    BVPlantillaImproductiva.BackgroundColor = Color.FromHex(colorBoxGray);
+                    BVPlantillaRecuperacion.BackgroundColor = Color.FromHex(colorBoxGray);
+                    BVPlantillaInvestigacion.BackgroundColor = Color.FromHex(colorBoxGray);
+                    BVFoliosPendientesSV.BackgroundColor = Color.FromHex(colorBoxGreen);
+                    lblPlantillaImproductiva.TextColor = Color.FromHex(colorTextDisable);
+                    lblPlantillaRecuperacion.TextColor = Color.FromHex(colorTextDisable);
+                    lblPlantillaInvestigacion.TextColor = Color.FromHex(colorTextDisable);
+                    lblFoliosPendientesSV.TextColor = Color.FromHex(colorTextEnable);
                     break;
                 default:
                     FolioSearch.IsVisible = false;
@@ -342,14 +346,14 @@ namespace GestionFC.Views
                     imgNotifyRecuperacion.Source = notifyGray;
                     imgNotifyInvestigacion.Source = notifyGray;
                     imgNotifyFolioPendientesSV.Source = notifyGray;
-                    BVPlantillaImproductiva.BackgroundColor = Color.FromHex("#64A70B");
-                    BVPlantillaRecuperacion.BackgroundColor = Color.FromHex("#F3F3F3");
-                    BVPlantillaInvestigacion.BackgroundColor = Color.FromHex("#F3F3F3");
-                    BVFoliosPendientesSV.BackgroundColor = Color.FromHex("#F3F3F3");
-                    lblPlantillaImproductiva.TextColor = Color.FromHex("#FFFFFF");
-                    lblPlantillaRecuperacion.TextColor = Color.FromHex("#C4C4C4");
-                    lblPlantillaInvestigacion.TextColor = Color.FromHex("#C4C4C4");
-                    lblFoliosPendientesSV.TextColor = Color.FromHex("#C4C4C4");
+                    BVPlantillaImproductiva.BackgroundColor = Color.FromHex(colorBoxGreen);
+                    BVPlantillaRecuperacion.BackgroundColor = Color.FromHex(colorBoxGray);
+                    BVPlantillaInvestigacion.BackgroundColor = Color.FromHex(colorBoxGray);
+                    BVFoliosPendientesSV.BackgroundColor = Color.FromHex(colorBoxGray);
+                    lblPlantillaImproductiva.TextColor = Color.FromHex(colorTextEnable);
+                    lblPlantillaRecuperacion.TextColor = Color.FromHex(colorTextDisable);
+                    lblPlantillaInvestigacion.TextColor = Color.FromHex(colorTextDisable);
+                    lblFoliosPendientesSV.TextColor = Color.FromHex(colorTextDisable);
                     break;
             }
         }

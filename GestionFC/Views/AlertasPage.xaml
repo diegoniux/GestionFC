@@ -810,11 +810,12 @@
                             <BoxView
                                 x:Name="BVPlantillaImproductiva"
                                 CornerRadius="10,10,0,0"
-                                BackgroundColor="#64A70B"/>
+                                BackgroundColor="#71B417"/>
                             <Label
                                 x:Name="lblPlantillaImproductiva"
                                 FontFamily="Helvetica"
-                                FontSize="12"
+                                FontAttributes="Bold"
+                                FontSize="14"
                                 TextColor="#FFFFFF"                       
                                 Text="Plantilla improductiva"
                                 HorizontalOptions="Center"
@@ -833,7 +834,7 @@
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 x:Name="imgNotifyImproductiva"
-                                Source="notification_circle_grey.png"/>
+                                Source="notification_circle_green.png"/>
                             <Label 
                                 HorizontalOptions="Center"
                                 Margin="1,3,0,0"
@@ -859,7 +860,7 @@
                             <BoxView
                                 x:Name="BVPlantillaRecuperacion"
                                 CornerRadius="10,10,0,0"
-                                BackgroundColor="#F3F3F3"
+                                BackgroundColor="#CBCBCB"
                                 Grid.Column="0">
                             </BoxView>
                             <Label
@@ -867,8 +868,9 @@
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center"
                                 FontFamily="Helvetica"
-                                FontSize="12"
-                                TextColor="#C4C4C4"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                TextColor="#707070"
                                 Grid.Column="0"
                                 Text="Plantilla en recuperación">
                             </Label>
@@ -912,7 +914,7 @@
                             <BoxView
                                 x:Name="BVPlantillaInvestigacion"
                                 CornerRadius="10,10,0,0"
-                                BackgroundColor="#F3F3F3"
+                                BackgroundColor="#CBCBCB"
                                 Grid.Column="0"/>
 
                             <Label
@@ -920,8 +922,9 @@
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center"
                                 FontFamily="Helvetica"
-                                FontSize="12"
-                                TextColor="#C4C4C4"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                TextColor="#707070"
                                 Grid.Column="0"
                                 Text="Plantilla en investigación"/>
                         </Grid>
@@ -964,7 +967,7 @@
                             <BoxView
                                 x:Name="BVFoliosPendientesSV"
                                 CornerRadius="10,10,0,0"
-                                BackgroundColor="#F3F3F3"
+                                BackgroundColor="#CBCBCB"
                                 Grid.Column="0"/>
                             <Label
                                 x:Name="lblFoliosPendientesSV"
@@ -972,8 +975,9 @@
                                 VerticalOptions="Center"
                                 Margin="4,0,0,0"
                                 FontFamily="Helvetica"
-                                FontSize="12"
-                                TextColor="#C4C4C4"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                TextColor="#707070"
                                 Grid.Column="0"
                                 Text="Folios pendientes Saldo Virtual"/>
                         </Grid>
