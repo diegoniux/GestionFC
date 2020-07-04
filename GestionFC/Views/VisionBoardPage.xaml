@@ -943,7 +943,7 @@
                     </BoxView>
                     <renderers:EntryIcon
                         x:Name="txtMetaTraspasos"
-                        Text="{Binding GetMetaPlantilla.MetaPlantilla.Traspasos, Mode=OneWay}"
+                        Text="{Binding GetMetaPlantilla.MetaPlantilla.Traspasos}"
                         Keyboard="Numeric"
                         MaxLength="4"
                         CornerRadius="10"
@@ -989,7 +989,7 @@
                     </BoxView>
                     <renderers:EntryIcon
                         x:Name="txtMetaFCT"
-                        Text="{Binding GetMetaPlantilla.MetaPlantilla.TraspasosFct, Mode=OneWay}"
+                        Text="{Binding GetMetaPlantilla.MetaPlantilla.TraspasosFct}"
                         Keyboard="Numeric"
                         MaxLength="4"
                         CornerRadius="10"
@@ -1026,7 +1026,7 @@
                         FontSize="21">
                     </Label>
                     <Label
-                        Text="{Binding GetMetaPlantilla.FechasSemana.FechaLunes, Mode=OneWay}"
+                        Text="{Binding GetMetaPlantilla.FechasSemana.FechaLunes}"
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Center"
                         Grid.Row="2"
@@ -1041,7 +1041,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtLunes"
-                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoLunes, Mode=OneWay}"
+                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoLunes}"
                         Keyboard="Numeric"
                         MaxLength="4"
                         CornerRadius="5"
@@ -1094,7 +1094,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtMartes"
-                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoMartes, Mode=OneWay}"
+                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoMartes}"
                         Keyboard="Numeric"
                         MaxLength="4"
                         CornerRadius="5"
@@ -1147,7 +1147,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtMiercoles"
-                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoMiercoles, Mode=OneWay}"
+                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoMiercoles}"
                         Keyboard="Numeric"
                         MaxLength="4"
                         CornerRadius="5"
@@ -1200,7 +1200,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtJueves"
-                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoJueves, Mode=OneWay}"
+                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoJueves}"
                         Keyboard="Numeric"
                         MaxLength="4"
                         CornerRadius="5"
@@ -1253,7 +1253,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtViernes"
-                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoViernes, Mode=OneWay}"
+                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoViernes}"
                         Keyboard="Numeric"
                         MaxLength="4"
                         CornerRadius="5"
@@ -1306,7 +1306,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtSabado"
-                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoSabado, Mode=OneWay}"
+                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoSabado}"
                         Keyboard="Numeric"
                         MaxLength="4"
                         CornerRadius="5"
@@ -1359,7 +1359,7 @@
 
                     <renderers:EntryIcon
                         x:Name="txtDomingo"
-                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoDomingo, Mode=OneWay}"
+                        Text="{Binding GetMetaPlantilla.DetalleMetaPorDia.SaldoDomingo}"
                         Keyboard="Numeric"
                         MaxLength="4"
                         CornerRadius="5"
@@ -1398,21 +1398,26 @@
                         FontSize="18">
                     </Label>
 
-                    <Label
-                        Text="{Binding GetMetaPlantilla.MetaPlantilla.SaldoAcumuladoMeta, Mode=OneWay}"
-                        VerticalTextAlignment="Center"
-                        HorizontalTextAlignment="Center"
-                        Grid.Row="3"
-                        Grid.Column="7"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        BackgroundColor="#f9f9f9"
+                   <renderers:EntryIcon
+                        x:Name="txtTotal"
+                        Text="{Binding GetMetaPlantilla.MetaPlantilla.SaldoAcumuladoMeta}"
+                        Keyboard="Numeric"
+                        CornerRadius="5"
+                        MaxLength="10"
+                        FontFamily="{StaticResource Poppins-Bold}"
                         TextColor="#353535"
                         FontAttributes="Bold"
-                        FontFamily="{StaticResource Poppins-Bold}"
                         FontSize="18"
-                        Margin="1">
-                    </Label>
+                        BackgroundColor="#f9f9f9" 
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        Grid.Row="3"
+                        Grid.Column="7"
+                        Margin="1"
+                        Unfocused="txtTotal_Unfocused">
+                    </renderers:EntryIcon>
 
                     <!--Grid comisión estimada Semanal-->
                     <Grid
@@ -1526,7 +1531,7 @@
                         </Label>
 
                         <Label
-                            Text="{Binding GetMetaPlantilla.MetaPlantilla.SemanaTetraSemana, Mode=OneWay}"
+                            Text="{Binding GetMetaPlantilla.MetaPlantilla.SemanaTetraSemana}"
                             FontSize="25"
                             TextColor="#FFA400"
                             BackgroundColor="Transparent"
@@ -1552,7 +1557,7 @@
                         </BoxView>
 
                         <Label
-                            Text="{Binding GetMetaPlantilla.MetaPlantilla.MaxSemanas, Mode=OneWay}"
+                            Text="{Binding GetMetaPlantilla.MetaPlantilla.MaxSemanas}"
                             FontSize="25"
                             TextColor="#B8B6B6"
                             FontAttributes="Bold"
@@ -1594,9 +1599,9 @@
 
                             <renderers:EntryIcon
                                 x:Name="txtMetaComSem"
-                                Text="{Binding GetMetaPlantilla.MetaPlantilla.ComisionSem, Mode=OneWay}"
+                                Text="{Binding GetMetaPlantilla.MetaPlantilla.ComisionSem}"
                                 Keyboard="Numeric"
-                                MaxLength="9"
+                                MaxLength="10"
                                 CornerRadius="15"
                                 FontFamily="{StaticResource Poppins-Bold}"
                                 FontAttributes="Bold"
@@ -1773,9 +1778,9 @@
                         </BoxView>
                         <renderers:EntryIcon
                             x:Name="txtBonoDes"
-                            Text="{Binding GetMetaPlantilla.MetaPlantilla.BonoDesarrollo, Mode=OneWay}"
+                            Text="{Binding GetMetaPlantilla.MetaPlantilla.BonoDesarrollo}"
                             Keyboard="Numeric"
-                            MaxLength="8"
+                            MaxLength="10"
                             CornerRadius="10"
                             FontFamily="{StaticResource Poppins-Bold}"
                             FontAttributes="Bold"
@@ -1804,9 +1809,9 @@
                         </BoxView>
                         <renderers:EntryIcon
                             x:Name="txtBonoExc"
-                            Text="{Binding GetMetaPlantilla.MetaPlantilla.BonoExcelencia, Mode=OneWay}"
+                            Text="{Binding GetMetaPlantilla.MetaPlantilla.BonoExcelencia}"
                             Keyboard="Numeric"
-                            MaxLength="8"
+                            MaxLength="10"
                             CornerRadius="10"
                             FontFamily="{StaticResource Poppins-Bold}"
                             FontAttributes="Bold"
@@ -1836,7 +1841,7 @@
                         </BoxView>
 
                         <Label
-                            Text="{Binding GetMetaPlantilla.MetaPlantilla.TotalTetra, Mode=OneWay}"
+                            Text="{Binding GetMetaPlantilla.MetaPlantilla.TotalTetra}"
                             FontSize="16"
                             TextColor="#353535"
                             FontAttributes="Bold"
@@ -1922,9 +1927,9 @@
                         </BoxView>
                         <renderers:EntryIcon
                             x:Name="txtComEstGerente"
-                            Text="{Binding GetMetaPlantillaIndividual.ComisionEstimada, Mode=OneWay}"
+                            Text="{Binding GetMetaPlantillaIndividual.ComisionEstimada}"
                             Keyboard="Numeric"
-                            MaxLength="9"
+                            MaxLength="10"
                             CornerRadius="10"
                             FontFamily="{StaticResource Poppins-Bold}"
                             PlaceholderColor="#C4C4C4"
@@ -1950,7 +1955,7 @@
                         x:Name="CollecionViewMetasAP"
                         IsVisible="False"
                         SelectionMode="Single"
-                        ItemsSource="{Binding GetMetaPlantillaIndividual.ListMetaAp, Mode=OneWay}"
+                        ItemsSource="{Binding GetMetaPlantillaIndividual.ListMetaAp}"
                         Grid.Column="0"
                         Grid.ColumnSpan="6"
                         Grid.Row="1"
@@ -2068,9 +2073,9 @@
                                     </BoxView>
                                     <renderers:EntryIcon
                                         x:Name="txtMetaSaldo"
-                                        Text="{Binding SaldoMeta, Mode=OneWay}"
+                                        Text="{Binding SaldoMeta}"
                                         Keyboard="Numeric"
-                                        MaxLength="8"
+                                        MaxLength="10"
                                         CornerRadius="10"
                                         FontFamily="{StaticResource Poppins-Bold}"
                                         PlaceholderColor="#C4C4C4"
@@ -2087,9 +2092,6 @@
                                         FontSize="16"
                                         ClassId="{Binding Nomina}"
                                         Unfocused="txtMetaSaldo_Unfocused">
-                                        <!--<renderers:EntryIcon.Behaviors>
-                                            <renderers:NumericValidationBehavior />
-                                        </renderers:EntryIcon.Behaviors>-->
                                     </renderers:EntryIcon>
 
 
@@ -2120,9 +2122,9 @@
                                     </BoxView>
                                     <renderers:EntryIcon
                                         x:Name="txtComEst"
-                                        Text="{Binding ComisionEstimada, Mode=OneWay}"
+                                        Text="{Binding ComisionEstimada}"
                                         Keyboard="Numeric"
-                                        MaxLength="8"
+                                        MaxLength="10"
                                         CornerRadius="10"
                                         FontFamily="{StaticResource Poppins-Bold}"
                                         PlaceholderColor="#C4C4C4"

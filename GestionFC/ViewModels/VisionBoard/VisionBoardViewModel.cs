@@ -100,7 +100,7 @@ namespace GestionFC.ViewModels.VisionBoard
             set 
             { 
                 metaPlantilla = value;
-                RaisePropertyChanged(nameof(MetaPlantillaResponseModel));
+                RaisePropertyChanged(nameof(MetaPlantilla));
             }
         }
 
@@ -127,13 +127,5 @@ namespace GestionFC.ViewModels.VisionBoard
                 RaisePropertyChanged(nameof(MetaPlantillaFolios));
             }
         }
-
-
-
-
-
-
-
-
     }
 }

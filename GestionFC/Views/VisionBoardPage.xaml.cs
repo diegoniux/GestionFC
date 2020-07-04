@@ -18,6 +18,7 @@ namespace GestionFC.Views
     public partial class VisionBoardPage : ContentPage
     {
         private int nomina { get; set; }
+
         private string token { get; set; }
         private bool isBusy = false;
         public VisionBoardViewModel ViewModel { get; set; }

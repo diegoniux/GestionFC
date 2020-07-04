@@ -1248,6 +1248,7 @@
                                         FontFamily="Helvetica">
                                     </Label>
                                     <Grid 
+                                            IsVisible="{Binding BanderaCalendar}"
                                             Grid.Column="2"
                                             Grid.RowSpan="2"
                                             Margin="10,1,10,1"
