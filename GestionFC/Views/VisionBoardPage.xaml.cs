@@ -1,4 +1,4 @@
-﻿using Acr.UserDialogs;
+using Acr.UserDialogs;
 using GestionFC.Models.Log;
 using GestionFC.ViewModels.ProductividadPage;
 using GestionFC.ViewModels.VisionBoard;
@@ -310,7 +310,6 @@ namespace GestionFC.Views
 
                 tabIndividual.BackgroundColor = Xamarin.Forms.Color.FromHex("#FFA400");
                 lblTabIndividual.TextColor = Xamarin.Forms.Color.FromHex("#FFFFFF");
-
 
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
