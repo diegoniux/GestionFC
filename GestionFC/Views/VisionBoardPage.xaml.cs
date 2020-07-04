@@ -942,12 +942,12 @@ namespace GestionFC.Views
         {
             try
             {
-                //if (txtTotal.Text.Trim().Replace("$", "").Replace(",", "") == "")
-                //{
-                //    txtTotal.Text = "0";
-                //    return;
-                //}
-                //var TotalSaldoAcumulado = int.Parse(txtTotal.Text.Trim().Replace("$", "").Replace(",", ""));
+                if (txtTotal.Text.Trim().Replace("$", "").Replace(",", "") == "")
+                {
+                    txtTotal.Text = "0";
+                    return;
+                }
+                var TotalSaldoAcumulado = int.Parse(txtTotal.Text.Trim().Replace("$", "").Replace(",", ""));
 
 
                 VisionBoardService service = new VisionBoardService();
