@@ -7,6 +7,7 @@
              xmlns:util="clr-namespace:GestionFC.Converters;assembly=GestionFC" 
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
              xmlns:fFImageLoadingTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:control="clr-namespace:Xamarin.Forms.MaskedEntry;assembly=Xamarin.Forms.MaskedEntry"
              mc:Ignorable="d"
              x:Class="GestionFC.Views.VisionBoardPage"
              BackgroundColor="#F0F0F1">
@@ -1623,6 +1624,28 @@
                                 </renderers:EntryIcon.Behaviors>-->
                         </renderers:EntryIcon>
 
+                        <!--<control:MaskedEntry
+                                x:Name="txtMetaComSem"
+                                Text="{Binding GetMetaPlantilla.MetaPlantilla.ComisionSem}"
+                                Keyboard="Numeric"
+                                MaxLength="10"
+                                FontFamily="{StaticResource Poppins-Bold}"
+                                FontAttributes="Bold"
+                                TextColor="#353535"
+                                FontSize="16"
+                                BackgroundColor="#FFFFFF" 
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                HeightRequest="40"
+                                Margin="2"
+                                Unfocused="txtComisionSem_Unfocused"
+                                Mask="$#,#">
+                                <renderers:EntryIcon.Behaviors>
+                                    <renderers:CurrencyValidationBehavior />
+                                </renderers:EntryIcon.Behaviors>
+                        </control:MaskedEntry>-->
                             
 
                         </StackLayout>

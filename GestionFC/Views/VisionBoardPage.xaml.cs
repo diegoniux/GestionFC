@@ -11,6 +11,7 @@ using System.Drawing;
 using GestionFC.Models.VisionBoard;
 using GestionFC.Services;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GestionFC.Views
 {
@@ -505,26 +506,29 @@ namespace GestionFC.Views
                     }
                 };
 
-                await service.RegistrarMetaPlantilla(request, token).ContinueWith(x =>
+
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
-                    if (x.IsFaulted)
+                    await service.RegistrarMetaPlantilla(request, token).ContinueWith(x =>
                     {
-                        throw x.Exception;
-                    }
-
-                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                    {
-                        // verificamos si la sesión expiró (token)
-                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                        if (x.IsFaulted)
                         {
-                            SesionExpired = true;
-                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                            throw x.Exception;
                         }
-                    }
 
-                    ActualizaPantalla();
+                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                        {
+                            // verificamos si la sesión expiró (token)
+                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                            {
+                                SesionExpired = true;
+                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                            }
+                        }
+                    });
 
-                });
+                    await ActualizaPantalla();
+                }
             }
             catch (Exception ex)
             {
@@ -556,11 +560,12 @@ namespace GestionFC.Views
             }
         }
 
-        async void ActualizaPantalla()
+        async Task<bool> ActualizaPantalla()
         {
             Service.HeaderService headerService = new Service.HeaderService();
             Service.VisionBoardService visionBoardService = new Service.VisionBoardService();
             IsBusy = true;
+            bool Result = true;
             try
             {
                 await headerService.GetHeader(nomina, token).ContinueWith(x =>
@@ -642,7 +647,7 @@ namespace GestionFC.Views
                 {
                     CerrarSesion();
                     isBusy = false;
-                    return;
+                    Result = false;
                 }
 
                 var logError = new Models.Log.LogErrorModel()
@@ -661,9 +666,28 @@ namespace GestionFC.Views
             }
             finally
             {
-                MetaPlantilla = ViewModel.GetMetaPlantilla;
+                MetaPlantilla = new GetMetaPlantillaResponseModel()
+                {
+                    MetaPlantilla = new Models.Share.MetaPlantillaModel()
+                    {
+                        SaldoAcumuladoMeta = ViewModel.GetMetaPlantilla.MetaPlantilla.SaldoAcumuladoMeta,
+                        ComisionSem = ViewModel.GetMetaPlantilla.MetaPlantilla.ComisionSem
+                    },
+                    DetalleMetaPorDia = new Models.Share.MetaDiaModel()
+                    {
+                        SaldoLunes = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoLunes,
+                        SaldoMartes = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoMartes,
+                        SaldoMiercoles = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoMiercoles,
+                        SaldoJueves = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoJueves,
+                        SaldoViernes = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoViernes,
+                        SaldoSabado = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoSabado,
+                        SaldoDomingo = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoDomingo
+                    }
+
+                };
                 IsBusy = false;
             }
+            return Result;
         }
 
         async void MetaFolios_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
@@ -687,24 +711,27 @@ namespace GestionFC.Views
                     }
                 };
 
-                await service.RegistrarMetaPlantillaFolios(request, token).ContinueWith(x =>
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
-                    if (x.IsFaulted)
+                    await service.RegistrarMetaPlantillaFolios(request, token).ContinueWith(x =>
                     {
-                        throw x.Exception;
-                    }
-
-                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                    {
-                        // vericamos si la sesión expiró (token)
-                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                        if (x.IsFaulted)
                         {
-                            SesionExpired = true;
-                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                            throw x.Exception;
                         }
-                    }
 
-                });
+                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                        {
+                            // vericamos si la sesión expiró (token)
+                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                            {
+                                SesionExpired = true;
+                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                            }
+                        }
+
+                    });
+                }
 
             }
             catch (Exception ex)
@@ -766,7 +793,9 @@ namespace GestionFC.Views
                     }
                 };
 
-                await service.RegistrarMetaPlantillaIndividual(request, token).ContinueWith(x =>
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                {
+                    await service.RegistrarMetaPlantillaIndividual(request, token).ContinueWith(x =>
                 {
                     if (x.IsFaulted)
                     {
@@ -788,6 +817,7 @@ namespace GestionFC.Views
 
                     ActualizaPantalla();
                 });
+                }
 
             }
             catch (Exception ex)
@@ -853,7 +883,9 @@ namespace GestionFC.Views
                     }
                 };
 
-                await service.RegistrarMetaPlantillaComisionSem(request, token).ContinueWith(x =>
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                {
+                    await service.RegistrarMetaPlantillaComisionSem(request, token).ContinueWith(x =>
                 {
                     if (x.IsFaulted)
                     {
@@ -872,6 +904,7 @@ namespace GestionFC.Views
 
                     ActualizaPantalla();
                 });
+                }
 
             }
             catch (Exception ex)
@@ -929,7 +962,9 @@ namespace GestionFC.Views
             }
                 };
 
-                await service.RegistrarMetaPlantillaSaldoAcumulado(request, token).ContinueWith(x =>
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                {
+                    await service.RegistrarMetaPlantillaSaldoAcumulado(request, token).ContinueWith(x =>
                 {
                     if (x.IsFaulted)
                     {
@@ -948,6 +983,7 @@ namespace GestionFC.Views
 
                     ActualizaPantalla();
                 });
+                }
 
             }
             catch (Exception ex)
