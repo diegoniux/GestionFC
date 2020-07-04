@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace GestionFC.Models.Share
 {
-    public partial class MetaSaldoAcumulado
+    public partial class MetaSaldoAcumuladoModel
     {
         [JsonProperty("IdPeriodo")]
         public long IdPeriodo { get; set; }
