@@ -794,27 +794,28 @@ namespace GestionFC.Views
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
                     await service.RegistrarMetaPlantillaIndividual(request, token).ContinueWith(x =>
-                {
-                    if (x.IsFaulted)
                     {
-                        throw x.Exception;
-                    }
+                        if (x.IsFaulted)
+                        {
+                            throw x.Exception;
+                        }
 
-                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                    {
                         if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                         {
-                            // vericamos si la sesión expiró (token)
-                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                             {
-                                SesionExpired = true;
-                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                // vericamos si la sesión expiró (token)
+                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                {
+                                    SesionExpired = true;
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                }
                             }
                         }
-                    }
 
-                    ActualizaPantalla();
-                });
+                        
+                    });
+                    await ActualizaPantalla();
                 }
 
             }
