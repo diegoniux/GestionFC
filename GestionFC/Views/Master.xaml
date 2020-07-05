@@ -36,6 +36,7 @@
                         <ColumnDefinition Width="1.3*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                         <ColumnDefinition Width="0.10*"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <!--<Frame
                         CornerRadius="30"
