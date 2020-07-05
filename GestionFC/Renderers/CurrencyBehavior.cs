@@ -52,8 +52,11 @@ namespace GestionFC.Renderers
 			string saldo = string.Empty;
 			if (args.NewTextValue.Contains("$"))
 			{
-
 				_hasFormattedOnce = false;
+			}
+			if (args.NewTextValue.Contains("."))
+			{
+				_firstTime = true;
 			}
 			if (_firstTime)
             {
