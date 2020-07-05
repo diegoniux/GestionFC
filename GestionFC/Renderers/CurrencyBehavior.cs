@@ -57,6 +57,7 @@ namespace GestionFC.Renderers
 			if (args.NewTextValue.Contains("."))
 			{
 				_firstTime = true;
+				_hasFormattedOnce = false;
 			}
 			if (_firstTime)
             {
