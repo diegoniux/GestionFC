@@ -847,6 +847,25 @@ namespace GestionFC.Views
                     });
                     await ActualizaPantalla();
                 }
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    ViewModel.getLocation().ContinueWith(loc => {
+                        //Guardamos genramos la inserción en bitácora (Cierre Sesión)
+                        var logModel = new LogSistemaModel()
+                        {
+                            IdPantalla = 6,
+                            IdAccion = 5,
+                            Usuario = nomina,
+                            Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name,
+                            Geolocalizacion = loc.Result
+                        };
+                        _master.logService.LogSistema(logModel, token).ContinueWith(logRes =>
+                        {
+                            if (logRes.IsFaulted)
+                                throw logRes.Exception;
+                        });
+                    });
+                });
 
             }
             catch (Exception ex)
@@ -1022,6 +1041,25 @@ namespace GestionFC.Views
                             ActualizaPantalla();
                         });
                 }
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    ViewModel.getLocation().ContinueWith(loc => {
+                        //Guardamos genramos la inserción en bitácora (Cierre Sesión)
+                        var logModel = new LogSistemaModel()
+                        {
+                            IdPantalla = 6,
+                            IdAccion = 4,
+                            Usuario = nomina,
+                            Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name,
+                            Geolocalizacion = loc.Result
+                        };
+                        _master.logService.LogSistema(logModel, token).ContinueWith(logRes =>
+                        {
+                            if (logRes.IsFaulted)
+                                throw logRes.Exception;
+                        });
+                    });
+                });
 
             }
             catch (Exception ex)
