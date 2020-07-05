@@ -689,22 +689,65 @@
                     Grid.Column="2"
                     Grid.ColumnSpan="1"
                     Grid.Row="2"
-                    Grid.RowSpan="2"
-                    Margin="14,0,25,0">
+                    Grid.RowSpan="1"
+                    Margin="25,-11,0,0"
+                    >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="45"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="194"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Image Source="pizarron_verde.png"
-                        Aspect="Fill">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnTapPizarronDigital_Tapped">
-                            </TapGestureRecognizer>
-                        </Image.GestureRecognizers>
-                    </Image>
+                    <AbsoluteLayout
+                        Grid.Column="0"
+                        Grid.ColumnSpan="1"
+                        Grid.Row="0"
+                        Grid.RowSpan="1"
+                        >
+                        <AbsoluteLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapPizarronDigital_Tapped"></TapGestureRecognizer>
+                        </AbsoluteLayout.GestureRecognizers>
+                        <Grid
+                            AbsoluteLayout.LayoutBounds="0,.6,1,.6"
+                            AbsoluteLayout.LayoutFlags="All"
+                            >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="35"></ColumnDefinition>
+                                <ColumnDefinition Width="125"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5"></RowDefinition>
+                                <RowDefinition Height="20"></RowDefinition>
+                                <RowDefinition Height="5"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <BoxView
+                                x:Name="bxvTabButton"
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                                Grid.RowSpan="3"
+                                CornerRadius="0,0,10,10"
+                                BackgroundColor="#275D38"/>
+                            <Image Source="icon_pizarron_digital"
+                                    Grid.Column="0"
+                                    Grid.Row="1"
+                                    Margin="10,0,0,0"
+                                    ></Image>
+                            <Label
+                                x:Name="lblPizarronDigitalTab"
+                                Text="Pizarrón Digital"
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                Margin="0,0,0,0"
+                                FontFamily="Helvetica"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                TextColor="#FFFFFF"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Start"
+                                />
+                        </Grid>
+                    </AbsoluteLayout>
                 </Grid>
 
                 <!-- ESTATUS BAR -->
