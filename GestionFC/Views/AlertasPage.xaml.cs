@@ -412,17 +412,17 @@ namespace GestionFC.Views
                                 }
                             }
                             ViewModel.FoliosPendientesSV = x.Result;
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                pickerAP.Items.Clear();
-                            });
-                            pickerAP.Items.Add("TODOS");
-                            foreach (FoliosPendientesSVModel a in ViewModel.sourcePicker)
-                            {
-                                pickerAP.Items.Add(a.Nombre);
-                            }
-                            notidicacionImp.Text = ViewModel.PlantillaImproductiva.cantidad.ToString();
-                            notidicacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
+                            //Device.BeginInvokeOnMainThread(() =>
+                            //{
+                            //    pickerAP.Items.Clear();
+                            //});
+                            //pickerAP.Items.Add("TODOS");
+                            //foreach (FoliosPendientesSVModel a in ViewModel.sourcePicker)
+                            //{
+                            //    pickerAP.Items.Add(a.Nombre);
+                            //}
+                            //notidicacionImp.Text = ViewModel.PlantillaImproductiva.cantidad.ToString();
+                            //notidicacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
                         });
                     }
                 }
