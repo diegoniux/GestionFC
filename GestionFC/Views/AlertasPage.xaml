@@ -1733,7 +1733,8 @@
                                     RowSpacing="0"
                                     ColumnSpacing="0">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="60"></RowDefinition>
+                                        <RowDefinition Height="30"></RowDefinition>
+                                        <RowDefinition Height="30"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width=".4*"></ColumnDefinition>
@@ -1741,11 +1742,12 @@
                                         <ColumnDefinition Width=".2*"></ColumnDefinition>
                                         <ColumnDefinition Width=".3*"></ColumnDefinition>
                                         <ColumnDefinition Width=".2*"></ColumnDefinition>
-                                        <ColumnDefinition Width="30"></ColumnDefinition>
+                                        <ColumnDefinition Width="20"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <BoxView
                                         Grid.Column="0"
                                         Grid.ColumnSpan="6"
+                                        Grid.RowSpan="2"
                                         BackgroundColor="#F9F9F9"/>
 
 
@@ -1753,36 +1755,57 @@
                                             Text="{Binding Nombre}"
                                             FontSize="12"
                                             Grid.Column="0"
-                                            VerticalTextAlignment="Center"
+                                            Grid.Row="0"
+                                            VerticalTextAlignment="End"
                                             HorizontalTextAlignment="Start"
                                             TextColor="#707070"
                                             Margin="5,0,10,0"
                                             FontFamily="Helvetica">
                                     </Label>
                                     <Label
+                                            Text="{Binding Apellidos}"
+                                            FontSize="12"
+                                            Grid.Column="0"
+                                            Grid.Row="1"
+                                            VerticalTextAlignment="Start"
+                                            HorizontalTextAlignment="Start"
+                                            TextColor="#707070"
+                                            Margin="5,0,10,0"
+                                            FontAttributes="Bold"
+                                            FontFamily="Helvetica">
+                                    </Label>
+                                    <Label
                                             Text="{Binding Folio}"
                                             FontSize="12"
                                             Grid.Column="1"
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
                                             VerticalTextAlignment="Center"
                                             HorizontalTextAlignment="Start"
                                             TextColor="#707070"
                                             Margin="0,0,0,0"
+                                            FontAttributes="Bold"
                                             FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                             Text="{Binding SaldoVirtual}"
                                             FontSize="12"
                                             Grid.Column="2"
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
                                             VerticalTextAlignment="Center"
                                             HorizontalTextAlignment="Start"
                                             TextColor="#707070"
                                             Margin="0,0,0,0"
+                                            FontAttributes="Bold"
                                             FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                             Text="{Binding TipoSolicitud}"
                                             FontSize="12"
                                             Grid.Column="3"
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
                                             VerticalTextAlignment="Center"
                                             HorizontalTextAlignment="Start"
                                             TextColor="#707070"
@@ -1793,6 +1816,8 @@
                                             Text="{Binding FechaFirma}"
                                             FontSize="12"
                                             Grid.Column="4"
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
                                             VerticalTextAlignment="Center"
                                             HorizontalTextAlignment="Start"
                                             TextColor="#707070"
@@ -1801,8 +1826,10 @@
                                     </Label>
                                     <Image
                                         IsVisible="{Binding TieneSV}"
-                                        Margin="0,0,13,0"
+                                        Margin="-10,0,13,0"
                                         Grid.Column="5"
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"
                                         Source="icon_money_bag.png"
                                         ClassId="{Binding IdAlerta}">
                                         <Image.GestureRecognizers>

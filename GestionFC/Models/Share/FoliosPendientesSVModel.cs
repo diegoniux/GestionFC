@@ -19,6 +19,9 @@ namespace GestionFC.Models.Share
         [JsonProperty("nombre")]
         public string Nombre { get; set; }
 
+        [JsonProperty("apellidos")]
+        public string Apellidos { get; set; }
+
         [JsonProperty("folio")]
         public string Folio { get; set; }
 

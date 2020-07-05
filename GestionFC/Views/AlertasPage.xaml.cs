@@ -148,7 +148,25 @@ namespace GestionFC.Views
                     }
                     notidicacionImp.Text = ViewModel.PlantillaImproductiva.cantidad.ToString();
                     notidicacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
-
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        ViewModel.getLocation().ContinueWith(loc => {
+                            //Guardamos genramos la inserción en bitácora (Cierre Sesión)
+                            var logModel = new LogSistemaModel()
+                            {
+                                IdPantalla = 4,
+                                IdAccion = 2,
+                                Usuario = nomina,
+                                Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name,
+                                Geolocalizacion = loc.Result
+                            };
+                            _master.logService.LogSistema(logModel, token).ContinueWith(logRes =>
+                            {
+                                if (logRes.IsFaulted)
+                                    throw logRes.Exception;
+                            });
+                        });
+                    });
                 }
             }
             catch (Exception ex)
@@ -163,7 +181,7 @@ namespace GestionFC.Views
 
                 var logError = new Models.Log.LogErrorModel()
                 {
-                    IdPantalla = 2,
+                    IdPantalla = 4,
                     Usuario = nomina,
                     Error = (ex.TargetSite == null ? "" : ex.TargetSite.Name + ". ") + ex.Message,
                     Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
@@ -394,6 +412,17 @@ namespace GestionFC.Views
                                 }
                             }
                             ViewModel.FoliosPendientesSV = x.Result;
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                pickerAP.Items.Clear();
+                            });
+                            pickerAP.Items.Add("TODOS");
+                            foreach (FoliosPendientesSVModel a in ViewModel.sourcePicker)
+                            {
+                                pickerAP.Items.Add(a.Nombre);
+                            }
+                            notidicacionImp.Text = ViewModel.PlantillaImproductiva.cantidad.ToString();
+                            notidicacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
                         });
                     }
                 }
@@ -410,7 +439,7 @@ namespace GestionFC.Views
 
                 var logError = new Models.Log.LogErrorModel()
                 {
-                    IdPantalla = 3,
+                    IdPantalla = 4,
                     Usuario = nomina,
                     Error = ex.Message,
                     Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
