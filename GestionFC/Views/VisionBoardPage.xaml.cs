@@ -37,7 +37,7 @@ namespace GestionFC.Views
             NavigationPage.SetHasNavigationBar(this, false);
 
             // Declaración del ViewModel y asignación al BindingContext
-            ViewModel = new VisionBoardViewModel(this.Navigation);
+            ViewModel = new VisionBoardViewModel();
             BindingContext = ViewModel;
 
             LoadPage();
