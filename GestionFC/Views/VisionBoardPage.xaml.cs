@@ -975,6 +975,12 @@ namespace GestionFC.Views
             }
                 };
 
+                if(request.MetaSaldoAcumulado.SaldoAcumuladoMeta < 5000000)
+                {
+                    await DisplayAlert("Mensajev", "Saldo acomulado debe ser mayor o igual a $5,000,000 ", "Ok");
+                    request.MetaSaldoAcumulado.SaldoAcumuladoMeta = 5000000;
+                }
+
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
                     await service.RegistrarMetaPlantillaSaldoAcumulado(request, token).ContinueWith(x =>
