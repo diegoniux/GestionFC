@@ -507,28 +507,26 @@ namespace GestionFC.Views
                 };
 
 
-                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                await service.RegistrarMetaPlantilla(request, token).ContinueWith(x =>
                 {
-                    await service.RegistrarMetaPlantilla(request, token).ContinueWith(x =>
+                    if (x.IsFaulted)
                     {
-                        if (x.IsFaulted)
-                        {
-                            throw x.Exception;
-                        }
+                        throw x.Exception;
+                    }
 
-                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                    {
+                        // verificamos si la sesión expiró (token)
+                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
                         {
-                            // verificamos si la sesión expiró (token)
-                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                            {
-                                SesionExpired = true;
-                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                            }
+                            SesionExpired = true;
+                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
                         }
-                    });
+                    }
+                });
 
-                    await ActualizaPantalla();
-                }
+                await ActualizaPantalla();
+
             }
             catch (Exception ex)
             {
