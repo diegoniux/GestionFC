@@ -208,7 +208,7 @@ namespace GestionFC.Views
 
         private void OnTapImageProductividad_Tapped(object sender, EventArgs e)
         {
-            if (isBusy) return;
+            //if (isBusy) return;
             // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -219,7 +219,7 @@ namespace GestionFC.Views
 
         private void OnTapMenuHamburguesa_Tapped(object sender, EventArgs e)
         {
-            if (isBusy) return;
+            //if (isBusy) return;
             App.MasterDetail.IsPresented = !App.MasterDetail.IsPresented;
         }
 
