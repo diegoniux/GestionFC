@@ -834,6 +834,12 @@
     <ImageAsset Include="Assets.xcassets\icon_warning.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\icon_warning.imageset\icon_warning.png" />
     <ImageAsset Include="Assets.xcassets\icon_warning.imageset\icon_warning%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_productividad.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_pizarron_digital.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_pizarron_digital.imageset\icon_pizarron_digital.png" />
+    <ImageAsset Include="Assets.xcassets\icon_pizarron_digital.imageset\icon_pizarron_digital%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_productividad.imageset\icon_productividad.png" />
+    <ImageAsset Include="Assets.xcassets\icon_productividad.imageset\icon_productividad%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -921,6 +927,8 @@
     <Folder Include="Assets.xcassets\title_productividad.imageset\" />
     <Folder Include="Assets.xcassets\title_pizarron_digital.imageset\" />
     <Folder Include="Assets.xcassets\icon_warning.imageset\" />
+    <Folder Include="Assets.xcassets\icon_productividad.imageset\" />
+    <Folder Include="Assets.xcassets\icon_pizarron_digital.imageset\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

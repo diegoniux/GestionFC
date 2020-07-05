@@ -32,6 +32,20 @@ namespace GestionFC.Views
 
             masterPageItems.Add(new MasterPageItem
             {
+                Title = "Productividad",
+                IconSource = "icon_productividad.png",
+                TargetType = typeof(PlantillaPage),
+            });
+
+            masterPageItems.Add(new MasterPageItem
+            {
+                Title = "Pizarrón Digital",
+                IconSource = "icon_pizarron_digital.png",
+                TargetType = typeof(ProductividadPage),
+            });
+
+            masterPageItems.Add(new MasterPageItem
+            {
                 Title = "Alarmas",
                 IconSource = "icon_notification.png",
                 TargetType = typeof(Alertas),
