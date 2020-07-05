@@ -2118,7 +2118,7 @@
                                         ClassId="{Binding Nomina}"
                                         Unfocused="txtMetaSaldo_Unfocused">
                                             <Entry.Behaviors>
-                                                <renderers:CurrencyBehaviorCollectionView />
+                                                <renderers:CurrencyBehavior />
                                             </Entry.Behaviors>
                                     </renderers:EntryIcon>
 
