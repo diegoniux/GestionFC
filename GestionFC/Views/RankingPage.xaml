@@ -362,7 +362,7 @@
                         </Label>
 
                         <!-- SALDO VIRTUAL -->
-                        <Label Text="SALDO VIRTUAL"
+                        <Label Text="Saldo virtual"
                             FontFamily="{StaticResource Poppins-Regular}"
                             TextColor="#ffffff"
                             Grid.Column="0"
@@ -407,7 +407,7 @@
                         </Label>
 
                         <!-- SALDO CANTADO -->
-                        <Label Text="SALDO CANTADO FCT"
+                        <Label Text="Saldo cantado FCT"
                             FontFamily="{StaticResource Poppins-Regular}"
                             TextColor="#ffffff"
                             Grid.Column="1"

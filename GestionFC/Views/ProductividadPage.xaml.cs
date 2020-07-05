@@ -210,7 +210,7 @@ namespace GestionFC.Views
             lblProductividad1.TextColor = Color.FromHex("#FFFFFF");
             lblProductividadDiaria.TextColor = Color.FromHex("#FFFFFF");
             // Semanal
-            bxvProducticidadSemanal.BackgroundColor = Color.FromHex("#F3F3F3");
+            bxvProducticidadSemanal.BackgroundColor = Color.FromHex("#CBCBCB");
             lblProductividad2.TextColor = Color.FromHex("#707070");
             lblProductividadSemanal.TextColor = Color.FromHex("#707070");
 
@@ -231,7 +231,7 @@ namespace GestionFC.Views
                 //imgTabProdDiaria.Source = "prod_diaria_blanco.png";
                 //imgTabProdSemanal.Source = "prod_sem_naranja.png";
                 // Diaria
-                bxvProducticidadDiaria.BackgroundColor = Color.FromHex("#F3F3F3");
+                bxvProducticidadDiaria.BackgroundColor = Color.FromHex("#CBCBCB");
                 lblProductividad1.TextColor = Color.FromHex("#707070");
                 lblProductividadDiaria.TextColor = Color.FromHex("#707070");
                 // Semanal

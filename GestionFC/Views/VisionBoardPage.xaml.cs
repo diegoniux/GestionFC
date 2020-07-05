@@ -329,7 +329,7 @@ namespace GestionFC.Views
                 tabPlantilla.BackgroundColor = Xamarin.Forms.Color.FromHex("#CBCBCB");
                 lblTabPlantilla.TextColor = Xamarin.Forms.Color.FromHex("#707070");
 
-                tabIndividual.BackgroundColor = Xamarin.Forms.Color.FromHex("#FFA400");
+                tabIndividual.BackgroundColor = Xamarin.Forms.Color.FromHex("#71B417");
                 lblTabIndividual.TextColor = Xamarin.Forms.Color.FromHex("#FFFFFF");
 
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))

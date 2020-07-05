@@ -274,7 +274,7 @@
                         </Label>
 
                         <!-- SALDO VIRTUAL -->
-                        <Label Text="SALDO VIRTUAL"
+                        <Label Text="Saldo virtual"
                             FontFamily="{StaticResource Poppins-Regular}"
                             TextColor="#ffffff"
                             Grid.Column="0"
@@ -319,7 +319,7 @@
                         </Label>
 
                         <!-- SALDO CANTADO -->
-                        <Label Text="SALDO CANTADO FCT"
+                        <Label Text="Saldo cantado FCT"
                             FontFamily="{StaticResource Poppins-Regular}"
                             TextColor="#ffffff"
                             Grid.Column="1"
@@ -840,21 +840,21 @@
                     Grid.ColumnSpan="2"
                     Grid.Row="2"
                     Margin="0"
-                    ColumnSpacing="5"
+                    ColumnSpacing="0"
                     RowSpacing="0"
                     HorizontalOptions="StartAndExpand"
                     VerticalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="148"></ColumnDefinition>
-                        <ColumnDefinition Width="148"></ColumnDefinition>
-                        <ColumnDefinition Width="40"></ColumnDefinition>
-                        <ColumnDefinition Width="40"></ColumnDefinition>
-                        <ColumnDefinition Width="40"></ColumnDefinition>
-                        
-                        <ColumnDefinition Width="50"></ColumnDefinition>
-                        <ColumnDefinition Width="100*"></ColumnDefinition>
-                        <ColumnDefinition Width="55"></ColumnDefinition>
-                        <ColumnDefinition Width="100*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.8*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.8*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                       
+                        <ColumnDefinition Width="0.80*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
                     <!--TAB PRODUCTIVIDAD DIARIA-->
@@ -945,7 +945,7 @@
                                 Grid.Row="0"
                                 Grid.RowSpan="2"
                                 CornerRadius="10,10,0,0"
-                                BackgroundColor="#F3F3F3"/>
+                                BackgroundColor="#CBCBCB"/>
                             <Label
                                 x:Name="lblProductividad2"
                                 Text="Productividad"
@@ -1056,7 +1056,8 @@
                         FontSize="10"
                         FontAttributes="Bold"
                         TextColor="#353535"
-                        FontFamily="Helvetica">
+                        FontFamily="Helvetica"
+                        Margin="10,0,10,0">
                     </Label>
                     <Frame
                         BackgroundColor="#FFFFFF"
