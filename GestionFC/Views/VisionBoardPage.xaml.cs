@@ -37,7 +37,7 @@ namespace GestionFC.Views
             NavigationPage.SetHasNavigationBar(this, false);
 
             // Declaración del ViewModel y asignación al BindingContext
-            ViewModel = new VisionBoardViewModel();
+            ViewModel = new VisionBoardViewModel(this.Navigation);
             BindingContext = ViewModel;
 
             LoadPage();
@@ -940,9 +940,13 @@ namespace GestionFC.Views
         {
             try
             {
-                if (txtTotal.Text.Trim().Replace("$", "").Replace(",", "") == "")
+                //if (txtTotal.Text.Trim().Replace("$", "").Replace(",", "") == "")
+                //{
+                //    txtTotal.Text = "0";
+                //    return;
+                //}
+                if (txtTotal.Text.Length <= 0)
                 {
-                    txtTotal.Text = "0";
                     return;
                 }
                 var TotalSaldoAcumulado = int.Parse(txtTotal.Text.Trim().Replace("$", "").Replace(",", ""));
@@ -963,24 +967,24 @@ namespace GestionFC.Views
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
                     await service.RegistrarMetaPlantillaSaldoAcumulado(request, token).ContinueWith(x =>
-                {
-                    if (x.IsFaulted)
-                    {
-                        throw x.Exception;
-                    }
-
-                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                    {
-                        // vericamos si la sesión expiró (token)
-                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
                         {
-                            SesionExpired = true;
-                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                        }
-                    }
+                            if (x.IsFaulted)
+                            {
+                                throw x.Exception;
+                            }
 
-                    ActualizaPantalla();
-                });
+                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                            {
+                                // vericamos si la sesión expiró (token)
+                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                {
+                                    SesionExpired = true;
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                }
+                            }
+
+                            ActualizaPantalla();
+                        });
                 }
 
             }
