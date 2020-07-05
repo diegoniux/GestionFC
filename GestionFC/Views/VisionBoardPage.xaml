@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:renderers="clr-namespace:GestionFC.Renderers" 
+             xmlns:renderers="clr-namespace:GestionFC.Renderers"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
              xmlns:fFImageLoadingTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:control="clr-namespace:Xamarin.Forms.MaskedEntry;assembly=Xamarin.Forms.MaskedEntry"
              mc:Ignorable="d"
              x:Class="GestionFC.Views.VisionBoardPage"
              BackgroundColor="#F0F0F1">
@@ -25,6 +26,7 @@
                 </VisualStateGroupList>
             </Setter>
         </Style>
+
     </ContentPage.Resources>
     <RelativeLayout>
             <StackLayout 
@@ -1398,12 +1400,11 @@
                         FontSize="18">
                     </Label>
 
-                   <renderers:EntryIcon
+                   <Entry
                         x:Name="txtTotal"
                         Text="{Binding GetMetaPlantilla.MetaPlantilla.SaldoAcumuladoMeta}"
                         Keyboard="Numeric"
-                        CornerRadius="5"
-                        MaxLength="10"
+                        MaxLength="11"
                         FontFamily="{StaticResource Poppins-Bold}"
                         TextColor="#353535"
                         FontAttributes="Bold"
@@ -1417,7 +1418,10 @@
                         Grid.Column="7"
                         Margin="1"
                         Unfocused="txtTotal_Unfocused">
-                    </renderers:EntryIcon>
+                        <Entry.Behaviors>
+                                <renderers:CurrencyBehavior />
+                        </Entry.Behaviors>
+                        </Entry>
 
                     <!--Grid comisión estimada Semanal-->
                     <Grid
@@ -1621,6 +1625,28 @@
                                 </renderers:EntryIcon.Behaviors>-->
                         </renderers:EntryIcon>
 
+                        <!--<control:MaskedEntry
+                                x:Name="txtMetaComSem"
+                                Text="{Binding GetMetaPlantilla.MetaPlantilla.ComisionSem}"
+                                Keyboard="Numeric"
+                                MaxLength="10"
+                                FontFamily="{StaticResource Poppins-Bold}"
+                                FontAttributes="Bold"
+                                TextColor="#353535"
+                                FontSize="16"
+                                BackgroundColor="#FFFFFF" 
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                HeightRequest="40"
+                                Margin="2"
+                                Unfocused="txtComisionSem_Unfocused"
+                                Mask="$#,#">
+                                <renderers:EntryIcon.Behaviors>
+                                    <renderers:CurrencyValidationBehavior />
+                                </renderers:EntryIcon.Behaviors>
+                        </control:MaskedEntry>-->
                             
 
                         </StackLayout>

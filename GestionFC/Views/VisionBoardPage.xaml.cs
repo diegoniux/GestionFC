@@ -11,6 +11,7 @@ using System.Drawing;
 using GestionFC.Models.VisionBoard;
 using GestionFC.Services;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GestionFC.Views
 {
@@ -505,6 +506,7 @@ namespace GestionFC.Views
                     }
                 };
 
+
                 await service.RegistrarMetaPlantilla(request, token).ContinueWith(x =>
                 {
                     if (x.IsFaulted)
@@ -521,10 +523,10 @@ namespace GestionFC.Views
                             throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
                         }
                     }
-
-                    ActualizaPantalla();
-
                 });
+
+                await ActualizaPantalla();
+
             }
             catch (Exception ex)
             {
@@ -556,11 +558,12 @@ namespace GestionFC.Views
             }
         }
 
-        async void ActualizaPantalla()
+        async Task<bool> ActualizaPantalla()
         {
             Service.HeaderService headerService = new Service.HeaderService();
             Service.VisionBoardService visionBoardService = new Service.VisionBoardService();
             IsBusy = true;
+            bool Result = true;
             try
             {
                 await headerService.GetHeader(nomina, token).ContinueWith(x =>
@@ -642,7 +645,7 @@ namespace GestionFC.Views
                 {
                     CerrarSesion();
                     isBusy = false;
-                    return;
+                    Result = false;
                 }
 
                 var logError = new Models.Log.LogErrorModel()
@@ -661,9 +664,28 @@ namespace GestionFC.Views
             }
             finally
             {
-                MetaPlantilla = ViewModel.GetMetaPlantilla;
+                MetaPlantilla = new GetMetaPlantillaResponseModel()
+                {
+                    MetaPlantilla = new Models.Share.MetaPlantillaModel()
+                    {
+                        SaldoAcumuladoMeta = ViewModel.GetMetaPlantilla.MetaPlantilla.SaldoAcumuladoMeta,
+                        ComisionSem = ViewModel.GetMetaPlantilla.MetaPlantilla.ComisionSem
+                    },
+                    DetalleMetaPorDia = new Models.Share.MetaDiaModel()
+                    {
+                        SaldoLunes = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoLunes,
+                        SaldoMartes = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoMartes,
+                        SaldoMiercoles = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoMiercoles,
+                        SaldoJueves = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoJueves,
+                        SaldoViernes = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoViernes,
+                        SaldoSabado = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoSabado,
+                        SaldoDomingo = ViewModel.GetMetaPlantilla.DetalleMetaPorDia.SaldoDomingo
+                    }
+
+                };
                 IsBusy = false;
             }
+            return Result;
         }
 
         async void MetaFolios_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
@@ -687,24 +709,27 @@ namespace GestionFC.Views
                     }
                 };
 
-                await service.RegistrarMetaPlantillaFolios(request, token).ContinueWith(x =>
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
-                    if (x.IsFaulted)
+                    await service.RegistrarMetaPlantillaFolios(request, token).ContinueWith(x =>
                     {
-                        throw x.Exception;
-                    }
-
-                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                    {
-                        // vericamos si la sesión expiró (token)
-                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                        if (x.IsFaulted)
                         {
-                            SesionExpired = true;
-                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                            throw x.Exception;
                         }
-                    }
 
-                });
+                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                        {
+                            // vericamos si la sesión expiró (token)
+                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                            {
+                                SesionExpired = true;
+                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                            }
+                        }
+
+                    });
+                }
 
             }
             catch (Exception ex)
@@ -766,7 +791,9 @@ namespace GestionFC.Views
                     }
                 };
 
-                await service.RegistrarMetaPlantillaIndividual(request, token).ContinueWith(x =>
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                {
+                    await service.RegistrarMetaPlantillaIndividual(request, token).ContinueWith(x =>
                 {
                     if (x.IsFaulted)
                     {
@@ -788,6 +815,7 @@ namespace GestionFC.Views
 
                     ActualizaPantalla();
                 });
+                }
 
             }
             catch (Exception ex)
@@ -853,7 +881,9 @@ namespace GestionFC.Views
                     }
                 };
 
-                await service.RegistrarMetaPlantillaComisionSem(request, token).ContinueWith(x =>
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                {
+                    await service.RegistrarMetaPlantillaComisionSem(request, token).ContinueWith(x =>
                 {
                     if (x.IsFaulted)
                     {
@@ -872,6 +902,7 @@ namespace GestionFC.Views
 
                     ActualizaPantalla();
                 });
+                }
 
             }
             catch (Exception ex)
@@ -909,9 +940,13 @@ namespace GestionFC.Views
         {
             try
             {
-                if (txtTotal.Text.Trim().Replace("$", "").Replace(",", "") == "")
+                //if (txtTotal.Text.Trim().Replace("$", "").Replace(",", "") == "")
+                //{
+                //    txtTotal.Text = "0";
+                //    return;
+                //}
+                if (txtTotal.Text.Length <= 0)
                 {
-                    txtTotal.Text = "0";
                     return;
                 }
                 var TotalSaldoAcumulado = int.Parse(txtTotal.Text.Trim().Replace("$", "").Replace(",", ""));
@@ -925,29 +960,32 @@ namespace GestionFC.Views
                     {
                         IdPeriodo = 1,
                         Nomina = App.Nomina,
-                        SaldoAcumuladoMeta = TotalSaldoAcumulado
-                    }
+                        SaldoAcumuladoMeta = int.Parse(txtTotal.Text.Trim().Replace("$", "").Replace(",", ""))
+            }
                 };
 
-                await service.RegistrarMetaPlantillaSaldoAcumulado(request, token).ContinueWith(x =>
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
-                    if (x.IsFaulted)
-                    {
-                        throw x.Exception;
-                    }
-
-                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                    {
-                        // vericamos si la sesión expiró (token)
-                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                    await service.RegistrarMetaPlantillaSaldoAcumulado(request, token).ContinueWith(x =>
                         {
-                            SesionExpired = true;
-                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                        }
-                    }
+                            if (x.IsFaulted)
+                            {
+                                throw x.Exception;
+                            }
 
-                    ActualizaPantalla();
-                });
+                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                            {
+                                // vericamos si la sesión expiró (token)
+                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                {
+                                    SesionExpired = true;
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                }
+                            }
+
+                            ActualizaPantalla();
+                        });
+                }
 
             }
             catch (Exception ex)
