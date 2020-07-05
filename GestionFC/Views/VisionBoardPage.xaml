@@ -1400,7 +1400,7 @@
                         FontSize="18">
                     </Label>
 
-                   <Entry
+                   <renderers:EntryIcon
                         x:Name="txtTotal"
                         Text="{Binding GetMetaPlantilla.MetaPlantilla.SaldoAcumuladoMeta}"
                         Keyboard="Numeric"
@@ -1421,7 +1421,7 @@
                         <Entry.Behaviors>
                                 <renderers:CurrencyBehavior />
                         </Entry.Behaviors>
-                        </Entry>
+                        </renderers:EntryIcon>
 
                     <!--Grid comisión estimada Semanal-->
                     <Grid
@@ -2098,7 +2098,6 @@
                                         HorizontalOptions="FillAndExpand">
                                     </BoxView>
                                     <renderers:EntryIcon
-                                        x:Name="txtMetaSaldo"
                                         Text="{Binding SaldoMeta}"
                                         Keyboard="Numeric"
                                         MaxLength="10"
@@ -2119,7 +2118,7 @@
                                         ClassId="{Binding Nomina}"
                                         Unfocused="txtMetaSaldo_Unfocused">
                                             <Entry.Behaviors>
-                                                <renderers:CurrencyBehavior />
+                                                <renderers:CurrencyBehaviorCollectionView />
                                             </Entry.Behaviors>
                                     </renderers:EntryIcon>
 
@@ -2149,7 +2148,7 @@
                                         VerticalOptions="FillAndExpand"
                                         HorizontalOptions="FillAndExpand">
                                     </BoxView>
-                                    <renderers:EntryIcon
+                                        <renderers:EntryIcon
                                         x:Name="txtComEst"
                                         Text="{Binding ComisionEstimada}"
                                         Keyboard="Numeric"
@@ -2170,10 +2169,7 @@
                                         FontSize="16"
                                         ClassId="{Binding Nomina}"
                                         IsReadOnly="True">
-                                            <Entry.Behaviors>
-                                                <renderers:CurrencyBehavior />
-                                            </Entry.Behaviors>
-                                    </renderers:EntryIcon>
+                                        </renderers:EntryIcon>
                                     <!--TERMINA DATOS-->
                                 </Grid>
                             </DataTemplate>
