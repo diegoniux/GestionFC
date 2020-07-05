@@ -142,6 +142,25 @@ namespace GestionFC.Views
                             throw logRes.Exception;
                     });
                 }
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    ViewModel.getLocation().ContinueWith(loc => {
+                        //Guardamos genramos la inserción en bitácora (Cierre Sesión)
+                        var logModel = new LogSistemaModel()
+                        {
+                            IdPantalla = 6,
+                            IdAccion = 2,
+                            Usuario = nomina,
+                            Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name,
+                            Geolocalizacion = loc.Result
+                        };
+                        _master.logService.LogSistema(logModel, token).ContinueWith(logRes =>
+                        {
+                            if (logRes.IsFaulted)
+                                throw logRes.Exception;
+                        });
+                    });
+                });
             }
             catch (Exception ex)
             {
