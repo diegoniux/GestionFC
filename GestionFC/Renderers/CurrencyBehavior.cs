@@ -46,7 +46,8 @@ namespace GestionFC.Renderers
 
 		private void OnEntryTextChanged(object sender, TextChangedEventArgs args)
 		{
-			if (args.NewTextValue == string.Empty)
+			_firstTime = false;
+			if (string.IsNullOrEmpty(args.NewTextValue))
 				return;
 
 			string saldo = string.Empty;

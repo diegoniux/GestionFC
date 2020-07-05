@@ -1620,10 +1620,10 @@
                                 BorderColor="#C4C4C4"
                                 Margin="2"
                                 Unfocused="txtComisionSem_Unfocused">
-                                <!--<renderers:EntryIcon.Behaviors>
-                                    <renderers:CurrencyValidationBehavior />
-                                </renderers:EntryIcon.Behaviors>-->
-                        </renderers:EntryIcon>
+                                    <Entry.Behaviors>
+                                        <renderers:CurrencyBehavior />
+                                    </Entry.Behaviors>
+                                </renderers:EntryIcon>
 
                         <!--<control:MaskedEntry
                                 x:Name="txtMetaComSem"
@@ -1821,9 +1821,9 @@
                             Grid.Column="2"
                             Margin="17,7,17,7"
                             IsReadOnly="True">
-                            <!--<renderers:EntryIcon.Behaviors>
-                                <renderers:NumericValidationBehavior />
-                            </renderers:EntryIcon.Behaviors>-->
+                                <Entry.Behaviors>
+                                    <renderers:CurrencyBehavior />
+                                </Entry.Behaviors>
                         </renderers:EntryIcon>
 
                         <BoxView
@@ -1852,9 +1852,9 @@
                             Grid.Column="2"
                             Margin="17,7,17,7"
                             IsReadOnly="True">
-                            <!--<renderers:EntryIcon.Behaviors>
-                                <renderers:NumericValidationBehavior />
-                            </renderers:EntryIcon.Behaviors>-->
+                                <Entry.Behaviors>
+                                    <renderers:CurrencyBehavior />
+                                </Entry.Behaviors>
                         </renderers:EntryIcon>
 
                         <BoxView
@@ -1970,9 +1970,9 @@
                             Margin="10"
                             FontSize="16"
                             IsReadOnly="True">
-                            <!--<renderers:EntryIcon.Behaviors>
-                                <renderers:NumericValidationBehavior />
-                            </renderers:EntryIcon.Behaviors>-->
+                            <Entry.Behaviors>
+                                <renderers:CurrencyBehavior />
+                            </Entry.Behaviors>
                         </renderers:EntryIcon>
                   
                     <!--TERMINA PIZARRÓN SEMANAL-->
@@ -2118,6 +2118,9 @@
                                         FontSize="16"
                                         ClassId="{Binding Nomina}"
                                         Unfocused="txtMetaSaldo_Unfocused">
+                                            <Entry.Behaviors>
+                                                <renderers:CurrencyBehavior />
+                                            </Entry.Behaviors>
                                     </renderers:EntryIcon>
 
 
@@ -2167,9 +2170,9 @@
                                         FontSize="16"
                                         ClassId="{Binding Nomina}"
                                         IsReadOnly="True">
-                                        <!--<renderers:EntryIcon.Behaviors>
-                                            <renderers:NumericValidationBehavior />
-                                        </renderers:EntryIcon.Behaviors>-->
+                                            <Entry.Behaviors>
+                                                <renderers:CurrencyBehavior />
+                                            </Entry.Behaviors>
                                     </renderers:EntryIcon>
                                     <!--TERMINA DATOS-->
                                 </Grid>
