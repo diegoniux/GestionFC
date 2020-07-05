@@ -699,6 +699,9 @@ namespace GestionFC.Views
                     return;
                 }
 
+                if (txtMetaTraspasos.Text.Length <= 0 || txtMetaFCT.Text.Length <= 0)
+                    return;
+
                 var request = new MetaPlantillaFoliosRequestModel()
                 {
                     MetaPlantillaFolios = new Models.Share.MetaPlantillaFoliosModel()
@@ -768,12 +771,20 @@ namespace GestionFC.Views
             {
                 isBusy = true;
                 var entry = (Entry)sender;
+                if (entry.Text.Length <= 0)
+                {
+                    IsBusy = false;
+                    return;
+                }
 
                 var NominaAP = int.Parse(entry.ClassId);
                 var MetaAP = MetaPlantillaIndividual.ListMetaAp.Find(item => item.Nomina == NominaAP);
 
                 var metaActual = int.Parse(MetaAP.SaldoMeta.Replace("$", "").Replace(",", ""));
                 var nuevaMeta = int.Parse(entry.Text.Replace("$", "").Replace(",", ""));
+
+                
+
 
                 VisionBoardService service = new VisionBoardService();
                 if (nuevaMeta == metaActual)
@@ -853,9 +864,8 @@ namespace GestionFC.Views
         {
             try
             {
-                if (txtMetaComSem.Text.Trim().Replace("$", "").Replace(",", "") == "")
+                if (txtMetaComSem.Text.Length <= 0)
                 {
-                    txtMetaComSem.Text = "0";
                     return;
                 }
 
