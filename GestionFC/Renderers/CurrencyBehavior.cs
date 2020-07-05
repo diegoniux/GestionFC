@@ -9,7 +9,6 @@ namespace GestionFC.Renderers
 	public class CurrencyBehavior : Behavior<Entry>
 	{
 		private bool _hasFormattedOnce = false;
-		private bool _firstTime = true;
 		protected override void OnAttachedTo(Entry entry)
 		{
 			entry.TextChanged += OnEntryTextChanged;
@@ -46,7 +45,6 @@ namespace GestionFC.Renderers
 
 		private void OnEntryTextChanged(object sender, TextChangedEventArgs args)
 		{
-			_firstTime = false;
 			if (string.IsNullOrEmpty(args.NewTextValue))
 				return;
 
@@ -55,26 +53,13 @@ namespace GestionFC.Renderers
 			{
 				_hasFormattedOnce = false;
 			}
-			if (args.NewTextValue.Contains("."))
-			{
-				_firstTime = true;
-				_hasFormattedOnce = false;
-			}
-			if (_firstTime)
-            {
-                saldo = Math.Truncate(Convert.ToDouble(args.NewTextValue.Trim())).ToString();
-				_firstTime = false;
-			}
-            else
-            {
-                saldo = Regex.Replace(args.NewTextValue.Trim().ToString(), @"\D", "");
-            }
+			saldo = Regex.Replace(args.NewTextValue.Trim().ToString(), @"\D", "");
 
-            if (!_hasFormattedOnce && saldo != string.Empty)
+			if (!_hasFormattedOnce && saldo != string.Empty)
 			{
 				((Entry)sender).Text = Decimal.Parse(saldo).ToString("C0");
 				_hasFormattedOnce = true;
-            }
+			}
 		}
 
 

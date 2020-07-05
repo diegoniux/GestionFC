@@ -208,7 +208,7 @@ namespace GestionFC.Views
 
         private void OnTapImageProductividad_Tapped(object sender, EventArgs e)
         {
-            if (isBusy) return;
+            //if (isBusy) return;
             // Navegamos hacia la pantalla plantilla que será la página principal de la aplicación
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -219,7 +219,7 @@ namespace GestionFC.Views
 
         private void OnTapMenuHamburguesa_Tapped(object sender, EventArgs e)
         {
-            if (isBusy) return;
+            //if (isBusy) return;
             App.MasterDetail.IsPresented = !App.MasterDetail.IsPresented;
         }
 
@@ -699,6 +699,9 @@ namespace GestionFC.Views
                     return;
                 }
 
+                if (txtMetaTraspasos.Text.Length <= 0 || txtMetaFCT.Text.Length <= 0)
+                    return;
+
                 var request = new MetaPlantillaFoliosRequestModel()
                 {
                     MetaPlantillaFolios = new Models.Share.MetaPlantillaFoliosModel()
@@ -768,12 +771,20 @@ namespace GestionFC.Views
             {
                 isBusy = true;
                 var entry = (Entry)sender;
+                if (entry.Text.Length <= 0)
+                {
+                    IsBusy = false;
+                    return;
+                }
 
                 var NominaAP = int.Parse(entry.ClassId);
                 var MetaAP = MetaPlantillaIndividual.ListMetaAp.Find(item => item.Nomina == NominaAP);
 
                 var metaActual = int.Parse(MetaAP.SaldoMeta.Replace("$", "").Replace(",", ""));
                 var nuevaMeta = int.Parse(entry.Text.Replace("$", "").Replace(",", ""));
+
+                
+
 
                 VisionBoardService service = new VisionBoardService();
                 if (nuevaMeta == metaActual)
@@ -794,27 +805,28 @@ namespace GestionFC.Views
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
                     await service.RegistrarMetaPlantillaIndividual(request, token).ContinueWith(x =>
-                {
-                    if (x.IsFaulted)
                     {
-                        throw x.Exception;
-                    }
+                        if (x.IsFaulted)
+                        {
+                            throw x.Exception;
+                        }
 
-                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                    {
                         if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                         {
-                            // vericamos si la sesión expiró (token)
-                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                             {
-                                SesionExpired = true;
-                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                // vericamos si la sesión expiró (token)
+                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                {
+                                    SesionExpired = true;
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                }
                             }
                         }
-                    }
 
-                    ActualizaPantalla();
-                });
+                        
+                    });
+                    await ActualizaPantalla();
                 }
 
             }
@@ -852,9 +864,8 @@ namespace GestionFC.Views
         {
             try
             {
-                if (txtMetaComSem.Text.Trim().Replace("$", "").Replace(",", "") == "")
+                if (txtMetaComSem.Text.Length <= 0)
                 {
-                    txtMetaComSem.Text = "0";
                     return;
                 }
 
@@ -963,6 +974,12 @@ namespace GestionFC.Views
                         SaldoAcumuladoMeta = int.Parse(txtTotal.Text.Trim().Replace("$", "").Replace(",", ""))
             }
                 };
+
+                if(request.MetaSaldoAcumulado.SaldoAcumuladoMeta < 5000000)
+                {
+                    await DisplayAlert("Mensajev", "Saldo acomulado debe ser mayor o igual a $5,000,000 ", "Ok");
+                    request.MetaSaldoAcumulado.SaldoAcumuladoMeta = 5000000;
+                }
 
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {

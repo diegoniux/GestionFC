@@ -759,7 +759,6 @@
             </Grid>
 
             <!--CONTENIDO-->
-            <ScrollView>
                 <Grid 
                 Margin="20,0,20,0"
                 ColumnSpacing="0"
@@ -876,7 +875,7 @@
                         <!--Separador-->
                         <RowDefinition Height="20"></RowDefinition>
                         <!--Sección para Comisión estimada-->
-                        <RowDefinition Height="260"></RowDefinition>
+                        <RowDefinition Height="200"></RowDefinition>
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
@@ -1436,17 +1435,17 @@
                         <Grid.RowDefinitions>
 
                             <!--HEADER-->
-                            <RowDefinition Height="0.50*"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
 
                             <!--Espacio top-->
-                            <RowDefinition Height="0.80*"></RowDefinition>
+                            <RowDefinition Height="0.30*"></RowDefinition>
 
+                            <RowDefinition Height="0.10*"></RowDefinition>
                             <RowDefinition Height="0.20*"></RowDefinition>
-                            <RowDefinition Height="0.40*"></RowDefinition>
-                            <RowDefinition Height="0.40*"></RowDefinition>
+                            <RowDefinition Height="0.20*"></RowDefinition>
 
                             <!--Espacio button-->
-                            <RowDefinition Height="0.20*"></RowDefinition>
+                            <RowDefinition Height="0.10*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <!--PANEL IZQUIERDA (BLANCO)-->
@@ -1664,7 +1663,7 @@
                         RowSpacing="0"
                         ColumnSpacing="0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
                             <RowDefinition Height="0.40*"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
@@ -1975,7 +1974,7 @@
                             </Entry.Behaviors>
                         </renderers:EntryIcon>
                   
-                    <!--TERMINA PIZARRÓN SEMANAL-->
+                    <!--Plantilla individual-->
                     <!--DATOS-->
                     <CollectionView 
                         x:Name="CollecionViewMetasAP"
@@ -2118,7 +2117,7 @@
                                         ClassId="{Binding Nomina}"
                                         Unfocused="txtMetaSaldo_Unfocused">
                                             <Entry.Behaviors>
-                                                <renderers:CurrencyBehaviorCollectionView />
+                                                <renderers:CurrencyBehavior />
                                             </Entry.Behaviors>
                                     </renderers:EntryIcon>
 
@@ -2175,13 +2174,9 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-
-
-
                 </Grid>
                 <!--TERMINA META INDIVIDUAL-->
             </Grid>
-            </ScrollView>
             <!--TERMINA CONTENIDO-->
         </StackLayout>
     </RelativeLayout>

@@ -853,7 +853,7 @@
                                         Grid.RowSpan="5"
                                         Margin="0,25,0,0"
                                         CornerRadius="20"
-                                        HasShadow="True">
+                                        HasShadow="False">
                                 </Frame>
 
                                 <Grid
