@@ -156,6 +156,8 @@ namespace GestionFC.ViewModels.AlertasPage
         {
             try
             {
+                Secundarysource.Clear();
+                sourcePicker.Clear();
                 if (FoliosPendientesSV.ResultDatos != null)
                 {
                     
@@ -163,11 +165,11 @@ namespace GestionFC.ViewModels.AlertasPage
                     {
                         Secundarysource.Add(a);
                         
-                        if (!sourcePicker.Exists(x => x.Nombre == a.Nombre))
+                        if (!sourcePicker.Exists(x => x.Nombre + x.Apellidos == a.Nombre + a.Apellidos))
                         {
                             sourcePicker.Add(new FoliosPendientesSVModel
                             {
-                                Nombre = a.Nombre
+                                Nombre = a.Nombre + " " + a.Apellidos
                             });
                         }
                     }
