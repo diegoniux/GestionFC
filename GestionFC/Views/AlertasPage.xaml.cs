@@ -414,10 +414,6 @@ namespace GestionFC.Views
                             ViewModel.FoliosPendientesSV = x.Result;
 
                             ViewModel.CreateCollection();
-                            //Device.BeginInvokeOnMainThread(() =>
-                            //{
-                            //    pickerAP.Items.Clear();
-                            //});
                             //pickerAP.Items.Add("TODOS");
                             //foreach (FoliosPendientesSVModel a in ViewModel.sourcePicker)
                             //{
@@ -426,6 +422,12 @@ namespace GestionFC.Views
                             //notidicacionImp.Text = ViewModel.PlantillaImproductiva.cantidad.ToString();
                             //notidicacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
                         });
+                        pickerAP.Items.Clear();
+                        pickerAP.Items.Add("TODOS");
+                        foreach (FoliosPendientesSVModel a in ViewModel.sourcePicker)
+                        {
+                            pickerAP.Items.Add(a.Nombre);
+                        }
                     }
                 }
                 notidicacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
