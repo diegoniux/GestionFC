@@ -1015,7 +1015,7 @@ namespace GestionFC.Views
 
                 if(request.MetaSaldoAcumulado.SaldoAcumuladoMeta < 5000000)
                 {
-                    await DisplayAlert("Mensajev", "Saldo acomulado debe ser mayor o igual a $5,000,000 ", "Ok");
+                    await DisplayAlert("Mensaje", "Saldo acomulado debe ser mayor o igual a $5,000,000 ", "Ok");
                     request.MetaSaldoAcumulado.SaldoAcumuladoMeta = 5000000;
                 }
 
