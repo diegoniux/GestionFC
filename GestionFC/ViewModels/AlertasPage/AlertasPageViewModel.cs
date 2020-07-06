@@ -447,7 +447,7 @@ namespace GestionFC.ViewModels.AlertasPage
                 if (ejec)
                 {
                     ejec = false;
-                    var filteredItems = Secundarysource.Where(nombre => (nombre.Nombre.ToLower() + " " + (nombre.Apellidos ?? "")).Contains(filter.ToLower())).ToList();
+                    var filteredItems = Secundarysource.Where(nombre => (nombre.Nombre.ToLower() + " " + (nombre.Apellidos.ToLower() ?? "")).Contains(filter.ToLower())).ToList();
                     if (filter == "TODOS")
                     {
                         foreach (var nombre in Secundarysource)
