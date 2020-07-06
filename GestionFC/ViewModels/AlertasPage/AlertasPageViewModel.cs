@@ -165,7 +165,7 @@ namespace GestionFC.ViewModels.AlertasPage
                     {
                         Secundarysource.Add(a);
                         
-                        if (!sourcePicker.Exists(x => x.Nombre + x.Apellidos == a.Nombre + a.Apellidos))
+                        if (!sourcePicker.Exists(x => x.Nombre == a.Nombre + " " + (a.Apellidos ?? "")))
                         {
                             sourcePicker.Add(new FoliosPendientesSVModel
                             {
