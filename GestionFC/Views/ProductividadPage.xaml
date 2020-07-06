@@ -274,7 +274,7 @@
                         </Label>
 
                         <!-- SALDO VIRTUAL -->
-                        <Label Text="Saldo virtual"
+                        <Label Text="SALDO VIRTUAL"
                             FontFamily="{StaticResource Poppins-Regular}"
                             TextColor="#ffffff"
                             Grid.Column="0"
@@ -319,7 +319,7 @@
                         </Label>
 
                         <!-- SALDO CANTADO -->
-                        <Label Text="Saldo cantado FCT"
+                        <Label Text="SALDO CANTADO FCT"
                             FontFamily="{StaticResource Poppins-Regular}"
                             TextColor="#ffffff"
                             Grid.Column="1"
@@ -840,21 +840,21 @@
                     Grid.ColumnSpan="2"
                     Grid.Row="2"
                     Margin="0"
-                    ColumnSpacing="0"
+                    ColumnSpacing="5"
                     RowSpacing="0"
                     HorizontalOptions="StartAndExpand"
                     VerticalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1.8*"></ColumnDefinition>
-                        <ColumnDefinition Width="1.8*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.40*"></ColumnDefinition>
-                       
-                        <ColumnDefinition Width="0.80*"></ColumnDefinition>
-                        <ColumnDefinition Width="1.2*"></ColumnDefinition>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                        <ColumnDefinition Width="1.2*"></ColumnDefinition>
+                        <ColumnDefinition Width="148"></ColumnDefinition>
+                        <ColumnDefinition Width="148"></ColumnDefinition>
+                        <ColumnDefinition Width="40"></ColumnDefinition>
+                        <ColumnDefinition Width="40"></ColumnDefinition>
+                        <ColumnDefinition Width="40"></ColumnDefinition>
+                        
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                        <ColumnDefinition Width="100*"></ColumnDefinition>
+                        <ColumnDefinition Width="55"></ColumnDefinition>
+                        <ColumnDefinition Width="100*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
                     <!--TAB PRODUCTIVIDAD DIARIA-->
@@ -1056,8 +1056,7 @@
                         FontSize="10"
                         FontAttributes="Bold"
                         TextColor="#353535"
-                        FontFamily="Helvetica"
-                        Margin="10,0,10,0">
+                        FontFamily="Helvetica">
                     </Label>
                     <Frame
                         BackgroundColor="#FFFFFF"
@@ -1100,38 +1099,39 @@
                         <RowDefinition Height="30"></RowDefinition>
                         <RowDefinition Height="8"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="35"></RowDefinition>
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
-                        <!--Nombre-->
+                        <!--Nombre 0-->
                         <ColumnDefinition Width="*"></ColumnDefinition>
-                        <!--Lunes-->
+                        <!--Lunes 1-->
                         <ColumnDefinition Width="0.30*"></ColumnDefinition>
-                        <!--Martes-->
+                        <!--Martes 2-->
                         <ColumnDefinition Width="0.30*"></ColumnDefinition>
-                        <!--Miercoles-->
+                        <!--Miercoles 3-->
                         <ColumnDefinition Width="0.30*"></ColumnDefinition>
-                        <!--Jueves-->
+                        <!--Jueves 4-->
                         <ColumnDefinition Width="0.30*"></ColumnDefinition>
-                        <!--Viernes-->
+                        <!--Viernes 5-->
                         <ColumnDefinition Width="0.30*"></ColumnDefinition>
-                        <!--Sabado-->
+                        <!--Sabado 6-->
                         <ColumnDefinition Width="0.30*"></ColumnDefinition>
-                        <!--Domingo-->
+                        <!--Domingo 7-->
                         <ColumnDefinition Width="0.30*"></ColumnDefinition>
-                        <!--Total-->
+                        <!--Total 8-->
                         <ColumnDefinition Width="0.35*"></ColumnDefinition>
-                        <!--Faltante-->
+                        <!--Faltante 9-->
                         <ColumnDefinition Width="0.40*"></ColumnDefinition>
-                        <!--Meta-->
+                        <!--Meta 10-->
                         <ColumnDefinition Width="0.35*"></ColumnDefinition>
-                        <!--FCT Inactivo-->
+                        <!--FCT Inactivo 11-->
                         <ColumnDefinition Width="0.40*"></ColumnDefinition>
-                        <!--FCT Activo-->
+                        <!--FCT Activo 12-->
                         <ColumnDefinition Width="0.40*"></ColumnDefinition>
-                        <!--Saldos Menores 30k-->
+                        <!--Saldos Menores 30k 13-->
                         <ColumnDefinition Width="0.40*"></ColumnDefinition>
-                        <!--Total Folios Cert.-->
+                        <!--Total Folios Cert. 14-->
                         <ColumnDefinition Width="0.40*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
@@ -1546,7 +1546,7 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
                                         TextColor="#353535"
-                                        FontFamily="{StaticResource Poppins-Medium}">
+                                        FontFamily="Helvetica">
                                     </Label>
                                     <Label
                                         Text="{Binding SaldoVirtualMiercoles}"
@@ -1669,6 +1669,231 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                     <!--TERMINA DATOS-->
+                    <!-- TOTAL -->
+                    <Label
+                        Text=""
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontAttributes="Bold"
+                        FontFamily="Helvetica">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadDiaria.ResultAnioSemana.TotalSaldoVirtualLunes}"
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontAttributes="Bold"
+                        FontFamily="Helvetica">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadDiaria.ResultAnioSemana.TotalSaldoVirtualMartes}"
+                        Grid.Column="2"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="Helvetica">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadDiaria.ResultAnioSemana.TotalSaldoVirtualMiercoles}"
+                        Grid.Column="3"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="Helvetica">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadDiaria.ResultAnioSemana.TotalSaldoVirtualJueves}"
+                        Grid.Column="4"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="Helvetica">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadDiaria.ResultAnioSemana.TotalSaldoVirtualViernes}"
+                        Grid.Column="5"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="Helvetica">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadDiaria.ResultAnioSemana.TotalSaldoVirtualSabado}"
+                        Grid.Column="6"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="Helvetica">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadDiaria.ResultAnioSemana.TotalSaldoVirtualDomingo}"
+                        Grid.Column="7"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="Helvetica">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadDiaria.ResultAnioSemana.TotalSaldoVirtualSemana}"
+                        Grid.Column="8"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="Helvetica">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadDiaria.ResultAnioSemana.TotalSaldoVirtualFaltante}"
+                        Grid.Column="9"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="Helvetica">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadDiaria.ResultAnioSemana.TotalMetaSemana}"
+                        Grid.Column="10"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="Helvetica">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadDiaria.ResultAnioSemana.TotalFCTInactivos}"
+                        Grid.Column="11"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="Helvetica">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadDiaria.ResultAnioSemana.TotalFCTActivos}"
+                        Grid.Column="12"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="Helvetica">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadDiaria.ResultAnioSemana.TotalFoliosMenores30k}"
+                        Grid.Column="13"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="Helvetica">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadDiaria.ResultAnioSemana.TotalFoliosMenores30k}"
+                        Grid.Column="13"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="Helvetica">
+                    </Label>
+                    <Label
+                        Text="{Binding ProductividadDiaria.ResultAnioSemana.TotalFoliosCertificados}"
+                        Grid.Column="14"
+                        Grid.Row="3"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#FFFFFF"
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        TextColor="#353535"
+                        FontFamily="Helvetica">
+                    </Label>
                 </Grid>
                 <!--TERMINA PIZARRÓN DIARIA-->
 
@@ -2008,7 +2233,7 @@
                         FontAttributes="Bold"
                         FontSize="12"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}">
+                        FontFamily="Helvetica">
                     </Label>
                     <Label
                         Text="{Binding ProductividadSemanal.ResultSemanasTotal.Semana1Total}"
@@ -2022,7 +2247,7 @@
                         FontAttributes="Bold"
                         FontSize="12"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}">
+                        FontFamily="Helvetica">
                     </Label>
                     <Label
                         Text="{Binding ProductividadSemanal.ResultSemanasTotal.Semana2Total}"
@@ -2036,7 +2261,7 @@
                         FontAttributes="Bold"
                         FontSize="12"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}">
+                        FontFamily="Helvetica">
                     </Label>
                     <Label
                         Text="{Binding ProductividadSemanal.ResultSemanasTotal.Semana3Total}"
@@ -2050,7 +2275,7 @@
                         FontAttributes="Bold"
                         FontSize="12"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}">
+                        FontFamily="Helvetica">
                     </Label>
                     <Label
                         Text="{Binding ProductividadSemanal.ResultSemanasTotal.Semana4Total}"
@@ -2064,7 +2289,7 @@
                         FontAttributes="Bold"
                         FontSize="12"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}">
+                        FontFamily="Helvetica">
                     </Label>
                     <Label
                         Text="{Binding ProductividadSemanal.ResultTotal.SaldoVirtualTotal}"
@@ -2078,7 +2303,7 @@
                         FontAttributes="Bold"
                         FontSize="12"
                         TextColor="#353535"
-                        FontFamily="{StaticResource Poppins-Bold}">
+                        FontFamily="Helvetica">
                     </Label>
 
                 </Grid>
