@@ -341,7 +341,7 @@ namespace GestionFC.Views
                 //    break;
                 case 4:
                     FolioSearch.IsVisible = true;
-                    PickerSV.IsVisible = true;
+                    PickerSV.IsVisible = false;
                     textoTitulo.Text = "Folios pendientes Saldo Virtual";
                     imgNotifyImproductiva.Source = notifyGray;
                     //imgNotifyRecuperacion.Source = notifyGray;
@@ -468,12 +468,11 @@ namespace GestionFC.Views
 
         private void SelectedIndexChangedName(object sender, EventArgs e)
         {
-            if(pickerAP.SelectedIndex != -1)
-            {
-                var nombre = pickerAP.Items[pickerAP.SelectedIndex];
-                ViewModel.FilterItemsNombre(nombre);
-            }
-            
+            if (pickerAP.SelectedIndex != -1)
+                {
+                    var nombre = pickerAP.Items[pickerAP.SelectedIndex];
+                    ViewModel.FilterItemsNombre(nombre);
+                }           
             
         }
 

@@ -1167,7 +1167,8 @@
                         Padding="0"
                         BorderColor="#C4C4C4"
                         CornerRadius="10"
-                        Grid.Column="2"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
                         Margin="0,8,0,8"
                         HasShadow="False"
                         BackgroundColor="#FFFFFF">
@@ -1177,14 +1178,13 @@
                                 <ColumnDefinition Width="2*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <renderers:EntryIcon
-                                Keyboard="Numeric"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
                                 x:Name="SearchFolio"
                                 CornerRadius="10"
                                 BorderColor="Transparent"
                                 MaxLength="10"
-                                Placeholder="No. de folio"
+                                Placeholder="Buscar"
                                 IsPassword="false"
                                 PlaceholderColor="#C4C4C4"
                                 BackgroundColor="#FFFFFF"
@@ -1208,7 +1208,7 @@
                                 WidthRequest="28"
                                 HeightRequest="35"
                                 Margin="5,5,5,5"
-                                HorizontalOptions="EndAndExpand">
+                                HorizontalOptions="CenterAndExpand">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="FolioFiltro"></TapGestureRecognizer>
                                 </Image.GestureRecognizers>
