@@ -422,15 +422,20 @@ namespace GestionFC.Views
                             //notidicacionImp.Text = ViewModel.PlantillaImproductiva.cantidad.ToString();
                             //notidicacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
                         });
-                        pickerAP.Items.Clear();
-                        pickerAP.Items.Add("TODOS");
-                        foreach (FoliosPendientesSVModel a in ViewModel.sourcePicker)
-                        {
-                            pickerAP.Items.Add(a.Nombre);
-                        }
+
                     }
                 }
-                notidicacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    pickerAP.SelectedIndex = -1;
+                    pickerAP.Items.Clear();
+                    pickerAP.Items.Add("TODOS");
+                    foreach (FoliosPendientesSVModel a in ViewModel.sourcePicker)
+                    {
+                        pickerAP.Items.Add(a.Nombre);
+                    }
+                    notidicacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
+                });
             }
             catch (Exception ex)
             {
@@ -463,8 +468,13 @@ namespace GestionFC.Views
 
         private void SelectedIndexChangedName(object sender, EventArgs e)
         {
-            var nombre = pickerAP.Items[pickerAP.SelectedIndex];
-            ViewModel.FilterItemsNombre(nombre);
+            if(pickerAP.SelectedIndex != -1)
+            {
+                var nombre = pickerAP.Items[pickerAP.SelectedIndex];
+                ViewModel.FilterItemsNombre(nombre);
+            }
+            
+            
         }
 
         private void FolioFiltro(object sender, EventArgs e)
