@@ -1192,6 +1192,7 @@
                                 FontSize="12"
                                 Margin="1"
                                 TextColor="#707070"
+                                Unfocused="FolioFiltro"
                                 HorizontalOptions="FillAndExpand">
                             </renderers:EntryIcon>
                             <BoxView
