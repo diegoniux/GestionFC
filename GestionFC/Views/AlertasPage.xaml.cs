@@ -412,6 +412,8 @@ namespace GestionFC.Views
                                 }
                             }
                             ViewModel.FoliosPendientesSV = x.Result;
+
+                            ViewModel.CreateCollection();
                             //Device.BeginInvokeOnMainThread(() =>
                             //{
                             //    pickerAP.Items.Clear();
