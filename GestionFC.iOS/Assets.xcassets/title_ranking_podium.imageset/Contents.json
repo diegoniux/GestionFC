@@ -4,12 +4,12 @@
       "idiom": "universal"
     },
     {
-      "filename": "icon_rank_equal.png",
+      "filename": "title_ranking_podium.png",
       "scale": "1x",
       "idiom": "universal"
     },
     {
-      "filename": "icon_rank_equal@2x.png",
+      "filename": "title_ranking_podium@2x.png",
       "scale": "2x",
       "idiom": "universal"
     },
@@ -525,10 +525,5 @@
   "info": {
     "version": 1,
     "author": "xcode"
-  },
-  "properties": {
-    "on-demand-resource-tags": [
-      "x"
-    ]
   }
 }

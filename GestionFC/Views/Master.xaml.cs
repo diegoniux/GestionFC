@@ -72,6 +72,13 @@ namespace GestionFC.Views
                 TargetType = typeof(LoginPage),
             });
 
+            masterPageItems.Add(new MasterPageItem
+            {
+                Title = "Ranking Semanal",
+                IconSource = "icon_ranking.png",
+                TargetType = typeof(RankingAgentesPage),
+            });
+
             listView.ItemsSource = masterPageItems;
             //loadPage();
 

@@ -27,9 +27,9 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>Apple Distribution: Diego Alberto Nieto Flores (KQKPH57A56)</CodesignKey>
+    <CodesignKey>Apple Distribution: Ricardo Joan Garza Reyna (7U8JGNA2ZK)</CodesignKey>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <CodesignProvision>icap.dist</CodesignProvision>
+    <CodesignProvision>GestionFC.Dist</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -51,13 +51,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>Apple Distribution: Diego Alberto Nieto Flores (KQKPH57A56)</CodesignKey>
+    <CodesignKey>iPhone Developer: Ricardo Joan Garza Reyna (9AQ48K9WFC)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>None</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
     <BuildIpa>true</BuildIpa>
-    <CodesignProvision>icap.dist</CodesignProvision>
+    <CodesignProvision>GestiónFC</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -841,6 +841,24 @@
     <ImageAsset Include="Assets.xcassets\icon_pizarron_digital.imageset\icon_pizarron_digital%402x.png" />
     <ImageAsset Include="Assets.xcassets\icon_productividad.imageset\icon_productividad.png" />
     <ImageAsset Include="Assets.xcassets\icon_productividad.imageset\icon_productividad%402x.png" />
+    <ImageAsset Include="Assets.xcassets\title_ranking_podium.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\title_ranking_podium.imageset\title_ranking_podium.png" />
+    <ImageAsset Include="Assets.xcassets\title_ranking_podium.imageset\title_ranking_podium%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_gold.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_plate.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_bronze.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_gold.imageset\icon_coin_gold.png" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_gold.imageset\icon_coin_gold%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_plate.imageset\icon_coin_plate.png" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_plate.imageset\icon_gold_plate%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_bronze.imageset\icon_coin_bronze.png" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_bronze.imageset\icon_coin_bronze%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_nut.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_nut.imageset\icon_nut.png" />
+    <ImageAsset Include="Assets.xcassets\icon_nut.imageset\icon_nut%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_timer_green.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_timer_green.imageset\icon_timer_green.png" />
+    <ImageAsset Include="Assets.xcassets\icon_timer_green.imageset\icon_timer_green%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -933,6 +951,12 @@
     <Folder Include="Assets.xcassets\icon_warning.imageset\" />
     <Folder Include="Assets.xcassets\icon_productividad.imageset\" />
     <Folder Include="Assets.xcassets\icon_pizarron_digital.imageset\" />
+    <Folder Include="Assets.xcassets\title_ranking_podium.imageset\" />
+    <Folder Include="Assets.xcassets\icon_coin_gold.imageset\" />
+    <Folder Include="Assets.xcassets\icon_coin_plate.imageset\" />
+    <Folder Include="Assets.xcassets\icon_coin_bronze.imageset\" />
+    <Folder Include="Assets.xcassets\icon_nut.imageset\" />
+    <Folder Include="Assets.xcassets\icon_timer_green.imageset\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
