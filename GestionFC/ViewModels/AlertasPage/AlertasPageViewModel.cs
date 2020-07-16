@@ -129,6 +129,30 @@ namespace GestionFC.ViewModels.AlertasPage
             }
         }
 
+        private PlantillaRecuperacionResponseModel plantillaRecuperacion;
+
+        public PlantillaRecuperacionResponseModel PlantillaRecuperacion
+        {
+            get { return plantillaRecuperacion; }
+            set
+            {
+                plantillaRecuperacion = value;
+                RaisePropertyChanged(nameof(PlantillaRecuperacion));
+            }
+        }
+
+        private PlantillaInvestigacionResponseModel plantillaInvestigacion;
+
+        public PlantillaInvestigacionResponseModel PlantillaInvestigacion
+        {
+            get { return plantillaInvestigacion; }
+            set
+            {
+                plantillaInvestigacion = value;
+                RaisePropertyChanged(nameof(PlantillaInvestigacion));
+            }
+        }
+
         private FoliosPendientesSVResponseModel foliosPendientesSV;
 
         public FoliosPendientesSVResponseModel FoliosPendientesSV
