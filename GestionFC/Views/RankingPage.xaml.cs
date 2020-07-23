@@ -37,14 +37,12 @@ namespace GestionFC.Views
                 App.MasterDetail.IsPresented = !App.MasterDetail.IsPresented;
             };
             btnHamburguesa.GestureRecognizers.Add(burguerTap);
-
         }
 
         private async void LoadPage()
         {
             Service.HeaderService headerService = new Service.HeaderService();
             Service.RankingService rankingService = new Service.RankingService();
-            Service.PlantillaService gridPromotoresService = new Service.PlantillaService();
             try
             {
                 nomina = App.Nomina;
@@ -147,7 +145,7 @@ namespace GestionFC.Views
 
                 var logError = new Models.Log.LogErrorModel()
                 {
-                    IdPantalla = 2,
+                    IdPantalla = 5,
                     Usuario = nomina,
                     Error = (ex.TargetSite == null ? "" : ex.TargetSite.Name + ". ") + ex.Message,
                     Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name

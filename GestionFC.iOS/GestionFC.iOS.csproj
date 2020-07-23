@@ -29,7 +29,7 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>Apple Distribution: Ricardo Joan Garza Reyna (7U8JGNA2ZK)</CodesignKey>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <CodesignProvision>GestionFC.Dist</CodesignProvision>
+    <CodesignProvision>GestionFC.QA</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -859,6 +859,8 @@
     <ImageAsset Include="Assets.xcassets\icon_timer_green.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\icon_timer_green.imageset\icon_timer_green.png" />
     <ImageAsset Include="Assets.xcassets\icon_timer_green.imageset\icon_timer_green%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_empty.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_empty.imageset\icon_coin_empty%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -957,6 +959,7 @@
     <Folder Include="Assets.xcassets\icon_coin_bronze.imageset\" />
     <Folder Include="Assets.xcassets\icon_nut.imageset\" />
     <Folder Include="Assets.xcassets\icon_timer_green.imageset\" />
+    <Folder Include="Assets.xcassets\icon_coin_empty.imageset\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

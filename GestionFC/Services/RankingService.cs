@@ -25,7 +25,7 @@ namespace GestionFC.Services
             var rankingResponse = new RankingResponseModel();
             try
             {
-                var uri = new Uri($"{App.BaseUrlApi}api/Ranking/{nomina}");
+                var uri = new Uri($"{App.BaseUrlApi}api/Ranking/GetRanking/{nomina}");
 
                 HttpResponseMessage response = null;
                 if (_client.DefaultRequestHeaders.Authorization == null)
@@ -47,6 +47,35 @@ namespace GestionFC.Services
                 };
             }
             return rankingResponse;
+        }
+
+        public async Task<RankingAgentesResponseModel> GetRankingEspecialistas(int nomina, string accessToken)
+        {
+            var rankingAPsResponse = new RankingAgentesResponseModel();
+            try
+            {
+                var uri = new Uri($"{App.BaseUrlApi}api/Ranking/GetRankingEspecialistas/{nomina}");
+
+                HttpResponseMessage response = null;
+                if (_client.DefaultRequestHeaders.Authorization == null)
+                    _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
+                response = await _client.GetAsync(uri);
+
+                response.EnsureSuccessStatusCode();
+
+                string jsonResult = await response.Content.ReadAsStringAsync();
+                rankingAPsResponse = JsonConvert.DeserializeObject<RankingAgentesResponseModel>(jsonResult);
+            }
+            catch (Exception ex)
+            {
+                rankingAPsResponse.ResultadoEjecucion = new Models.Share.ResultadoEjecucion()
+                {
+                    EjecucionCorrecta = false,
+                    FriendlyMessage = "Ocurrio un error",
+                    ErrorMessage = ex.Message
+                };
+            }
+            return rankingAPsResponse;
         }
     }
 }

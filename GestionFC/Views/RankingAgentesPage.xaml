@@ -817,12 +817,13 @@
             </Grid>
             <Grid Margin="0, 25, 0, 0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.05*"></ColumnDefinition>
-                    <ColumnDefinition Width="0.9*"></ColumnDefinition>
-                    <ColumnDefinition Width="0.05*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.035*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.93*"></ColumnDefinition>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition Width="0.035*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="320"></RowDefinition>
+                    <RowDefinition Height="250"></RowDefinition>
                 </Grid.RowDefinitions>
                 <CollectionView ItemsSource="{Binding TopEspecialistas}"
                                 Grid.Column="1"
@@ -835,18 +836,19 @@
                         <DataTemplate>
                             <Grid>
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="100"></RowDefinition>
                                     <RowDefinition Height="130"></RowDefinition>
-                                    <RowDefinition Height="150"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="20"></ColumnDefinition>
-                                    <ColumnDefinition Width="190"></ColumnDefinition>
+                                    <ColumnDefinition Width="180"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
 
                                 <!-- end 1er lugar -->
                                 <ffimageloading:CachedImage
                                     Grid.Column="1"
                                     Grid.Row="0"
+                                    Margin="0,0,0,-20"
                                     x:Name = "Fotos_AP"
                                     Source = "{Binding Foto}"
                                     CacheDuration = "90"
@@ -871,115 +873,107 @@
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="5"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="16"></RowDefinition>
-                                            <RowDefinition Height="16"></RowDefinition>
-                                            <RowDefinition Height="20"></RowDefinition>
-                                            <RowDefinition Height="40"></RowDefinition>
+                                            <RowDefinition Height="10"></RowDefinition>
+                                            <RowDefinition Height="12"></RowDefinition>
+                                            <RowDefinition Height="12"></RowDefinition>
+                                            <RowDefinition Height="17"></RowDefinition>
+                                            <RowDefinition Height="10"></RowDefinition>
+                                            <RowDefinition Height="25"></RowDefinition>
                                         </Grid.RowDefinitions>
+                                        <Frame
+                                            Margin="25,-18,25,0"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Grid.Row="0"
+                                            Padding="10"
+                                            CornerRadius="15"
+                                            BackgroundColor="{Binding ColorPosicion}"
+                                            HasShadow="False">
+                                            <Label TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="12"
+                                                   FontFamily="Helvetica"
+                                                   HorizontalTextAlignment="Center">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding Posicion}"></Span>
+                                                            <Span Text=" LUGAR" ></Span>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                            </Label>
+                                        </Frame>
+                                        <Image Source="{Binding ImgPosicionSemAnt}"
+                                            Margin="0,-7,-7,0"
+                                            Grid.Column="1"
+                                            Grid.Row="0"></Image>
                                         <Label Text="{Binding Nombre}"
-                                           Grid.Column="0"
-                                           Grid.Row="0"
-                                           TextColor="Black"
-                                           FontAttributes="Bold"
-                                           FontSize="14"
-                                           FontFamily="Helvetica"
-                                           HorizontalTextAlignment="Center"
-                                           VerticalTextAlignment="End"></Label>
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Grid.Row="1"
+                                            TextColor="Black"
+                                            FontAttributes="Bold"
+                                            FontSize="12"
+                                            FontFamily="Helvetica"
+                                            HorizontalTextAlignment="Center"
+                                            VerticalTextAlignment="End"></Label>
                                         <Label Text="{Binding Apellidos}"
                                            Grid.Column="0"
-                                           Grid.Row="1"
+                                            Grid.ColumnSpan="2"
+                                           Grid.Row="2"
                                            TextColor="Black"
-                                           FontSize="14"
+                                           FontSize="12"
                                            FontFamily="Helvetica"
                                            HorizontalTextAlignment="Center"
                                            VerticalTextAlignment="Start"></Label>
-                                        <Label Text="{Binding Saldo}"
+                                        <Label Text="{Binding SaldoVirtual}"
                                            Grid.Column="0"
-                                           Grid.Row="2"
+                                            Grid.ColumnSpan="2"
+                                           Grid.Row="3"
                                            TextColor="{Binding ColorPosicion}"
                                            FontAttributes="Bold"
-                                           FontSize="20"
+                                           FontSize="18"
                                            FontFamily="Helvetica"
                                            HorizontalTextAlignment="Center"
-                                           VerticalTextAlignment="Start"></Label>
-                                        <Frame
-                                            Margin="5, 0, 5, 0"
-                                            Grid.Column="0"
-                                            Grid.Row="3"
-                                            BorderColor="#EBEBEB"
-                                            CornerRadius="10"
-                                            HasShadow="False"
-                                            Padding="1"
-                                            >
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition  Width="0.25*"></ColumnDefinition>
-                                                    <ColumnDefinition  Width="0.25*"></ColumnDefinition>
-                                                    <ColumnDefinition  Width="0.25*"></ColumnDefinition>
-                                                    <ColumnDefinition  Width="0.25*"></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="*"></RowDefinition>
-                                                </Grid.RowDefinitions>
-                                                <Image Source="{Binding Estrellas.semana1}"
-                                                       Margin="7,7,7,7"
-                                                       Grid.Column="0"
-                                                       Grid.Row="0"></Image>
-                                                <Image Source="{Binding Estrellas.semana2}"
-                                                       Margin="7,7,7,7"
-                                                       Grid.Column="1"
-                                                       Grid.Row="0"></Image>
-                                                <Image Source="{Binding Estrellas.semana3}"
-                                                       Margin="7,7,7,7"
-                                                       Grid.Column="2"
-                                                       Grid.Row="0"></Image>
-                                                <Image Source="{Binding Estrellas.semana4}"
-                                                       Margin="7,7,7,7"
-                                                       Grid.Column="3"
-                                                       Grid.Row="0"></Image>
-                                            </Grid>
-                                        </Frame>
+                                           VerticalTextAlignment="Start">
+                                        </Label>
                                         <Label
+                                            Text="TRASPASOS"
                                             Grid.Column="0"
-                                            Grid.Row="3"
-                                           TextColor="Black"
-                                           FontAttributes="Bold"
-                                           FontSize="12"
-                                           FontFamily="Helvetica"
-                                           HorizontalTextAlignment="Center"
-                                           VerticalTextAlignment="Center">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding NumTraspaso}"></Span>
-                                                    <Span Text=" TRASPASOS"></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                    </Label>
+                                            Grid.ColumnSpan="2"
+                                            Grid.Row="4"
+                                            Margin="0,-3,0,0"
+                                            TextColor="Black"
+                                            FontAttributes="Bold"
+                                            FontSize="10"
+                                            FontFamily="Helvetica"
+                                            HorizontalTextAlignment="Center"
+                                            VerticalTextAlignment="Start">
+                                        </Label>
+                                        <Frame
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Grid.Row="5"
+                                            Padding="0"
+                                            CornerRadius="15"
+                                            Margin="60,-7,60,2"
+                                            HasShadow="False"
+                                            BackgroundColor="{Binding ColorPosicion}">
+                                            <Label
+                                                Text="{Binding NumTraspaso}"
+                                                TextColor="white"
+                                                FontAttributes="Bold"
+                                                FontSize="14"
+                                                FontFamily="Helvetica"
+                                                HorizontalTextAlignment="Center"
+                                                VerticalTextAlignment="Center">
+                                            </Label>
+                                        </Frame>
                                     </Grid>
                                 </Frame>
-                                <Frame
-                                    Margin="50, -20, 50, 135"
-                                    Grid.Column="1"
-                                    Grid.Row="1"
-                                    Padding="10"
-                                    CornerRadius="15"
-                                    BackgroundColor="{Binding ColorPosicion}"
-                                    HasShadow="False">
-                                    <Label TextColor="White"
-                                           FontAttributes="Bold"
-                                           FontSize="12"
-                                           FontFamily="Helvetica"
-                                           HorizontalTextAlignment="Center">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding Posicion}"></Span>
-                                                    <Span Text=" LUGAR" ></Span>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                    </Label>
-                                </Frame>
+                                
                                 <BoxView
                                     Grid.Column="0"
                                     Grid.Row="1"
@@ -994,33 +988,143 @@
                                     Margin="2,2,-16,15"
                                     BackgroundColor="White"
                                     CornerRadius="8,0,8,0"></BoxView>
-                            <CollectionView ItemsSource="{Binding Monedas}"
-                                Grid.Column="0"
-                                Grid.Row="1"
-                                Grid.RowSpan="3"
-                                Margin="0">
-                                <CollectionView.ItemsLayout>
-                                    <GridItemsLayout Orientation="Vertical" Span="1"></GridItemsLayout>
-                                </CollectionView.ItemsLayout>
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Image Source="{Binding}"></Image>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
+                                <Grid
+                                    Grid.Column="0"
+                                    Grid.Row="1"
+                                    Grid.RowSpan="3"
+                                    Margin="0, 5, 0, 5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.24*"></RowDefinition>
+                                        <RowDefinition Height="0.24*"></RowDefinition>
+                                        <RowDefinition Height="0.24*"></RowDefinition>
+                                        <RowDefinition Height="0.24*"></RowDefinition>
+                                        <RowDefinition Height="0.04*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Image Source="{Binding Monedas.semana1}"
+                                            Margin="3,3,3,3"
+                                            Grid.Column="0"
+                                            Grid.Row="0"></Image>
+                                    <Image Source="{Binding Monedas.semana2}"
+                                            Margin="3,3,3,3"
+                                            Grid.Column="0"
+                                            Grid.Row="1"></Image>
+                                    <Image Source="{Binding Monedas.semana3}"
+                                            Margin="3,3,3,3"
+                                            Grid.Column="0"
+                                            Grid.Row="2"></Image>
+                                    <Image Source="{Binding Monedas.semana4}"
+                                            Margin="3,3,3,3"
+                                            Grid.Column="0"
+                                            Grid.Row="3"></Image>
+                                </Grid>
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <Frame
+                    Grid.Column="2"
+                    Margin="0,10,0,15"
+                    Padding="0"
+                    BackgroundColor="#f9f9f9"
+                    CornerRadius="15"
+                    HasShadow="False">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="80"></RowDefinition>
+                            <RowDefinition Height="30"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image Source="icon_timer_green.png"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="0"
+                            Margin="0,25,0,-5"></Image>
+                        <Label Text="Termina en:"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Grid.Row="1"
+                            FontFamily="Helvetica"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                            ></Label>
+                        <BoxView
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            CornerRadius="0,10,0,10"
+                            BackgroundColor="#f3f3f3">
+                        </BoxView>
+                        <Label Text="{Binding Dias}"
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            FontSize="24"
+                            Margin="0,20,0,0"
+                            FontFamily="Helvetica"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Start"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                        ></Label>
+                        <Label Text="DÍAS"
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            FontSize="10"
+                            Margin="0,0,0,20"
+                            FontFamily="Helvetica"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="End"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                        ></Label>
+                        <BoxView
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            CornerRadius="10,0,10,0"
+                            BackgroundColor="#f3f3f3">
+                        </BoxView>
+                        <Label Text="{Binding Horas}"
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            FontSize="24"
+                            Margin="0,20,0,0"
+                            FontFamily="Helvetica"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Start"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                        ></Label>
+                        <Label Text="HORAS"
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            FontSize="10"
+                            Margin="0,0,0,20"
+                            FontFamily="Helvetica"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="End"
+                            FontAttributes="Bold"
+                            TextColor="#353535"
+                        ></Label>
+                    </Grid>
+                </Frame>
             </Grid>
             <!-- end 1er lugar -->
 
             <!-- Panel de perdedores -->
             <Grid Margin="0, 0, 0, 0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.05*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.035*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="0.05*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.035*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
@@ -1142,7 +1246,7 @@
                                                 <RowDefinition Height="0.4*"></RowDefinition>
                                                 <RowDefinition Height="0.6*"></RowDefinition>
                                             </Grid.RowDefinitions>
-                                            <Label Text="{Binding Saldo}"
+                                            <Label Text="{Binding SaldoVirtual}"
                                                    Grid.Column="0"
                                                    Grid.Row="0"
                                                    HorizontalTextAlignment="Center"
@@ -1202,19 +1306,19 @@
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="*"></RowDefinition>
                                                 </Grid.RowDefinitions>
-                                                <Image Source="{Binding Estrellas.semana1}"
+                                                <Image Source="{Binding Monedas.semana1}"
                                                         Margin="7,7,7,7"
                                                         Grid.Column="0"
                                                         Grid.Row="0"></Image>
-                                                <Image Source="{Binding Estrellas.semana2}"
+                                                <Image Source="{Binding Monedas.semana2}"
                                                         Margin="7,7,7,7"
                                                         Grid.Column="1"
                                                         Grid.Row="0"></Image>
-                                                <Image Source="{Binding Estrellas.semana3}"
+                                                <Image Source="{Binding Monedas.semana3}"
                                                         Margin="7,7,7,7"
                                                         Grid.Column="2"
                                                         Grid.Row="0"></Image>
-                                                <Image Source="{Binding Estrellas.semana4}"
+                                                <Image Source="{Binding Monedas.semana4}"
                                                         Margin="7,7,7,7"
                                                         Grid.Column="3"
                                                         Grid.Row="0"></Image>

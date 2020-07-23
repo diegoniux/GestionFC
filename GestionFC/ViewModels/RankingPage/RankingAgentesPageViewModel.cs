@@ -67,9 +67,9 @@ namespace GestionFC.ViewModels.RankingPage
             }
         }
 
-        private List<Especialista> _topEspecialistas;
+        private List<RankingEspecialista> _topEspecialistas;
 
-        public List<Especialista> TopEspecialistas
+        public List<RankingEspecialista> TopEspecialistas
         {
             get { return _topEspecialistas; }
             set
@@ -79,9 +79,9 @@ namespace GestionFC.ViewModels.RankingPage
             }
         }
 
-        private List<Especialista> _especialistas;
+        private List<RankingEspecialista> _especialistas;
 
-        public List<Especialista> Especialistas
+        public List<RankingEspecialista> Especialistas
         {
             get { return _especialistas; }
             set
@@ -111,14 +111,14 @@ namespace GestionFC.ViewModels.RankingPage
             set
             {
                 _horas = value;
-                RaisePropertyChanged(Horas);
+                RaisePropertyChanged(nameof(Horas));
             }
         }
 
         public RankingAgentesPageViewModel()
         {
-            this.Especialistas = new List<Especialista>();
-            this.TopEspecialistas = new List<Especialista>();
+            this.Especialistas = new List<RankingEspecialista>();
+            this.TopEspecialistas = new List<RankingEspecialista>();
         }
     }
 }

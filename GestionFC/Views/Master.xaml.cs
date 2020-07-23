@@ -67,16 +67,16 @@ namespace GestionFC.Views
 
             masterPageItems.Add(new MasterPageItem
             {
-                Title = "Cerrar Sesión",
-                IconSource = "icon_singout.png",
-                TargetType = typeof(LoginPage),
+                Title = "Ranking Semanal",
+                IconSource = "icon_ranking.png",
+                TargetType = typeof(RankingAgentesPage),
             });
 
             masterPageItems.Add(new MasterPageItem
             {
-                Title = "Ranking Semanal",
-                IconSource = "icon_ranking.png",
-                TargetType = typeof(RankingAgentesPage),
+                Title = "Cerrar Sesión",
+                IconSource = "icon_singout.png",
+                TargetType = typeof(LoginPage),
             });
 
             listView.ItemsSource = masterPageItems;
