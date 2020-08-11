@@ -63,8 +63,6 @@
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
-	<key>CFBundleIdentifier</key>
-	<string>icap.gestionfc</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleName</key>
@@ -72,8 +70,10 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Fill in a reason why your app needs access to location.</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.4.2</string>
+	<string>0.4.14</string>
 	<key>CFBundleVersion</key>
 	<string>10.0</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.invercap.GFC</string>
 </dict>
 </plist>
