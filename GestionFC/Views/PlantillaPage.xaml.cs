@@ -6,6 +6,8 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using Service = GestionFC.Services;
 using GestionFC.Models.Log;
+using GestionFC.Models.Share;
+using System.Linq;
 
 namespace GestionFC.Views
 {
@@ -185,6 +187,40 @@ namespace GestionFC.Views
             });
         }
 
+        async void CollectionView_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                Progreso EspecialistaSeleccionado = e.CurrentSelection.FirstOrDefault() as Progreso;
+
+                if (EspecialistaSeleccionado == null)
+                {
+                    throw new Exception("Error al obtener la información del Especialista");
+                }
+
+
+                App.MasterDetail.IsPresented = false;
+                await App.MasterDetail.Detail.Navigation.PushAsync(new DetalleEspecialistaPage(ViewModel.Agentes, EspecialistaSeleccionado));
+
+
+            }
+            catch (Exception ex)
+            {
+                var logError = new Models.Log.LogErrorModel()
+                {
+                    IdPantalla = 2,
+                    Usuario = nomina,
+                    Error = (ex.TargetSite == null ? "" : ex.TargetSite.Name + ". ") + ex.Message,
+                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+                };
+                await _master.logService.LogError(logError, "").ContinueWith(logRes =>
+                {
+                    if (logRes.IsFaulted)
+                        DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                });
+                await DisplayAlert("PlantillaPage Error", ex.Message, "Ok");
+            }
+        }
     }
 
 }

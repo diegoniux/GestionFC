@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fFImageLoadingTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" xmlns:renderers="clr-namespace:GestionFC.Renderers"
+    x:Class="GestionFC.Views.DetalleEspecialistaPage"
+    BackgroundColor="#F0F0F1">
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="#DCD7D7" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    <RelativeLayout>
+        <StackLayout Margin="20,20,20,0"
+            Padding="0" 
+            Orientation="Vertical" 
+            VerticalOptions="FillAndExpand" 
+            Spacing="0"
+            RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+            <Grid Margin="0"
+                  Padding="0" 
+                  ColumnSpacing="0" 
+                  RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="105"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.15*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <!-- FOTO GERENTE -->
+                <Frame
+                    CornerRadius="50"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Grid.RowSpan="3"
+                    BackgroundColor="#FFFFFF"
+                    BorderColor="#FFFFFF"
+                    Padding="5"
+                    HasShadow="False">
+                    <ffimageloading:CachedImage
+                        x:Name = "Foto_Gerente"
+                        Source = "capi_circulo.png"
+                        CacheDuration = "90"
+                        RetryCount = "5"
+                        RetryDelay = "450"
+                        LoadingPlaceholder="capi_circulo.png"
+                        ErrorPlaceholder="capi_circulo.png">
+                        <ffimageloading:CachedImage.Transformations>
+                            <fFImageLoadingTrans:CircleTransformation
+                                BorderSize="5"
+                                BorderHexColor="#ffffff"/>
+                            </ffimageloading:CachedImage.Transformations>
+                    </ffimageloading:CachedImage>
+                </Frame>
+
+                <!-- Busqueda de Folios-->
+                <Frame
+                    Padding="0"
+                    CornerRadius="20"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="4"
+                    Grid.Row="0"
+                    Margin="25,5,0,5"
+                    HasShadow="False"
+                    BackgroundColor="#FFFFFF"
+                    BorderColor="White">
+                    <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
+                        <renderers:EntryIcon
+                            x:Name="UserName"
+                            Margin="20,0,0,0"
+                            Text="{Binding LoginDTO.Nomina, Mode=TwoWay}"
+                            Keyboard="Numeric"
+                            MaxLength="11"
+                            CornerRadius="35"
+                            Placeholder="Búsqueda de folios"
+                            FontFamily="{StaticResource Poppins-Regular}"
+                            PlaceholderColor="#C4C4C4"
+                            TextColor="#275D38"
+                            FontSize="20"
+                            BackgroundColor="#FFFFFF" 
+                            HorizontalOptions="FillAndExpand">
+                            <renderers:EntryIcon.Behaviors>
+                                <renderers:NumericValidationBehavior />
+                            </renderers:EntryIcon.Behaviors>
+                        </renderers:EntryIcon>
+                        <Image Source="icon_search.png" 
+                                WidthRequest="28"
+                                HeightRequest="35"
+                                Margin="20,0,20,0"
+                                BackgroundColor="#FFFFFF">
+                        </Image>
+                    </StackLayout>
+                </Frame>
+
+
+
+            </Grid>
+        </StackLayout>
+    </RelativeLayout>
+</ContentPage>

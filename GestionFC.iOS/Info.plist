@@ -63,17 +63,32 @@
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
-	<key>CFBundleIdentifier</key>
-	<string>icap.gestionfc</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleName</key>
 	<string>GestiónFC</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Fill in a reason why your app needs access to location.</string>
-	<key>CFBundleShortVersionString</key>
-	<string>0.4.2</string>
 	<key>CFBundleVersion</key>
 	<string>10.0</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>gamekit</string>
+	</array>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>MKDirectionsRequest</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.maps.directionsrequest</string>
+			</array>
+		</dict>
+	</array>
+	<key>CFBundleIdentifier</key>
+	<string>com.invercap.GestionFC</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.4.14</string>
 </dict>
 </plist>
