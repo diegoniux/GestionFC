@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -108,7 +108,7 @@
                                 <renderers:NumericValidationBehavior />
                             </renderers:EntryIcon.Behaviors>
                         </renderers:EntryIcon>
-                        <Image Source="icon_search.png" 
+                        <Image Source="search_circle_green.png" 
                                 WidthRequest="28"
                                 HeightRequest="35"
                                 Margin="20,0,20,0"
