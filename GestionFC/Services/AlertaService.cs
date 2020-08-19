@@ -50,6 +50,62 @@ namespace GestionFC.Services
             return plantillaImproductivaResponse;
         }
 
+        public async Task<PlantillaRecuperacionResponseModel> GetAlertaPlantillaRecuperacion(int nomina, string token)
+        {
+            var plantillaImproductivaResponse = new PlantillaRecuperacionResponseModel();
+            try
+            {
+                var uri = new Uri($"{App.BaseUrlApi}api/Alerta/GetAlertasPlantillaRecuperacion/{nomina}");
+
+                HttpResponseMessage response = null;
+                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                response = await _client.GetAsync(uri);
+
+                response.EnsureSuccessStatusCode();
+
+                string jsonResult = await response.Content.ReadAsStringAsync();
+                plantillaImproductivaResponse = JsonConvert.DeserializeObject<PlantillaRecuperacionResponseModel>(jsonResult);
+            }
+            catch (Exception ex)
+            {
+                plantillaImproductivaResponse.ResultadoEjecucion = new Models.Share.ResultadoEjecucion()
+                {
+                    EjecucionCorrecta = false,
+                    FriendlyMessage = "Ocurrio un error",
+                    ErrorMessage = ex.Message
+                };
+            }
+            return plantillaImproductivaResponse;
+        }
+
+        public async Task<PlantillaInvestigacionResponseModel> GetAlertaPlantillaInvestigacion(int nomina, string token)
+        {
+            var plantillaImproductivaResponse = new PlantillaInvestigacionResponseModel();
+            try
+            {
+                var uri = new Uri($"{App.BaseUrlApi}api/Alerta/GetAlertasPlantillaInvestigacion/{nomina}");
+
+                HttpResponseMessage response = null;
+                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                response = await _client.GetAsync(uri);
+
+                response.EnsureSuccessStatusCode();
+
+                string jsonResult = await response.Content.ReadAsStringAsync();
+                plantillaImproductivaResponse = JsonConvert.DeserializeObject<PlantillaInvestigacionResponseModel>(jsonResult);
+            }
+            catch (Exception ex)
+            {
+                plantillaImproductivaResponse.ResultadoEjecucion = new Models.Share.ResultadoEjecucion()
+                {
+                    EjecucionCorrecta = false,
+                    FriendlyMessage = "Ocurrio un error",
+                    ErrorMessage = ex.Message
+                };
+            }
+            return plantillaImproductivaResponse;
+        }
+
         public async Task<FoliosPendientesSVResponseModel> GetAlertaPlantillaSinSaldoVirtual(int nomina, string token)
         {
             var plantillaImproductivaResponse = new FoliosPendientesSVResponseModel();

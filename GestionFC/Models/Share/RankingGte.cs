@@ -14,6 +14,6 @@ namespace GestionFC.Models.Share
         public string ImgPosicionSemAnt { get; set; }
         public string ColorPosicion { get; set; }
         public string ColorTextoSaldo { get; set; }
-        public RankEstrellas Estrellas { get; set; }
+        public RankSemanal Estrellas { get; set; }
     }
 }

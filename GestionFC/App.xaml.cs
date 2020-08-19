@@ -28,6 +28,7 @@ namespace GestionFC
 
         public static string BaseUrlApi
         {
+            // get { return "https://spw.invercap.com.mx/spw_Api_GestionFC/"; }
             get { return "https://desaiis01/spw_Api_GestionFC/"; }
             // get { return "https://spw.invercap.com.mx/spw_Api_GestionFC/"; }
             //get { return "http://192.168.15.29/"; }

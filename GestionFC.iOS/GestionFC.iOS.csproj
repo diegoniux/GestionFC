@@ -29,7 +29,7 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>Apple Distribution: Diego Alberto Nieto Flores (KQKPH57A56)</CodesignKey>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <CodesignProvision>icap.dist</CodesignProvision>
+    <CodesignProvision>profile.Dist</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -51,13 +51,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>Apple Distribution: Diego Alberto Nieto Flores (KQKPH57A56)</CodesignKey>
+    <CodesignKey>iPhone Developer: Ricardo Joan Garza Reyna (9AQ48K9WFC)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>None</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
     <BuildIpa>true</BuildIpa>
-    <CodesignProvision>icap.dist</CodesignProvision>
+    <CodesignProvision>GestiónFC</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -841,6 +841,119 @@
     <ImageAsset Include="Assets.xcassets\icon_pizarron_digital.imageset\icon_pizarron_digital%402x.png" />
     <ImageAsset Include="Assets.xcassets\icon_productividad.imageset\icon_productividad.png" />
     <ImageAsset Include="Assets.xcassets\icon_productividad.imageset\icon_productividad%402x.png" />
+    <ImageAsset Include="Assets.xcassets\title_ranking_podium.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\title_ranking_podium.imageset\title_ranking_podium.png" />
+    <ImageAsset Include="Assets.xcassets\title_ranking_podium.imageset\title_ranking_podium%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_gold.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_plate.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_bronze.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_gold.imageset\icon_coin_gold.png" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_gold.imageset\icon_coin_gold%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_plate.imageset\icon_coin_plate.png" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_plate.imageset\icon_gold_plate%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_bronze.imageset\icon_coin_bronze.png" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_bronze.imageset\icon_coin_bronze%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_nut.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_nut.imageset\icon_nut.png" />
+    <ImageAsset Include="Assets.xcassets\icon_nut.imageset\icon_nut%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_timer_green.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_timer_green.imageset\icon_timer_green.png" />
+    <ImageAsset Include="Assets.xcassets\icon_timer_green.imageset\icon_timer_green%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_empty.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_coin_empty.imageset\icon_coin_empty%402x.png" />
+    <ImageAsset Include="Assets.xcassets\cup_disabled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\cup_disabled.imageset\cup_disabled.png" />
+    <ImageAsset Include="Assets.xcassets\cup_disabled.imageset\cup_disabled-1.png" />
+    <ImageAsset Include="Assets.xcassets\cup.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\cup.imageset\cup.png" />
+    <ImageAsset Include="Assets.xcassets\cup.imageset\cup-1.png" />
+    <ImageAsset Include="Assets.xcassets\person_disabled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\person_disabled.imageset\person_disabled.png" />
+    <ImageAsset Include="Assets.xcassets\person_disabled.imageset\person_disabled-1.png" />
+    <ImageAsset Include="Assets.xcassets\person.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\person.imageset\person.png" />
+    <ImageAsset Include="Assets.xcassets\person.imageset\person-1.png" />
+    <ImageAsset Include="Assets.xcassets\pig_disabled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\pig_disabled.imageset\pig_disabled.png" />
+    <ImageAsset Include="Assets.xcassets\pig_disabled.imageset\pig_disabled-1.png" />
+    <ImageAsset Include="Assets.xcassets\pig.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\pig.imageset\pig.png" />
+    <ImageAsset Include="Assets.xcassets\pig.imageset\pig-1.png" />
+    <ImageAsset Include="Assets.xcassets\search_circle_green.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\search_circle_green.imageset\search_circle_green.png" />
+    <ImageAsset Include="Assets.xcassets\search_circle_green.imageset\search_circle_green-1.png" />
+    <ImageAsset Include="Assets.xcassets\prev_disabled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\prev_disabled.imageset\prev_disabled.png" />
+    <ImageAsset Include="Assets.xcassets\prev_disabled.imageset\prev_disabled-1.png" />
+    <ImageAsset Include="Assets.xcassets\next_disabled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\next_disabled.imageset\next_disabled.png" />
+    <ImageAsset Include="Assets.xcassets\next_disabled.imageset\next_disabled-1.png" />
+    <ImageAsset Include="Assets.xcassets\tumblike.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\tumblike.imageset\tumblike.png" />
+    <ImageAsset Include="Assets.xcassets\tumblike.imageset\tumblike-1.png" />
+    <ImageAsset Include="Assets.xcassets\tablet_disabled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\tablet_disabled.imageset\tablet_disabled.png" />
+    <ImageAsset Include="Assets.xcassets\tablet_disabled.imageset\tablet_disabled-1.png" />
+    <ImageAsset Include="Assets.xcassets\tablet.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\tablet.imageset\tablet.png" />
+    <ImageAsset Include="Assets.xcassets\tablet.imageset\tablet-1.png" />
+    <ImageAsset Include="Assets.xcassets\nut_disabled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\nut_disabled.imageset\nut_disabled.png" />
+    <ImageAsset Include="Assets.xcassets\nut_disabled.imageset\nut_disabled-1.png" />
+    <ImageAsset Include="Assets.xcassets\nut.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\nut.imageset\nut.png" />
+    <ImageAsset Include="Assets.xcassets\nut.imageset\nut-1.png" />
+    <ImageAsset Include="Assets.xcassets\moneybag.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\moneybag.imageset\moneybag.png" />
+    <ImageAsset Include="Assets.xcassets\moneybag.imageset\moneybag-1.png" />
+    <ImageAsset Include="Assets.xcassets\moneybag_disabled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\moneybag_disabled.imageset\moneybag_disabled.png" />
+    <ImageAsset Include="Assets.xcassets\moneybag_disabled.imageset\moneybag_disabled-1.png" />
+    <ImageAsset Include="Assets.xcassets\target_shooting_disabled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\target_shooting_disabled.imageset\target_shooting_disabled.png" />
+    <ImageAsset Include="Assets.xcassets\target_shooting_disabled.imageset\target_shooting_disabled-1.png" />
+    <ImageAsset Include="Assets.xcassets\target_shooting_enabled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\target_shooting_enabled.imageset\target_shooting.png" />
+    <ImageAsset Include="Assets.xcassets\target_shooting_enabled.imageset\target_shooting-1.png" />
+    <ImageAsset Include="Assets.xcassets\document_disabled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\document_disabled.imageset\document_disabled.png" />
+    <ImageAsset Include="Assets.xcassets\document_disabled.imageset\document_disabled-1.png" />
+    <ImageAsset Include="Assets.xcassets\document.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\document.imageset\document.png" />
+    <ImageAsset Include="Assets.xcassets\document.imageset\document-1.png" />
+    <ImageAsset Include="Assets.xcassets\investigation_disabled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\investigation_disabled.imageset\investigation_disabled.png" />
+    <ImageAsset Include="Assets.xcassets\investigation_disabled.imageset\investigation_disabled-1.png" />
+    <ImageAsset Include="Assets.xcassets\certification_disabled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\certification_disabled.imageset\certification_disabled.png" />
+    <ImageAsset Include="Assets.xcassets\certification_disabled.imageset\certification_disabled-1.png" />
+    <ImageAsset Include="Assets.xcassets\certification.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\certification.imageset\certification.png" />
+    <ImageAsset Include="Assets.xcassets\certification.imageset\certification-1.png" />
+    <ImageAsset Include="Assets.xcassets\balance_disabled.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\balance_disabled.imageset\balance_disabled.png" />
+    <ImageAsset Include="Assets.xcassets\balance_disabled.imageset\balance_disabled-1.png" />
+    <ImageAsset Include="Assets.xcassets\balance.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\balance.imageset\balance.png" />
+    <ImageAsset Include="Assets.xcassets\balance.imageset\balance-1.png" />
+    <ImageAsset Include="Assets.xcassets\inverstigation.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\inverstigation.imageset\inverstigation.png" />
+    <ImageAsset Include="Assets.xcassets\inverstigation.imageset\inverstigation-1.png" />
+    <ImageAsset Include="Assets.xcassets\flag_circle_green.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\flag_circle_green.imageset\flag_circle_green.png" />
+    <ImageAsset Include="Assets.xcassets\flag_circle_green.imageset\flag.png" />
+    <ImageAsset Include="Assets.xcassets\check.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\check.imageset\check.png" />
+    <ImageAsset Include="Assets.xcassets\check.imageset\check-1.png" />
+    <ImageAsset Include="Assets.xcassets\close.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\close.imageset\close.png" />
+    <ImageAsset Include="Assets.xcassets\close.imageset\close-1.png" />
+    <ImageAsset Include="Assets.xcassets\chart.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\chart.imageset\chart.png" />
+    <ImageAsset Include="Assets.xcassets\chart.imageset\chart-1.png" />
+    <ImageAsset Include="Assets.xcassets\phone.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\phone.imageset\phone.png" />
+    <ImageAsset Include="Assets.xcassets\phone.imageset\phone-1.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -933,6 +1046,44 @@
     <Folder Include="Assets.xcassets\icon_warning.imageset\" />
     <Folder Include="Assets.xcassets\icon_productividad.imageset\" />
     <Folder Include="Assets.xcassets\icon_pizarron_digital.imageset\" />
+    <Folder Include="Assets.xcassets\title_ranking_podium.imageset\" />
+    <Folder Include="Assets.xcassets\icon_coin_gold.imageset\" />
+    <Folder Include="Assets.xcassets\icon_coin_plate.imageset\" />
+    <Folder Include="Assets.xcassets\icon_coin_bronze.imageset\" />
+    <Folder Include="Assets.xcassets\icon_nut.imageset\" />
+    <Folder Include="Assets.xcassets\icon_timer_green.imageset\" />
+    <Folder Include="Assets.xcassets\icon_coin_empty.imageset\" />
+    <Folder Include="Assets.xcassets\cup_disabled.imageset\" />
+    <Folder Include="Assets.xcassets\cup.imageset\" />
+    <Folder Include="Assets.xcassets\person_disabled.imageset\" />
+    <Folder Include="Assets.xcassets\person.imageset\" />
+    <Folder Include="Assets.xcassets\pig_disabled.imageset\" />
+    <Folder Include="Assets.xcassets\pig.imageset\" />
+    <Folder Include="Assets.xcassets\search_circle_green.imageset\" />
+    <Folder Include="Assets.xcassets\prev_disabled.imageset\" />
+    <Folder Include="Assets.xcassets\next_disabled.imageset\" />
+    <Folder Include="Assets.xcassets\tumblike.imageset\" />
+    <Folder Include="Assets.xcassets\tablet_disabled.imageset\" />
+    <Folder Include="Assets.xcassets\tablet.imageset\" />
+    <Folder Include="Assets.xcassets\nut_disabled.imageset\" />
+    <Folder Include="Assets.xcassets\nut.imageset\" />
+    <Folder Include="Assets.xcassets\moneybag.imageset\" />
+    <Folder Include="Assets.xcassets\moneybag_disabled.imageset\" />
+    <Folder Include="Assets.xcassets\target_shooting_disabled.imageset\" />
+    <Folder Include="Assets.xcassets\target_shooting_enabled.imageset\" />
+    <Folder Include="Assets.xcassets\document_disabled.imageset\" />
+    <Folder Include="Assets.xcassets\document.imageset\" />
+    <Folder Include="Assets.xcassets\investigation_disabled.imageset\" />
+    <Folder Include="Assets.xcassets\certification_disabled.imageset\" />
+    <Folder Include="Assets.xcassets\certification.imageset\" />
+    <Folder Include="Assets.xcassets\balance_disabled.imageset\" />
+    <Folder Include="Assets.xcassets\balance.imageset\" />
+    <Folder Include="Assets.xcassets\inverstigation.imageset\" />
+    <Folder Include="Assets.xcassets\flag_circle_green.imageset\" />
+    <Folder Include="Assets.xcassets\check.imageset\" />
+    <Folder Include="Assets.xcassets\close.imageset\" />
+    <Folder Include="Assets.xcassets\chart.imageset\" />
+    <Folder Include="Assets.xcassets\phone.imageset\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
