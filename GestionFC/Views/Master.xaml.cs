@@ -34,50 +34,57 @@ namespace GestionFC.Views
             {
                 Title = "Productividad",
                 IconSource = "icon_productividad.png",
-                TargetType = typeof(PlantillaPage),
+                TargetType = typeof(PlantillaPage)
             });
 
             masterPageItems.Add(new MasterPageItem
             {
                 Title = "Pizarrón Digital",
                 IconSource = "icon_pizarron_digital.png",
-                TargetType = typeof(ProductividadPage),
+                TargetType = typeof(ProductividadPage)
             });
 
             masterPageItems.Add(new MasterPageItem
             {
                 Title = "Alarmas",
                 IconSource = "icon_notification.png",
-                TargetType = typeof(Alertas),
+                TargetType = typeof(Alertas)
             });
 
             masterPageItems.Add(new MasterPageItem
             {
                 Title = "Objetivos",
                 IconSource = "icon_target.png",
-                TargetType = typeof(VisionBoardPage),
+                TargetType = typeof(VisionBoardPage)
             });
 
             masterPageItems.Add(new MasterPageItem
             {
                 Title = "Ranking",
                 IconSource = "icon_ranking.png",
-                TargetType = typeof(RankingPage),
+                TargetType = typeof(RankingPage)
             });
 
             masterPageItems.Add(new MasterPageItem
             {
                 Title = "Ranking Semanal",
                 IconSource = "icon_ranking.png",
-                TargetType = typeof(RankingAgentesPage),
+                TargetType = typeof(RankingAgentesPage)
             });
 
             masterPageItems.Add(new MasterPageItem
             {
                 Title = "Cerrar Sesión",
                 IconSource = "icon_singout.png",
-                TargetType = typeof(LoginPage),
+                TargetType = typeof(LoginPage)
             });
+
+            masterPageItems.Add(new MasterPageItem
+            {
+                Title = "DetalleFolioPage",
+                IconSource = "icon_singout.png",
+                TargetType = typeof(DetalleFolioPage)
+            }); 
 
             listView.ItemsSource = masterPageItems;
             //loadPage();

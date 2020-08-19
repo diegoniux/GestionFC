@@ -55,6 +55,8 @@
     <Folder Include="ViewModels\RankingPage\" />
     <Folder Include="Models\Ranking\" />
     <Folder Include="Converters\" />
+    <Folder Include="Views\Modals\" />
+    <Folder Include="ViewModels\Modals\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS">

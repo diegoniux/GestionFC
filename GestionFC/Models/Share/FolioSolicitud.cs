@@ -5,10 +5,13 @@ using System.Text;
 
 namespace GestionFC.Models.Share
 {
-    public class FoliosRecuperacion
+    public class FolioSolicitud
     {
-        [JsonProperty("folioSolicitud")]
-        public string FolioSolicitud { get; set; }
+        [JsonProperty("folio")]
+        public string Folio { get; set; }
+
+        [JsonProperty("registroTraspasoId")]
+        public string RegistroTraspasoId { get; set; }
 
         [JsonProperty("motivos")]
         public List<MotivoRechazoModel> Motivos { set; get; }

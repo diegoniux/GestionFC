@@ -120,6 +120,7 @@ namespace GestionFC
                     {
                         await catalogo.GetCatalogo(App.ClaveVersion).ContinueWith(x =>
                         {
+
                             if (x.IsFaulted)
                                 throw new Exception("Ocurrió un error");
                             if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)

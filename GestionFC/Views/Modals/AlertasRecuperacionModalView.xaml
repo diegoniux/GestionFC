@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestionFC.Views.Modals.AlertasRecuperacionModalView"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fFImageLoadingTrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             Title="Modal FormSheet Page"
+             ios:Page.ModalPresentationStyle="OverFullScreen">
+    <StackLayout Margin="20,35,20,20">
+        <Button Text="Regresar a la pantalla de Alarmas" Clicked="OnReturnButtonClicked" />
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid
+                Grid.Column="0"
+                Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Frame Grid.Column="0"
+                    Grid.Row="0"
+                    CornerRadius="10"
+                    Padding="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <BoxView BackgroundColor="#DDDDDD"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            CornerRadius="10,10,0,0"></BoxView>
+                        <Label Text="Especialista"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            FontFamily="Helvetica"
+                            TextColor="Gray"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center">
+                        </Label>
+                        <Label Text="{Binding NominaAP}"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            FontFamily="Helvetica"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center">
+                        </Label>
+                    </Grid>
+                </Frame>
+                <Frame Grid.Column="1"
+                    Grid.Row="0"
+                    CornerRadius="10"
+                    Padding="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <BoxView BackgroundColor="#DDDDDD"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            CornerRadius="10,10,0,0"></BoxView>
+                        <Label Text="Folios"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            FontFamily="Helvetica"
+                            TextColor="Gray"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center">
+                        </Label>
+                        <CollectionView ItemsSource="{Binding Folios}"
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                Margin="0">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" Span="1"></GridItemsLayout>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid ClassId="{Binding RegistroTraspasoId}"
+                                        Padding="5">
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnFolio_Tapped"></TapGestureRecognizer>
+                                        </Grid.GestureRecognizers>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="13"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="13"></RowDefinition>
+                                            <RowDefinition Height="1"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Image Source="icon_success.png"
+                                            Grid.Column="0"
+                                            Grid.Row="1">
+                                        </Image>
+                                        <Label Text="{Binding Folio}"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Grid.Row="0"
+                                            TextColor="Black"
+                                            FontFamily="Helvetica"
+                                            FontAttributes="Bold"
+                                            HorizontalTextAlignment="Center"
+                                            VerticalTextAlignment="Center">
+                                        </Label>
+                                        <BoxView Grid.Column="0"
+                                            Grid.Row="1"
+                                            Grid.ColumnSpan="2"
+                                            BackgroundColor="Black">
+                                        </BoxView>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </Frame>
+            </Grid>
+            <Frame
+                Grid.Column="0"
+                Grid.Row="1"
+                BackgroundColor="#64A70B"
+                HasShadow="False"
+                CornerRadius="0">
+                <Label Text="Identificación Oficial Reverso"
+                    FontAttributes="Bold"
+                    FontSize="30"
+                    FontFamily="Helvetica"
+                    TextColor="White">
+                </Label>
+            </Frame>
+            <Grid
+                Grid.Column="0"
+                Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Frame Grid.Column="0"
+                    Grid.Row="0"
+                    CornerRadius="10"
+                    Padding="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <BoxView BackgroundColor="#DDDDDD"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            CornerRadius="10,10,0,0"></BoxView>
+                        <Label Text="Documentos"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            FontFamily="Helvetica"
+                            TextColor="Gray"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center">
+                        </Label>
+                        <ffimageloading:CachedImage
+                                            x:Name = "Foto_Gerente"
+                                            Source = "capi_circulo.png"
+                                            Margin="3,3,3,3"
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            CacheDuration = "90"
+                                            RetryCount = "5"
+                                            RetryDelay = "450"
+                                            LoadingPlaceholder="capi_circulo.png"
+                                            ErrorPlaceholder="capi_circulo.png">
+                            <ffimageloading:CachedImage.Transformations>
+                                <fFImageLoadingTrans:CircleTransformation
+                                        BorderSize="2"
+                                        BorderHexColor="#ffffff"/>
+                            </ffimageloading:CachedImage.Transformations>
+                        </ffimageloading:CachedImage>
+                    </Grid>
+                </Frame>
+                <Frame Grid.Column="1"
+                    Grid.Row="0"
+                    CornerRadius="10"
+                    Padding="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <BoxView BackgroundColor="#DDDDDD"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            CornerRadius="10,10,0,0"></BoxView>
+                        <Label Text="Preguntas"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            FontFamily="Helvetica"
+                            TextColor="Gray"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center">
+                        </Label>
+                        <CollectionView ItemsSource="{Binding TopEspecialistas}"
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                Margin="0">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" Span="1"></GridItemsLayout>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding Pregunta}"></Label>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </Grid>
+    </StackLayout>
+</ContentPage>

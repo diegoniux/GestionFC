@@ -53,8 +53,8 @@ namespace GestionFC.Models.Alertas
         [JsonProperty("imgWarning")]
         public bool ImgWarning { get; set; }
 
-        [JsonProperty("foliosRecuperacion")]
-        public List<FoliosRecuperacion> FoliosRecuperacion { get; set; }
+        //[JsonProperty("foliosRecuperacion")]
+        //public List<FoliosRecuperacion> FoliosRecuperacion { get; set; }
 
 
 

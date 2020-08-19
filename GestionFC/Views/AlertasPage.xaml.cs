@@ -33,7 +33,7 @@ namespace GestionFC.Views
             Fecha = DateTime.Today;
             _master = (Master)App.MasterDetail.Master;
 
-            
+            //Navigation.PushModalAsync
             LoadPage();
             NavigationPage.SetHasNavigationBar(this, false);
             
@@ -412,6 +412,12 @@ namespace GestionFC.Views
                     lblFoliosPendientesSV.TextColor = Color.FromHex(colorTextDisable);
                     break;
             }
+        }
+
+        private async void OnTapOpenModal_Tapped(object sender, EventArgs e)
+        {
+            int nominaAP = Convert.ToInt32(((Grid)sender).ClassId);
+            await Navigation.PushModalAsync(new Modals.AlertasRecuperacionModalView(nominaAP));
         }
 
         private async void OnTapFolioConSaldo_Tapped(object sender, EventArgs e)

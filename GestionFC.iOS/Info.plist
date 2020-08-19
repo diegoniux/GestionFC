@@ -14,7 +14,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>8.0</string>
+	<string>10.0</string>
 	<key>CFBundleDisplayName</key>
 	<string>GestiónFC</string>
 	<key>UILaunchStoryboardName</key>
@@ -64,7 +64,7 @@
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleIdentifier</key>
-	<string>icap.gestionfc</string>
+	<string>com.icap.GestionFC</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleName</key>
@@ -72,8 +72,8 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Fill in a reason why your app needs access to location.</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.4.2</string>
+	<string>0.4.14</string>
 	<key>CFBundleVersion</key>
-	<string>10.0</string>
+	<string>1.0</string>
 </dict>
 </plist>
