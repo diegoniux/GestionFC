@@ -13709,163 +13709,169 @@ namespace GestionFC.Droid
 			public const int next_disabled = 2131165345;
 			
 			// aapt resource value: 0x7F0700A2
-			public const int notification_action_background = 2131165346;
+			public const int next_icon_green = 2131165346;
 			
 			// aapt resource value: 0x7F0700A3
-			public const int notification_bg = 2131165347;
+			public const int notification_action_background = 2131165347;
 			
 			// aapt resource value: 0x7F0700A4
-			public const int notification_bg_low = 2131165348;
+			public const int notification_bg = 2131165348;
 			
 			// aapt resource value: 0x7F0700A5
-			public const int notification_bg_low_normal = 2131165349;
+			public const int notification_bg_low = 2131165349;
 			
 			// aapt resource value: 0x7F0700A6
-			public const int notification_bg_low_pressed = 2131165350;
+			public const int notification_bg_low_normal = 2131165350;
 			
 			// aapt resource value: 0x7F0700A7
-			public const int notification_bg_normal = 2131165351;
+			public const int notification_bg_low_pressed = 2131165351;
 			
 			// aapt resource value: 0x7F0700A8
-			public const int notification_bg_normal_pressed = 2131165352;
+			public const int notification_bg_normal = 2131165352;
 			
 			// aapt resource value: 0x7F0700A9
-			public const int notification_circle_green = 2131165353;
+			public const int notification_bg_normal_pressed = 2131165353;
 			
 			// aapt resource value: 0x7F0700AA
-			public const int notification_circle_grey = 2131165354;
+			public const int notification_circle_green = 2131165354;
 			
 			// aapt resource value: 0x7F0700AB
-			public const int notification_icon_background = 2131165355;
+			public const int notification_circle_grey = 2131165355;
 			
 			// aapt resource value: 0x7F0700AC
-			public const int notification_template_icon_bg = 2131165356;
+			public const int notification_icon_background = 2131165356;
 			
 			// aapt resource value: 0x7F0700AD
-			public const int notification_template_icon_low_bg = 2131165357;
+			public const int notification_template_icon_bg = 2131165357;
 			
 			// aapt resource value: 0x7F0700AE
-			public const int notification_tile_bg = 2131165358;
+			public const int notification_template_icon_low_bg = 2131165358;
 			
 			// aapt resource value: 0x7F0700AF
-			public const int notify_panel_notification_icon_bg = 2131165359;
+			public const int notification_tile_bg = 2131165359;
 			
 			// aapt resource value: 0x7F0700B0
-			public const int nut = 2131165360;
+			public const int notify_panel_notification_icon_bg = 2131165360;
 			
 			// aapt resource value: 0x7F0700B1
-			public const int nut_disabled = 2131165361;
+			public const int nut = 2131165361;
 			
 			// aapt resource value: 0x7F0700B2
-			public const int person = 2131165362;
+			public const int nut_disabled = 2131165362;
 			
 			// aapt resource value: 0x7F0700B3
-			public const int person_disabled = 2131165363;
+			public const int person = 2131165363;
 			
 			// aapt resource value: 0x7F0700B4
-			public const int phone = 2131165364;
+			public const int person_disabled = 2131165364;
 			
 			// aapt resource value: 0x7F0700B5
-			public const int pig = 2131165365;
+			public const int phone = 2131165365;
 			
 			// aapt resource value: 0x7F0700B6
-			public const int pig_disabled = 2131165366;
+			public const int pig = 2131165366;
 			
 			// aapt resource value: 0x7F0700B7
-			public const int pizarron_blanco = 2131165367;
+			public const int pig_disabled = 2131165367;
 			
 			// aapt resource value: 0x7F0700B8
-			public const int pizarron_verde = 2131165368;
+			public const int pizarron_blanco = 2131165368;
 			
 			// aapt resource value: 0x7F0700B9
-			public const int prev = 2131165369;
+			public const int pizarron_verde = 2131165369;
 			
 			// aapt resource value: 0x7F0700BA
-			public const int prev_disabled = 2131165370;
-			
-			// aapt resource value: 0x7F0700BF
-			public const int productividad_blanco = 2131165375;
-			
-			// aapt resource value: 0x7F0700C0
-			public const int productividad_verde = 2131165376;
+			public const int prev = 2131165370;
 			
 			// aapt resource value: 0x7F0700BB
-			public const int prod_diaria_blanco = 2131165371;
+			public const int prev_disabled = 2131165371;
 			
-			// aapt resource value: 0x7F0700BC
-			public const int prod_diaria_verde = 2131165372;
-			
-			// aapt resource value: 0x7F0700BD
-			public const int prod_sem_blanco = 2131165373;
-			
-			// aapt resource value: 0x7F0700BE
-			public const int prod_sem_naranja = 2131165374;
+			// aapt resource value: 0x7F0700C0
+			public const int productividad_blanco = 2131165376;
 			
 			// aapt resource value: 0x7F0700C1
-			public const int rank_down_red = 2131165377;
+			public const int productividad_verde = 2131165377;
+			
+			// aapt resource value: 0x7F0700BC
+			public const int prod_diaria_blanco = 2131165372;
+			
+			// aapt resource value: 0x7F0700BD
+			public const int prod_diaria_verde = 2131165373;
+			
+			// aapt resource value: 0x7F0700BE
+			public const int prod_sem_blanco = 2131165374;
+			
+			// aapt resource value: 0x7F0700BF
+			public const int prod_sem_naranja = 2131165375;
 			
 			// aapt resource value: 0x7F0700C2
-			public const int rank_up_green = 2131165378;
+			public const int rank_down_red = 2131165378;
 			
 			// aapt resource value: 0x7F0700C3
-			public const int rect_horizontal = 2131165379;
+			public const int rank_up_green = 2131165379;
 			
 			// aapt resource value: 0x7F0700C4
-			public const int rect_largo = 2131165380;
+			public const int rect_horizontal = 2131165380;
 			
 			// aapt resource value: 0x7F0700C5
-			public const int rect_vertical = 2131165381;
+			public const int rect_largo = 2131165381;
 			
 			// aapt resource value: 0x7F0700C6
-			public const int roundedbg = 2131165382;
+			public const int rect_vertical = 2131165382;
 			
 			// aapt resource value: 0x7F0700C7
-			public const int roundedbgdark = 2131165383;
+			public const int roundedbg = 2131165383;
 			
 			// aapt resource value: 0x7F0700C8
-			public const int search_circle_green = 2131165384;
+			public const int roundedbgdark = 2131165384;
 			
 			// aapt resource value: 0x7F0700C9
-			public const int tablet = 2131165385;
+			public const int search_circle_green = 2131165385;
 			
 			// aapt resource value: 0x7F0700CA
-			public const int tablet_disabled = 2131165386;
+			public const int tablet = 2131165386;
 			
 			// aapt resource value: 0x7F0700CB
-			public const int target_shooting = 2131165387;
+			public const int tablet_disabled = 2131165387;
 			
 			// aapt resource value: 0x7F0700CC
-			public const int target_shooting_disabled = 2131165388;
+			public const int target_shooting = 2131165388;
 			
 			// aapt resource value: 0x7F0700CD
-			public const int title_alerta = 2131165389;
+			public const int target_shooting_disabled = 2131165389;
 			
 			// aapt resource value: 0x7F0700CE
-			public const int title_pizarron_digital = 2131165390;
+			public const int title_alerta = 2131165390;
 			
 			// aapt resource value: 0x7F0700CF
-			public const int title_productividad = 2131165391;
+			public const int title_desafio = 2131165391;
 			
 			// aapt resource value: 0x7F0700D0
-			public const int title_ranking = 2131165392;
+			public const int title_pizarron_digital = 2131165392;
 			
 			// aapt resource value: 0x7F0700D1
-			public const int tooltip_frame_dark = 2131165393;
+			public const int title_productividad = 2131165393;
 			
 			// aapt resource value: 0x7F0700D2
-			public const int tooltip_frame_light = 2131165394;
+			public const int title_ranking = 2131165394;
 			
 			// aapt resource value: 0x7F0700D3
-			public const int tumblike = 2131165395;
+			public const int tooltip_frame_dark = 2131165395;
 			
 			// aapt resource value: 0x7F0700D4
-			public const int user = 2131165396;
+			public const int tooltip_frame_light = 2131165396;
 			
 			// aapt resource value: 0x7F0700D5
-			public const int view = 2131165397;
+			public const int tumblike = 2131165397;
 			
 			// aapt resource value: 0x7F0700D6
-			public const int view_raya = 2131165398;
+			public const int user = 2131165398;
+			
+			// aapt resource value: 0x7F0700D7
+			public const int view = 2131165399;
+			
+			// aapt resource value: 0x7F0700D8
+			public const int view_raya = 2131165400;
 			
 			static Drawable()
 			{
@@ -14971,91 +14977,97 @@ namespace GestionFC.Droid
 			public const int next_disabled = 2131492905;
 			
 			// aapt resource value: 0x7F0C002A
-			public const int nut = 2131492906;
+			public const int next_icon_green = 2131492906;
 			
 			// aapt resource value: 0x7F0C002B
-			public const int nut_disabled = 2131492907;
+			public const int nut = 2131492907;
 			
 			// aapt resource value: 0x7F0C002C
-			public const int person = 2131492908;
+			public const int nut_disabled = 2131492908;
 			
 			// aapt resource value: 0x7F0C002D
-			public const int person_disabled = 2131492909;
+			public const int person = 2131492909;
 			
 			// aapt resource value: 0x7F0C002E
-			public const int phone = 2131492910;
+			public const int person_disabled = 2131492910;
 			
 			// aapt resource value: 0x7F0C002F
-			public const int pig = 2131492911;
+			public const int phone = 2131492911;
 			
 			// aapt resource value: 0x7F0C0030
-			public const int pig_disabled = 2131492912;
+			public const int pig = 2131492912;
 			
 			// aapt resource value: 0x7F0C0031
-			public const int pizarron_blanco = 2131492913;
+			public const int pig_disabled = 2131492913;
 			
 			// aapt resource value: 0x7F0C0032
-			public const int pizarron_verde = 2131492914;
+			public const int pizarron_blanco = 2131492914;
 			
 			// aapt resource value: 0x7F0C0033
-			public const int prev = 2131492915;
+			public const int pizarron_verde = 2131492915;
 			
 			// aapt resource value: 0x7F0C0034
-			public const int prev_disabled = 2131492916;
-			
-			// aapt resource value: 0x7F0C0039
-			public const int productividad_blanco = 2131492921;
-			
-			// aapt resource value: 0x7F0C003A
-			public const int productividad_verde = 2131492922;
+			public const int prev = 2131492916;
 			
 			// aapt resource value: 0x7F0C0035
-			public const int prod_diaria_blanco = 2131492917;
+			public const int prev_disabled = 2131492917;
 			
-			// aapt resource value: 0x7F0C0036
-			public const int prod_diaria_verde = 2131492918;
-			
-			// aapt resource value: 0x7F0C0037
-			public const int prod_sem_blanco = 2131492919;
-			
-			// aapt resource value: 0x7F0C0038
-			public const int prod_sem_naranja = 2131492920;
+			// aapt resource value: 0x7F0C003A
+			public const int productividad_blanco = 2131492922;
 			
 			// aapt resource value: 0x7F0C003B
-			public const int rect_horizontal = 2131492923;
+			public const int productividad_verde = 2131492923;
+			
+			// aapt resource value: 0x7F0C0036
+			public const int prod_diaria_blanco = 2131492918;
+			
+			// aapt resource value: 0x7F0C0037
+			public const int prod_diaria_verde = 2131492919;
+			
+			// aapt resource value: 0x7F0C0038
+			public const int prod_sem_blanco = 2131492920;
+			
+			// aapt resource value: 0x7F0C0039
+			public const int prod_sem_naranja = 2131492921;
 			
 			// aapt resource value: 0x7F0C003C
-			public const int rect_largo = 2131492924;
+			public const int rect_horizontal = 2131492924;
 			
 			// aapt resource value: 0x7F0C003D
-			public const int rect_vertical = 2131492925;
+			public const int rect_largo = 2131492925;
 			
 			// aapt resource value: 0x7F0C003E
-			public const int search_circle_green = 2131492926;
+			public const int rect_vertical = 2131492926;
 			
 			// aapt resource value: 0x7F0C003F
-			public const int tablet = 2131492927;
+			public const int search_circle_green = 2131492927;
 			
 			// aapt resource value: 0x7F0C0040
-			public const int tablet_disabled = 2131492928;
+			public const int tablet = 2131492928;
 			
 			// aapt resource value: 0x7F0C0041
-			public const int target_shooting = 2131492929;
+			public const int tablet_disabled = 2131492929;
 			
 			// aapt resource value: 0x7F0C0042
-			public const int target_shooting_disabled = 2131492930;
+			public const int target_shooting = 2131492930;
 			
 			// aapt resource value: 0x7F0C0043
-			public const int tumblike = 2131492931;
+			public const int target_shooting_disabled = 2131492931;
 			
 			// aapt resource value: 0x7F0C0044
-			public const int user = 2131492932;
+			public const int title_desafio = 2131492932;
 			
 			// aapt resource value: 0x7F0C0045
-			public const int view = 2131492933;
+			public const int tumblike = 2131492933;
 			
 			// aapt resource value: 0x7F0C0046
-			public const int view_raya = 2131492934;
+			public const int user = 2131492934;
+			
+			// aapt resource value: 0x7F0C0047
+			public const int view = 2131492935;
+			
+			// aapt resource value: 0x7F0C0048
+			public const int view_raya = 2131492936;
 			
 			static Mipmap()
 			{

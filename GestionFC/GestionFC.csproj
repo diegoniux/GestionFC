@@ -57,6 +57,8 @@
     <Folder Include="Converters\" />
     <Folder Include="Views\Modals\" />
     <Folder Include="ViewModels\Modals\" />
+    <Folder Include="Models\DetalleEspecialista\" />
+    <Folder Include="ViewModels\DetalleEspecialista\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS">

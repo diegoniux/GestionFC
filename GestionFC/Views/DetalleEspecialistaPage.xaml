@@ -24,7 +24,8 @@
         </Style>
     </ContentPage.Resources>
     <RelativeLayout>
-        <StackLayout Margin="20,20,20,0"
+        <ScrollView>
+        <StackLayout Margin="20,10,20,0"
             Padding="0" 
             Orientation="Vertical" 
             VerticalOptions="FillAndExpand" 
@@ -39,53 +40,102 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="40"></RowDefinition>
-                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="45"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="105"></ColumnDefinition>
+                    <ColumnDefinition Width="115"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="0.20*"></ColumnDefinition>
-                    <ColumnDefinition Width="0.40*"></ColumnDefinition>
-                    <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                    <ColumnDefinition Width="0.25*"></ColumnDefinition>
                     <ColumnDefinition Width="0.15*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.60*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.40*"></ColumnDefinition>
+                    <ColumnDefinition Width="60"></ColumnDefinition>
+                    <!-- <ColumnDefinition Width="55"></ColumnDefinition> -->
                 </Grid.ColumnDefinitions>
 
+
+                <!-- fondo Información del Especialista-->
+                <BoxView
+                    BackgroundColor="#64A70B"
+                    Margin="0,10,0,0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Grid.Row="2"
+                    Grid.RowSpan="2"
+                    CornerRadius="10,0,10,10">
+                </BoxView>
+
+
                 <!-- FOTO GERENTE -->
-                <Frame
-                    CornerRadius="50"
+                <AbsoluteLayout
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
                     Grid.Column="0"
                     Grid.Row="0"
-                    Grid.RowSpan="3"
-                    BackgroundColor="#FFFFFF"
-                    BorderColor="#FFFFFF"
-                    Padding="5"
-                    HasShadow="False">
-                    <ffimageloading:CachedImage
-                        x:Name = "Foto_Gerente"
-                        Source = "capi_circulo.png"
-                        CacheDuration = "90"
-                        RetryCount = "5"
-                        RetryDelay = "450"
-                        LoadingPlaceholder="capi_circulo.png"
-                        ErrorPlaceholder="capi_circulo.png">
-                        <ffimageloading:CachedImage.Transformations>
-                            <fFImageLoadingTrans:CircleTransformation
-                                BorderSize="5"
-                                BorderHexColor="#ffffff"/>
-                            </ffimageloading:CachedImage.Transformations>
-                    </ffimageloading:CachedImage>
-                </Frame>
+                    Grid.RowSpan="3">
+                    <Grid
+                            AbsoluteLayout.LayoutBounds=".9,.9,.9,.9"
+                            AbsoluteLayout.LayoutFlags="All">
+                        <Frame
+                            CornerRadius="50"
+                            BackgroundColor="#FFFFFF"
+                            BorderColor="#FFFFFF"
+                            Padding="5"
+                            HasShadow="False">
+                            <ffimageloading:CachedImage
+                                x:Name = "Foto_Gerente"
+                                Source = "{Binding DetalleEspecialista.DetalleEspecialista.Foto}"
+                                CacheDuration = "90"
+                                RetryCount = "5"
+                                RetryDelay = "450"
+                                LoadingPlaceholder="capi_circulo.png"
+                                ErrorPlaceholder="capi_circulo.png">
+                                <ffimageloading:CachedImage.Transformations>
+                                    <fFImageLoadingTrans:CircleTransformation
+                                        BorderSize="5"
+                                        BorderHexColor="#ffffff"/>
+                                    </ffimageloading:CachedImage.Transformations>
+                            </ffimageloading:CachedImage>
+                        </Frame>
+                    </Grid>
+                    <Grid
+                        AbsoluteLayout.LayoutBounds="1,.2,.2,.4"
+                        AbsoluteLayout.LayoutFlags="All">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            x:Name="imgNotifyImproductiva"
+                            Source="notification_circle_green.png"/>
+                        <Label 
+                            HorizontalOptions="Center"
+                            Margin="1,3,0,0"
+                            VerticalOptions="Center"
+                            FontFamily="Helvetica"
+                            FontAttributes="Bold"
+                            Text="{Binding DetalleEspecialista.DetalleEspecialista.NivelComision}"
+                            FontSize="22"
+                            TextColor="#64A70B"
+                            x:Name="notidicacionImp">
+                        </Label>
+                    </Grid>
+                </AbsoluteLayout>
+
 
                 <!-- Busqueda de Folios-->
                 <Frame
                     Padding="0"
-                    CornerRadius="20"
+                    CornerRadius="25"
                     Grid.Column="1"
                     Grid.ColumnSpan="4"
                     Grid.Row="0"
-                    Margin="25,5,0,5"
+                    Grid.RowSpan="2"
+                    Margin="25,10,50,10"
                     HasShadow="False"
                     BackgroundColor="#FFFFFF"
                     BorderColor="White">
@@ -99,9 +149,9 @@
                             CornerRadius="35"
                             Placeholder="Búsqueda de folios"
                             FontFamily="{StaticResource Poppins-Regular}"
-                            PlaceholderColor="#C4C4C4"
+                            PlaceholderColor="#707070"
                             TextColor="#275D38"
-                            FontSize="20"
+                            FontSize="22"
                             BackgroundColor="#FFFFFF" 
                             HorizontalOptions="FillAndExpand">
                             <renderers:EntryIcon.Behaviors>
@@ -109,17 +159,1254 @@
                             </renderers:EntryIcon.Behaviors>
                         </renderers:EntryIcon>
                         <Image Source="search_circle_green.png" 
-                                WidthRequest="28"
-                                HeightRequest="35"
-                                Margin="20,0,20,0"
-                                BackgroundColor="#FFFFFF">
+                                WidthRequest="60"
+                                HeightRequest="60"
+                                Margin="-5,-5,-5,-5"
+                                BackgroundColor="Transparent">
                         </Image>
                     </StackLayout>
                 </Frame>
 
 
+                <!-- Botón Volver a Plantilla-->
+                <BoxView
+                    Grid.Column="5"
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    BackgroundColor="#275D38"
+                    CornerRadius="10,10,0,0"
+                    Margin="0,5,0,10"
+                    WidthRequest="60">
+                    <BoxView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ImgProductividad_Tapped"></TapGestureRecognizer>
+                    </BoxView.GestureRecognizers>
+                </BoxView>
+                <Image
+                    x:Name="imgProductividad"
+                    Source="icon_productividad.png"
+                    Grid.Column="5"
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Margin="12,-5,12,12">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ImgProductividad_Tapped"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <!-- Indormación del Especicalista-->
+
+                <!-- NOMBRE-->
+                <Label
+                    Text="{Binding DetalleEspecialista.DetalleEspecialista.Nombre}"
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    FontSize="20"
+                    TextColor="#FFFFFF"
+                    FontAttributes="Bold"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    Margin="20,0,0,0">
+                </Label>
+
+                <!-- APELLIDOS-->
+                <Label
+                    Text="{Binding DetalleEspecialista.DetalleEspecialista.Apellidos}"
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    FontSize="15"
+                    TextColor="#FFFFFF"
+                    FontAttributes="None"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Start"
+                    Margin="20,0,0,0">
+                </Label>
+
+                <!-- TELEFONO-->
+                <Image
+                    Source="phone.png"
+                    Grid.Column="2"
+                    Grid.Row="2"
+                    Grid.RowSpan="2"
+                    Aspect="AspectFit"
+                    Margin="5,5,5,0">
+                </Image>
+
+                <Label
+                    Text="Número de contacto"
+                    Grid.Column="3"
+                    Grid.Row="2"
+                    FontSize="16"
+                    TextColor="#FFFFFF"
+                    FontAttributes="None"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End">
+                </Label>
+                <Label
+                    Text="{Binding DetalleEspecialista.DetalleEspecialista.Telefono}"
+                    Grid.Column="3"
+                    Grid.Row="3"
+                    FontSize="18"
+                    TextColor="#FFFFFF"
+                    FontAttributes="None"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Start">
+                </Label>
+
+                <!-- Antigüedad-->
+                <Label
+                    Grid.Column="4"
+                    Grid.Row="2"
+                    Grid.RowSpan="2"
+                    TextColor="#FFFFFF"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="{Binding DetalleEspecialista.DetalleEspecialista.MesesLaborando}"/>
+                                    <Span Text=" Meses"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <!-- Nómina-->
+                <Label
+                    Text="Nómina"
+                    Grid.Column="5"
+                    Grid.Row="2"
+                    FontSize="14"
+                    TextColor="#FFFFFF"
+                    FontAttributes="None"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End">
+                </Label>
+                <Label
+                    Text="{Binding DetalleEspecialista.DetalleEspecialista.NominaPromotor}"
+                    Grid.Column="5"
+                    Grid.Row="3"
+                    FontSize="14"
+                    TextColor="#FFFFFF"
+                    FontAttributes="None"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Start">
+                </Label>
+
+                <!-- Botón NEXT
+                <Image
+                    Source="next_icon_green.png"
+                    Grid.Column="6"
+                    Grid.Row="2"
+                    Grid.RowSpan="2"
+                    Margin="7">
+                </Image>-->
 
             </Grid>
+
+            <!-- Objetivo y Alarma-->
+            <Grid
+                ColumnSpacing="0"
+                RowSpacing="0"
+                Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="120"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"></ColumnDefinition>
+                    <ColumnDefinition Width=".8*"></ColumnDefinition>
+                    <ColumnDefinition Width="60"></ColumnDefinition>
+                    <ColumnDefinition Width=".6*"></ColumnDefinition>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <!-- Objetivo-->
+                <!-- Header-->
+                <Image
+                    Source="target_shooting.png"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Aspect="AspectFit">
+                </Image>
+
+                <Label
+                    Text="Objetivo"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Margin="20,0"
+                    FontSize="20"
+                    TextColor="#464646"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                </Label>
+                <Label
+                    Text="Metas comerciales"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Margin="20,0"
+                    FontSize="16"
+                    TextColor="#B2B2B2"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Start"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                </Label>
+                <!-- Contenido Sección Objetivo-->
+                <Grid
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="2"
+                    RowSpacing="0"
+                    ColumnSpacing="0"
+                    Padding="0"
+                    Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".65*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width=".35*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Frame
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Grid.Row="0"
+                        Grid.RowSpan="3"
+                        BackgroundColor="#FFFFFF"
+                        CornerRadius="10"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        HasShadow="False">
+                    </Frame>
+
+                    <Image
+                        Source="{Binding DetalleEspecialista.DetalleEspecialista.ImagenSaldoAcumulado}"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.RowSpan="3"
+                        Margin="7"
+                        Aspect="AspectFit"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+                    </Image>
+
+                    <Label
+                        Text="Saldo"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        FontSize="15"
+                        FontAttributes="Bold"
+                        TextColor="#64A70B"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalTextAlignment="End"
+                        Margin="10,0,0,0">
+                    </Label>
+
+                    <Label
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="1"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Start"
+                        Margin="10,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="{Binding DetalleEspecialista.DetalleEspecialista.SaldoAcumulado}" FontSize="15" TextColor="#FFA400" FontAttributes="Bold"/>
+                                    <Span Text=" de " FontSize="15" TextColor="#707070"/>
+                                    <Span Text="{Binding DetalleEspecialista.DetalleEspecialista.SaldoMeta}" FontSize="15" TextColor="#707070"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <renderers:GradientProgressBar
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Margin="0,0,0,20"
+                        AlternativeTextColor="Transparent"
+                        BarBackgroundColor="#DCD7D7"
+                        CornerRadius="60"
+                        FontSize="18"
+                        GradientEndColor="#64A70B"
+                        GradientStartColor="#64A70B"
+                        HeightRequest="30"
+                        Percentage="{Binding DetalleEspecialista.DetalleEspecialista.PorcentajeSaldoAcumulado}"
+                        TextColor="Transparent"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+                    </renderers:GradientProgressBar>
+
+                    <Label
+                        Text="100%"
+                        Grid.Column="2"
+                        Grid.Row="2"
+                        TextColor="#FFA400"
+                        FontSize="16"
+                        VerticalTextAlignment="Center"
+                        FontAttributes="Bold"
+                        Margin="10,0,0,20">
+                    </Label>
+
+                </Grid>
+
+
+                <!-- Alarma-->
+                <Image
+                    Source="title_alerta.png"
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Aspect="AspectFit">
+                </Image>
+
+                <Label
+                    Text="Alarma"
+                    Grid.Column="3"
+                    Grid.Row="0"
+                    Margin="20,0"
+                    FontSize="20"
+                    TextColor="#464646"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                </Label>
+                <Label
+                    Text="Incentiva a tu equipo"
+                    Grid.Column="3"
+                    Grid.Row="1"
+                    Margin="20,0"
+                    FontSize="16"
+                    TextColor="#B2B2B2"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Start"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                </Label>
+
+                <!-- Contenido Sección Alarma-->
+                <Grid
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="2"
+                    RowSpacing="0"
+                    ColumnSpacing="0"
+                    Padding="0"
+                    Margin="0,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".65*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width=".35*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                <Frame
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="0"
+                    Grid.RowSpan="3"
+                    BackgroundColor="#FFFFFF"
+                    CornerRadius="10"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    HasShadow="False">
+                </Frame>
+
+                <Image
+                    IsVisible="{Binding LikeVisible}"
+                    Source="tumblike"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="0"
+                    Grid.RowSpan="3"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    Aspect="AspectFill"
+                    WidthRequest="65"
+                    HeightRequest="65">
+                </Image>
+
+                <Grid
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="0"
+                    Grid.RowSpan="3"
+                    Margin="30"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="44"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="47"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+
+                    <Label
+                        IsVisible="{Binding AlarmaVisible}"
+                        Text="{Binding AlarmaImproductivo.MsjEstatus}"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        TextColor="#353535"
+                        FontSize="13"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center">
+                    </Label>
+
+                    <!-- {Binding ImgNotificacion}-->
+                    <Frame
+                        IsVisible="{Binding AlarmaVisible}"
+                        BackgroundColor="#FAFAFA"
+                        CornerRadius="10"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Grid.Row="1"
+                        Grid.RowSpan="3"
+                        Padding="0"
+                        HasShadow="False">
+                        <StackLayout Orientation="Horizontal"
+                                     VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="FillAndExpand">
+                            <Image
+                                Source="{Binding AlarmaImproductivo.ImgNotificacion}"
+                                Margin="5"
+                                Aspect="AspectFit"
+                                HeightRequest="20"
+                                WidthRequest="30"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand">
+                            </Image>
+                            <Label 
+                                FontFamily="Helvetica"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Start"
+                                TextColor="#353535"
+                                Margin="0,0,0,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="{Binding AlarmaImproductivo.Msj1}" FontSize="12" TextColor="#353535"/>
+                                            <Span Text=" "/>
+                                            <Span Text="{Binding AlarmaImproductivo.Msj2}" FontSize="12" TextColor="#FF0000"/>
+                                            <Span Text=" "/>
+                                            <Span Text="{Binding AlarmaImproductivo.Msj3}" FontSize="12" TextColor="#353535"/>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </Grid>
+
+                <!-- Contenido Sección Recuperables y eInvestigaión-->
+                <Grid
+                    Grid.Column="4"
+                    Grid.Row="0"
+                    RowSpacing="3"
+                    ColumnSpacing="0"
+                    Padding="0"
+                    Margin="0"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Frame
+                        Grid.Row="1"
+                        BackgroundColor="#FFFFFF"
+                        CornerRadius="10"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        HasShadow="False"
+                        Padding="0">
+                        <StackLayout
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                Text="POR RECUPERAR"
+                                FontAttributes="Bold"
+                                FontSize="10"
+                                HorizontalTextAlignment="Center"
+                                TextColor="#353535"
+                                Margin="10,0,10,0">
+                            </Label>
+
+                            <Label
+                                Text="{Binding DetalleEspecialista.DetalleEspecialista.TramitesPorRecuperar}"
+                                TextColor="#707070"
+                                FontSize="30"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center">
+                            </Label>
+
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame
+                        Grid.Row="3"
+                        BackgroundColor="#FFFFFF"
+                        CornerRadius="10"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        HasShadow="False"
+                        Padding="0">
+                        <StackLayout
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand">
+                            <Label
+                                Text="EN INVESTIGACION"
+                                FontAttributes="Bold"
+                                FontSize="10"
+                                HorizontalTextAlignment="Center"
+                                TextColor="#353535"
+                                Margin="8,0,8,0">
+                            </Label>
+
+                            <Label
+                                Text="{Binding DetalleEspecialista.DetalleEspecialista.TramitesEnCalidad}"
+                                TextColor="#FF0000"
+                                FontSize="30"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center">
+                            </Label>
+
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </Grid>
+
+            <!-- DESAFIOS-->
+            <Grid
+                Margin="0,10,0,0"
+                Padding="0" 
+                ColumnSpacing="0" 
+                RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <!-- Header Desafios-->
+                <Grid
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Grid.Row="0"
+                    ColumnSpacing="0"
+                    Margin="15,0,0,0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Image
+                        Source="title_desafio.png"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Aspect="AspectFit">
+                    </Image>
+
+                    <Label
+                        Text="Desafíos"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Margin="20,0"
+                        FontSize="20"
+                        TextColor="#464646"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="End"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+                    </Label>
+                    <Label
+                        Text="Metas y objetivos especialista"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Margin="20,0"
+                        FontSize="16"
+                        TextColor="#B2B2B2"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Start"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+                    </Label>
+                </Grid>
+
+                <!-- Fondo desafios-->
+                <BoxView
+                    BackgroundColor="#FAFAFA"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    Grid.Row="1"
+                    Grid.RowSpan="3"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,-10,0,-10"
+                    CornerRadius="10">
+                </BoxView>
+
+                <!-- Bono tableta-->
+                <Label
+                    Text="BONO TABLETA"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    TextColor="#353535"
+                    FontSize="10"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    Margin="25,0,25,0">
+                </Label>
+
+                <BoxView
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    BackgroundColor="{Binding DetalleEspecialista.Desafios.ColorBonoTableta}"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="30,30,0,0"
+                    WidthRequest="70">
+                </BoxView>
+                <BoxView
+                    Grid.Column="0"
+                    Grid.Row="3"
+                    BackgroundColor="{Binding DetalleEspecialista.Desafios.ColorBonoTableta}"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="0,0,30,30"
+                    WidthRequest="70">
+                </BoxView>
+
+                <Frame
+                    Margin="0,10,0,0"
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    CornerRadius="26"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    BackgroundColor="#FFFFFF"
+                    BorderColor="#FFFFFF"
+                    Padding="7"
+                    HasShadow="False"
+                    IsClippedToBounds="True">
+                    <Image
+                        Source = "{Binding DetalleEspecialista.Desafios.ImgBonoTableta}"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Aspect="AspectFit">
+                    </Image>
+                </Frame>
+
+                <!-- Multiplicador Traspasos-->
+                <Label
+                    Text="MULTIPLICADOR TRASPASO"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    TextColor="#353535"
+                    FontSize="10"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    Margin="10,0,10,0">
+                </Label>
+
+                <BoxView
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    BackgroundColor="{Binding DetalleEspecialista.Desafios.ColorMultiplicador}"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="30,30,0,0"
+                    WidthRequest="70">
+                </BoxView>
+                <BoxView
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    BackgroundColor="{Binding DetalleEspecialista.Desafios.ColorMultiplicador}"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="0,0,30,30"
+                    WidthRequest="70">
+                </BoxView>
+
+                <Frame
+                    Margin="0,10,0,0"
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    CornerRadius="26"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    BackgroundColor="#FFFFFF"
+                    BorderColor="#FFFFFF"
+                    Padding="7"
+                    HasShadow="False"
+                    IsClippedToBounds="True">
+                    <Image
+                        Source = "{Binding DetalleEspecialista.Desafios.ImgMultiplicador}"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Aspect="AspectFit">
+                    </Image>
+                </Frame>
+
+                <Label
+                    Text="{Binding DetalleEspecialista.Desafios.Multiplicador}"
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    TextColor="#FFFFFF"
+                    FontSize="33"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    FontAttributes="Bold">
+                </Label>
+
+
+                <!-- Nivel Bono Bisemanal-->
+                <Label
+                    Text="NIVEL BONO BISEMANAL"
+                    Grid.Column="2"
+                    Grid.Row="1"
+                    TextColor="#353535"
+                    FontSize="10"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    Margin="10,0,10,0">
+                </Label>
+
+                <BoxView
+                    Grid.Column="2"
+                    Grid.Row="2"
+                    BackgroundColor="{Binding DetalleEspecialista.Desafios.ColorBonoBisemanal}"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="30,30,0,0"
+                    WidthRequest="70">
+                </BoxView>
+                <BoxView
+                    Grid.Column="2"
+                    Grid.Row="3"
+                    BackgroundColor="{Binding DetalleEspecialista.Desafios.ColorBonoBisemanal}"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="0,0,30,30"
+                    WidthRequest="70">
+                </BoxView>
+
+                <Frame
+                    Margin="0,10,0,0"
+                    Grid.Column="2"
+                    Grid.Row="2"
+                    CornerRadius="26"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    BackgroundColor="#FFFFFF"
+                    BorderColor="#FFFFFF"
+                    Padding="7"
+                    HasShadow="False"
+                    IsClippedToBounds="True">
+                    <Image
+                        Source = "{Binding DetalleEspecialista.Desafios.ImgBonoBisemanal}"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Aspect="AspectFit">
+                    </Image>
+                </Frame>
+
+                <Label
+                    Text="1"
+                    Grid.Column="2"
+                    Grid.Row="3"
+                    TextColor="#FFFFFF"
+                    FontSize="33"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    FontAttributes="Bold">
+                </Label>
+
+                <!-- Contador prospectos-->
+                <Label
+                    Text="CONTADOR PROSPECTOS"
+                    Grid.Column="3"
+                    Grid.Row="1"
+                    TextColor="#353535"
+                    FontSize="10"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    Margin="10,0,10,0">
+                </Label>
+
+                <BoxView
+                    Grid.Column="3"
+                    Grid.Row="2"
+                    BackgroundColor="{Binding DetalleEspecialista.Desafios.ColorProspectos}"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="30,30,0,0"
+                    WidthRequest="70">
+                </BoxView>
+                <BoxView
+                    Grid.Column="3"
+                    Grid.Row="3"
+                    BackgroundColor="{Binding DetalleEspecialista.Desafios.ColorProspectos}"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="0,0,30,30"
+                    WidthRequest="70">
+                </BoxView>
+
+                <Frame
+                    Margin="0,10,0,0"
+                    Grid.Column="3"
+                    Grid.Row="2"
+                    CornerRadius="26"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    BackgroundColor="#FFFFFF"
+                    BorderColor="#FFFFFF"
+                    Padding="7"
+                    HasShadow="False"
+                    IsClippedToBounds="True">
+                    <Image
+                        Source = "{Binding DetalleEspecialista.Desafios.ImgProspectos}"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Aspect="AspectFit">
+                    </Image>
+                </Frame>
+
+                <Label
+                    Text="{Binding DetalleEspecialista.Desafios.Prospectos}"
+                    Grid.Column="3"
+                    Grid.Row="3"
+                    TextColor="#FFFFFF"
+                    FontSize="33"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    FontAttributes="Bold">
+                </Label>
+
+                <!-- Meta Comercial-->
+                <Label
+                    Text="META COMERCIAL"
+                    Grid.Column="4"
+                    Grid.Row="1"
+                    TextColor="#353535"
+                    FontSize="10"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    Margin="20,0,20,0">
+                </Label>
+
+                <BoxView
+                    Grid.Column="4"
+                    Grid.Row="2"
+                    BackgroundColor="{Binding DetalleEspecialista.Desafios.ColorMetaComercial}"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="30,30,0,0"
+                    WidthRequest="70">
+                </BoxView>
+                <BoxView
+                    Grid.Column="4"
+                    Grid.Row="3"
+                    BackgroundColor="{Binding DetalleEspecialista.Desafios.ColorMetaComercial}"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="0,0,30,30"
+                    WidthRequest="70">
+                </BoxView>
+
+                <Frame
+                    Margin="0,10,0,0"
+                    Grid.Column="4"
+                    Grid.Row="2"
+                    CornerRadius="26"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    BackgroundColor="#FFFFFF"
+                    BorderColor="#FFFFFF"
+                    Padding="7"
+                    HasShadow="False"
+                    IsClippedToBounds="True">
+                    <Image
+                        Source = "{Binding DetalleEspecialista.Desafios.ImgMetaComercial}"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Aspect="AspectFit">
+                    </Image>
+                </Frame>
+
+                <!-- Semanas consecutivas logrando meta-->
+                <Label
+                    Text="SEMANAS CONSECUTIVAS LOGRANDO META"
+                    Grid.Column="5"
+                    Grid.Row="1"
+                    TextColor="#353535"
+                    FontSize="10"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    Margin="10,0,10,0">
+                </Label>
+
+                <BoxView
+                    Grid.Column="5"
+                    Grid.Row="2"
+                    BackgroundColor="{Binding DetalleEspecialista.Desafios.ColorSemanasMeta}"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="30,30,0,0"
+                    WidthRequest="70">
+                </BoxView>
+                <BoxView
+                    Grid.Column="5"
+                    Grid.Row="3"
+                    BackgroundColor="{Binding DetalleEspecialista.Desafios.ColorSemanasMeta}"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    CornerRadius="0,0,30,30"
+                    WidthRequest="70">
+                </BoxView>
+
+                <Frame
+                    Margin="0,10,0,0"
+                    Grid.Column="5"
+                    Grid.Row="2"
+                    CornerRadius="26"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    BackgroundColor="#FFFFFF"
+                    BorderColor="#FFFFFF"
+                    Padding="7"
+                    HasShadow="False"
+                    IsClippedToBounds="True">
+                    <Image
+                        Source = "{Binding DetalleEspecialista.Desafios.ImgSemanasMeta}"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Aspect="AspectFit">
+                    </Image>
+                </Frame>
+
+                <Label
+                    Text="{Binding DetalleEspecialista.Desafios.SemanasMeta}"
+                    Grid.Column="5"
+                    Grid.Row="3"
+                    TextColor="#FFFFFF"
+                    FontSize="33"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    FontAttributes="Bold">
+                </Label>
+            </Grid>
+
+            <!-- DESEMPEÑO HISTÓRICO-->
+
+            <!-- Header Desempeño Histórico-->
+            <Grid
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="0"
+                    ColumnSpacing="0"
+                    Margin="15,15,0,15">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="30"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Image
+                        Source="chart.png"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Aspect="AspectFit">
+                    </Image>
+
+                    <Label
+                        Text="Desempeño Histórico"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Margin="20,0"
+                        FontSize="20"
+                        TextColor="#464646"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="End"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+                    </Label>
+                    <Label
+                        Text="Consulta el rendimiento de semanas anteriores"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Margin="20,0"
+                        FontSize="16"
+                        TextColor="#B2B2B2"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Start"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
+                    </Label>
+                </Grid>
+
+            <!-- Control de navegación-->
+            <Grid
+                Margin="0"
+                RowSpacing="0"
+                ColumnSpacing="0"
+                Padding="0"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="40"></ColumnDefinition> 
+                </Grid.ColumnDefinitions>
+
+                <!-- fonfo control de navegación-->
+                <BoxView
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="0"
+                    CornerRadius="10,10,0,0"
+                    BackgroundColor="#FFA400">
+                </BoxView>
+
+                <Image
+                    Source="prev"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Aspect="AspectFit"
+                    Margin="5">
+                </Image>
+
+                <Label
+                    Text="18 MAYO - 07 JUNIO"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="0"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    TextColor="#FFFFFF"
+                    FontAttributes="Bold">
+                </Label>
+
+                <Image
+                    Source="next"
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Aspect="AspectFit"
+                    Margin="5">
+                </Image>
+
+            </Grid>
+
+            <!-- Trámites-->
+            <Grid
+                Margin="0"
+                RowSpacing="0"
+                ColumnSpacing="0"
+                Padding="0"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width=".50*"></ColumnDefinition>
+                    <ColumnDefinition Width=".50*"></ColumnDefinition>
+                    <ColumnDefinition Width=".50*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <!-- Semanas Header-->
+                <Label
+                    Text="01 JUNIO - 07 JUNIO"
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    TextColor="#353535"
+                    BackgroundColor="#F3F3F3"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    FontSize="12">
+                </Label>
+                <Label
+                    Text="25 MAYO - 31 MAYO"
+                    Grid.Column="3"
+                    Grid.Row="0"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    TextColor="#353535"
+                    BackgroundColor="#F3F3F3"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    FontSize="12">
+                </Label>
+                <Label
+                    Text="18 MAYO - 24 MAYO"
+                    Grid.Column="4"
+                    Grid.Row="0"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    TextColor="#353535"
+                    BackgroundColor="#F3F3F3"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    FontSize="12">
+                </Label>
+
+                <!-- Tramites HEADER-->
+                <Label
+                    Text="  TRÁMITES"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    Grid.Row="1"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="#DCD7D7"
+                    TextColor="#707070"
+                    FontSize="10"
+                    FontAttributes="Bold"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Start">
+                </Label>
+            </Grid>
+
+            <!-- Recuperaciones-->
+            <Grid
+                Margin="0"
+                RowSpacing="0"
+                ColumnSpacing="0"
+                Padding="0"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width=".50*"></ColumnDefinition>
+                    <ColumnDefinition Width=".50*"></ColumnDefinition>
+                    <ColumnDefinition Width=".50*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <!-- Recupraciones HEADER-->
+                <Label
+                    Text="  RECUPERACIONES"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    Grid.Row="0"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="#DCD7D7"
+                    TextColor="#707070"
+                    FontSize="10"
+                    FontAttributes="Bold"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Start">
+                </Label>
+            </Grid>
+
+
         </StackLayout>
+        </ScrollView>
     </RelativeLayout>
 </ContentPage>
