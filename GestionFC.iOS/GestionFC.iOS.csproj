@@ -936,9 +936,6 @@
     <ImageAsset Include="Assets.xcassets\balance.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\balance.imageset\balance.png" />
     <ImageAsset Include="Assets.xcassets\balance.imageset\balance-1.png" />
-    <ImageAsset Include="Assets.xcassets\inverstigation.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\inverstigation.imageset\inverstigation.png" />
-    <ImageAsset Include="Assets.xcassets\inverstigation.imageset\inverstigation-1.png" />
     <ImageAsset Include="Assets.xcassets\flag_circle_green.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\flag_circle_green.imageset\flag_circle_green.png" />
     <ImageAsset Include="Assets.xcassets\flag_circle_green.imageset\flag.png" />
@@ -965,6 +962,9 @@
     <ImageAsset Include="Assets.xcassets\speaker_circle_white.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\speaker_circle_white.imageset\speaker_circle_white.png" />
     <ImageAsset Include="Assets.xcassets\speaker_circle_white.imageset\speaker_circle_white%402x.png" />
+    <ImageAsset Include="Assets.xcassets\investigation.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\investigation.imageset\inverstigation.png" />
+    <ImageAsset Include="Assets.xcassets\investigation.imageset\inverstigation-1.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -1092,7 +1092,6 @@
     <Folder Include="Assets.xcassets\certification.imageset\" />
     <Folder Include="Assets.xcassets\balance_disabled.imageset\" />
     <Folder Include="Assets.xcassets\balance.imageset\" />
-    <Folder Include="Assets.xcassets\inverstigation.imageset\" />
     <Folder Include="Assets.xcassets\flag_circle_green.imageset\" />
     <Folder Include="Assets.xcassets\check.imageset\" />
     <Folder Include="Assets.xcassets\close.imageset\" />
@@ -1101,6 +1100,7 @@
     <Folder Include="Assets.xcassets\next_icon_green.imageset\" />
     <Folder Include="Assets.xcassets\title_desafio.imageset\" />
     <Folder Include="Assets.xcassets\speaker_circle_white.imageset\" />
+    <Folder Include="Assets.xcassets\investigation.imageset\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
