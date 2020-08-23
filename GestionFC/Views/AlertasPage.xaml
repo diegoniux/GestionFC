@@ -819,6 +819,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="70"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="15"></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -2240,7 +2241,7 @@
                     <!--FIN DATOS PENDIENTESSV-->
                 </Grid>
                 <!--FIN PLANTILLA IMPRODUCTIVA-->
-                <Frame Grid.Row="2"
+                <Frame Grid.Row="3"
                     Margin="0, 10, 0, 0"
                     HasShadow="False"
                     Padding="0"
@@ -2248,7 +2249,7 @@
                     BorderColor="#CBCBCB"
                     BackgroundColor="#F0F0F1">
                 </Frame>
-                <Grid Grid.Row="2"
+                <Grid Grid.Row="3"
                     Margin="0, 10, 0, 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="70"></ColumnDefinition>
@@ -2258,7 +2259,7 @@
                         <RowDefinition Height="40"></RowDefinition>
                         <RowDefinition Height="40"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Image Source="capi_circulo.png"
+                    <Image Source="speaker_circle_white.png"
                         Margin="10, -80, 0, 0"
                         Grid.Column="0"
                         Grid.Row="0"

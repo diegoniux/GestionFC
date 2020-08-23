@@ -51,13 +51,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>Apple Distribution: Diego Alberto Nieto Flores (KQKPH57A56)</CodesignKey>
+    <CodesignKey>iPhone Developer: Ricardo Joan Garza Reyna (9AQ48K9WFC)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>None</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
     <BuildIpa>true</BuildIpa>
-    <CodesignProvision>profile.Dist</CodesignProvision>
+    <CodesignProvision>GestiónFC</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -962,6 +962,9 @@
     <ImageAsset Include="Assets.xcassets\title_desafio.imageset\title_desafio-1.png" />
     <ImageAsset Include="Assets.xcassets\title_desafio.imageset\title_desafio-2.png" />
     <ImageAsset Include="Assets.xcassets\title_desafio.imageset\title_desafio-3.png" />
+    <ImageAsset Include="Assets.xcassets\speaker_circle_white.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\speaker_circle_white.imageset\speaker_circle_white.png" />
+    <ImageAsset Include="Assets.xcassets\speaker_circle_white.imageset\speaker_circle_white%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -1094,6 +1097,7 @@
     <Folder Include="Assets.xcassets\phone.imageset\" />
     <Folder Include="Assets.xcassets\next_icon_green.imageset\" />
     <Folder Include="Assets.xcassets\title_desafio.imageset\" />
+    <Folder Include="Assets.xcassets\speaker_circle_white.imageset\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
