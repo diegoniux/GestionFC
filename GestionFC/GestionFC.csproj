@@ -33,6 +33,7 @@
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
     <PackageReference Include="DK.FFImageLoading.Platform.Headless" Version="4.2.10.200624163" />
     <PackageReference Include="Xamarin.Forms.MaskedEntry" Version="1.0.0" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -59,6 +60,7 @@
     <Folder Include="ViewModels\Modals\" />
     <Folder Include="Models\DetalleEspecialista\" />
     <Folder Include="ViewModels\DetalleEspecialista\" />
+    <Folder Include="Views\PopupPages\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.iOS">

@@ -78,13 +78,13 @@ namespace GestionFC.Services
             return detalleResponse;
         }
 
-        public async Task<DetalleHistoricoResponseModel> GetDetalleEspecialistaHistorico(int NominaAP, string Fecha, bool EsPosterior , string accessToken)
+        public async Task<DetalleHistoricoResponseModel> GetDetalleEspecialistaHistorico(int NominaAP, string Fecha , string accessToken)
         {
             var detalleResponse = new DetalleHistoricoResponseModel();
             try
             {
                 // string EsposteriorStr = EsPosterior ? "True" : "False";
-                var uri = new Uri($"{App.BaseUrlApi}api/DetalleEspecialista/GetDetalleEspecialistaHistorico/{NominaAP}/{Fecha}/{EsPosterior}");
+                var uri = new Uri($"{App.BaseUrlApi}api/DetalleEspecialista/GetDetalleEspecialistaHistorico/{NominaAP}/{Fecha}");
 
                 HttpResponseMessage response = null;
                 if (_client.DefaultRequestHeaders.Authorization == null)

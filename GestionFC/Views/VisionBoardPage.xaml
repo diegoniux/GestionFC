@@ -30,13 +30,14 @@
     </ContentPage.Resources>
     <RelativeLayout>
             <StackLayout 
-            Margin="0" 
-            Padding="0" 
-            Orientation="Vertical" 
-            VerticalOptions="FillAndExpand" 
-            Spacing="0"
-            RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
-            RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                Margin="0" 
+                Padding="0" 
+                Orientation="Vertical" 
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                Spacing="0"
+                RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
 
             <!--HEADER-->
             <Grid Margin="0" 
@@ -2037,7 +2038,6 @@
                         Grid.ColumnSpan="6"
                         Grid.Row="1"
                         Margin="0"
-                        VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout 

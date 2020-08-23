@@ -37,6 +37,7 @@ namespace GestionFC.iOS
 
             //Firebase.Core.App.Configure();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+            Rg.Plugins.Popup.Popup.Init();
             LoadApplication(application: new App());
 
             //// Register your app for remote notifications.

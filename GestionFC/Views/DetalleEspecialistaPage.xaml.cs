@@ -6,6 +6,8 @@ using GestionFC.Models.Log;
 using GestionFC.Models.Share;
 using GestionFC.Services;
 using GestionFC.ViewModels.DetalleEspecialista;
+using GestionFC.Views.PopupPages;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -110,7 +112,7 @@ namespace GestionFC.Views
                         
                     });
 
-                    await detalleService.GetDetalleEspecialistaHistorico(NominaAP, DateTime.Today.ToString("MM-dd-yyyy"), false, token).ContinueWith(x =>
+                    await detalleService.GetDetalleEspecialistaHistorico(NominaAP, DateTime.Today.ToString("MM-dd-yyyy"), token).ContinueWith(x =>
                     {
                         if (x.IsFaulted)
                         {
@@ -251,11 +253,11 @@ namespace GestionFC.Views
                                     DetalleFolioResponse = x.Result;
                                     App.DetalleFolio = DetalleFolioResponse;
 
-                                    Device.BeginInvokeOnMainThread(() =>
-                                    {
-                                        App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(typeof(DetalleFolioPage)));
-                                        // App.MasterDetail.IsPresented = false;
-                                    });
+
+                                    DetalleFolioPopupPage DetalleFolioPage = new DetalleFolioPopupPage();
+
+                                    PopupNavigation.Instance.PushAsync(DetalleFolioPage);
+
                                 }
                                 else
                                 {
@@ -316,7 +318,7 @@ namespace GestionFC.Views
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
                     var detalleService = new DetalleEspecialistaService();
-                    await detalleService.GetDetalleEspecialistaHistorico(NominaAP, DateTime.Today.ToString("MM-dd-yyyy"), false, token).ContinueWith(x =>
+                    await detalleService.GetDetalleEspecialistaHistorico(NominaAP, ViewModel.DetalleHistorico.DetalleHistoricoHeader.FechaAdelantar.ToString("MM-dd-yyyy"), token).ContinueWith(x =>
                     {
                         if (x.IsFaulted)
                         {
@@ -338,10 +340,6 @@ namespace GestionFC.Views
                         ViewModel.DetalleHistorico = x.Result;
                     });
                 }
-
-
-
-
             }
             catch (Exception ex)
             {
@@ -390,7 +388,7 @@ namespace GestionFC.Views
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
                     var detalleService = new DetalleEspecialistaService();
-                    await detalleService.GetDetalleEspecialistaHistorico(NominaAP, DateTime.Today.ToString("MM-dd-yyyy"), false, token).ContinueWith(x =>
+                    await detalleService.GetDetalleEspecialistaHistorico(NominaAP, ViewModel.DetalleHistorico.DetalleHistoricoHeader.FechaAnterior.ToString("MM-dd-yyyy"), token).ContinueWith(x =>
                     {
                         if (x.IsFaulted)
                         {

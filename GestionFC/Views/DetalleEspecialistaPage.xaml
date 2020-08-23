@@ -264,6 +264,7 @@
 
                 <!-- Antigüedad-->
                 <Label
+                    Text="{Binding DetalleEspecialista.DetalleEspecialista.MesesLaborando}"
                     Grid.Column="4"
                     Grid.Row="2"
                     Grid.RowSpan="2"
@@ -272,14 +273,6 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center">
-                    <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="{Binding DetalleEspecialista.DetalleEspecialista.MesesLaborando}"/>
-                                    <Span Text=" Meses"/>
-                                </FormattedString.Spans>
-                            </FormattedString>
-                    </Label.FormattedText>
                 </Label>
 
                 <!-- Nómina-->
@@ -585,9 +578,11 @@
                         Grid.ColumnSpan="3"
                         TextColor="#353535"
                         FontSize="13"
+                        Margin="0,-6,0,0"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand"
-                        HorizontalTextAlignment="Center">
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center">
                     </Label>
 
                     <!-- {Binding ImgNotificacion}-->

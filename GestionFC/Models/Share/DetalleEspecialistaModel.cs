@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using SkiaSharp;
 
 namespace GestionFC.Models.Share
 {
@@ -47,8 +48,8 @@ namespace GestionFC.Models.Share
         [JsonProperty("tramitesEnCalidad")]
         public long TramitesEnCalidad { get; set; }
 
-        public DetalleEspecialistaModel()
-        {
-        }
+
+     
+
     }
 }
