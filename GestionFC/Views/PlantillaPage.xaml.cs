@@ -190,8 +190,15 @@ namespace GestionFC.Views
 
         async void CollectionView_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
         {
+            if (IsBusy)
+            {
+                return;
+            }
+
+
             try
             {
+                IsBusy = true;
                 App.Especialistas = ViewModel.Agentes;
                 App.NominaAP = (e.CurrentSelection.FirstOrDefault() as Progreso).NominaPromotor;
                 Device.BeginInvokeOnMainThread(() =>
@@ -216,6 +223,10 @@ namespace GestionFC.Views
                         DisplayAlert("Error", logRes.Exception.Message, "Ok");
                 });
                 await DisplayAlert("PlantillaPage Error", ex.Message, "Ok");
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
     }

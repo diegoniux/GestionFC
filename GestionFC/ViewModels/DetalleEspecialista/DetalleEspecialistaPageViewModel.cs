@@ -33,6 +33,18 @@ namespace GestionFC.ViewModels.DetalleEspecialista
             }
         }
 
+        private DetalleHistoricoResponseModel detalleHistorico;
+
+        public DetalleHistoricoResponseModel DetalleHistorico
+        {
+            get { return detalleHistorico; }
+            set
+            {
+                detalleHistorico = value;
+                RaisePropertyChanged(nameof(DetalleHistorico));
+            }
+        }
+
         private bool alarmaVisible;
 
         public bool AlarmaVisible

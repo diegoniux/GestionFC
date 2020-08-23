@@ -50,7 +50,6 @@
                     <ColumnDefinition Width="0.60*"></ColumnDefinition>
                     <ColumnDefinition Width="0.40*"></ColumnDefinition>
                     <ColumnDefinition Width="60"></ColumnDefinition>
-                    <!-- <ColumnDefinition Width="55"></ColumnDefinition> -->
                 </Grid.ColumnDefinitions>
 
 
@@ -141,11 +140,11 @@
                     BorderColor="White">
                     <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
                         <renderers:EntryIcon
-                            x:Name="UserName"
+                            x:Name="txtFolioSolicitud"
                             Margin="20,0,0,0"
                             Text="{Binding LoginDTO.Nomina, Mode=TwoWay}"
                             Keyboard="Numeric"
-                            MaxLength="11"
+                            MaxLength="10"
                             CornerRadius="35"
                             Placeholder="Búsqueda de folios"
                             FontFamily="{StaticResource Poppins-Regular}"
@@ -163,6 +162,9 @@
                                 HeightRequest="60"
                                 Margin="-5,-5,-5,-5"
                                 BackgroundColor="Transparent">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="SearchCircleButton_Tapped"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
                 </Frame>
@@ -1173,61 +1175,59 @@
                 </Label>
             </Grid>
 
-            <!-- DESEMPEÑO HISTÓRICO-->
-
             <!-- Header Desempeño Histórico-->
             <Grid
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Grid.Row="0"
+                ColumnSpacing="0"
+                Margin="15,15,0,5">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+
+                <Image
+                    Source="chart.png"
                     Grid.Column="0"
-                    Grid.ColumnSpan="2"
                     Grid.Row="0"
-                    ColumnSpacing="0"
-                    Margin="15,15,0,15">
+                    Grid.RowSpan="2"
+                    Aspect="AspectFit">
+                </Image>
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30"></RowDefinition>
-                        <RowDefinition Height="30"></RowDefinition>
-                    </Grid.RowDefinitions>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="60"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-
-                    <Image
-                        Source="chart.png"
-                        Grid.Column="0"
-                        Grid.Row="0"
-                        Grid.RowSpan="2"
-                        Aspect="AspectFit">
-                    </Image>
-
-                    <Label
-                        Text="Desempeño Histórico"
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        Margin="20,0"
-                        FontSize="20"
-                        TextColor="#464646"
-                        FontAttributes="Bold"
-                        HorizontalTextAlignment="Start"
-                        VerticalTextAlignment="End"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand">
-                    </Label>
-                    <Label
-                        Text="Consulta el rendimiento de semanas anteriores"
-                        Grid.Column="1"
-                        Grid.Row="1"
-                        Margin="20,0"
-                        FontSize="16"
-                        TextColor="#B2B2B2"
-                        HorizontalTextAlignment="Start"
-                        VerticalTextAlignment="Start"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand">
-                    </Label>
-                </Grid>
+                <Label
+                    Text="Desempeño Histórico"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Margin="20,0"
+                    FontSize="20"
+                    TextColor="#464646"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                </Label>
+                <Label
+                    Text="Consulta el rendimiento de semanas anteriores"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Margin="20,0"
+                    FontSize="16"
+                    TextColor="#B2B2B2"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Start"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                </Label>
+            </Grid>
 
             <!-- Control de navegación-->
             <Grid
@@ -1235,11 +1235,10 @@
                 RowSpacing="0"
                 ColumnSpacing="0"
                 Padding="0"
-                VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -1254,21 +1253,28 @@
                     Grid.ColumnSpan="3"
                     Grid.Row="0"
                     CornerRadius="10,10,0,0"
-                    BackgroundColor="#FFA400">
+                    BackgroundColor="#FFA400"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
                 </BoxView>
 
                 <Image
-                    Source="prev"
+                    Source="{Binding DetalleHistorico.DetalleHistoricoHeader.ImgAnterior}"
                     Grid.Column="0"
                     Grid.Row="0"
                     Aspect="AspectFit"
-                    Margin="5">
+                    Margin="5"
+                    WidthRequest="80"
+                    HeightRequest="100">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="PrevImage_Tapped"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
                 </Image>
 
                 <Label
-                    Text="18 MAYO - 07 JUNIO"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3"
+                    Text="{Binding DetalleHistorico.DetalleHistoricoHeader.FechaIniFin}"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
                     Grid.Row="0"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
@@ -1279,16 +1285,19 @@
                 </Label>
 
                 <Image
-                    Source="next"
+                    Source="{Binding DetalleHistorico.DetalleHistoricoHeader.ImgAdelantar}"
                     Grid.Column="2"
                     Grid.Row="0"
                     Aspect="AspectFit"
                     Margin="5">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="NextImage_Tapped"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
                 </Image>
-
             </Grid>
 
-            <!-- Trámites-->
+            <!-- CONTENIDO-->
+
             <Grid
                 Margin="0"
                 RowSpacing="0"
@@ -1298,9 +1307,8 @@
                 HorizontalOptions="FillAndExpand">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="30"></RowDefinition>
-                    <RowDefinition Height="30"></RowDefinition>
-                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -1313,7 +1321,7 @@
 
                 <!-- Semanas Header-->
                 <Label
-                    Text="01 JUNIO - 07 JUNIO"
+                    Text="{Binding DetalleHistorico.DetalleHistoricoSemanas.FechaSemana1}"
                     Grid.Column="2"
                     Grid.Row="0"
                     VerticalOptions="FillAndExpand"
@@ -1325,7 +1333,7 @@
                     FontSize="12">
                 </Label>
                 <Label
-                    Text="25 MAYO - 31 MAYO"
+                    Text="{Binding DetalleHistorico.DetalleHistoricoSemanas.FechaSemana2}"
                     Grid.Column="3"
                     Grid.Row="0"
                     VerticalOptions="FillAndExpand"
@@ -1337,7 +1345,7 @@
                     FontSize="12">
                 </Label>
                 <Label
-                    Text="18 MAYO - 24 MAYO"
+                    Text="{Binding DetalleHistorico.DetalleHistoricoSemanas.FechaSemana3}"
                     Grid.Column="4"
                     Grid.Row="0"
                     VerticalOptions="FillAndExpand"
@@ -1366,45 +1374,181 @@
                 </Label>
             </Grid>
 
-            <!-- Recuperaciones-->
-            <Grid
+            <CollectionView
+                x:Name="CollectionViewTramites"
+                ItemsSource="{Binding DetalleHistorico.DetalleHistoricoTramites}"
                 Margin="0"
-                RowSpacing="0"
-                ColumnSpacing="0"
-                Padding="0"
+                HorizontalOptions="FillAndExpand"
+                HeightRequest="190">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"></GridItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            Margin="0"
+                            Padding="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width=".50*"></ColumnDefinition>
+                                <ColumnDefinition Width=".50*"></ColumnDefinition>
+                                <ColumnDefinition Width=".50*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Tramites-->
+                            <Label
+                                Text="{Binding Tramites}"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                TextColor="#353535"
+                                FontSize="12"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Start"
+                                VerticalTextAlignment="Center">
+                            </Label>
+
+                            <!-- Semana 1-->
+                            <Label
+                                Text="{Binding Semana1}"
+                                Grid.Column="2"
+                                TextColor="#353535"
+                                FontSize="12"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center">
+                            </Label>
+
+                            <!-- Semana 2-->
+                            <Label
+                                Text="{Binding Semana2}"
+                                Grid.Column="3"
+                                TextColor="#353535"
+                                FontSize="12"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center">
+                            </Label>
+
+                            <!-- Semana 3-->
+                            <Label
+                                Text="{Binding Semana3}"
+                                Grid.Column="4"
+                                TextColor="#353535"
+                                FontSize="12"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center">
+                            </Label>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Recupraciones HEADER-->
+            <Label
+                Text="  RECUPERACIONES"
+                Grid.Column="0"
+                Grid.ColumnSpan="5"
+                Grid.Row="3"
                 VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand">
+                HorizontalOptions="FillAndExpand"
+                BackgroundColor="#DCD7D7"
+                TextColor="#707070"
+                FontSize="10"
+                FontAttributes="Bold"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Start"
+                HeightRequest="25">
+            </Label>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"></RowDefinition>
-                    <RowDefinition Height="100"></RowDefinition>
-                </Grid.RowDefinitions>
+            <CollectionView
+                x:Name="CollectionRecuperaciones"
+                ItemsSource="{Binding DetalleHistorico.DetalleHistoricoRecuperacion}"
+                     Margin="0"
+                HeightRequest="100">
+                    <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"></GridItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                            <Grid
+                                Margin="0"
+                                ColumnSpacing="1"
+                                RowSpacing="1"
+                                Padding="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"></RowDefinition>
+                                </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width=".50*"></ColumnDefinition>
-                    <ColumnDefinition Width=".50*"></ColumnDefinition>
-                    <ColumnDefinition Width=".50*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width=".50*"></ColumnDefinition>
+                                    <ColumnDefinition Width=".50*"></ColumnDefinition>
+                                    <ColumnDefinition Width=".50*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
 
-                <!-- Recupraciones HEADER-->
-                <Label
-                    Text="  RECUPERACIONES"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="5"
-                    Grid.Row="0"
-                    VerticalOptions="FillAndExpand"
-                    HorizontalOptions="FillAndExpand"
-                    BackgroundColor="#DCD7D7"
-                    TextColor="#707070"
-                    FontSize="10"
-                    FontAttributes="Bold"
-                    VerticalTextAlignment="Center"
-                    HorizontalTextAlignment="Start">
-                </Label>
-            </Grid>
+                                <!-- Recuperaciones-->
+                                <Label
+                                    Text="{Binding Tramites}"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    TextColor="#353535"
+                                    FontSize="12"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    VerticalTextAlignment="Center">
+                                </Label>
 
+                                <!-- Semana 1-->
+                                <Label
+                                    Text="{Binding Semana1}"
+                                    Grid.Column="2"
+                                    TextColor="#353535"
+                                    FontSize="12"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center">
+                                </Label>
+
+                                <!-- Semana 2-->
+                                <Label
+                                    Text="{Binding Semana2}"
+                                    Grid.Column="3"
+                                    TextColor="#353535"
+                                    FontSize="12"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center">
+                                </Label>
+
+                                <!-- Semana 3-->
+                                <Label
+                                    Text="{Binding Semana3}"
+                                    Grid.Column="4"
+                                    TextColor="#353535"
+                                    FontSize="12"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center">
+                                </Label>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
         </StackLayout>
         </ScrollView>

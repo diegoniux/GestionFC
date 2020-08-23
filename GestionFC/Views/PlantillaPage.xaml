@@ -845,12 +845,14 @@
                     <ColumnDefinition Width="0.10*"></ColumnDefinition>
                     <ColumnDefinition Width="20"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <CollectionView ItemsSource="{Binding  Agentes}"
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Grid.ColumnSpan="12" Margin="0"
-                                SelectionMode="Single"
-                                SelectionChanged="CollectionView_SelectionChanged">
+                <CollectionView
+                    x:Name="CollectionViewPlantilla"
+                    ItemsSource="{Binding  Agentes}"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="12" Margin="0"
+                    SelectionMode="Single"
+                    SelectionChanged="CollectionView_SelectionChanged">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="5"></GridItemsLayout>
                     </CollectionView.ItemsLayout>
