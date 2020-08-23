@@ -165,6 +165,21 @@ namespace GestionFC.ViewModels.AlertasPage
             }
         }
 
+        private MensajeGerenteResponseModel _mensajeGerente;
+
+        public MensajeGerenteResponseModel MensajeGerente
+        {
+            get
+            {
+                return _mensajeGerente;
+            }
+            set
+            {
+                _mensajeGerente = value;
+                RaisePropertyChanged(nameof(MensajeGerente));
+            }
+        }
+
         public PlantillaImproductivaViewModel()
         {
             PlantillaImproductiva = new PlantillaImproductivaResponseModel();

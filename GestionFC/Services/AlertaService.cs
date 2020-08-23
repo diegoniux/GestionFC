@@ -223,5 +223,33 @@ namespace GestionFC.Services
             }
             return getDetalleFolioRecuperacionResponse;
         }
+
+        public async Task<MensajeGerenteResponseModel> GetMensajeGerente(int nomina, string token)
+        {
+            var getMensajeGerenteResponse = new MensajeGerenteResponseModel();
+            try
+            {
+                var uri = new Uri($"{App.BaseUrlApi}api/Alerta/GetMensajeGerente/{nomina}");
+
+                HttpResponseMessage response = null;
+                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                response = await _client.GetAsync(uri);
+
+                response.EnsureSuccessStatusCode();
+
+                string jsonResult = await response.Content.ReadAsStringAsync();
+                getMensajeGerenteResponse = JsonConvert.DeserializeObject<MensajeGerenteResponseModel>(jsonResult);
+            }
+            catch (Exception ex)
+            {
+                getMensajeGerenteResponse.ResultadoEjecucion = new Models.Share.ResultadoEjecucion()
+                {
+                    EjecucionCorrecta = false,
+                    FriendlyMessage = "Ocurrio un error",
+                    ErrorMessage = ex.Message
+                };
+            }
+            return getMensajeGerenteResponse;
+        }
     }
 }

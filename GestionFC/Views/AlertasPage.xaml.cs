@@ -177,6 +177,25 @@ namespace GestionFC.Views
 
                         });
 
+                        await alertaService.GetMensajeGerente(nomina, token).ContinueWith(x =>
+                        {
+                            if (x.IsFaulted)
+                            {
+                                throw x.Exception;
+                            }
+
+                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                            {
+                                // vericamos si la sesión expiró (token)
+                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                {
+                                    SesionExpired = true;
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                }
+                            }
+                            ViewModel.MensajeGerente = x.Result;
+                        });
+
 
                     }
                     pickerAP.Items.Add("TODOS");
