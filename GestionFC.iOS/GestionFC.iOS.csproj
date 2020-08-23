@@ -51,13 +51,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer: Ricardo Joan Garza Reyna (9AQ48K9WFC)</CodesignKey>
+    <CodesignKey>Apple Distribution: Diego Alberto Nieto Flores (KQKPH57A56)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>None</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
     <BuildIpa>true</BuildIpa>
-    <CodesignProvision>GestiónFC</CodesignProvision>
+    <CodesignProvision>profile.Dist</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -73,7 +73,7 @@
     <CodesignKey>Apple Distribution: Diego Alberto Nieto Flores (KQKPH57A56)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <BuildIpa>true</BuildIpa>
-    <CodesignProvision>icap.dist</CodesignProvision>
+    <CodesignProvision>profile.Dist</CodesignProvision>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
@@ -954,6 +954,14 @@
     <ImageAsset Include="Assets.xcassets\phone.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\phone.imageset\phone.png" />
     <ImageAsset Include="Assets.xcassets\phone.imageset\phone-1.png" />
+    <ImageAsset Include="Assets.xcassets\next_icon_green.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\next_icon_green.imageset\next_icon_green.png" />
+    <ImageAsset Include="Assets.xcassets\next_icon_green.imageset\next_icon_green-1.png" />
+    <ImageAsset Include="Assets.xcassets\title_desafio.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\title_desafio.imageset\title_desafio.png" />
+    <ImageAsset Include="Assets.xcassets\title_desafio.imageset\title_desafio-1.png" />
+    <ImageAsset Include="Assets.xcassets\title_desafio.imageset\title_desafio-2.png" />
+    <ImageAsset Include="Assets.xcassets\title_desafio.imageset\title_desafio-3.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -1084,6 +1092,8 @@
     <Folder Include="Assets.xcassets\close.imageset\" />
     <Folder Include="Assets.xcassets\chart.imageset\" />
     <Folder Include="Assets.xcassets\phone.imageset\" />
+    <Folder Include="Assets.xcassets\next_icon_green.imageset\" />
+    <Folder Include="Assets.xcassets\title_desafio.imageset\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

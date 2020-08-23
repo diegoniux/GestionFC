@@ -10,6 +10,23 @@
              mc:Ignorable="d"
              x:Class="GestionFC.Views.PlantillaPage"
              BackgroundColor="#F0F0F1">
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="#F0F0F1" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <RelativeLayout Padding="0">
         <!--<Image
             Aspect="AspectFill"
@@ -828,10 +845,14 @@
                     <ColumnDefinition Width="0.10*"></ColumnDefinition>
                     <ColumnDefinition Width="20"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <CollectionView ItemsSource="{Binding  Agentes}"
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Grid.ColumnSpan="12" Margin="0">
+                <CollectionView
+                    x:Name="CollectionViewPlantilla"
+                    ItemsSource="{Binding  Agentes}"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="12" Margin="0"
+                    SelectionMode="Single"
+                    SelectionChanged="CollectionView_SelectionChanged">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="5"></GridItemsLayout>
                     </CollectionView.ItemsLayout>

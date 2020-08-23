@@ -1,7 +1,9 @@
+using GestionFC.Models.DetalleEspecialista;
 using GestionFC.Models.Share;
 using GestionFC.SqLite;
 using GestionFC.Views;
-using System;        
+using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,6 +16,14 @@ namespace GestionFC
         public static MasterDetailPage MasterDetail { get; set; }
         public static int Nomina { get; set; }
         public static string Token { get; set; }
+
+        // Propiedades para la pantalla detalle de especialista
+        public static List<Progreso> Especialistas { get; set; }
+        public static int NominaAP { get; set; }
+
+        // Propiedad para el binding de la pantalla Detalle Folio
+        public static DetalleFolioResponseModel DetalleFolio { get; set; }
+
         public static GestionFCDataBase Database
         {
             get

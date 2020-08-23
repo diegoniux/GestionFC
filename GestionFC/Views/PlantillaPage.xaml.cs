@@ -6,6 +6,9 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using Service = GestionFC.Services;
 using GestionFC.Models.Log;
+using GestionFC.Models.Share;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GestionFC.Views
 {
@@ -185,6 +188,47 @@ namespace GestionFC.Views
             });
         }
 
+        async void CollectionView_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+        {
+            if (IsBusy)
+            {
+                return;
+            }
+
+
+            try
+            {
+                IsBusy = true;
+                App.Especialistas = ViewModel.Agentes;
+                App.NominaAP = (e.CurrentSelection.FirstOrDefault() as Progreso).NominaPromotor;
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(typeof(DetalleEspecialistaPage)));
+                    App.MasterDetail.IsPresented = false;
+                });
+            }
+            catch (Exception ex)
+            {
+                var logError = new Models.Log.LogErrorModel()
+                {
+                    IdPantalla = 2,
+                    Usuario = nomina,
+                    Error = (ex.TargetSite == null ? "" : ex.TargetSite.Name + ". ") + ex.Message,
+                    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+
+                };
+                await _master.logService.LogError(logError, "").ContinueWith(logRes =>
+                {
+                    if (logRes.IsFaulted)
+                        DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                });
+                await DisplayAlert("PlantillaPage Error", ex.Message, "Ok");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
     }
 
 }

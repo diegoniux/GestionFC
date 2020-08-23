@@ -22,12 +22,18 @@ namespace GestionFC.Services
             this._client = new HttpClient(httpClientHandler);
         }
 
-        public async Task<PlantillaImproductivaResponseModel> GetAlertaPlantillaImproductiva(int nomina,string token)
+        public async Task<PlantillaImproductivaResponseModel> GetAlertaPlantillaImproductiva(int nomina,string token, int nominaAP = 0)
         {
             var plantillaImproductivaResponse = new PlantillaImproductivaResponseModel();
             try
             {
-                var uri = new Uri($"{App.BaseUrlApi}api/Alerta/GetAlertasPlantillaImproductividad/{nomina}");
+                var url = $"{App.BaseUrlApi}api/Alerta/GetAlertasPlantillaImproductividad/{nomina}";
+                if (nominaAP != 0)
+                {
+                    url = string.Concat(url, $"/{nominaAP}");
+                }
+
+                var uri = new Uri(url);
 
                 HttpResponseMessage response = null;
                 _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
