@@ -68,6 +68,25 @@ namespace GestionFC.Views
                 {
                     using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                     {
+                        await alertaService.GetMensajeGerente(nomina, token).ContinueWith(x =>
+                        {
+                            if (x.IsFaulted)
+                            {
+                                throw x.Exception;
+                            }
+
+                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                            {
+                                // vericamos si la sesión expiró (token)
+                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                {
+                                    SesionExpired = true;
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                }
+                            }
+                            ViewModel.MensajeGerente = x.Result;
+                        });
+
                         await headerService.GetHeader(nomina, token).ContinueWith((Action<Task<Models.Share.HeaderResponseModel>>)(x =>
                         {
                             if (x.IsFaulted)
@@ -173,29 +192,9 @@ namespace GestionFC.Views
                             }
                             ViewModel.FoliosPendientesSV = x.Result;
                             ViewModel.CreateCollection();
-                            
+
 
                         });
-
-                        await alertaService.GetMensajeGerente(nomina, token).ContinueWith(x =>
-                        {
-                            if (x.IsFaulted)
-                            {
-                                throw x.Exception;
-                            }
-
-                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                            {
-                                // vericamos si la sesión expiró (token)
-                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                                {
-                                    SesionExpired = true;
-                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                                }
-                            }
-                            ViewModel.MensajeGerente = x.Result;
-                        });
-
 
                     }
                     pickerAP.Items.Add("TODOS");
