@@ -60,14 +60,14 @@ namespace GestionFC.Views
 
             masterPageItems.Add(new MasterPageItem
             {
-                Title = "Ranking",
+                Title = "Ranking Gerentes",
                 IconSource = "icon_ranking.png",
                 TargetType = typeof(RankingPage)
             });
 
             masterPageItems.Add(new MasterPageItem
             {
-                Title = "Ranking Semanal",
+                Title = "Ranking Especialistas",
                 IconSource = "icon_ranking.png",
                 TargetType = typeof(RankingAgentesPage)
             });
