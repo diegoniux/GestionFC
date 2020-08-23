@@ -167,7 +167,8 @@
                                         Grid.Row="1"
                                         Text="{Binding pdf}"
                                         HorizontalOptions="Center" />-->
-                                    <WebView Grid.Row="1" HeightRequest="1000" WidthRequest="1000" Source="http://www.xamarin.com" />
+                                    <WebView Grid.Row="1" HeightRequest="1000" WidthRequest="1000"
+                                             Source="https://2.bp.blogspot.com/_mhgKD4UYTRQ/TPWRxG8aeYI/AAAAAAAAAB0/oM9Rb1ZDK5c/s1600/PUDDY%2BPUDDY.PNG" />
                                     
                                 </Grid>
                                 

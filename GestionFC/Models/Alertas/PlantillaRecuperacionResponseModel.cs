@@ -16,6 +16,6 @@ namespace GestionFC.Models.Alertas
         public int cantidad { get; set; }
 
         [JsonProperty("resultDatos")]
-        public ObservableCollection<PlantillaRecuperacionModel> ResultDatos { get; set; }
+        public List<PlantillaRecuperacionModel> ResultDatos { get; set; }
     }
 }

@@ -189,5 +189,33 @@ namespace GestionFC.Services
             }
             return getFoliosRecuperacionResponse;
         }
+
+        public async Task<AlertaRecuperacionResponseModel> GetDetalleFolioRecuperacion(int nomina, int pantallaId, string token)
+        {
+            var getDetalleFolioRecuperacionResponse = new AlertaRecuperacionResponseModel();
+            try
+            {
+                var uri = new Uri($"{App.BaseUrlApi}api/Alerta/GetDetalleFolioRecuperacion/{nomina}/{pantallaId}");
+
+                HttpResponseMessage response = null;
+                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                response = await _client.GetAsync(uri);
+
+                response.EnsureSuccessStatusCode();
+
+                string jsonResult = await response.Content.ReadAsStringAsync();
+                getDetalleFolioRecuperacionResponse = JsonConvert.DeserializeObject<AlertaRecuperacionResponseModel>(jsonResult);
+            }
+            catch (Exception ex)
+            {
+                getDetalleFolioRecuperacionResponse.ResultadoEjecucion = new Models.Share.ResultadoEjecucion()
+                {
+                    EjecucionCorrecta = false,
+                    FriendlyMessage = "Ocurrio un error",
+                    ErrorMessage = ex.Message
+                };
+            }
+            return getDetalleFolioRecuperacionResponse;
+        }
     }
 }

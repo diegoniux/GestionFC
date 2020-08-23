@@ -417,7 +417,9 @@ namespace GestionFC.Views
         private async void OnTapOpenModal_Tapped(object sender, EventArgs e)
         {
             int nominaAP = Convert.ToInt32(((Grid)sender).ClassId);
-            await Navigation.PushModalAsync(new Modals.AlertasRecuperacionModalView(nominaAP));
+            Models.Alertas.PlantillaRecuperacionModel especialita = ViewModel.PlantillaRecuperacion.ResultDatos.Find(x => x.NominaAp == nominaAP);
+            
+            await Navigation.PushModalAsync(new Modals.AlertasRecuperacionModalView(nominaAP, especialita));
         }
 
         private async void OnTapFolioConSaldo_Tapped(object sender, EventArgs e)
