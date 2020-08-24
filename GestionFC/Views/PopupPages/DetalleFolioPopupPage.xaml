@@ -47,7 +47,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"></RowDefinition>
                                 <RowDefinition Height="23"></RowDefinition>
-                                <RowDefinition Height="28"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
                             </Grid.RowDefinitions>
 
                             <Label
@@ -64,8 +64,9 @@
                             <Label
                                 Text="{Binding DetalleFolios.EstatusDescripcion}"
                                 Grid.Column="0"
+                                Grid.RowSpan="2"
                                 Grid.Row="2"
-                                FontSize="23"
+                                FontSize="21"
                                 TextColor="#64A70B"
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="Start"
