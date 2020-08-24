@@ -33,8 +33,28 @@ namespace GestionFC.Models.Share
         [JsonProperty("saldoMeta")]
         public string SaldoMeta { get; set; }
 
+        private string porcentajeSaldoacumulado;
         [JsonProperty("porcentajeSaldoAcumulado")]
-        public string PorcentajeSaldoAcumulado { get; set; }
+        public string PorcentajeSaldoAcumulado
+        {
+            get
+            {
+                return porcentajeSaldoacumulado;
+            }
+            set
+            {
+                porcentajeSaldoacumulado = value;
+                try
+                {
+                    PorcentajeSaldoAcumuladoDesc = decimal.Parse(value).ToString("0%");
+                }
+                catch (Exception ex)
+                {
+
+                }
+                
+            }
+        }
 
         [JsonProperty("imagenSaldoAcumulado")]
         public string ImagenSaldoAcumulado { get; set; }
@@ -49,7 +69,11 @@ namespace GestionFC.Models.Share
         public long TramitesEnCalidad { get; set; }
 
 
-     
+        // Propiedad Calculada
+        public string PorcentajeSaldoAcumuladoDesc { get; set; }
+
+
+
 
     }
 }
