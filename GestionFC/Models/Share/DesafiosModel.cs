@@ -14,8 +14,8 @@ namespace GestionFC.Models.Share
         [JsonProperty("colorBonoTableta")]
         public string ColorBonoTableta { get; set; }
 
-        [JsonProperty("miltiplicador")]
-        public long Miltiplicador { get; set; }
+        [JsonProperty("multiplicador")]
+        public long Multiplicador { get; set; }
 
         [JsonProperty("imgMultiplicador")]
         public string ImgMultiplicador { get; set; }
