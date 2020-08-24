@@ -28,7 +28,8 @@
                     CornerRadius="20"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
-                    HasShadow="False">
+                    HasShadow="False"
+                    BackgroundColor="#FFFFFF">
 
                     <StackLayout Padding="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 
