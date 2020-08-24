@@ -34,6 +34,9 @@ namespace GestionFC.Models.Share
         [JsonProperty("fechaFirma")]
         public string FechaFirma { get; set; }
 
+        [JsonProperty("fechaActivacionFCT")]
+        public string FechaActivacionFCT { get; set; }
+
         [JsonProperty("tieneSV")]
         public bool TieneSV { get; set; }
     }

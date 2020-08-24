@@ -882,7 +882,7 @@
                                 FontFamily="Helvetica"
                                 FontAttributes="Bold"
                                 Text="0"
-                                x:Name="notidicacionImp">
+                                x:Name="notificacionImp">
                             </Label>
                         </Grid>
                         <AbsoluteLayout.GestureRecognizers>
@@ -890,7 +890,7 @@
                         </AbsoluteLayout.GestureRecognizers>
                     </AbsoluteLayout>
                     <!--TAB PLANTILLA RECUPERACIÓN-->
-                    <AbsoluteLayout
+                    <!--<AbsoluteLayout
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
                         Grid.Column="1">
@@ -936,18 +936,18 @@
                                 FontFamily="Helvetica"
                                 FontAttributes="Bold"
                                 Text="0"
-                                x:Name="notidicacionRec">
+                                x:Name="notificacionRec">
                             </Label>
                         </Grid>
                         <AbsoluteLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTapRecuperacion_Tapped"></TapGestureRecognizer>
                         </AbsoluteLayout.GestureRecognizers>
-                    </AbsoluteLayout>
+                    </AbsoluteLayout>-->
                     <!--TAB PLANTILLA INVESTIGACIÓN-->
                     <AbsoluteLayout
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
-                        Grid.Column="2">
+                        Grid.Column="1">
                         <Grid
                                 AbsoluteLayout.LayoutBounds="0,.6,1,.6"
                                 AbsoluteLayout.LayoutFlags="All">
@@ -989,7 +989,7 @@
                                 FontFamily="Helvetica"
                                 FontAttributes="Bold"
                                 Text="0"
-                                x:Name="notidicacionInv">
+                                x:Name="notificacionInv">
                             </Label>
                         </Grid>
                         <AbsoluteLayout.GestureRecognizers>
@@ -1000,7 +1000,7 @@
                     <AbsoluteLayout
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
-                        Grid.Column="3">
+                        Grid.Column="2">
                         <Grid
                             AbsoluteLayout.LayoutBounds="0,.6,1,.6"
                             AbsoluteLayout.LayoutFlags="All">
@@ -1043,7 +1043,7 @@
                                 FontFamily="Helvetica"
                                 FontAttributes="Bold"
                                 Text="0"
-                                x:Name="notidicacionSV">
+                                x:Name="notificacionSV">
                                 </Label>
                         </Grid>
                         <AbsoluteLayout.GestureRecognizers>
@@ -1811,11 +1811,11 @@
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <FormattedString.Spans>
-                                                            <Span Text="{Binding Msj1}" FontSize="10" TextColor="#353535"/>
+                                                            <Span Text="{Binding Msj1}" FontSize="13" TextColor="#353535"/>
                                                             <Span Text=" "/>
-                                                            <Span Text="{Binding Msj2}" FontSize="10" TextColor="#FF0000"/>
+                                                            <Span Text="{Binding Msj2}" FontSize="13" TextColor="#FF0000"/>
                                                             <Span Text=" "/>
-                                                            <Span Text="{Binding Msj3}" FontSize="10" TextColor="#353535"/>
+                                                            <Span Text="{Binding Msj3}" FontSize="13" TextColor="#353535"/>
                                                         </FormattedString.Spans>
                                                     </FormattedString>
                                                 </Label.FormattedText>
@@ -1884,26 +1884,19 @@
                                     <RowDefinition Height="50"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3.5*"></ColumnDefinition>
-                                    <ColumnDefinition Width="1*"></ColumnDefinition>
-                                    <ColumnDefinition Width="1.3*"></ColumnDefinition>
-                                    <ColumnDefinition Width="1*"></ColumnDefinition>
-                                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
-                                    <ColumnDefinition Width="1*"></ColumnDefinition>
-                                    <ColumnDefinition Width="2*"></ColumnDefinition>
-                                    <ColumnDefinition Width="1*"></ColumnDefinition>
-                                    <ColumnDefinition Width="2*"></ColumnDefinition>
-                                    <ColumnDefinition Width="1*"></ColumnDefinition>
-                                    <ColumnDefinition Width=".5*"></ColumnDefinition>
+                                    <ColumnDefinition Width=".25*"></ColumnDefinition>
+                                    <ColumnDefinition Width=".12*"></ColumnDefinition>
+                                    <ColumnDefinition Width=".15*"></ColumnDefinition>
+                                    <ColumnDefinition Width=".22*"></ColumnDefinition>
+                                    <ColumnDefinition Width=".13*"></ColumnDefinition>
+                                    <ColumnDefinition Width=".13*"></ColumnDefinition>
+                                    <ColumnDefinition Width="20"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
+                                <!-- Nombre Especialista SV-->
                                 <BoxView
                                     Grid.Row="0"
                                     Grid.Column="0"
-                                    Grid.ColumnSpan="2"
                                     BackgroundColor="#FFFFFF">
-                                    <!--<BoxView.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderNombreCommand}"></TapGestureRecognizer>
-                                    </BoxView.GestureRecognizers>-->
                                 </BoxView>
                                 <Label
                                     Text="Especialista"
@@ -1915,42 +1908,33 @@
                                     FontSize="12"
                                     FontAttributes="Bold"
                                     FontFamily="Helvetica">
-                                    <!--<Label.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderNombreCommand}"></TapGestureRecognizer>
-                                    </Label.GestureRecognizers>-->
                                 </Label>
-                                <!--<Image
-                                    Grid.Column="1"
-                                    HorizontalOptions="Start"
-                                    VerticalOptions="Center"
-                                    Source="arrow_down.png"
-                                    Margin="0,0,0,0">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderNombreCommand}"></TapGestureRecognizer>
-                                    </Image.GestureRecognizers>
-                                </Image>
-                                <Image
-                                    Grid.Column="1"
-                                    HorizontalOptions="End"
-                                    VerticalOptions="Center"
-                                    Source="arrow_up.png"
-                                    Margin="0,0,28,0">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderNombreCommand}"></TapGestureRecognizer>
-                                    </Image.GestureRecognizers>
-                                </Image>-->
+                                <!-- Folio SV-->
                                 <BoxView
                                     Grid.Row="0"
-                                    Grid.Column="2"
-                                    Grid.ColumnSpan="2"
+                                    Grid.Column="1"
                                     BackgroundColor="#FFFFFF">
-                                    <!--<BoxView.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderFolioCommand}"></TapGestureRecognizer>
-                                    </BoxView.GestureRecognizers>-->
                                 </BoxView>
                                 <Label
                                     Text="Folio"
                                     Grid.Row="0"
+                                    Grid.Column="1"
+                                    TextColor="#707070"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    FontSize="12"
+                                    FontAttributes="Bold"
+                                    FontFamily="Helvetica">
+                                </Label>
+                                <!-- Saldo Virtual SV-->
+                                <BoxView
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    BackgroundColor="#FFFFFF">
+                                </BoxView>
+                                <Label
+                                    Text="Saldo Virtual"
+                                    Grid.Row="0"
                                     Grid.Column="2"
                                     TextColor="#707070"
                                     VerticalOptions="Center"
@@ -1958,162 +1942,62 @@
                                     FontSize="12"
                                     FontAttributes="Bold"
                                     FontFamily="Helvetica">
-                                    <!--<Label.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderFolioCommand}"></TapGestureRecognizer>
-                                    </Label.GestureRecognizers>-->
                                 </Label>
-                                <!--<Image
-                                    Grid.Column="3"
-                                    HorizontalOptions="Start"
-                                    VerticalOptions="Center"
-                                    Source="arrow_down.png"
-                                    Margin="0,0,0,0">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderFolioCommand}"></TapGestureRecognizer>
-                                    </Image.GestureRecognizers>
-                                </Image>
-                                <Image
-                                    Grid.Column="3"
-                                    HorizontalOptions="End"
-                                    VerticalOptions="Center"
-                                    Source="arrow_up.png"
-                                    Margin="0,0,28,0">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderFolioCommand}"></TapGestureRecognizer>
-                                    </Image.GestureRecognizers>
-                                </Image>-->
+                                <!-- Tipo Solicitud SV-->
                                 <BoxView
                                     Grid.Row="0"
-                                    Grid.Column="4"
-                                    Grid.ColumnSpan="2"
+                                    Grid.Column="3"
                                     BackgroundColor="#FFFFFF">
-                                    <!--<BoxView.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderSVCommand}"></TapGestureRecognizer>
-                                    </BoxView.GestureRecognizers>-->
-                                </BoxView>
-                                <Label
-                                    Text="Saldo Virtual"
-                                    Grid.Row="0"
-                                    Grid.Column="4"
-                                    TextColor="#707070"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="Center"
-                                    FontSize="12"
-                                    FontAttributes="Bold"
-                                    FontFamily="Helvetica">
-                                    <!--<Label.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderSVCommand}"></TapGestureRecognizer>
-                                    </Label.GestureRecognizers>-->
-                                </Label>
-                                <!--<Image
-                                    Grid.Column="5"
-                                    HorizontalOptions="Start"
-                                    VerticalOptions="Center"
-                                    Source="arrow_down.png"
-                                    Margin="0,0,0,0">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderSVCommand}"></TapGestureRecognizer>
-                                    </Image.GestureRecognizers>
-                                </Image>
-                                <Image
-                                    Grid.Column="5"
-                                    HorizontalOptions="End"
-                                    VerticalOptions="Center"
-                                    Source="arrow_up.png"
-                                    Margin="0,0,28,0">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderSVCommand}"></TapGestureRecognizer>
-                                    </Image.GestureRecognizers>
-                                </Image>-->
-                                <BoxView
-                                    Grid.Row="0"
-                                    Grid.Column="6"
-                                    Grid.ColumnSpan="2"
-                                    BackgroundColor="#FFFFFF">
-                                    <!--<BoxView.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderTipoSolicitudCommand}"></TapGestureRecognizer>
-                                    </BoxView.GestureRecognizers>-->
                                 </BoxView>
                                 <Label
                                     Text="Tipo de Solicitud"
                                     Grid.Row="0"
-                                    Grid.Column="6"
+                                    Grid.Column="3"
                                     TextColor="#707070"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
                                     FontSize="12"
                                     FontAttributes="Bold"
                                     FontFamily="Helvetica">
-                                    <!--<Label.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderTipoSolicitudCommand}"></TapGestureRecognizer>
-                                    </Label.GestureRecognizers>-->
                                 </Label>
-                                <!--<Image
-                                    Grid.Column="7"
-                                    HorizontalOptions="Start"
-                                    VerticalOptions="Center"
-                                    Source="arrow_down.png"
-                                    Margin="0,0,0,0">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderTipoSolicitudCommand}"></TapGestureRecognizer>
-                                    </Image.GestureRecognizers>
-                                </Image>
-                                <Image
-                                    Grid.Column="7"
-                                    HorizontalOptions="End"
-                                    VerticalOptions="Center"
-                                    Source="arrow_up.png"
-                                    Margin="0,0,28,0">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderTipoSolicitudCommand}"></TapGestureRecognizer>
-                                    </Image.GestureRecognizers>
-                                </Image>-->
+                                <!-- Fecha Firma SV-->
                                 <BoxView
                                     Grid.Row="0"
-                                    Grid.Column="8"
-                                    Grid.ColumnSpan="2"
+                                    Grid.Column="4"
                                     BackgroundColor="#FFFFFF">
-                                    <!--<BoxView.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderFechaFirmaCommand}"></TapGestureRecognizer>
-                                    </BoxView.GestureRecognizers>-->
                                 </BoxView>
                                 <Label
                                     Text="Fecha Firma"
                                     Grid.Row="0"
-                                    Grid.Column="8"
+                                    Grid.Column="4"
                                     TextColor="#707070"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
                                     FontSize="12"
                                     FontAttributes="Bold"
                                     FontFamily="Helvetica">
-                                    <!--<Label.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderFechaFirmaCommand}"></TapGestureRecognizer>
-                                    </Label.GestureRecognizers>-->
                                 </Label>
-                                <!--<Image
-                                    Grid.Column="9"
-                                    HorizontalOptions="Start"
-                                    VerticalOptions="Center"
-                                    Source="arrow_down.png"
-                                    Margin="0,0,0,0">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderFechaFirmaCommand}"></TapGestureRecognizer>
-                                    </Image.GestureRecognizers>
-                                </Image>
-                                <Image
-                                    Grid.Column="9"
-                                    HorizontalOptions="End"
-                                    VerticalOptions="Center"
-                                    Source="arrow_up.png"
-                                    Margin="0,0,28,0">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding orderFechaFirmaCommand}"></TapGestureRecognizer>
-                                    </Image.GestureRecognizers>
-                                </Image>-->
+                                <!-- Fecha Activación FCT SV-->
                                 <BoxView
                                     Grid.Row="0"
-                                    Grid.Column="10"
+                                    Grid.Column="5"
+                                    BackgroundColor="#FFFFFF">
+                                </BoxView>
+                                <Label
+                                    Text="Fecha Activación FCT"
+                                    Grid.Row="0"
+                                    Grid.Column="5"
+                                    TextColor="#707070"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    FontSize="12"
+                                    FontAttributes="Bold"
+                                    FontFamily="Helvetica">
+                                </Label>
+                                <!-- IMG bolsa SV-->
+                                <BoxView
+                                    Grid.Row="0"
+                                    Grid.Column="6"
                                     BackgroundColor="#FFFFFF">
 
                                 </BoxView>
@@ -2129,16 +2013,17 @@
                                         <RowDefinition Height="30"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width=".4*"></ColumnDefinition>
-                                        <ColumnDefinition Width=".2*"></ColumnDefinition>
-                                        <ColumnDefinition Width=".2*"></ColumnDefinition>
-                                        <ColumnDefinition Width=".3*"></ColumnDefinition>
-                                        <ColumnDefinition Width=".2*"></ColumnDefinition>
+                                        <ColumnDefinition Width=".25*"></ColumnDefinition>
+                                        <ColumnDefinition Width=".12*"></ColumnDefinition>
+                                        <ColumnDefinition Width=".15*"></ColumnDefinition>
+                                        <ColumnDefinition Width=".22*"></ColumnDefinition>
+                                        <ColumnDefinition Width=".13*"></ColumnDefinition>
+                                        <ColumnDefinition Width=".13*"></ColumnDefinition>
                                         <ColumnDefinition Width="20"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <BoxView
                                         Grid.Column="0"
-                                        Grid.ColumnSpan="6"
+                                        Grid.ColumnSpan="7"
                                         Grid.RowSpan="2"
                                         BackgroundColor="#F9F9F9"/>
 
@@ -2151,7 +2036,7 @@
                                             VerticalTextAlignment="End"
                                             HorizontalTextAlignment="Start"
                                             TextColor="#707070"
-                                            Margin="5,0,10,0"
+                                            Margin="10,0,10,0"
                                             FontFamily="Helvetica">
                                     </Label>
                                     <Label
@@ -2162,7 +2047,7 @@
                                             VerticalTextAlignment="Start"
                                             HorizontalTextAlignment="Start"
                                             TextColor="#707070"
-                                            Margin="5,0,10,0"
+                                            Margin="10,0,10,0"
                                             FontAttributes="Bold"
                                             FontFamily="Helvetica">
                                     </Label>
@@ -2173,7 +2058,7 @@
                                             Grid.Row="0"
                                             Grid.RowSpan="2"
                                             VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Start"
+                                            HorizontalTextAlignment="Center"
                                             TextColor="#707070"
                                             Margin="0,0,0,0"
                                             FontAttributes="Bold"
@@ -2186,7 +2071,7 @@
                                             Grid.Row="0"
                                             Grid.RowSpan="2"
                                             VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Start"
+                                            HorizontalTextAlignment="Center"
                                             TextColor="#707070"
                                             Margin="0,0,0,0"
                                             FontAttributes="Bold"
@@ -2199,7 +2084,7 @@
                                             Grid.Row="0"
                                             Grid.RowSpan="2"
                                             VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Start"
+                                            HorizontalTextAlignment="Center"
                                             TextColor="#707070"
                                             Margin="0,0,0,0"
                                             FontFamily="Helvetica">
@@ -2211,7 +2096,19 @@
                                             Grid.Row="0"
                                             Grid.RowSpan="2"
                                             VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Start"
+                                            HorizontalTextAlignment="Center"
+                                            TextColor="#707070"
+                                            Margin="0,0,0,0"
+                                            FontFamily="Helvetica">
+                                    </Label>
+                                    <Label
+                                            Text="{Binding FechaActivacionFCT}"
+                                            FontSize="12"
+                                            Grid.Column="5"
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center"
                                             TextColor="#707070"
                                             Margin="0,0,0,0"
                                             FontFamily="Helvetica">
@@ -2219,7 +2116,7 @@
                                     <Image
                                         IsVisible="{Binding TieneSV}"
                                         Margin="-10,0,13,0"
-                                        Grid.Column="5"
+                                        Grid.Column="6"
                                         Grid.Row="0"
                                         Grid.RowSpan="2"
                                         Source="icon_money_bag.png"

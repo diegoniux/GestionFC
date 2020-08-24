@@ -136,24 +136,24 @@ namespace GestionFC.Views
                             ViewModel.PlantillaImproductiva = x.Result;
                         });
 
-                        await alertaService.GetAlertaPlantillaRecuperacion(nomina, token).ContinueWith(x =>
-                        {
-                            if (x.IsFaulted)
-                            {
-                                throw x.Exception;
-                            }
+                        //await alertaService.GetAlertaPlantillaRecuperacion(nomina, token).ContinueWith(x =>
+                        //{
+                        //    if (x.IsFaulted)
+                        //    {
+                        //        throw x.Exception;
+                        //    }
 
-                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                            {
-                                // vericamos si la sesión expiró (token)
-                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                                {
-                                    SesionExpired = true;
-                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                                }
-                            }
-                            ViewModel.PlantillaRecuperacion = x.Result;
-                        });
+                        //    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                        //    {
+                        //        // vericamos si la sesión expiró (token)
+                        //        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                        //        {
+                        //            SesionExpired = true;
+                        //            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                        //        }
+                        //    }
+                        //    ViewModel.PlantillaRecuperacion = x.Result;
+                        //});
 
                         await alertaService.GetAlertaPlantillaInvestigacion(nomina, token).ContinueWith(x =>
                         {
@@ -202,8 +202,9 @@ namespace GestionFC.Views
                     {
                         pickerAP.Items.Add(a.Nombre);
                     }
-                    notidicacionImp.Text = ViewModel.PlantillaImproductiva.cantidad.ToString();
-                    notidicacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
+                    notificacionImp.Text = ViewModel.PlantillaImproductiva.cantidad.ToString();
+                    notificacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
+                    notificacionInv.Text = ViewModel.PlantillaInvestigacion.cantidad.ToString();
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         ViewModel.getLocation().ContinueWith(loc => {
@@ -349,15 +350,15 @@ namespace GestionFC.Views
                     PickerSV.IsVisible = false;
                     textoTitulo.Text = "Plantilla improductiva";
                     imgNotifyImproductiva.Source = notifyGreen;
-                    imgNotifyRecuperacion.Source = notifyGray;
+                    //imgNotifyRecuperacion.Source = notifyGray;
                     imgNotifyInvestigacion.Source = notifyGray;
                     imgNotifyFolioPendientesSV.Source = notifyGray;
                     BVPlantillaImproductiva.BackgroundColor = Color.FromHex(colorBoxGreen);
-                    BVPlantillaRecuperacion.BackgroundColor = Color.FromHex(colorBoxGray);
+                    //BVPlantillaRecuperacion.BackgroundColor = Color.FromHex(colorBoxGray);
                     BVPlantillaInvestigacion.BackgroundColor = Color.FromHex(colorBoxGray);
                     BVFoliosPendientesSV.BackgroundColor = Color.FromHex(colorBoxGray);
                     lblPlantillaImproductiva.TextColor = Color.FromHex(colorTextEnable);
-                    lblPlantillaRecuperacion.TextColor = Color.FromHex(colorTextDisable);
+                    //lblPlantillaRecuperacion.TextColor = Color.FromHex(colorTextDisable);
                     lblPlantillaInvestigacion.TextColor = Color.FromHex(colorTextDisable);
                     lblFoliosPendientesSV.TextColor = Color.FromHex(colorTextDisable);
                     break;
@@ -366,15 +367,15 @@ namespace GestionFC.Views
                     PickerSV.IsVisible = false;
                     textoTitulo.Text = "Plantilla Recuperación";
                     imgNotifyImproductiva.Source = notifyGray;
-                    imgNotifyRecuperacion.Source = notifyGreen;
+                    //imgNotifyRecuperacion.Source = notifyGreen;
                     imgNotifyInvestigacion.Source = notifyGray;
                     imgNotifyFolioPendientesSV.Source = notifyGray;
                     BVPlantillaImproductiva.BackgroundColor = Color.FromHex(colorBoxGray);
-                    BVPlantillaRecuperacion.BackgroundColor = Color.FromHex(colorBoxGreen);
+                    //BVPlantillaRecuperacion.BackgroundColor = Color.FromHex(colorBoxGreen);
                     BVPlantillaInvestigacion.BackgroundColor = Color.FromHex(colorBoxGray);
                     BVFoliosPendientesSV.BackgroundColor = Color.FromHex(colorBoxGray);
                     lblPlantillaImproductiva.TextColor = Color.FromHex(colorTextDisable);
-                    lblPlantillaRecuperacion.TextColor = Color.FromHex(colorTextEnable);
+                    //lblPlantillaRecuperacion.TextColor = Color.FromHex(colorTextEnable);
                     lblPlantillaInvestigacion.TextColor = Color.FromHex(colorTextDisable);
                     lblFoliosPendientesSV.TextColor = Color.FromHex(colorTextDisable);
                     break;
@@ -383,15 +384,15 @@ namespace GestionFC.Views
                     PickerSV.IsVisible = false;
                     textoTitulo.Text = "Plantilla Investigación";
                     imgNotifyImproductiva.Source = notifyGray;
-                    imgNotifyRecuperacion.Source = notifyGray;
+                    //imgNotifyRecuperacion.Source = notifyGray;
                     imgNotifyInvestigacion.Source = notifyGreen;
                     imgNotifyFolioPendientesSV.Source = notifyGray;
                     BVPlantillaImproductiva.BackgroundColor = Color.FromHex(colorBoxGray);
-                    BVPlantillaRecuperacion.BackgroundColor = Color.FromHex(colorBoxGray);
+                    //BVPlantillaRecuperacion.BackgroundColor = Color.FromHex(colorBoxGray);
                     BVPlantillaInvestigacion.BackgroundColor = Color.FromHex(colorBoxGreen);
                     BVFoliosPendientesSV.BackgroundColor = Color.FromHex(colorBoxGray);
                     lblPlantillaImproductiva.TextColor = Color.FromHex(colorTextDisable);
-                    lblPlantillaRecuperacion.TextColor = Color.FromHex(colorTextDisable);
+                    //lblPlantillaRecuperacion.TextColor = Color.FromHex(colorTextDisable);
                     lblPlantillaInvestigacion.TextColor = Color.FromHex(colorTextEnable);
                     lblFoliosPendientesSV.TextColor = Color.FromHex(colorTextDisable);
                     break;
@@ -400,15 +401,15 @@ namespace GestionFC.Views
                     PickerSV.IsVisible = false;
                     textoTitulo.Text = "Folios pendientes Saldo Virtual";
                     imgNotifyImproductiva.Source = notifyGray;
-                    imgNotifyRecuperacion.Source = notifyGray;
+                    //imgNotifyRecuperacion.Source = notifyGray;
                     imgNotifyInvestigacion.Source = notifyGray;
                     imgNotifyFolioPendientesSV.Source = notifyGreen;
                     BVPlantillaImproductiva.BackgroundColor = Color.FromHex(colorBoxGray);
-                    BVPlantillaRecuperacion.BackgroundColor = Color.FromHex(colorBoxGray);
+                    //BVPlantillaRecuperacion.BackgroundColor = Color.FromHex(colorBoxGray);
                     BVPlantillaInvestigacion.BackgroundColor = Color.FromHex(colorBoxGray);
                     BVFoliosPendientesSV.BackgroundColor = Color.FromHex(colorBoxGreen);
                     lblPlantillaImproductiva.TextColor = Color.FromHex(colorTextDisable);
-                    lblPlantillaRecuperacion.TextColor = Color.FromHex(colorTextDisable);
+                    //lblPlantillaRecuperacion.TextColor = Color.FromHex(colorTextDisable);
                     lblPlantillaInvestigacion.TextColor = Color.FromHex(colorTextDisable);
                     lblFoliosPendientesSV.TextColor = Color.FromHex(colorTextEnable);
                     break;
@@ -417,15 +418,15 @@ namespace GestionFC.Views
                     PickerSV.IsVisible = false;
                     textoTitulo.Text = "Plantilla improductiva";
                     imgNotifyImproductiva.Source = notifyGreen;
-                    imgNotifyRecuperacion.Source = notifyGray;
+                    //imgNotifyRecuperacion.Source = notifyGray;
                     imgNotifyInvestigacion.Source = notifyGray;
                     imgNotifyFolioPendientesSV.Source = notifyGray;
                     BVPlantillaImproductiva.BackgroundColor = Color.FromHex(colorBoxGreen);
-                    BVPlantillaRecuperacion.BackgroundColor = Color.FromHex(colorBoxGray);
+                    //BVPlantillaRecuperacion.BackgroundColor = Color.FromHex(colorBoxGray);
                     BVPlantillaInvestigacion.BackgroundColor = Color.FromHex(colorBoxGray);
                     BVFoliosPendientesSV.BackgroundColor = Color.FromHex(colorBoxGray);
                     lblPlantillaImproductiva.TextColor = Color.FromHex(colorTextEnable);
-                    lblPlantillaRecuperacion.TextColor = Color.FromHex(colorTextDisable);
+                    //lblPlantillaRecuperacion.TextColor = Color.FromHex(colorTextDisable);
                     lblPlantillaInvestigacion.TextColor = Color.FromHex(colorTextDisable);
                     lblFoliosPendientesSV.TextColor = Color.FromHex(colorTextDisable);
                     break;
@@ -483,8 +484,8 @@ namespace GestionFC.Views
                             //{
                             //    pickerAP.Items.Add(a.Nombre);
                             //}
-                            //notidicacionImp.Text = ViewModel.PlantillaImproductiva.cantidad.ToString();
-                            //notidicacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
+                            //notificacionImp.Text = ViewModel.PlantillaImproductiva.cantidad.ToString();
+                            //notificacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
                         });
 
                     }
@@ -498,7 +499,7 @@ namespace GestionFC.Views
                     {
                         pickerAP.Items.Add(a.Nombre);
                     }
-                    notidicacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
+                    notificacionSV.Text = ViewModel.FoliosPendientesSV.cantidad.ToString();
                 });
             }
             catch (Exception ex)
