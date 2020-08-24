@@ -718,9 +718,9 @@
                         <RowDefinition Height="20"></RowDefinition>
                         <RowDefinition Height="5"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Grid.GestureRecognizers>
+                    <!--<Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnTapPizarronDigital_Tapped"></TapGestureRecognizer>
-                    </Grid.GestureRecognizers>
+                    </Grid.GestureRecognizers>-->
                     <BoxView
                         x:Name="bxvTabButton"
                         Grid.Column="0"
@@ -750,8 +750,12 @@
                         FontAttributes="Bold"
                         TextColor="#FFFFFF"
                         VerticalTextAlignment="Center"
-                        HorizontalTextAlignment="Start"
-                        />
+                        HorizontalTextAlignment="Start">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapPizarronDigital_Tapped"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                        
                 </Grid>
 
                 <!-- ESTATUS BAR -->

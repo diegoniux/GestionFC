@@ -79,13 +79,6 @@ namespace GestionFC.Views
                 TargetType = typeof(LoginPage)
             });
 
-            masterPageItems.Add(new MasterPageItem
-            {
-                Title = "DetalleFolioPage",
-                IconSource = "icon_singout.png",
-                TargetType = typeof(DetalleFolioPage)
-            }); 
-
             listView.ItemsSource = masterPageItems;
             //loadPage();
 
