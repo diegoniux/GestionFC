@@ -3,7 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup" xmlns:renderers="clr-namespace:GestionFC.Renderers"
     x:Class="GestionFC.Views.PopupPages.DetalleFolioPopupPage">
     <!--You can set an animation in the xaml file or in the csharp code behind-->
     <pages:PopupPage.Animation>
@@ -106,6 +106,325 @@
                                 </Image.GestureRecognizers>
                             </Image>
                         </Grid>
+
+                        <!-- SECCIONES-->
+                        <Grid
+                            Margin="0,20,0,0"
+                            ColumnSpacing="0"
+                            RowSpacing="0"
+                            Padding="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" ></ColumnDefinition>
+                                <ColumnDefinition Width="*" ></ColumnDefinition>
+                                <ColumnDefinition Width="*" ></ColumnDefinition>
+                                <ColumnDefinition Width="*" ></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100"></RowDefinition>
+                                <RowDefinition Height="25"></RowDefinition>
+                                <RowDefinition Height="40"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <BoxView
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Grid.ColumnSpan="4"
+                                Grid.RowSpan="3"
+                                CornerRadius="10"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand"
+                                BackgroundColor="#F3F3F3">
+                            </BoxView>
+
+
+                            <Image
+                                Source="{Binding DetalleFolios.ImgDocumental}"
+                                Grid.Column="0"
+                                Aspect="AspectFit"
+                                Margin="30">
+                            </Image>
+                            <Label
+                                Text="{Binding DetalleFolios.TextDocumental}"
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                VerticalTextAlignment="Start"
+                                HorizontalTextAlignment="Center"
+                                FontSize="12"
+                                TextColor="{Binding DetalleFolios.ColorDocumental}"
+                                Margin="0,-10,0,0">
+                            </Label>
+
+                            
+                            <Image
+                                Source="{Binding DetalleFolios.ImgInvestigacion}"
+                                Grid.Column="1"
+                                Aspect="AspectFit"
+                                Margin="30">
+                            </Image>
+                            <Label
+                                Text="{Binding DetalleFolios.TextInvestigacion}"
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                VerticalTextAlignment="Start"
+                                HorizontalTextAlignment="Center"
+                                FontSize="12"
+                                TextColor="{Binding DetalleFolios.ColorInvestigacion}"
+                                Margin="0,-10,0,0">
+                            </Label>
+
+                            
+                            <Image
+                                Source="{Binding DetalleFolios.ImgProcesar}"
+                                Grid.Column="2"
+                                Aspect="AspectFit"
+                                Margin="30">
+                            </Image>
+                            <Label
+                                Text="{Binding DetalleFolios.TextProcesar}"
+                                Grid.Column="2"
+                                Grid.Row="1"
+                                VerticalTextAlignment="Start"
+                                HorizontalTextAlignment="Center"
+                                FontSize="12"
+                                TextColor="{Binding DetalleFolios.ColorProcesar}"
+                                Margin="0,-10,0,0">
+                            </Label>
+
+                            
+                            <Image
+                                Source="{Binding DetalleFolios.ImgSaldoVirtual}"
+                                Grid.Column="3"
+                                Aspect="AspectFit"
+                                Margin="30">
+                            </Image>
+                            <Label
+                                Text="{Binding DetalleFolios.TextSaldoVirtual}"
+                                Grid.Column="3"
+                                Grid.Row="1"
+                                VerticalTextAlignment="Start"
+                                HorizontalTextAlignment="Center"
+                                FontSize="12"
+                                TextColor="{Binding DetalleFolios.ColorSaldoVirtua}"
+                                Margin="0,-10,0,0">
+                            </Label>
+
+                            <renderers:GradientProgressBar
+                                Grid.Column="0"
+                                Grid.ColumnSpan="4"
+                                Grid.Row="2"
+                                AlternativeTextColor="Transparent"
+                                BarBackgroundColor="#EBEBEB"
+                                CornerRadius="40"
+                                FontSize="18"
+                                GradientEndColor="#64A70B"
+                                GradientStartColor="#64A70B"
+                                HeightRequest="30"
+                                Percentage="{Binding DetalleFolios.Porcentaje}"
+                                TextColor="Transparent"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand"
+                                Margin="30,0,30,20">
+
+                            </renderers:GradientProgressBar>
+                        </Grid>
+
+                        <!-- HEADER TRAKING-->
+                        <Grid
+                            Margin="0,20,0,0"
+                            ColumnSpacing="0"
+                            RowSpacing="0"
+                            Padding="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" ></ColumnDefinition>
+                                <ColumnDefinition Width="*" ></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"></RowDefinition>
+                                <RowDefinition Height="25"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <!-- Alarma-->
+                            <Image
+                                Source="title_alerta.png"
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Aspect="AspectFit">
+                            </Image>
+
+                            <Label
+                                Text="Traking"
+                                Grid.Column="1"
+                                Grid.Row="0"
+                                Margin="20,0"
+                                FontSize="20"
+                                TextColor="#464646"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Start"
+                                VerticalTextAlignment="End"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand">
+                            </Label>
+                            <Label
+                                Text="Consulta el detalle de los procesos"
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                Margin="20,0"
+                                FontSize="16"
+                                TextColor="#B2B2B2"
+                                HorizontalTextAlignment="Start"
+                                VerticalTextAlignment="Start"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand">
+                            </Label>
+                        </Grid>
+
+                        <!-- Contenigo del trakinh -->
+                        <Grid
+                            Margin="0,20,0,0"
+                            ColumnSpacing="0"
+                            RowSpacing="0"
+                            Padding="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width=".50*"></ColumnDefinition>
+                                <ColumnDefinition Width=".50*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <!--Tabla-->
+                            <BoxView
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                CornerRadius="10,10,0,0"
+                                Grid.Row="0"
+                                BackgroundColor="#DCD7D7">
+                            </BoxView>
+                            <Label
+                                Text="Trámite"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Center"
+                                FontSize="16"
+                                TextColor="#353535"
+                                FontAttributes="Bold">
+                            </Label>
+                            <Label
+                                Text="Fecha"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Center"
+                                FontSize="16"
+                                TextColor="#353535"
+                                FontAttributes="Bold">
+                            </Label>
+                            <Label
+                                Text="Hora"
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Center"
+                                FontSize="16"
+                                TextColor="#353535"
+                                FontAttributes="Bold">
+                            </Label>
+
+                            <BoxView
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                Grid.Row="1"
+                                CornerRadius="0,0,15,15"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand"
+                                BackgroundColor="#F3F3F3">
+                            </BoxView>
+
+                            <CollectionView
+                                x:Name="CollectionViewTramites"
+                                ItemsSource="{Binding DetalleEtapas}"
+                                Margin="0"
+                                HorizontalOptions="FillAndExpand"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                Grid.Row="1">
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical"></GridItemsLayout>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid
+                                            Margin="0"
+                                            Padding="1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30"></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="30"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width=".50*"></ColumnDefinition>
+                                                <ColumnDefinition Width=".50*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image
+                                                Source="check"
+                                                Grid.Column="0"
+                                                Aspect="AspectFit"
+                                                Margin="5,5,5,5"
+                                                HeightRequest="30">
+                                            </Image>
+
+
+                                             <!--Tramites-->
+                                            <Label
+                                                Text="{Binding EtapaDescripcion}"
+                                                Grid.Column="1"
+                                                TextColor="#353535"
+                                                FontSize="16"
+                                                VerticalOptions="FillAndExpand"
+                                                HorizontalOptions="FillAndExpand"
+                                                HorizontalTextAlignment="Start"
+                                                VerticalTextAlignment="Center"
+                                                Margin="5,0,0,0">
+                                            </Label>
+
+                                             <!--Fecha-->
+                                            <Label
+                                                Text="{Binding Fecha}"
+                                                Grid.Column="2"
+                                                TextColor="#353535"
+                                                FontSize="16"
+                                                VerticalOptions="FillAndExpand"
+                                                HorizontalOptions="FillAndExpand"
+                                                HorizontalTextAlignment="Center"
+                                                VerticalTextAlignment="Center">
+                                            </Label>
+
+                                             <!--Hora-->
+                                            <Label
+                                                Text="{Binding Hora}"
+                                                Grid.Column="3"
+                                                TextColor="#353535"
+                                                FontSize="16"
+                                                VerticalOptions="FillAndExpand"
+                                                HorizontalOptions="FillAndExpand"
+                                                HorizontalTextAlignment="Center"
+                                                VerticalTextAlignment="Center">
+                                            </Label>
+
+
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                        </Grid>
+
                     </StackLayout>
                 </Frame>
             </StackLayout>
