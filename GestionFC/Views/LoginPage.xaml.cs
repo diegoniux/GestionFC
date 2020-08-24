@@ -97,12 +97,35 @@ namespace GestionFC
             return true;
         }
 
+        async Task<bool> valVersion(string claveVersion)
+        {
+            CatalogoService catalogo = new CatalogoService();
+            bool response = true;
+            try
+            {
+                await catalogo.GetCatalogo(claveVersion).ContinueWith(x =>
+                {
+
+                    if (x.IsFaulted)
+                        throw new Exception("Ocurrió un error");
+                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                        throw new Exception("Error de conexión.");
+                    if (Xamarin.Essentials.VersionTracking.CurrentVersion != x.Result.Valor)
+                        response = false;
+                });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return response;
+        }
+
         async void btnIniciarSesion_Clicked(object sender, EventArgs e)
         {
             // Llamamos el servicio para el login
             LoginService loginService = new LoginService();
             logService = new LogService();
-            CatalogoService catalogo = new CatalogoService();
             //await getLocation();
 
             try
@@ -118,17 +141,14 @@ namespace GestionFC
                     var loginModel = new LoginModel() { Nomina = int.Parse(UserName.Text), Password = PassworUser.Text };
                     using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                     {
-                        await catalogo.GetCatalogo(App.ClaveVersion).ContinueWith(x =>
+                        if (!await valVersion(App.ClaveVersion))
                         {
-
-                            if (x.IsFaulted)
-                                throw new Exception("Ocurrió un error");
-                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                                throw new Exception("Error de conexión.");
-                            if (Xamarin.Essentials.VersionTracking.CurrentVersion != x.Result.Valor)
+                            if (!await valVersion(App.ClaveVersionQA))
                                 throw new Exception("Versión incorrecta, favor de actualizar.");
-                        });
-                        await loginService.Login(loginModel).ContinueWith(x =>
+                        }
+                        
+
+                            await loginService.Login(loginModel).ContinueWith(x =>
                         {
                             if (x.IsFaulted)
                                 throw new Exception("Ocurrió un error");

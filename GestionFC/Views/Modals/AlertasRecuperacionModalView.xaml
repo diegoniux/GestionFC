@@ -10,8 +10,48 @@
              ios:Page.ModalPresentationStyle="OverFullScreen"
              BackgroundColor="#F0F0F1">
     <StackLayout Margin="20,35,20,20">
-        <Button Text="Regresar a la pantalla de Alarmas" Clicked="OnReturnButtonClicked" />
-        
+        <!--<Button Text="Regresar a la pantalla de Alarmas" Clicked="OnReturnButtonClicked" />-->
+                        <!-- Botón Volver a Plantilla-->
+        <Grid RowSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="45"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="2"></RowDefinition>
+            </Grid.RowDefinitions>
+            <BoxView
+                Grid.Column="1"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                BackgroundColor="#275D38"
+                CornerRadius="10,10,0,0"
+                Margin="0,0,0,0"
+                WidthRequest="60">
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnReturnButtonClicked"></TapGestureRecognizer>
+                </BoxView.GestureRecognizers>
+            </BoxView>
+            <Image
+                x:Name="imgAlarmas"
+                Source="icon_notification.png"
+                Grid.Column="1"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Margin="10,8,10,10">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnReturnButtonClicked"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+            <BoxView
+                
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Grid.Row="1"
+                BackgroundColor="#275D38"
+                ></BoxView>
+        </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -48,7 +88,7 @@
                             <RowDefinition Height="20"></RowDefinition>
                             <RowDefinition Height="20"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <BoxView BackgroundColor="#DDDDDD"
+                        <BoxView BackgroundColor="#64A70B"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             Grid.Row="0"
@@ -58,7 +98,7 @@
                             Grid.ColumnSpan="2"
                             Grid.Row="0"
                             FontFamily="Helvetica"
-                            TextColor="Gray"
+                            TextColor="White"
                             FontAttributes="Bold"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center">
@@ -81,7 +121,7 @@
                                     BorderHexColor="#000"/>
                             </ffimageloading:CachedImage.Transformations>
                         </ffimageloading:CachedImage>
-                        <Label Text="{Binding NominaAP}"
+                        <Label
                             Grid.Column="1"
                             Grid.Row="1"
                             FontFamily="Helvetica"
@@ -89,6 +129,12 @@
                             FontAttributes="Bold"
                             HorizontalTextAlignment="Start"
                             VerticalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Nómina: "></Span>
+                                    <Span Text="{Binding NominaAP}"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
                         </Label>
                         <Label Text="{Binding NombreAP}"
                             Grid.Column="1"
@@ -123,7 +169,7 @@
                             <RowDefinition Height="40"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <BoxView BackgroundColor="#DDDDDD"
+                        <BoxView BackgroundColor="#64A70B"
                             Grid.Column="0"
                             Grid.Row="0"
                             CornerRadius="10,10,0,0"></BoxView>
@@ -131,7 +177,7 @@
                             Grid.Column="0"
                             Grid.Row="0"
                             FontFamily="Helvetica"
-                            TextColor="Gray"
+                            TextColor="White"
                             FontAttributes="Bold"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center">
@@ -196,7 +242,7 @@
                             <RowDefinition Height="40"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <BoxView BackgroundColor="#DDDDDD"
+                        <BoxView BackgroundColor="#64A70B"
                             Grid.Column="0"
                             Grid.Row="0"
                             CornerRadius="10,10,0,0"></BoxView>
@@ -204,7 +250,7 @@
                             Grid.Column="0"
                             Grid.Row="0"
                             FontFamily="Helvetica"
-                            TextColor="Gray"
+                            TextColor="white"
                             FontAttributes="Bold"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center">
@@ -263,7 +309,7 @@
                 BackgroundColor="#64A70B"
                 HasShadow="False"
                 Padding="12"
-                CornerRadius="0">
+                CornerRadius="5">
                 <Label Text="{Binding TituloPantallaDoc}"
                     FontAttributes="Bold"
                     FontSize="30"

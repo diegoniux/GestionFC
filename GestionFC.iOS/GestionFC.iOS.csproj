@@ -667,12 +667,6 @@
     <ImageAsset Include="Assets.xcassets\icon_rank_up_green.imageset\icon_rank_up_green%402x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\icon_rank_equal.imageset\icon_rank_equal.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\icon_rank_equal.imageset\icon_rank_equal%402x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\icon_rank_down_red.imageset\icon_rank_down_red.png">
       <Visible>false</Visible>
     </ImageAsset>
@@ -965,6 +959,9 @@
     <ImageAsset Include="Assets.xcassets\investigation.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\investigation.imageset\inverstigation.png" />
     <ImageAsset Include="Assets.xcassets\investigation.imageset\inverstigation-1.png" />
+    <ImageAsset Include="Assets.xcassets\Image.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_rank_equal.imageset\icon_rank_equal-1.png" />
+    <ImageAsset Include="Assets.xcassets\icon_rank_equal.imageset\icon_rank_equal%402x-1.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

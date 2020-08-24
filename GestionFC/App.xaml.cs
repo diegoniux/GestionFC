@@ -47,6 +47,11 @@ namespace GestionFC
             get { return "VersionGFC"; }
         }
 
+        public static string ClaveVersionQA
+        {
+            get { return "VersionGFCQA"; }
+        }
+
         public App()
         {
             InitializeComponent();

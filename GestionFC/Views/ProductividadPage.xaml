@@ -730,7 +730,11 @@
                         Grid.ColumnSpan="2"
                         Grid.RowSpan="3"
                         CornerRadius="0,0,10,10"
-                        BackgroundColor="#275D38"/>
+                        BackgroundColor="#275D38">
+                        <BoxView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapImageProductividad_Tapped"></TapGestureRecognizer>
+                        </BoxView.GestureRecognizers>
+                    </BoxView>
                     <Image Source="icon_productividad"
                             Grid.Column="0"
                             Grid.Row="1"

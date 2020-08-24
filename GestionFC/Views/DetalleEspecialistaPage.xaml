@@ -665,7 +665,7 @@
                             Orientation="Vertical"
                             VerticalOptions="CenterAndExpand">
                             <Label
-                                Text="POR RECUPERAR"
+                                Text="Por Recuperar"
                                 FontAttributes="Bold"
                                 FontSize="10"
                                 HorizontalTextAlignment="Center"
@@ -696,7 +696,7 @@
                             Orientation="Vertical"
                             VerticalOptions="CenterAndExpand">
                             <Label
-                                Text="EN INVESTIGACION"
+                                Text="En Investigación"
                                 FontAttributes="Bold"
                                 FontSize="10"
                                 HorizontalTextAlignment="Center"
