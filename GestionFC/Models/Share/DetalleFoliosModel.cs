@@ -55,7 +55,7 @@ namespace GestionFC.Models.Share
         [JsonProperty("colorProcesar")]
         public string ColorProcesar { get; set; }
 
-        [JsonProperty("colorSaldoVirtua")]
-        public string ColorSaldoVirtua { get; set; }
+        [JsonProperty("colorSaldoVirtual")]
+        public string ColorSaldoVirtual { get; set; }
     }
 }

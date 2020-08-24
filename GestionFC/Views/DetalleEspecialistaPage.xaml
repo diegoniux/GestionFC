@@ -458,7 +458,7 @@
                     </renderers:GradientProgressBar>
 
                     <Label
-                        Text="{Binding DetalleEspecialista.DetalleEspecialista.PorcentajeSaldoAcumulado}"
+                        Text="{Binding DetalleEspecialista.DetalleEspecialista.PorcentajeSaldoAcumuladoDesc}"
                         Grid.Column="2"
                         Grid.Row="2"
                         TextColor="#FFA400"

@@ -46,7 +46,7 @@ namespace GestionFC.Models.Share
                 porcentajeSaldoacumulado = value;
                 try
                 {
-                    PorcentajeSaldoAcumuladoDesc = (decimal.Parse(value) * 100).ToString("0%");
+                    PorcentajeSaldoAcumuladoDesc = decimal.Parse(value).ToString("0%");
                 }
                 catch (Exception ex)
                 {
