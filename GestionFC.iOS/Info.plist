@@ -71,9 +71,9 @@
 	<string>GestiónFC</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Fill in a reason why your app needs access to location.</string>
-	<key>CFBundleShortVersionString</key>
-	<string>0.4.14</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>3.0.1</string>
 </dict>
 </plist>
