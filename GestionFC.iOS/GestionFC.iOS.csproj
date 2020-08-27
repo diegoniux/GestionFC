@@ -27,9 +27,9 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>Apple Distribution: Diego Alberto Nieto Flores (KQKPH57A56)</CodesignKey>
+    <CodesignKey>Apple Distribution: Ricardo Joan Garza Reyna (7U8JGNA2ZK)</CodesignKey>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <CodesignProvision>profile.Dist</CodesignProvision>
+    <CodesignProvision>GestionFC.Dist</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
