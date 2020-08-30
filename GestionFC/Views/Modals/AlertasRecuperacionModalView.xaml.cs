@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using Xamarin.Forms;
 using GestionFC.ViewModels.Modals;
 using Service = GestionFC.Services;
 using Acr.UserDialogs;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace GestionFC.Views.Modals
 {
@@ -13,7 +14,7 @@ namespace GestionFC.Views.Modals
         public int nomina { get; set; }
         public string token { get; set; }
         public bool SesionExpired { get; set; }
-        public bool IsBusy { get; set; }
+        //public bool IsBusy { get; set; }
         public int registroTraspasoId { get; set; }
         public int pantallaId { get; set; }
 
@@ -99,60 +100,152 @@ namespace GestionFC.Views.Modals
         }
 
         async void getDocs() {
-            Service.AlertaService alertaService = new Service.AlertaService();
-
-            using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+            try
             {
-                await alertaService.GetDetalleFolioRecuperacion(registroTraspasoId, pantallaId, token).ContinueWith(x => {
-                    if (x.IsFaulted)
-                    {
-                        throw x.Exception;
-                    }
+                await BorrarArchivosTemp();
 
-                    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                    {
+                Service.AlertaService alertaService = new Service.AlertaService();
 
-                        // Verificamos si la sesión expiró (token)
-                        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                {
+                    await alertaService.GetDetalleFolioRecuperacion(registroTraspasoId, pantallaId, token).ContinueWith(x => {
+                        if (x.IsFaulted)
                         {
-                            SesionExpired = true;
-                            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                            throw x.Exception;
                         }
-                    }
-                    // Cargar datos para el binding de información.
-                    if (x.Result.Pantallas != null)
-                    {
-                        ViewModel.Pantallas = x.Result.Pantallas;
-                        foreach (var item in ViewModel.Pantallas)
+
+                        if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
                         {
-                            if (item.PantallaId == pantallaId)
-                                ViewModel.TituloPantallaDoc = item.PantallaDesc;
-                            else if (pantallaId == 0)
-                                ViewModel.TituloPantallaDoc = ViewModel.Pantallas[0].PantallaDesc;
-                        }
-                        if (x.Result.Documentos != null)
-                        {
-                            ViewModel.Documentos = x.Result.Documentos;
-                            int i = 0;
-                            foreach (var item in ViewModel.Documentos)
+
+                            // Verificamos si la sesión expiró (token)
+                            if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
                             {
-                                string[] base64 = item.Mascara.Split(',');
-                                ViewModel.Documentos[i].archivoDocumento = new System.IO.MemoryStream(Convert.FromBase64String(base64[1]));
-                                i++;
-                            }
-                            //ViewModel.Documentos[0].Mascara = ViewModel.FotoAP;
-                            if (x.Result.Preguntas != null)
-                            {
-                                ViewModel.Preguntas = x.Result.Preguntas;
+                                SesionExpired = true;
+                                throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
                             }
                         }
-                    }
-                });
+                        // Cargar datos para el binding de información.
+                        if (x.Result.Pantallas != null)
+                        {
+                            ViewModel.Pantallas = x.Result.Pantallas;
+                            foreach (var item in ViewModel.Pantallas)
+                            {
+                                if (item.PantallaId == pantallaId)
+                                    ViewModel.TituloPantallaDoc = item.PantallaDesc;
+                                else if (pantallaId == 0)
+                                    ViewModel.TituloPantallaDoc = ViewModel.Pantallas[0].PantallaDesc;
+                            }
+                            if (x.Result.Documentos != null)
+                            {
+
+                                ViewModel.Documentos = x.Result.Documentos;
+                                int i = 0;
+                                ViewModel.Documentos = x.Result.Documentos;
+                                foreach (var item in ViewModel.Documentos)
+                                {
+                                    string[] base64 = item.Mascara.Split(',');
+
+                                    // Determinamos el tipo de archivo
+                                    ViewModel.Documentos[i].IsPdf = false;
+                                    ViewModel.Documentos[i].IsImage = false;
+                                    ViewModel.Documentos[i].IsVideo = false;
+
+                                    string typeFile = base64[0];
+                                    if (typeFile.Contains("pdf"))
+                                    {
+                                        ViewModel.Documentos[i].IsPdf = true;
+
+                                        string[] source = x.Result.Documentos[i].Mascara.Split(',');
+                                        string Base64String = source[1];
+                                        byte[] Base64Stream = Convert.FromBase64String(Base64String);
+
+                                        
+                                        var folder = Path.GetTempPath();
+                                        string fileName = Path.Combine(folder, "temp.pdf");
+
+                                        if (File.Exists(fileName))
+                                        {
+                                            File.Delete(fileName);
+                                        }
+                                        File.WriteAllBytes(fileName, Base64Stream);
+
+                                        ViewModel.Documentos[i].Mascara = fileName;
+
+                                    }
+                                    else if (typeFile.Contains("jpg"))
+                                    {
+                                        ViewModel.Documentos[i].IsImage = true;
+                                        string[] source = x.Result.Documentos[i].Mascara.Split(',');
+                                        string Base64String = source[1];
+                                        byte[] Base64Stream = Convert.FromBase64String(Base64String);
+                                        ViewModel.Documentos[i].StreamImageSrc = (StreamImageSource)ImageSource.FromStream(() => new MemoryStream(Base64Stream));
+                                    }
+                                    else
+                                    {
+                                        ViewModel.Documentos[i].IsVideo = true;
+
+                                        string[] source = x.Result.Documentos[i].Mascara.Split(',');
+                                        string Base64String = source[1];
+                                        byte[] Base64Stream = Convert.FromBase64String(Base64String);
+
+                                        // var directory = "temp";
+                                        var folder = Path.GetTempPath();
+                                        string fileName = Path.Combine(folder, "temp.mp4");
+
+                                        if (File.Exists(fileName))
+                                        {
+                                            File.Delete(fileName);
+                                        }
+
+                                        File.WriteAllBytes(fileName, Base64Stream);
+
+                                        //ViewModel.Documentos[i].VideoUri = new Uri($"ms-appdata:///{directory}/temp.mp4");
+                                        ViewModel.Documentos[i].Mascara = fileName;
+                                    }
+                                    i++;
+                                }
+                                //ViewModel.Documentos[0].Mascara = ViewModel.FotoAP;
+                                if (x.Result.Preguntas != null)
+                                {
+                                    ViewModel.Preguntas = x.Result.Preguntas;
+                                }
+                            }
+                        }
+                    });
+                }
+
             }
+            catch (Exception ex)
+            {
+                // Si la sesión expiró enviamos mensaje 
+                if (SesionExpired)
+                {
+                    CerrarSesion();
+                    IsBusy = false;
+                    return;
+                }
+
+                //var logError = new Models.Log.LogErrorModel()
+                //{
+                //    IdPantalla = 4,
+                //    Usuario = nomina,
+                //    Error = (ex.TargetSite == null ? "" : ex.TargetSite.Name + ". ") + ex.Message,
+                //    Dispositivo = DeviceInfo.Platform + DeviceInfo.Model + DeviceInfo.Name
+
+                //};
+                //await _master.logService.LogError(logError, "").ContinueWith(logRes =>
+                //{
+                //    if (logRes.IsFaulted)
+                //        DisplayAlert("Error", logRes.Exception.Message, "Ok");
+                //});
+                await DisplayAlert("PlantillaPage Error", ex.Message, "Ok");
+            }
+            
         }
 
         async void OnReturnButtonClicked(object sender, EventArgs e)
         {
+            await BorrarArchivosTemp();
             await Navigation.PopModalAsync();
         }
 
@@ -174,5 +267,35 @@ namespace GestionFC.Views.Modals
         {
             await Navigation.PopModalAsync();
         }
+
+        async Task<bool> BorrarArchivosTemp()
+        {
+            try
+            {
+                var folder = Path.GetTempPath();
+                string fileName = Path.Combine(folder, "temp.mp4");
+
+                if (File.Exists(fileName))
+                {
+                    File.Delete(fileName);
+                }
+
+                folder = Path.GetTempPath();
+                fileName = Path.Combine(folder, "temp.pdf");
+
+                if (File.Exists(fileName))
+                {
+                    File.Delete(fileName);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "Ok");
+                return false;
+            }
+
+        }
+
     }
 }

@@ -9,6 +9,7 @@ using Android.OS;
 using Acr.UserDialogs;
 using Xamarin.Forms;
 using GestionFC.Views;
+using Octane.Xamarin.Forms.VideoPlayer.Android;
 
 namespace GestionFC.Droid
 {
@@ -40,6 +41,7 @@ namespace GestionFC.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+            FormsVideoPlayer.Init();
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

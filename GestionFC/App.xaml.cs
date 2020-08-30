@@ -11,7 +11,6 @@ namespace GestionFC
 {
     public partial class App : Application
     {
-
         static GestionFCDataBase database;
         public static MasterDetailPage MasterDetail { get; set; }
         public static int Nomina { get; set; }
@@ -54,6 +53,8 @@ namespace GestionFC
 
         public App()
         {
+            Device.SetFlags(new string[] { "MediaElement_Experimental" });
+
             InitializeComponent();
 
             Xamarin.Essentials.VersionTracking.Track();

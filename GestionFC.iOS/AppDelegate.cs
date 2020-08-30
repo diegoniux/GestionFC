@@ -8,7 +8,7 @@ using UserNotifications;
 using Firebase.InstanceID;
 using Firebase.Core;
 using Firebase.CloudMessaging;
-
+using Octane.Xamarin.Forms.VideoPlayer.iOS;
 
 namespace GestionFC.iOS
 {
@@ -38,6 +38,7 @@ namespace GestionFC.iOS
             //Firebase.Core.App.Configure();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             Rg.Plugins.Popup.Popup.Init();
+            FormsVideoPlayer.Init();
             LoadApplication(application: new App());
 
             //// Register your app for remote notifications.

@@ -253,7 +253,7 @@
                         </Label>
 
                         <!-- SALDO VIRTUAL -->
-                        <Label Text="Saldo virtual"
+                        <Label Text="Saldo virtual Comisionable"
                             FontFamily="{StaticResource Poppins-Regular}"
                             TextColor="#ffffff"
                             Grid.Column="0"
@@ -890,7 +890,7 @@
                         </AbsoluteLayout.GestureRecognizers>
                     </AbsoluteLayout>
                     <!--TAB PLANTILLA RECUPERACIÓN-->
-                    <!--<AbsoluteLayout
+                    <AbsoluteLayout
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
                         Grid.Column="1">
@@ -942,12 +942,12 @@
                         <AbsoluteLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTapRecuperacion_Tapped"></TapGestureRecognizer>
                         </AbsoluteLayout.GestureRecognizers>
-                    </AbsoluteLayout>-->
+                    </AbsoluteLayout>
                     <!--TAB PLANTILLA INVESTIGACIÓN-->
                     <AbsoluteLayout
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
-                        Grid.Column="1">
+                        Grid.Column="2">
                         <Grid
                                 AbsoluteLayout.LayoutBounds="0,.6,1,.6"
                                 AbsoluteLayout.LayoutFlags="All">
@@ -1000,7 +1000,7 @@
                     <AbsoluteLayout
                         VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
-                        Grid.Column="2">
+                        Grid.Column="3">
                         <Grid
                             AbsoluteLayout.LayoutBounds="0,.6,1,.6"
                             AbsoluteLayout.LayoutFlags="All">
@@ -2134,12 +2134,12 @@
                 </Grid>
                 <!--FIN PLANTILLA IMPRODUCTIVA-->
                 <Frame Grid.Row="3"
-                    Margin="0, 10, 0, 0"
+                    Margin="0, 5, 0, 0"
                     HasShadow="False"
                     Padding="0"
                     CornerRadius="0"
-                    BorderColor="#CBCBCB"
-                    BackgroundColor="#F0F0F1">
+                    BorderColor="#64A70B"
+                    BackgroundColor="#FFFFFF">
                 </Frame>
                 <Grid Grid.Row="3"
                     Margin="0, 10, 0, 0">
@@ -2149,10 +2149,10 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Image Source="speaker_circle_white.png"
-                        Margin="10, -80, 0, 0"
+                        Margin="10, -90, 0, 0"
                         Grid.Column="0"
                         Grid.Row="0"
                         Grid.RowSpan="2">
@@ -2165,8 +2165,11 @@
                         FontFamily="Helvetica"
                         FontAttributes="Bold"
                         FontSize="15"
-                        VerticalTextAlignment="Center"
+                        VerticalTextAlignment="End"
                         HorizontalTextAlignment="Center"
+                        VerticalOptions="FillAndExpand"
+                        TextColor="#464646"
+                        Margin="10"
                     >
                     <Label.FormattedText>
                         <FormattedString>

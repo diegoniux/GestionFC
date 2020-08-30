@@ -34,6 +34,8 @@
     <PackageReference Include="DK.FFImageLoading.Platform.Headless" Version="4.2.10.200624163" />
     <PackageReference Include="Xamarin.Forms.MaskedEntry" Version="1.0.0" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.4" />
+    <PackageReference Include="Octane.Xam.VideoPlayer" Version="3.1.0" />
+    <PackageReference Include="Xamarin.Forms.PinchZoomImage" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GestionFC.Models.Share;
 using GestionFC.ViewModels.Share;
+using Xamarin.Forms;
 
 namespace GestionFC.ViewModels.Modals
 {

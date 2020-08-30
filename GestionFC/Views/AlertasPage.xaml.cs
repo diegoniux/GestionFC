@@ -136,24 +136,24 @@ namespace GestionFC.Views
                             ViewModel.PlantillaImproductiva = x.Result;
                         });
 
-                        //await alertaService.GetAlertaPlantillaRecuperacion(nomina, token).ContinueWith(x =>
-                        //{
-                        //    if (x.IsFaulted)
-                        //    {
-                        //        throw x.Exception;
-                        //    }
+                        await alertaService.GetAlertaPlantillaRecuperacion(nomina, token).ContinueWith(x =>
+                        {
+                            if (x.IsFaulted)
+                            {
+                                throw x.Exception;
+                            }
 
-                        //    if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                        //    {
-                        //        // vericamos si la sesión expiró (token)
-                        //        if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
-                        //        {
-                        //            SesionExpired = true;
-                        //            throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
-                        //        }
-                        //    }
-                        //    ViewModel.PlantillaRecuperacion = x.Result;
-                        //});
+                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                            {
+                                // vericamos si la sesión expiró (token)
+                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                {
+                                    SesionExpired = true;
+                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                }
+                            }
+                            ViewModel.PlantillaRecuperacion = x.Result;
+                        });
 
                         await alertaService.GetAlertaPlantillaInvestigacion(nomina, token).ContinueWith(x =>
                         {

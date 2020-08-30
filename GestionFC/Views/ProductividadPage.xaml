@@ -274,7 +274,7 @@
                         </Label>
 
                         <!-- SALDO VIRTUAL -->
-                        <Label Text="Saldo virtual"
+                        <Label Text="Saldo virtual Comisionable"
                             FontFamily="{StaticResource Poppins-Regular}"
                             TextColor="#ffffff"
                             Grid.Column="0"
