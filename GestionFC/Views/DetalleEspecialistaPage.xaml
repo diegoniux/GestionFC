@@ -23,15 +23,12 @@
             </Setter>
         </Style>
     </ContentPage.Resources>
-    <RelativeLayout>
         <ScrollView>
         <StackLayout Margin="20,10,20,0"
             Padding="0" 
             Orientation="Vertical" 
             VerticalOptions="FillAndExpand" 
-            Spacing="0"
-            RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
-            RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            Spacing="0">
 
             <Grid Margin="0"
                   Padding="0" 
@@ -1292,7 +1289,6 @@
             </Grid>
 
             <!-- CONTENIDO-->
-
             <Grid
                 Margin="0"
                 RowSpacing="0"
@@ -1373,8 +1369,7 @@
                 x:Name="CollectionViewTramites"
                 ItemsSource="{Binding DetalleHistorico.DetalleHistoricoTramites}"
                 Margin="0"
-                HorizontalOptions="FillAndExpand"
-                HeightRequest="190">
+                HeightRequest="200">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"></GridItemsLayout>
                 </CollectionView.ItemsLayout>
@@ -1468,7 +1463,7 @@
             <CollectionView
                 x:Name="CollectionRecuperaciones"
                 ItemsSource="{Binding DetalleHistorico.DetalleHistoricoRecuperacion}"
-                     Margin="0"
+                    Margin="0"
                 HeightRequest="100">
                     <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"></GridItemsLayout>
@@ -1544,8 +1539,6 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
         </StackLayout>
         </ScrollView>
-    </RelativeLayout>
 </ContentPage>

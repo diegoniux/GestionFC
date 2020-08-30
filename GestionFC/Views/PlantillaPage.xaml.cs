@@ -205,6 +205,7 @@ namespace GestionFC.Views
                 {
                     App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(typeof(DetalleEspecialistaPage)));
                     App.MasterDetail.IsPresented = false;
+                    
                 });
             }
             catch (Exception ex)

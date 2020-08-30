@@ -825,7 +825,7 @@
                 <Grid
                     Grid.Column="0"
                     Grid.Row="0"
-                    ColumnSpacing="0"
+                    ColumnSpacing="2"
                     RowSpacing="0"
                     Margin="0,10,0,0"
                     HorizontalOptions="StartAndExpand"
@@ -882,6 +882,8 @@
                                 FontFamily="Helvetica"
                                 FontAttributes="Bold"
                                 Text="0"
+                                TextColor="#464646"
+                                FontSize="15"
                                 x:Name="notificacionImp">
                             </Label>
                         </Grid>
@@ -936,6 +938,8 @@
                                 FontFamily="Helvetica"
                                 FontAttributes="Bold"
                                 Text="0"
+                                TextColor="#464646"
+                                FontSize="15"
                                 x:Name="notificacionRec">
                             </Label>
                         </Grid>
@@ -989,6 +993,8 @@
                                 FontFamily="Helvetica"
                                 FontAttributes="Bold"
                                 Text="0"
+                                TextColor="#464646"
+                                FontSize="15"
                                 x:Name="notificacionInv">
                             </Label>
                         </Grid>
@@ -1043,6 +1049,8 @@
                                 FontFamily="Helvetica"
                                 FontAttributes="Bold"
                                 Text="0"
+                                TextColor="#464646"
+                                FontSize="15"
                                 x:Name="notificacionSV">
                                 </Label>
                         </Grid>
