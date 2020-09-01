@@ -5,6 +5,10 @@ using Service = GestionFC.Services;
 using Acr.UserDialogs;
 using System.IO;
 using System.Threading.Tasks;
+using System.Threading;
+using System.Collections.Generic;
+using GestionFC.Models.Share;
+using System.Linq;
 
 namespace GestionFC.Views.Modals
 {
@@ -15,8 +19,8 @@ namespace GestionFC.Views.Modals
         public string token { get; set; }
         public bool SesionExpired { get; set; }
         //public bool IsBusy { get; set; }
-        public int registroTraspasoId { get; set; }
-        public int pantallaId { get; set; }
+        public FolioSolicitud FolioActual { get; set; }
+        public AlertaRecuperacionPantallas PantallaActual { get; set; }
 
         public AlertasRecuperacionModalView(int nominaAP, Models.Alertas.PlantillaRecuperacionModel especialista)
         {
@@ -26,8 +30,8 @@ namespace GestionFC.Views.Modals
             ViewModel.NombreAP = especialista.NombreAP;
             ViewModel.ApellidosAP = especialista.ApellidosAP;
             ViewModel.FotoAP = especialista.Foto;
-            LoadPage(nominaAP);
             BindingContext = ViewModel;
+            LoadPage(nominaAP);
         }
 
         public async void LoadPage(int nominaAP)
@@ -40,32 +44,42 @@ namespace GestionFC.Views.Modals
 
                 if (nomina > 0)
                 {
-                    using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
+                    Device.BeginInvokeOnMainThread(async() =>
                     {
-                        await alertaService.GetFoliosRecuperacion(nominaAP, token).ContinueWith(x =>
+                        using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                         {
-                            if (x.IsFaulted)
+                            await alertaService.GetFoliosRecuperacion(nominaAP, token).ContinueWith(x =>
                             {
-                                throw x.Exception;
-                            }
-
-                            if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
-                            {
-
-                                // Verificamos si la sesión expiró (token)
-                                if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                if (x.IsFaulted)
                                 {
-                                    SesionExpired = true;
-                                    throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                    throw x.Exception;
                                 }
-                            }
-                            // Cargar datos para el binding de información.
-                            if (x.Result.ListadoFolios != null)
-                            {
-                                ViewModel.Folios = x.Result.ListadoFolios;
-                            }
-                        });
-                    }
+
+                                if (!x.Result.ResultadoEjecucion.EjecucionCorrecta)
+                                {
+
+                                    // Verificamos si la sesión expiró (token)
+                                    if (x.Result.ResultadoEjecucion.ErrorMessage.Contains("401"))
+                                    {
+                                        SesionExpired = true;
+                                        throw new Exception(x.Result.ResultadoEjecucion.FriendlyMessage);
+                                    }
+                                }
+                                // Cargar datos para el binding de información.
+                                if (x.Result.ListadoFolios != null)
+                                {
+
+                                    ViewModel.Folios = x.Result.ListadoFolios;
+                                    FolioActual = ViewModel.Folios.FirstOrDefault();
+                                    ViewModel.Folios.Find(folio =>
+                                        folio.RegistroTraspasoId == FolioActual.RegistroTraspasoId).BackGroundColor = "#DCD7D7";
+
+                                }
+                            });
+                            PantallaActual = new AlertaRecuperacionPantallas();
+                            await getDocs();
+                        }
+                    });
                 }
             }
             catch (Exception ex)
@@ -99,7 +113,8 @@ namespace GestionFC.Views.Modals
             }
         }
 
-        async void getDocs() {
+        async Task<bool> getDocs()
+        {
             try
             {
                 await BorrarArchivosTemp();
@@ -108,7 +123,8 @@ namespace GestionFC.Views.Modals
 
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))
                 {
-                    await alertaService.GetDetalleFolioRecuperacion(registroTraspasoId, pantallaId, token).ContinueWith(x => {
+                    await alertaService.GetDetalleFolioRecuperacion(int.Parse(FolioActual.RegistroTraspasoId), PantallaActual.PantallaId, token).ContinueWith(x =>
+                    {
                         if (x.IsFaulted)
                         {
                             throw x.Exception;
@@ -128,38 +144,58 @@ namespace GestionFC.Views.Modals
                         if (x.Result.Pantallas != null)
                         {
                             ViewModel.Pantallas = x.Result.Pantallas;
+
                             foreach (var item in ViewModel.Pantallas)
                             {
-                                if (item.PantallaId == pantallaId)
+                                ViewModel.Pantallas.Find(pantalla =>
+                                    pantalla.PantallaId == item.PantallaId).BackGroundColor = "#FFFFFF";
+
+                                if (item.PantallaId == PantallaActual.PantallaId)
+                                {
+                                    ViewModel.Pantallas.Find(pantalla =>
+                                    pantalla.PantallaId == PantallaActual.PantallaId).BackGroundColor = "#DCD7D7";
                                     ViewModel.TituloPantallaDoc = item.PantallaDesc;
-                                else if (pantallaId == 0)
-                                    ViewModel.TituloPantallaDoc = ViewModel.Pantallas[0].PantallaDesc;
+                                }
+                                else if (PantallaActual.PantallaId == 0)
+                                {
+                                    PantallaActual = ViewModel.Pantallas[0];
+                                    ViewModel.TituloPantallaDoc = PantallaActual.PantallaDesc;
+
+                                    ViewModel.Pantallas.Find(pantalla =>
+                                    pantalla.PantallaId == PantallaActual.PantallaId).BackGroundColor = "#DCD7D7";
+                                }
+                                    
                             }
+
                             if (x.Result.Documentos != null)
                             {
 
+                                var DocsApoyo = new List<Models.Share.AlertaRecuperacionDocumentos>();
+                                var DocsPrincipal = new List<Models.Share.AlertaRecuperacionDocumentos>();
                                 ViewModel.Documentos = x.Result.Documentos;
+
                                 int i = 0;
                                 ViewModel.Documentos = x.Result.Documentos;
                                 foreach (var item in ViewModel.Documentos)
                                 {
+                                    if (item.Mascara == null)
+                                    {
+                                        item.Mascara = "";
+                                    }
+
                                     string[] base64 = item.Mascara.Split(',');
-
-                                    // Determinamos el tipo de archivo
-                                    ViewModel.Documentos[i].IsPdf = false;
-                                    ViewModel.Documentos[i].IsImage = false;
-                                    ViewModel.Documentos[i].IsVideo = false;
-
                                     string typeFile = base64[0];
+
                                     if (typeFile.Contains("pdf"))
                                     {
-                                        ViewModel.Documentos[i].IsPdf = true;
 
-                                        string[] source = x.Result.Documentos[i].Mascara.Split(',');
+                                        item.IsPdf = true;
+
+                                        string[] source = item.Mascara.Split(',');
                                         string Base64String = source[1];
                                         byte[] Base64Stream = Convert.FromBase64String(Base64String);
 
-                                        
+
                                         var folder = Path.GetTempPath();
                                         string fileName = Path.Combine(folder, "temp.pdf");
 
@@ -169,22 +205,23 @@ namespace GestionFC.Views.Modals
                                         }
                                         File.WriteAllBytes(fileName, Base64Stream);
 
-                                        ViewModel.Documentos[i].Mascara = fileName;
-
+                                        item.Mascara = fileName;
                                     }
                                     else if (typeFile.Contains("jpg"))
                                     {
-                                        ViewModel.Documentos[i].IsImage = true;
-                                        string[] source = x.Result.Documentos[i].Mascara.Split(',');
+
+                                        item.IsImage = true;
+                                        string[] source = item.Mascara.Split(',');
                                         string Base64String = source[1];
                                         byte[] Base64Stream = Convert.FromBase64String(Base64String);
-                                        ViewModel.Documentos[i].StreamImageSrc = (StreamImageSource)ImageSource.FromStream(() => new MemoryStream(Base64Stream));
+                                        item.StreamImageSrc = (StreamImageSource)ImageSource.FromStream(() => new MemoryStream(Base64Stream));
                                     }
-                                    else
+                                    else if (typeFile.Contains("mp4"))
                                     {
-                                        ViewModel.Documentos[i].IsVideo = true;
 
-                                        string[] source = x.Result.Documentos[i].Mascara.Split(',');
+                                        item.IsVideo = true;
+
+                                        string[] source = item.Mascara.Split(',');
                                         string Base64String = source[1];
                                         byte[] Base64Stream = Convert.FromBase64String(Base64String);
 
@@ -200,11 +237,24 @@ namespace GestionFC.Views.Modals
                                         File.WriteAllBytes(fileName, Base64Stream);
 
                                         //ViewModel.Documentos[i].VideoUri = new Uri($"ms-appdata:///{directory}/temp.mp4");
-                                        ViewModel.Documentos[i].Mascara = fileName;
+                                        item.Mascara = fileName;
                                     }
+                                    else
+                                    {
+                                        item.isData = true;
+                                    }
+
+                                    if (item.EsPrincipal)
+                                        DocsPrincipal.Add(item);
+                                    else
+                                        DocsApoyo.Add(item);
+
                                     i++;
                                 }
-                                //ViewModel.Documentos[0].Mascara = ViewModel.FotoAP;
+
+                                ViewModel.DocumentosApoyo = DocsApoyo;
+                                ViewModel.DocumentosPrincipal = DocsPrincipal;
+
                                 if (x.Result.Preguntas != null)
                                 {
                                     ViewModel.Preguntas = x.Result.Preguntas;
@@ -213,7 +263,7 @@ namespace GestionFC.Views.Modals
                         }
                     });
                 }
-
+                return true;
             }
             catch (Exception ex)
             {
@@ -222,7 +272,6 @@ namespace GestionFC.Views.Modals
                 {
                     CerrarSesion();
                     IsBusy = false;
-                    return;
                 }
 
                 //var logError = new Models.Log.LogErrorModel()
@@ -239,8 +288,9 @@ namespace GestionFC.Views.Modals
                 //        DisplayAlert("Error", logRes.Exception.Message, "Ok");
                 //});
                 await DisplayAlert("PlantillaPage Error", ex.Message, "Ok");
+                return false;
             }
-            
+
         }
 
         async void OnReturnButtonClicked(object sender, EventArgs e)
@@ -249,20 +299,6 @@ namespace GestionFC.Views.Modals
             await Navigation.PopModalAsync();
         }
 
-        void OnPantalla_Tapped(object sender, EventArgs e)
-        {
-            pantallaId = Convert.ToInt32(((Grid)sender).ClassId);
-
-            getDocs();
-        }
-
-        void OnFolio_Tapped(object sender, EventArgs e)
-        {
-            registroTraspasoId = Convert.ToInt32(((Grid)sender).ClassId);
-            pantallaId = 0;
-
-            getDocs();
-        }
         async void CerrarSesion()
         {
             await Navigation.PopModalAsync();
@@ -297,5 +333,141 @@ namespace GestionFC.Views.Modals
 
         }
 
+        //async void CollectionViewFolios_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+        //{
+        //    if (IsBusy)
+        //    {
+        //        return;
+        //    }
+
+        //    if (e.CurrentSelection == null)
+        //    {
+        //        return;
+        //    }
+
+        //    try
+        //    {
+
+        //        IsBusy = true;
+
+        //        FolioActual = (e.CurrentSelection.FirstOrDefault() as FolioSolicitud);
+        //        PantallaActual = new AlertaRecuperacionPantallas();
+        //        await getDocs();
+        //        CollectionViewPantallas.SelectedItem = ViewModel.Pantallas.FirstOrDefault();
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        await DisplayAlert("PlantillaPage Error", ex.Message, "Ok");
+        //    }
+        //    finally
+        //    {
+        //        IsBusy = false;
+        //    }
+        //}
+
+        //async void CollectionViewPantallas_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+        //{
+        //    if (IsBusy)
+        //    {
+        //        return;
+        //    }
+
+        //    if (e.CurrentSelection == null)
+        //    {
+        //        return;
+        //    }
+
+        //    try
+        //    {
+
+        //        IsBusy = true;
+
+        //        PantallaActual = (e.CurrentSelection.FirstOrDefault() as AlertaRecuperacionPantallas);
+        //        await getDocs();
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        await DisplayAlert("PlantillaPage Error", ex.Message, "Ok");
+        //    }
+        //    finally
+        //    {
+        //        IsBusy = false;
+        //    }
+        //}
+
+        async void TapPantalla_Tapped(System.Object sender, System.EventArgs e)
+        {
+            if (IsBusy)
+            {
+                return;
+            }
+
+            try
+            {
+
+                foreach (var item in ViewModel.Pantallas)
+                {
+                    ViewModel.Pantallas.Find(pantalla =>
+                                    pantalla.PantallaId == item.PantallaId).BackGroundColor = "#FFFFFF";
+                }
+
+
+                IsBusy = true;
+                PantallaActual = ViewModel.Pantallas.Find( pantalla =>
+                    pantalla.PantallaId == int.Parse((sender as Grid).ClassId));
+
+                ViewModel.Pantallas.Find(pantalla =>
+                                    pantalla.PantallaId == PantallaActual.PantallaId).BackGroundColor = "#DCD7D7";
+
+                await getDocs();
+
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("PlantillaPage Error", ex.Message, "Ok");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        async void TapFolio_Tapped(System.Object sender, System.EventArgs e)
+        {
+            if (IsBusy)
+            {
+                return;
+            }
+
+            try
+            {
+
+                foreach (var item in ViewModel.Folios)
+                {
+                    ViewModel.Folios.Find(folio =>
+                        folio.RegistroTraspasoId == item.RegistroTraspasoId).BackGroundColor = "#FFFFFF";
+                }
+
+
+                IsBusy = true;
+
+                FolioActual = ViewModel.Folios.Find(folio => folio.RegistroTraspasoId == (sender as Grid).ClassId);
+                ViewModel.Folios.Find(folio =>
+                        folio.RegistroTraspasoId == FolioActual.RegistroTraspasoId).BackGroundColor = "#DCD7D7";
+                PantallaActual = new AlertaRecuperacionPantallas();
+                await getDocs();
+
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("PlantillaPage Error", ex.Message, "Ok");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
     }
 }

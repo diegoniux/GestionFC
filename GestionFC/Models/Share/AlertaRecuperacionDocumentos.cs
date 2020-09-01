@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using GestionFC.ViewModels.Share;
 using Xamarin.Forms;
@@ -21,7 +22,7 @@ namespace GestionFC.Models.Share
             }
         }
 
-        public int expedienteTipoId;
+        private int expedienteTipoId;
         public int ExpedienteTipoId
         {
             get
@@ -35,7 +36,7 @@ namespace GestionFC.Models.Share
             }
         }
 
-        public string expedienteDesc;
+        private string expedienteDesc;
         public string ExpedienteDesc
     {
             get
@@ -49,7 +50,7 @@ namespace GestionFC.Models.Share
             }
         }
 
-        public int documentoTipoId;
+        private int documentoTipoId;
         public int DocumentoTipoId
         {
             get
@@ -63,7 +64,7 @@ namespace GestionFC.Models.Share
             }
         }
 
-        public string documentoDesc;
+        private string documentoDesc;
         public string DocumentoDesc
     {
             get
@@ -77,7 +78,7 @@ namespace GestionFC.Models.Share
             }
         }
 
-        public string claveDocumento;
+        private string claveDocumento;
         public string ClaveDocumento
         {
             get
@@ -91,7 +92,7 @@ namespace GestionFC.Models.Share
             }
         }
 
-        public int consecutivo;
+        private int consecutivo;
         public int Consecutivo
         {
             get
@@ -105,7 +106,7 @@ namespace GestionFC.Models.Share
             }
         }
 
-        public string mascara;
+        private string mascara;
         public string Mascara
         {
             get
@@ -119,7 +120,7 @@ namespace GestionFC.Models.Share
             }
         }
 
-        public StreamImageSource streamImageSrc;
+        private StreamImageSource streamImageSrc;
         public StreamImageSource StreamImageSrc
         {
             get
@@ -133,7 +134,7 @@ namespace GestionFC.Models.Share
             }
         }
 
-        public bool isPdf;
+        private bool isPdf;
         public bool IsPdf
         {
             get
@@ -147,7 +148,7 @@ namespace GestionFC.Models.Share
             }
         }
 
-        public bool isImage;
+        private bool isImage;
         public bool IsImage
         {
             get
@@ -161,7 +162,7 @@ namespace GestionFC.Models.Share
             }
         }
 
-        public bool isVideo;
+        private bool isVideo;
         public bool IsVideo
         {
             get
@@ -174,6 +175,63 @@ namespace GestionFC.Models.Share
                 RaisePropertyChanged(nameof(IsVideo));
             }
         }
+
+        public bool isData;
+        public bool IsData
+        {
+            get
+            {
+                return isData;
+            }
+            set
+            {
+                isData = value;
+                RaisePropertyChanged(nameof(IsData));
+            }
+        }
+
+        private bool esPrincipal;
+        public bool EsPrincipal
+        {
+            get
+            {
+                return esPrincipal;
+            }
+            set
+            {
+                esPrincipal = value;
+                RaisePropertyChanged(nameof(EsPrincipal));
+            }
+        }
+
+        private string scriptVideo;
+        public string ScriptVideo
+        {
+            get
+            {
+                return scriptVideo;
+            }
+            set
+            {
+                scriptVideo = value;
+                RaisePropertyChanged(nameof(ScriptVideo));
+            }
+        }
+
+        private List<DatoCapturado> datosCapturados;
+        public List<DatoCapturado> DatosCapturados
+        {
+            get
+            {
+                return datosCapturados;
+            }
+            set
+            {
+                datosCapturados = value;
+                RaisePropertyChanged(nameof(DatosCapturados));
+            }
+        }
+
 
         public AlertaRecuperacionDocumentos()
         {

@@ -196,12 +196,12 @@ namespace GestionFC.Services
             return getFoliosRecuperacionResponse;
         }
 
-        public async Task<AlertaRecuperacionResponseModel> GetDetalleFolioRecuperacion(int nomina, int pantallaId, string token)
+        public async Task<AlertaRecuperacionResponseModel> GetDetalleFolioRecuperacion(int registroTraspaspId, int pantallaId, string token)
         {
             var getDetalleFolioRecuperacionResponse = new AlertaRecuperacionResponseModel();
             try
             {
-                var uri = new Uri($"{App.BaseUrlApi}api/Alerta/GetDetalleFolioRecuperacion/{nomina}/{pantallaId}");
+                var uri = new Uri($"{App.BaseUrlApi}api/Alerta/GetDetalleFolioRecuperacion/{registroTraspaspId}/{pantallaId}");
 
                 HttpResponseMessage response = null;
                 _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);

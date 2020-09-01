@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Foundation;
-using GestionFC.Views;
 using UIKit;
 using UserNotifications;
-using Firebase.InstanceID;
-using Firebase.Core;
 using Firebase.CloudMessaging;
 using Octane.Xamarin.Forms.VideoPlayer.iOS;
 

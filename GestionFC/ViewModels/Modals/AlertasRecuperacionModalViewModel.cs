@@ -135,6 +135,34 @@ namespace GestionFC.ViewModels.Modals
             }
         }
 
+        private List<Models.Share.AlertaRecuperacionDocumentos> documentosApoyo;
+        public List<Models.Share.AlertaRecuperacionDocumentos> DocumentosApoyo
+        {
+            get
+            {
+                return documentosApoyo;
+            }
+            set
+            {
+                documentosApoyo = value;
+                RaisePropertyChanged(nameof(DocumentosApoyo));
+            }
+        }
+
+        private List<Models.Share.AlertaRecuperacionDocumentos> documentosPrincipal;
+        public List<Models.Share.AlertaRecuperacionDocumentos> DocumentosPrincipal
+        {
+            get
+            {
+                return documentosPrincipal;
+            }
+            set
+            {
+                documentosPrincipal = value;
+                RaisePropertyChanged(nameof(DocumentosPrincipal));
+            }
+        }
+
         public AlertasRecuperacionModalViewModel()
         {
         }

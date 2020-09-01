@@ -28,12 +28,6 @@
         </Style>
     </ContentPage.Resources>
     <RelativeLayout Padding="0">
-        <!--<Image
-            Aspect="AspectFill"
-            Source="background_app.png"
-            RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
-            RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
-        </Image>-->
 
         <StackLayout 
             Margin="0" 
@@ -841,16 +835,19 @@
                     ItemsSource="{Binding  Agentes}"
                     Grid.Row="1"
                     Grid.Column="1"
-                    Grid.ColumnSpan="12" Margin="0"
-                    SelectionMode="Single"
-                    SelectionChanged="CollectionView_SelectionChanged">
+                    Grid.ColumnSpan="12" Margin="0">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="5"></GridItemsLayout>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid 
+                            <Grid
+                                ClassId="{Binding NominaPromotor}"
                                 Padding="5">
+                               <Grid.GestureRecognizers>
+                                   <TapGestureRecognizer Tapped="TapGestureRecognizerEspecialista_Tapped">
+                                   </TapGestureRecognizer>
+                               </Grid.GestureRecognizers>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="70"></RowDefinition>
                                     <RowDefinition Height="15"></RowDefinition>

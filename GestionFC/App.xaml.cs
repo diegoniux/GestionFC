@@ -17,7 +17,6 @@ namespace GestionFC
         public static string Token { get; set; }
 
         // Propiedades para la pantalla detalle de especialista
-        public static List<Progreso> Especialistas { get; set; }
         public static int NominaAP { get; set; }
 
         // Propiedad para el binding de la pantalla Detalle Folio
@@ -53,7 +52,7 @@ namespace GestionFC
 
         public App()
         {
-            Device.SetFlags(new string[] { "MediaElement_Experimental" });
+            // Device.SetFlags(new string[] { "MediaElement_Experimental" });
 
             InitializeComponent();
 

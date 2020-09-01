@@ -10,22 +10,76 @@
              Title="Modal FormSheet Page"
              ios:Page.ModalPresentationStyle="OverFullScreen"
              BackgroundColor="#F0F0F1">
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="#DCD7D7"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <StackLayout Margin="20,35,20,20">
         <!--<Button Text="Regresar a la pantalla de Alarmas" Clicked="OnReturnButtonClicked" />-->
                         <!-- Botón Volver a Plantilla-->
         <Grid RowSpacing="0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="45"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="45"></RowDefinition>
-                <RowDefinition Height="2"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
             </Grid.RowDefinitions>
-            <BoxView
+            <ffimageloading:CachedImage
+                Grid.Column="0"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Margin="0"
+                x:Name = "Foto_Especialista"
+                Source = "{Binding FotoAP}"
+                CacheDuration = "90"
+                RetryCount = "5"
+                RetryDelay = "450"
+                LoadingPlaceholder="capi_circulo.png"
+                ErrorPlaceholder="capi_circulo.png">
+                <ffimageloading:CachedImage.Transformations>
+                    <fFImageLoadingTrans:CircleTransformation
+                        BorderSize="5"
+                        BorderHexColor="#000"/>
+                </ffimageloading:CachedImage.Transformations>
+            </ffimageloading:CachedImage>
+
+            <Label
                 Grid.Column="1"
                 Grid.Row="0"
                 Grid.RowSpan="2"
+                FontFamily="Helvetica"
+                TextColor="Black"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding NombreAP}"></Span>
+                        <Span Text=" "></Span>
+                        <Span Text="{Binding ApellidosAP}"></Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <BoxView
+                Grid.Column="2"
+                Grid.Row="0"
                 BackgroundColor="#275D38"
                 CornerRadius="10,10,0,0"
                 Margin="0,0,0,0"
@@ -37,21 +91,13 @@
             <Image
                 x:Name="imgAlarmas"
                 Source="icon_notification.png"
-                Grid.Column="1"
+                Grid.Column="2"
                 Grid.Row="0"
-                Grid.RowSpan="2"
                 Margin="10,8,10,10">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnReturnButtonClicked"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
             </Image>
-            <!--<BoxView
-                
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Grid.Row="1"
-                BackgroundColor="#275D38"
-                ></BoxView>-->
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -66,98 +112,15 @@
                 Grid.Column="0"
                 Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="300"></ColumnDefinition>
-                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width=".25*"></ColumnDefinition>
+                    <ColumnDefinition Width=".75*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Frame Grid.Column="0"
-                    Grid.Row="0"
-                    HasShadow="False"
-                    CornerRadius="10"
-                    Padding="0">
-                    <Grid BackgroundColor="#FFFFFF">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="40"></RowDefinition>
-                            <RowDefinition Height="20"></RowDefinition>
-                            <RowDefinition Height="20"></RowDefinition>
-                            <RowDefinition Height="20"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <BoxView BackgroundColor="#64A70B"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Grid.Row="0"
-                            CornerRadius="10,10,0,0"></BoxView>
-                        <Label Text="Especialista"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Grid.Row="0"
-                            FontFamily="Helvetica"
-                            TextColor="White"
-                            FontAttributes="Bold"
-                            HorizontalTextAlignment="Center"
-                            VerticalTextAlignment="Center">
-                        </Label>
-                        <ffimageloading:CachedImage
-                            Grid.Column="0"
-                            Grid.Row="1"
-                            Grid.RowSpan="3"
-                            Margin="10, 0, 0, -10"
-                            x:Name = "Foto_Especialista"
-                            Source = "{Binding FotoAP}"
-                            CacheDuration = "90"
-                            RetryCount = "5"
-                            RetryDelay = "450"
-                            LoadingPlaceholder="capi_circulo.png"
-                            ErrorPlaceholder="capi_circulo.png">
-                            <ffimageloading:CachedImage.Transformations>
-                                <fFImageLoadingTrans:CircleTransformation
-                                    BorderSize="5"
-                                    BorderHexColor="#000"/>
-                            </ffimageloading:CachedImage.Transformations>
-                        </ffimageloading:CachedImage>
-                        <Label
-                            Grid.Column="1"
-                            Grid.Row="1"
-                            FontFamily="Helvetica"
-                            TextColor="Black"
-                            FontAttributes="Bold"
-                            HorizontalTextAlignment="Start"
-                            VerticalTextAlignment="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="Nómina: "></Span>
-                                    <Span Text="{Binding NominaAP}"></Span>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Label Text="{Binding NombreAP}"
-                            Grid.Column="1"
-                            Grid.Row="2"
-                            FontFamily="Helvetica"
-                            TextColor="Black"
-                            FontAttributes="Bold"
-                            HorizontalTextAlignment="Start"
-                            VerticalTextAlignment="End">
-                        </Label>
-                        <Label Text="{Binding ApellidosAP}"
-                            Grid.Column="1"
-                            Grid.Row="3"
-                            FontFamily="Helvetica"
-                            TextColor="Black"
-                            FontAttributes="Bold"
-                            HorizontalTextAlignment="Start"
-                            VerticalTextAlignment="Start">
-                        </Label>
-                    </Grid>
-                </Frame>
-                <Frame Grid.Column="1"
+                <Frame
+                    Grid.Column="0"
                     Grid.Row="0"
                     CornerRadius="10"
                     HasShadow="False"
@@ -184,19 +147,23 @@
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center">
                         </Label>
-                        <CollectionView ItemsSource="{Binding Folios}"
-                                Grid.Column="0"
-                                Grid.Row="1"
-                                Margin="0">
+                        <CollectionView
+                            x:Name="CollectionViewFolios"
+                            ItemsSource="{Binding Folios}"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Margin="0">
                             <CollectionView.ItemsLayout>
                                 <GridItemsLayout Orientation="Vertical" Span="1"></GridItemsLayout>
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid ClassId="{Binding RegistroTraspasoId}"
-                                        Padding="5">
+                                    <Grid
+                                        ClassId="{Binding RegistroTraspasoId}"
+                                        Padding="5"
+                                        BackgroundColor="{Binding BackGroundColor}">
                                         <Grid.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnFolio_Tapped"></TapGestureRecognizer>
+                                            <TapGestureRecognizer Tapped="TapFolio_Tapped"></TapGestureRecognizer>
                                         </Grid.GestureRecognizers>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="13"></ColumnDefinition>
@@ -210,13 +177,15 @@
                                             Grid.Column="0"
                                             Grid.Row="1">
                                         </Image>
-                                        <Label Text="{Binding Folio}"
+                                        <Label
+                                            Text="{Binding Folio}"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Grid.Row="0"
-                                            TextColor="Black"
+                                            TextColor="#353535"
                                             FontFamily="Helvetica"
                                             FontAttributes="Bold"
+                                            FontSize="14"
                                             HorizontalTextAlignment="Center"
                                             VerticalTextAlignment="Center">
                                         </Label>
@@ -231,7 +200,7 @@
                         </CollectionView>
                     </Grid>
                 </Frame>
-                <Frame Grid.Column="2"
+                <Frame Grid.Column="1"
                     Grid.Row="0"
                     HasShadow="False"
                     CornerRadius="10"
@@ -249,7 +218,7 @@
                             Grid.Column="0"
                             Grid.Row="0"
                             CornerRadius="10,10,0,0"></BoxView>
-                        <Label Text="Resumen"
+                        <Label Text="Pantallas"
                             Grid.Column="0"
                             Grid.Row="0"
                             FontFamily="Helvetica"
@@ -258,19 +227,23 @@
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center">
                         </Label>
-                        <CollectionView ItemsSource="{Binding Pantallas}"
-                                Grid.Column="0"
-                                Grid.Row="1"
-                                Margin="0">
+                        <CollectionView
+                            x:Name="CollectionViewPantallas"
+                            ItemsSource="{Binding Pantallas}"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Margin="0">
                             <CollectionView.ItemsLayout>
                                 <GridItemsLayout Orientation="Vertical" Span="1"></GridItemsLayout>
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid ClassId="{Binding PantallaId}"
+                                    <Grid
+                                        ClassId="{Binding PantallaId}"
+                                        BackgroundColor="{Binding BackGroundColor}"
                                         Padding="5">
                                         <Grid.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnPantalla_Tapped"></TapGestureRecognizer>
+                                            <TapGestureRecognizer Tapped="TapPantalla_Tapped"></TapGestureRecognizer>
                                         </Grid.GestureRecognizers>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="13"></ColumnDefinition>
@@ -284,14 +257,15 @@
                                             Grid.Column="0"
                                             Grid.Row="1">
                                         </Image>
-                                        <Label Text="{Binding PantallaDesc}"
+                                        <Label
+                                            Text="{Binding PantallaDesc}"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Grid.Row="0"
-                                            TextColor="Black"
+                                            FontSize="13"
+                                            TextColor="#353535"
                                             FontFamily="Helvetica"
-                                            FontAttributes="Bold"
-                                            HorizontalTextAlignment="Center"
+                                            HorizontalTextAlignment="Start"
                                             VerticalTextAlignment="Center">
                                         </Label>
                                         <BoxView Grid.Column="0"
@@ -305,11 +279,75 @@
                         </CollectionView>
                     </Grid>
                 </Frame>
+                <!-- PREGUNTAS -->
+                <Frame
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    HasShadow="False"
+                    CornerRadius="10"
+                    Padding="0"
+                    BackgroundColor="#FFFFFF">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <BoxView BackgroundColor="#64A70B"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            CornerRadius="10,10,0,0"></BoxView>
+                        <Label Text="Preguntas"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            FontFamily="Helvetica"
+                            TextColor="#FFFFFF"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center">
+                        </Label>
+                        <CollectionView ItemsSource="{Binding Preguntas}"
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                Margin="0">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" Span="1"></GridItemsLayout>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="18"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Label
+                                            Text="{Binding PreguntaDesc}"
+                                            FontFamily="Helvetica"
+                                            TextColor="#353535"
+                                            FontSize="13"
+                                            Grid.Row="0"
+                                            Margin="5,0,0,0"></Label>
+                                        <Label
+                                            Text="No"
+                                            FontFamily="Helvetica"
+                                            FontAttributes="Bold"
+                                            TextColor="#353535"
+                                            FontSize="13"
+                                            Grid.Row="1"
+                                            Margin="15,0,0,0"></Label>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </Frame>
             </Grid>
             <Frame
                 Grid.Column="0"
                 Grid.Row="1"
-                BackgroundColor="#64A70B"
+                BackgroundColor="#FFA400"
                 HasShadow="False"
                 Padding="12"
                 CornerRadius="5">
@@ -324,92 +362,30 @@
                 Grid.Column="0"
                 Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width=".50*"></ColumnDefinition>
+                    <ColumnDefinition Width=".50*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height=".30*"></RowDefinition>
-                    <RowDefinition Height=".70*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <!-- PREGUNTAS -->
-                <Frame Grid.Column="0"
+                <!-- INFORMACIÔN APOYO -->
+                <Frame
+                    x:Name="FrameInfoApoyo"
+                    Grid.Column="0"
                     Grid.Row="0"
                     HasShadow="False"
                     CornerRadius="10"
                     Padding="0"
                     BackgroundColor="#FFFFFF">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="40"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <BoxView BackgroundColor="#DDDDDD"
-                            Grid.Column="0"
-                            Grid.Row="0"
-                            CornerRadius="10,10,0,0"></BoxView>
-                        <Label Text="Preguntas"
-                            Grid.Column="0"
-                            Grid.Row="0"
-                            FontFamily="Helvetica"
-                            TextColor="Gray"
-                            FontAttributes="Bold"
-                            HorizontalTextAlignment="Center"
-                            VerticalTextAlignment="Center">
-                        </Label>
-                        <CollectionView ItemsSource="{Binding Preguntas}"
-                                Grid.Column="0"
-                                Grid.Row="1"
-                                Margin="0">
-                            <CollectionView.ItemsLayout>
-                                <GridItemsLayout Orientation="Vertical" Span="1"></GridItemsLayout>
-                            </CollectionView.ItemsLayout>
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Padding="5">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                            <RowDefinition Height="18"></RowDefinition>
-                                        </Grid.RowDefinitions>
-                                        <Label Text="{Binding PreguntaDesc}"
-                                            FontFamily="Helvetica"
-                                            FontAttributes="Bold"
-                                            TextColor="Black"
-                                            Grid.Row="0"
-                                            ></Label>
-                                        <Label Text="No"
-                                            FontFamily="Helvetica"
-                                            FontAttributes="Bold"
-                                            TextColor="Red"
-                                            Grid.Row="1"
-                                            ></Label>
-                                    </Grid>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </Grid>
-                </Frame>
-                <!-- DOCUMENTOS -->
-                <Frame Grid.Column="0"
-                    Grid.Row="1"
-                    HasShadow="False"
-                    CornerRadius="10"
-                    Padding="0"
-                    BackgroundColor="#FFFFFF">
                     <CollectionView
-                        x:Name="collectionViewImages"
-                        ItemsSource="{Binding Documentos}"
+                        ItemsSource="{Binding DocumentosApoyo}"
                         Margin="0"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand">
                         <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Horizontal" Span="2"></GridItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="1"></GridItemsLayout>
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Frame Grid.Column="0"
+                                <Frame
+                                    Grid.Column="0"
                                     Grid.Row="0"
                                     HasShadow="False"
                                     CornerRadius="10"
@@ -421,11 +397,11 @@
                                     <Grid
                                         >
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="400*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="40"></RowDefinition>
-                                            <RowDefinition Height="500*"></RowDefinition>
+                                            <RowDefinition Height="400*"></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <BoxView BackgroundColor="#DDDDDD"
                                             Grid.Column="0"
@@ -447,7 +423,8 @@
                                             Source = "{Binding Path=StreamImageSrc}"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="FillAndExpand"
-                                            Aspect="AspectFill">
+                                            Aspect="AspectFit"
+                                            IsVisible="{Binding IsImage}">
                                         </Image>
                                         <WebView
                                             Grid.Column="0"
@@ -457,33 +434,234 @@
                                             VerticalOptions="FillAndExpand"
                                             Source="{Binding Mascara}"
                                             IsVisible="{Binding IsPdf}"/>
-                                        <!--<MediaElement
+                                        <Frame
                                             Grid.Column="0"
                                             Grid.Row="1"
-                                            Source="{Binding VideoUri}"
-                                            IsVisible="{Binding IsVideo}"
-                                            ShowsPlaybackControls="True"
                                             HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="FillAndExpand">
-                                        </MediaElement>-->
-                                        <o:VideoPlayer
-                                            DisplayControls="True"
-                                            AutoPlay="False"
-                                            Repeat="False"
+                                            VerticalOptions="FillAndExpand"
+                                            IsVisible="{Binding IsVideo}"
+                                            BackgroundColor="#FFFFFF"
+                                            HasShadow="False">
+                                            <StackLayout>
+                                                <o:VideoPlayer
+                                                    DisplayControls="True"
+                                                    Repeat="False"
+                                                    Source="{Binding Mascara}"
+                                                    FillMode="ResizeAspect"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    VerticalOptions="FillAndExpand"
+                                                    AutoPlay="True">
+                                                </o:VideoPlayer>
+                                                <Label
+                                                    Text="{Binding ScriptVideo}"
+                                                    TextColor="#464646"
+                                                    FontSize="14"
+                                                    Margin="10,0,10,0">
+                                                </Label>
+                                            </StackLayout>
+                                        </Frame>
+                                        <CollectionView
+                                            ItemsSource="{Binding DatosCapturados}"
+                                            Margin="0"
                                             Grid.Column="0"
                                             Grid.Row="1"
-                                            Source="{Binding Mascara}"
-                                            IsVisible="{Binding IsVideo}"
-                                            FillMode="ResizeAspectFill"
                                             HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="FillAndExpand">
-                                        </o:VideoPlayer>
+                                            VerticalOptions="FillAndExpand"
+                                            IsVisible="{Binding IsData}">
+                                            <CollectionView.ItemsLayout>
+                                                <GridItemsLayout Orientation="Vertical" Span="1"></GridItemsLayout>
+                                            </CollectionView.ItemsLayout>
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="20"></RowDefinition>
+                                                            <RowDefinition Height="25"></RowDefinition>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label
+                                                            Text="{Binding Campo}"
+                                                            Grid.Row="0"
+                                                            TextColor="#464646"
+                                                            FontSize="13"
+                                                            Margin="15,0,0,0"
+                                                            VerticalTextAlignment="End"
+                                                            FontAttributes="Bold">
+                                                        </Label>
+                                                        <Label
+                                                            Padding="5,0,0,0"
+                                                            Text="{Binding Valor}"
+                                                            Grid.Row="1"
+                                                            TextColor="#464646"
+                                                            FontSize="13"
+                                                            Margin="15,0,25,0"
+                                                            BackgroundColor="#DCD7D7"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            VerticalOptions="FillAndExpand"
+                                                            VerticalTextAlignment="Center">
+                                                        </Label>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
                                     </Grid>
                                 </Frame>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </Frame>
+                <!-- DOCUMENTO PRINCIPAL -->
+                <Frame
+                    x:Name="FrameDocumento"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    HasShadow="False"
+                    CornerRadius="10"
+                    Padding="0"
+                    BackgroundColor="#FFFFFF">
+                    <CollectionView
+                        ItemsSource="{Binding DocumentosPrincipal}"
+                        Margin="0"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="1"></GridItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Grid.Column="0"
+                                    Grid.Row="0"
+                                    HasShadow="False"
+                                    CornerRadius="10"
+                                    Margin="0"
+                                    Padding="2"
+                                    BackgroundColor="#FFFFFF"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
+                                    <Grid
+                                        >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="400*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="41"></RowDefinition>
+                                            <RowDefinition Height="400*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <BoxView BackgroundColor="#DDDDDD"
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            CornerRadius="10,10,0,0">
+                                        </BoxView>
+                                        <Label Text="{Binding DocumentoDesc}"
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            FontFamily="Helvetica"
+                                            TextColor="Gray"
+                                            FontAttributes="Bold"
+                                            HorizontalTextAlignment="Center"
+                                            VerticalTextAlignment="Center">
+                                        </Label>
+                                        <Image
+                                            Grid.Column="0"
+                                            Grid.Row="1"
+                                            Source = "{Binding Path=StreamImageSrc}"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            Aspect="AspectFit"
+                                            IsVisible="{Binding IsImage}">
+                                        </Image>
+                                        <WebView
+                                            Grid.Column="0"
+                                            Grid.Row="1"
+                                            BackgroundColor="#FFFFFF"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            Source="{Binding Mascara}"
+                                            IsVisible="{Binding IsPdf}"/>
+                                        <Frame
+                                            Grid.Column="0"
+                                            Grid.Row="1"
+                                            HorizontalOptions="FillAndExpand"
+
+                                            IsVisible="{Binding IsVideo}"
+                                            BackgroundColor="#FFFFFF"
+                                            HasShadow="False">
+                                            <StackLayout>
+                                                <o:VideoPlayer
+                                                    DisplayControls="True"
+                                                    AutoPlay="True"
+                                                    Repeat="False"
+                                                    Source="{Binding Mascara}"
+                                                    FillMode="ResizeAspect"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    VerticalOptions="FillAndExpand">
+                                                </o:VideoPlayer>
+                                                <Label
+                                                    Text="{Binding ScriptVideo}"
+                                                    TextColor="#464646"
+                                                    FontSize="14"
+                                                    Margin="10,10,10,0">
+                                                </Label>
+                                            </StackLayout>
+                                        </Frame>
+                                        <CollectionView
+                                            ItemsSource="{Binding DatosCapturados}"
+                                            Margin="0"
+                                            Grid.Column="0"
+                                            Grid.Row="1"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            IsVisible="{Binding IsData}">
+                                            <CollectionView.ItemsLayout>
+                                                <GridItemsLayout Orientation="Vertical" Span="1"></GridItemsLayout>
+                                            </CollectionView.ItemsLayout>
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="20"></RowDefinition>
+                                                            <RowDefinition Height="25"></RowDefinition>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label
+                                                            Text="{Binding Campo}"
+                                                            Grid.Row="0"
+                                                            TextColor="#464646"
+                                                            FontSize="13"
+                                                            Margin="15,0,0,0"
+                                                            VerticalTextAlignment="End"
+                                                            FontAttributes="Bold">
+                                                        </Label>
+                                                        <Label
+                                                            Padding="5,0,0,0"
+                                                            Text="{Binding Valor}"
+                                                            Grid.Row="1"
+                                                            TextColor="#464646"
+                                                            FontSize="13"
+                                                            Margin="15,0,25,0"
+                                                            BackgroundColor="#DCD7D7"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            VerticalOptions="FillAndExpand"
+                                                            VerticalTextAlignment="Center">
+                                                        </Label>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Frame>
+
             </Grid>
         </Grid>
     </StackLayout>

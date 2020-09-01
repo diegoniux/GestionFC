@@ -10,6 +10,7 @@ using Acr.UserDialogs;
 using Xamarin.Forms;
 using GestionFC.Views;
 using Octane.Xamarin.Forms.VideoPlayer.Android;
+using MediaManager;
 
 namespace GestionFC.Droid
 {

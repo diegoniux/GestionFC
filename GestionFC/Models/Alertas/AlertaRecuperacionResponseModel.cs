@@ -20,7 +20,6 @@ namespace GestionFC.Models.Alertas
             this.Pantallas = new List<Models.Share.AlertaRecuperacionPantallas>();
             this.Preguntas = new List<Models.Share.AlertaRecuperacionPreguntas>();
             this.Documentos = new List<Models.Share.AlertaRecuperacionDocumentos>();
-       
         }
     }
 }

@@ -20,7 +20,6 @@ namespace GestionFC.Views
     {
         private int nomina { get; set; }
         private string token { get; set; }
-        public List<Progreso> Especialistas { get; set; }
         public int NominaAP { get; set; }
         public int EspecialistaIndex { get; set; }
 
@@ -55,9 +54,7 @@ namespace GestionFC.Views
                 token = App.Token;
                 
 
-                Especialistas = App.Especialistas;
                 NominaAP = App.NominaAP;
-                EspecialistaIndex = Especialistas.FindIndex(x => x.NominaPromotor == NominaAP);
                 IsBusy = true;
 
                 using (UserDialogs.Instance.Loading("Procesando...", null, null, true, MaskType.Black))

@@ -975,7 +975,7 @@
                 </Frame>
 
                 <Label
-                    Text="{Binding DetalleEspecialista.Desafios.Multiplicador}"
+                    Text="{Binding DetalleEspecialista.Desafios.BonoBisemanal}"
                     Grid.Column="2"
                     Grid.Row="3"
                     TextColor="#FFFFFF"

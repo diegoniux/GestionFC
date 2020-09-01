@@ -188,7 +188,7 @@ namespace GestionFC.Views
             });
         }
 
-        async void CollectionView_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+        async void TapGestureRecognizerEspecialista_Tapped(System.Object sender, System.EventArgs e)
         {
             if (IsBusy)
             {
@@ -198,15 +198,21 @@ namespace GestionFC.Views
 
             try
             {
-                IsBusy = true;
-                App.Especialistas = ViewModel.Agentes;
-                App.NominaAP = (e.CurrentSelection.FirstOrDefault() as Progreso).NominaPromotor;
+                int NominaEspecialista = int.Parse((sender as Grid).ClassId);
+
+                if (NominaEspecialista == 0)
+                {
+                    return;
+                }
+
+                App.NominaAP = NominaEspecialista;
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     App.MasterDetail.Detail.Navigation.PushAsync((Page)Activator.CreateInstance(typeof(DetalleEspecialistaPage)));
                     App.MasterDetail.IsPresented = false;
-                    
+                    CollectionViewPlantilla.SelectedItem = null;
                 });
+
             }
             catch (Exception ex)
             {
