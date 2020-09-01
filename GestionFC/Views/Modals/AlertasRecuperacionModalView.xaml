@@ -241,7 +241,7 @@
                                     <Grid
                                         ClassId="{Binding PantallaId}"
                                         BackgroundColor="{Binding BackGroundColor}"
-                                        Padding="5">
+                                        Padding="10,1,1,1">
                                         <Grid.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapPantalla_Tapped"></TapGestureRecognizer>
                                         </Grid.GestureRecognizers>
@@ -351,11 +351,14 @@
                 HasShadow="False"
                 Padding="12"
                 CornerRadius="5">
-                <Label Text="{Binding TituloPantallaDoc}"
+                <Label
+                    Text="{Binding TituloPantallaDoc}"
                     FontAttributes="Bold"
                     FontSize="20"
                     FontFamily="Helvetica"
-                    TextColor="White">
+                    TextColor="#FFFFFF"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center">
                 </Label>
             </Frame>
             <Grid

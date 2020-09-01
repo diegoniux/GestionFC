@@ -919,7 +919,6 @@
                                         TextColor="#353535">
                                 </Label>
 
-
                                 <!--PROGRESO SALDO CANTADO-->
                                 <renderers:GradientProgressBar
                                     Grid.Row="3"
@@ -930,7 +929,7 @@
                                     GradientEndColor="#DCD7D7"
                                     GradientStartColor="#DCD7D7"
                                     HeightRequest="10"
-                                    Percentage="{Binding PorcentajeSaldoCantadoFCT}"
+                                    Percentage="{Binding PorcentajeSaldoAcumulado}"
                                     TextColor="Transparent"
                                     Margin="20,0,20,0"/>
 
